@@ -39,7 +39,7 @@
             // 
             // btnSearchName
             // 
-            this.btnSearchName.Location = new System.Drawing.Point(163, 59);
+            this.btnSearchName.Location = new System.Drawing.Point(163, 21);
             this.btnSearchName.Name = "btnSearchName";
             this.btnSearchName.Size = new System.Drawing.Size(94, 23);
             this.btnSearchName.TabIndex = 2;
@@ -51,7 +51,7 @@
             // 
             this.txtSearchName.Location = new System.Drawing.Point(81, 23);
             this.txtSearchName.Name = "txtSearchName";
-            this.txtSearchName.Size = new System.Drawing.Size(100, 20);
+            this.txtSearchName.Size = new System.Drawing.Size(78, 20);
             this.txtSearchName.TabIndex = 1;
             // 
             // label6
