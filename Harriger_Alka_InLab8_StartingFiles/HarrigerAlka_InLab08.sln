@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarrigerAlka_InLab08", "HarrigerAlka_InLab08.csproj", "{7BBC0983-6D78-4B92-A429-395D14C25CCD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BBC0983-6D78-4B92-A429-395D14C25CCD}.Debug|x86.ActiveCfg = Debug|x86
+		{7BBC0983-6D78-4B92-A429-395D14C25CCD}.Debug|x86.Build.0 = Debug|x86
+		{7BBC0983-6D78-4B92-A429-395D14C25CCD}.Release|x86.ActiveCfg = Release|x86
+		{7BBC0983-6D78-4B92-A429-395D14C25CCD}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
