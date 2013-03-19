@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.logical.LogicalDesign>
+   <object objectType="Entity" objectID="FD84E63E-2A38-804F-8E84-306987FA1214" name="ACTOR" seqName="seg_0"/>
+   <object objectType="Entity" objectID="3ADB0F6C-4D9A-871C-FC97-6570B1834D0A" name="ARTIST" seqName="seg_0"/>
+   <object objectType="Entity" objectID="B6CD1E1D-3D99-1127-DDDC-2DD1A83A1FBE" name="BOOK CHECKOUT" seqName="seg_0"/>
+   <object objectType="Entity" objectID="020037B4-392F-810F-98B4-6F329E9BF2B7" name="Book" seqName="seg_0"/>
+   <object objectType="Entity" objectID="DBE2792A-87ED-01E4-4D23-DB522F556ED9" name="CD" seqName="seg_0"/>
+   <object objectType="Entity" objectID="86ED7321-7C83-E204-CD68-291738694091" name="CD CHECKOUT" seqName="seg_0"/>
+   <object objectType="Entity" objectID="B39C5AA8-1C04-E300-3F84-9C761D0DC5A7" name="Checkout" seqName="seg_0"/>
+   <object objectType="Entity" objectID="FAE73194-D916-F971-7B77-520DDECEF203" name="EMPLOYEE" seqName="seg_0"/>
+   <object objectType="Entity" objectID="D7FA89E0-E0D9-1CD7-32DD-247A0D5E97EB" name="MOVIE" seqName="seg_0"/>
+   <object objectType="Entity" objectID="8691B744-A35B-33F7-BC08-33D8010401ED" name="MOVIE CHECKOUT" seqName="seg_0"/>
+   <object objectType="Entity" objectID="8CC5CEDC-B5D7-887E-6751-3338F143DCB1" name="PATRON" seqName="seg_0"/>
+   <object objectType="Relation" objectID="2D7FA4B2-8226-CC2D-7CAC-F0395E9C4E73" name="Relation_1" seqName="seg_0"/>
+   <object objectType="Relation" objectID="246ED78E-BCAE-DBD7-CF9A-7880FF7D393E" name="Relation_10" seqName="seg_0"/>
+   <object objectType="Relation" objectID="CBD1D306-B760-1E6D-BC5F-EDC0917C146D" name="Relation_11" seqName="seg_0"/>
+   <object objectType="Relation" objectID="27470B60-CC02-9E62-4F4B-09F0C2B0712A" name="Relation_12" seqName="seg_0"/>
+   <object objectType="Relation" objectID="76F83893-CD18-CFC6-8F12-4C6C19972F07" name="Relation_13" seqName="seg_0"/>
+   <object objectType="Relation" objectID="8049E311-1C08-324D-2E7F-94515D9A7D6A" name="Relation_2" seqName="seg_0"/>
+   <object objectType="Relation" objectID="ECFF5946-0F50-88BA-24CB-51933BDECB4C" name="Relation_5" seqName="seg_0"/>
+   <object objectType="Relation" objectID="631C520F-5F0A-5286-170D-837372ABBD1D" name="Relation_6" seqName="seg_0"/>
+   <object objectType="Relation" objectID="ED703EA4-A07F-19B9-A57B-9DA57C82F366" name="Relation_7" seqName="seg_0"/>
+   <object objectType="Relation" objectID="5DE52EE0-BB25-6892-F839-96C4D0D31F27" name="Relation_8" seqName="seg_0"/>
+</oracle.dbtools.crest.model.design.logical.LogicalDesign>

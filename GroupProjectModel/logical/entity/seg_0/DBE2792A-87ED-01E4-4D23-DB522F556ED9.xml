@@ -1,0 +1,118 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" id="DBE2792A-87ED-01E4-4D23-DB522F556ED9" directorySegmentName="seg_0" name="CD">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:34:17 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<pkName>CD PK</pkName>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Attribute</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<attributes>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="CD_ID" id="16FC3034-551B-76CC-E8B9-D8425D83CA99">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:39:13 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<use>0</use>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="ISBN" id="7BF977E2-E6DA-05DB-3EC6-9C6E8DBC3917">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:38:58 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="Album" id="8548FBD7-F6FC-C610-26E4-A5D640CE0C18">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:39:52 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="Year" id="C953D6B5-1849-7C73-5C1A-18C4412D9F55">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:39:54 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="Genre" id="0D9DBEDB-1459-296D-09E3-74672F33F38B">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:45:15 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+</Attribute>
+</attributes>
+<identifiers>
+<identifier class="oracle.dbtools.crest.model.design.logical.CandidateKey" id="70CD3659-D76C-296A-77B3-B2034312B7A4" name="CD PK">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:46:30 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>16FC3034-551B-76CC-E8B9-D8425D83CA99</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

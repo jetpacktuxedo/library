@@ -1,0 +1,128 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" id="8CC5CEDC-B5D7-887E-6751-3338F143DCB1" directorySegmentName="seg_0" name="PATRON">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:33:41 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<pkName>PATRON PK</pkName>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Attribute</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<attributes>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="Patron_ID" id="7F780BB4-F802-51D3-807D-3BC422D75765">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:57:30 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<use>0</use>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="First_Name" id="BDFEE118-C96E-73C5-8B8F-2DFA85B30FF0">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:59:01 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="Last_Name" id="5D943B2D-8CCB-A337-CEF7-A8616C472958">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:59:10 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="Address" id="D4069E3C-54D6-D400-4DD3-0A61D6C79B12">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:59:15 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="Phone" id="D868F4EF-76A9-6DA2-40C9-66B10B5B3DA4">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:59:20 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="Birth_Date" id="846E7303-2F97-63B9-DF76-D2368284DE55">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 20:59:37 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+</Attribute>
+</attributes>
+<identifiers>
+<identifier class="oracle.dbtools.crest.model.design.logical.CandidateKey" id="0CA11A49-40DA-2321-A37F-115853720C5D" name="PATRON PK">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 21:01:01 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7F780BB4-F802-51D3-807D-3BC422D75765</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

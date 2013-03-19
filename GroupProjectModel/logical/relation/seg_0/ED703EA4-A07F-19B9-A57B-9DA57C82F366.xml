@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_7" id="ED703EA4-A07F-19B9-A57B-9DA57C82F366" directorySegmentName="seg_0">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 21:08:47 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<identifying>true</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>020037B4-392F-810F-98B4-6F329E9BF2B7</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>B6CD1E1D-3D99-1127-DDDC-2DD1A83A1FBE</targetEntity>
+<transferable>true</transferable>
+</Relation>

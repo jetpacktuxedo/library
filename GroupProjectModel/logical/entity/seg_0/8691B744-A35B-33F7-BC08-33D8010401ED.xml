@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" id="8691B744-A35B-33F7-BC08-33D8010401ED" directorySegmentName="seg_0" name="MOVIE CHECKOUT">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 21:07:23 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<pkName>MOVIE CHECKOUT PK</pkName>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<fonts>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Title</foType>
+<fontStyle>1</fontStyle>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Attribute</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Datatype</foType>
+<colorRGB>-16744448</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>PK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>FK Element</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>UK Element</foType>
+<colorRGB>-16776961</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Not Null</foType>
+<colorRGB>-65536</colorRGB>
+</FontObject>
+<FontObject class="oracle.dbtools.crest.model.design.FontObjectWr">
+<foType>Key</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
+<attributes>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="Movie_ID" id="0DFD6AB1-92CA-3A16-823A-155E6A86C608">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 21:08:37 UTC</createdTime>
+<generatorID>631C520F-5F0A-5286-170D-837372ABBD1D</generatorID>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<referedAttribute>9ADBEDE4-7AB1-B320-CFBE-529DEE7156A4</referedAttribute>
+<use>0</use>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="Checkout_ID" id="76B2CFDB-858C-E4D3-2A66-F9A696B4E5B8">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 21:09:27 UTC</createdTime>
+<generatorID>5DE52EE0-BB25-6892-F839-96C4D0D31F27</generatorID>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<referedAttribute>94AAA8EE-E222-C7D6-A33A-67B3CEFA3A87</referedAttribute>
+<use>0</use>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="Employee_ID" id="3048900B-0D01-E3D6-3052-FA5258AF0BE5">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 21:10:32 UTC</createdTime>
+<generatorID>5DE52EE0-BB25-6892-F839-96C4D0D31F27</generatorID>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<referedAttribute>65DD1096-D6CF-F952-1B45-DBB26EA6912B</referedAttribute>
+<use>0</use>
+</Attribute>
+<Attribute class="oracle.dbtools.crest.model.design.logical.Attribute" name="Patron_ID" id="C320C390-225A-7FBA-2A2D-BE76C33C7909">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 21:10:38 UTC</createdTime>
+<generatorID>5DE52EE0-BB25-6892-F839-96C4D0D31F27</generatorID>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<referedAttribute>40723785-30C8-31FA-B0F5-5DC47B60AB39</referedAttribute>
+<use>0</use>
+</Attribute>
+</attributes>
+<identifiers>
+<identifier class="oracle.dbtools.crest.model.design.logical.CandidateKey" id="590E1ABB-23F0-F8AE-174A-508585F843EE" name="MOVIE CHECKOUT PK">
+<createdBy>maddene</createdBy>
+<createdTime>2013-03-06 21:08:37 UTC</createdTime>
+<ownerDesignName>GroupProjectModel</ownerDesignName>
+<engineerTo>
+<item key="3A91A740-A85E-12AD-3B48-15135405E3D4" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>0DFD6AB1-92CA-3A16-823A-155E6A86C608</attributeRef>
+<attributeRef>76B2CFDB-858C-E4D3-2A66-F9A696B4E5B8</attributeRef>
+<attributeRef>3048900B-0D01-E3D6-3052-FA5258AF0BE5</attributeRef>
+<attributeRef>C320C390-225A-7FBA-2A2D-BE76C33C7909</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
