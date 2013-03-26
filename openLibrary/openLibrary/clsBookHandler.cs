@@ -17,88 +17,89 @@ public class clsBookHandler
 
     public clsBookHandler(string id, string isbn, string title, string year, string genre, string author)
     {
-        mcontactID = p;
-        mFirstName = p2;
-        mLastName = p3;
-        mPhone1 = p4;
-        mPhone2 = p5;
-        mBirthdate = p6;
-    }
-
-    public int contactID
-    {
-        get
-        {
-            return mcontactID;
-        }
-        set
-        {
-            mcontactID = value;
-        }
+        mBookID = id;
+        mBookISBN = isbn;
+        mBookTitle = title;
+        mBookReleaseYear = year;
+        mBookGenre = genre;
+        mBookAuthor = author;
 
     }
 
-    public string firstName
+    public string bookID
     {
         get
         {
-            return mFirstName;
+            return mBookID;
         }
         set
         {
-            mFirstName = value;
+            mBookID = value;
         }
 
     }
 
-    public string lastName
+    public string bookISBN
     {
         get
         {
-            return mLastName;
+            return mBookISBN;
         }
         set
         {
-            mLastName = value;
+            mBookISBN = value;
         }
 
     }
 
-    public string phone1
+    public string bookTitle
     {
         get
         {
-            return mPhone1;
+            return mBookTitle;
         }
         set
         {
-            mPhone1 = value;
+            mBookTitle = value;
         }
 
     }
 
-    public string phone2
+    public string releaseYear
     {
         get
         {
-            return mPhone2;
+            return mBookReleaseYear;
         }
         set
         {
-            mPhone2 = value;
+            mBookReleaseYear = value;
         }
 
     }
 
-    public DateTime birthdate
+    public string bookGenre
     {
         get
         {
-            return mBirthdate;
+            return mBookGenre;
         }
         set
         {
-            mBirthdate = value;
+            mBookGenre = value;
+        }
+
+    }
+
+    public string bookauthor
+    {
+        get
+        {
+            return mBookAuthor;
+        }
+        set
+        {
+            mBookAuthor = value;
         }
 
     }
