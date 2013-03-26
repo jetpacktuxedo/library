@@ -7,12 +7,12 @@ using System.IO;
 using System.Data.OleDb;
 
 
-public partial class frmAddBook : Form
+public partial class frmNewBook : Form
 {
     [STAThread]
     public static void Main()
     {
-        frmAddBook main = new frmAddBook();
+        frmNewBook main = new frmNewBook();
         Application.Run(main);
     }
 
@@ -22,7 +22,7 @@ public partial class frmAddBook : Form
 
 
 
-    public frmAddBook()
+    public frmNewBook()
     {
         InitializeComponent();
     }
@@ -55,7 +55,7 @@ public partial class frmAddBook : Form
             OleDbDataReader rdr;
             cmd = new OleDbCommand(sql, mDB);
             rdr = cmd.ExecuteReader();
-            
+
             rdr.Close();
         }
         catch (Exception ee) { MessageBox.Show("Something Went Wrong: " + ee.Message); }
@@ -79,14 +79,14 @@ public partial class frmAddBook : Form
 
         }
 
-        catch(Exception ee)
+        catch (Exception ee)
         {
             MessageBox.Show("Something went wrong: " + ee.Message);
             return (int)-1;
         }
 
         return -1;
-    } 
+    }
 
 
     private void btnAdd_Click(object sender, EventArgs e)
@@ -109,7 +109,7 @@ public partial class frmAddBook : Form
 
 
         sqlstatement = "INSERT INTO BOOK (BOOK_ID, ISBN, TITLE, RELEASE_YEAR, GENRE, AUTHOR)" +
-                                  "VALUES ('"+ bookid + "','" + isbn + "','" + title + "','" + year + "','" + genre + "','" + author + "')";
+                                  "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + year + "','" + genre + "','" + author + "')";
 
         loadDatabaseTable(sqlstatement);
 
@@ -135,7 +135,7 @@ public partial class frmAddBook : Form
             if (ofd.ShowDialog() == DialogResult.OK) mUserFile = ofd.FileName;
         }
         catch (Exception ee) { MessageBox.Show("There was an error: " + ee.Message); }
-         
+
         txtISBN.Enabled = true;
         txtTitle.Enabled = true;
         txtAuthor.Enabled = true;

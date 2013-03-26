@@ -42,9 +42,22 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsBookHandler.cs" />
+    <Compile Include="frmNewBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewBook.Designer.cs">
+      <DependentUpon>frmNewBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHomeScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHomeScreen.Designer.cs">
+      <DependentUpon>frmHomeScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,7 +71,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="App1.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

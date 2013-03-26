@@ -1,4 +1,4 @@
-﻿partial class frmMain
+﻿partial class frmAddBook
 {
     #region Windows Form Designer generated code
     private void InitializeComponent()
@@ -141,7 +141,7 @@
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click_1);
             // 
-            // frmMain
+            // frmAddBook
             // 
             this.AcceptButton = this.btnAdd;
             this.ClientSize = new System.Drawing.Size(284, 261);
@@ -158,7 +158,7 @@
             this.Controls.Add(this.txtISBN);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "frmMain";
+            this.Name = "frmAddBook";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
