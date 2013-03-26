@@ -104,16 +104,7 @@ public class clsBookHandler
 
     }
 
-    public string serialize()
-    {
-        return mcontactID.ToString().PadRight(10) + "    " +
-               mFirstName.PadRight(10) + "    " +
-               mLastName.PadRight(15) + "     " +
-               mPhone1.PadRight(12) + "     " +
-               mPhone2.PadRight(8) + "     " +
-               mBirthdate.ToShortDateString().ToString().PadRight(10);
 
-    }
 
 }
 
