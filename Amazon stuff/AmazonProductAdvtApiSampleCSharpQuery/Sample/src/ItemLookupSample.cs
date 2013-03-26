@@ -36,7 +36,7 @@ namespace AmazonProductAdvtApi
         private const string DESTINATION          = "ecs.amazonaws.com";
         
         private const string NAMESPACE = "http://webservices.amazon.com/AWSECommerceService/2009-03-31";
-        private const string ITEM_ID   = "0545010225";
+        private const string ITEM_ID = "1250035953";
 
         public static void Main()
         {
