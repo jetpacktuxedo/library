@@ -25,10 +25,8 @@ using System.Text;
 using System.Web;
 using System.Security.Cryptography;
 
-namespace AmazonProductAdvtApi
-{
-    class SignedRequestHelper
-    {
+namespace AmazonProductAdvtApi {
+    class SignedRequestHelper {
         private string endPoint;
         private string akid;
         private byte[] secret;
@@ -49,8 +47,7 @@ namespace AmazonProductAdvtApi
          *  FR: ecs.amazonaws.fr
          *  CA: ecs.amazonaws.ca
          */
-        public SignedRequestHelper(string awsAccessKeyId, string awsSecretKey, string destination)
-        {
+        public SignedRequestHelper(string awsAccessKeyId, string awsSecretKey, string destination) {
             this.endPoint = destination.ToLower();
             this.akid = awsAccessKeyId;
             this.secret = Encoding.UTF8.GetBytes(awsSecretKey);
@@ -63,8 +60,7 @@ namespace AmazonProductAdvtApi
          * This method returns a complete URL to use. Modifying the returned URL
          * in any way invalidates the signature and Amazon will reject the requests.
          */
-        public string Sign(IDictionary<string, string> request)
-        {
+        public string Sign(IDictionary<string, string> request) {
             // Use a SortedDictionary to get the parameters in naturual byte order, as
             // required by AWS.
             ParamComparer pc = new ParamComparer();
@@ -93,7 +89,7 @@ namespace AmazonProductAdvtApi
             // Compute the signature and convert to Base64.
             byte[] sigBytes = signer.ComputeHash(toSign);
             string signature = Convert.ToBase64String(sigBytes);
-            
+
             // now construct the complete URL and return to caller.
             StringBuilder qsBuilder = new StringBuilder();
             qsBuilder.Append("http://")
@@ -113,8 +109,7 @@ namespace AmazonProductAdvtApi
          * This method returns a complete URL to use. Modifying the returned URL
          * in any way invalidates the signature and Amazon will reject the requests.
          */
-        public string Sign(string queryString)
-        {
+        public string Sign(string queryString) {
             IDictionary<string, string> request = this.CreateDictionary(queryString);
             return this.Sign(request);
         }
@@ -122,8 +117,7 @@ namespace AmazonProductAdvtApi
         /*
          * Current time in IS0 8601 format as required by Amazon
          */
-        private string GetTimestamp()
-        {
+        private string GetTimestamp() {
             DateTime currentTime = DateTime.UtcNow;
             string timestamp = currentTime.ToString("yyyy-MM-ddTHH:mm:ssZ");
             return timestamp;
@@ -136,18 +130,14 @@ namespace AmazonProductAdvtApi
          * according to the above standard. Also, .NET returns lower-case encoding
          * by default and Amazon requires upper-case encoding.
          */
-        private string PercentEncodeRfc3986(string str)
-        {
+        private string PercentEncodeRfc3986(string str) {
             str = HttpUtility.UrlEncode(str, System.Text.Encoding.UTF8);
             str = str.Replace("'", "%27").Replace("(", "%28").Replace(")", "%29").Replace("*", "%2A").Replace("!", "%21").Replace("%7e", "~").Replace("+", "%20");
 
             StringBuilder sbuilder = new StringBuilder(str);
-            for (int i = 0; i < sbuilder.Length; i++)
-            {
-                if (sbuilder[i] == '%')
-                {
-                    if (Char.IsLetter(sbuilder[i + 1]) || Char.IsLetter(sbuilder[i + 2]))
-                    {
+            for (int i = 0; i < sbuilder.Length; i++) {
+                if (sbuilder[i] == '%') {
+                    if (Char.IsLetter(sbuilder[i + 1]) || Char.IsLetter(sbuilder[i + 2])) {
                         sbuilder[i + 1] = Char.ToUpper(sbuilder[i + 1]);
                         sbuilder[i + 2] = Char.ToUpper(sbuilder[i + 2]);
                     }
@@ -159,46 +149,35 @@ namespace AmazonProductAdvtApi
         /*
          * Convert a query string to corresponding dictionary of name-value pairs.
          */
-        private IDictionary<string, string> CreateDictionary(string queryString)
-        {
+        private IDictionary<string, string> CreateDictionary(string queryString) {
             Dictionary<string, string> map = new Dictionary<string, string>();
 
             string[] requestParams = queryString.Split('&');
 
-            for (int i = 0; i < requestParams.Length; i++)
-            {
-                if (requestParams[i].Length < 1)
-                {
+            for (int i = 0; i < requestParams.Length; i++) {
+                if (requestParams[i].Length < 1) {
                     continue;
                 }
 
                 char[] sep = { '=' };
                 string[] param = requestParams[i].Split(sep, 2);
-                for (int j = 0; j < param.Length; j++)
-                {
+                for (int j = 0; j < param.Length; j++) {
                     param[j] = HttpUtility.UrlDecode(param[j], System.Text.Encoding.UTF8);
                 }
-                switch (param.Length)
-                {
-                    case 1:
-                        {
-                            if (requestParams[i].Length >= 1)
-                            {
-                                if (requestParams[i].ToCharArray()[0] == '=')
-                                {
+                switch (param.Length) {
+                    case 1: {
+                            if (requestParams[i].Length >= 1) {
+                                if (requestParams[i].ToCharArray()[0] == '=') {
                                     map[""] = param[0];
                                 }
-                                else
-                                {
+                                else {
                                     map[param[0]] = "";
                                 }
                             }
                             break;
                         }
-                    case 2:
-                        {
-                            if (!string.IsNullOrEmpty(param[0]))
-                            {
+                    case 2: {
+                            if (!string.IsNullOrEmpty(param[0])) {
                                 map[param[0]] = param[1];
                             }
                         }
@@ -212,18 +191,15 @@ namespace AmazonProductAdvtApi
         /*
          * Consttuct the canonical query string from the sorted parameter map.
          */
-        private string ConstructCanonicalQueryString(SortedDictionary<string, string> sortedParamMap)
-        {
+        private string ConstructCanonicalQueryString(SortedDictionary<string, string> sortedParamMap) {
             StringBuilder builder = new StringBuilder();
 
-            if (sortedParamMap.Count == 0)
-            {
+            if (sortedParamMap.Count == 0) {
                 builder.Append("");
                 return builder.ToString();
             }
 
-            foreach (KeyValuePair<string, string> kvp in sortedParamMap)
-            {
+            foreach (KeyValuePair<string, string> kvp in sortedParamMap) {
                 builder.Append(this.PercentEncodeRfc3986(kvp.Key));
                 builder.Append("=");
                 builder.Append(this.PercentEncodeRfc3986(kvp.Value));
@@ -237,11 +213,9 @@ namespace AmazonProductAdvtApi
 
     /*
      * To help the SortedDictionary order the name-value pairs in the correct way.
-     */     
-    class ParamComparer : IComparer<string>
-    {
-        public int Compare(string p1, string p2)
-        {
+     */
+    class ParamComparer : IComparer<string> {
+        public int Compare(string p1, string p2) {
             return string.CompareOrdinal(p1, p2);
         }
     }
