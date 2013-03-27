@@ -52,6 +52,7 @@
       <DependentUpon>ISBNLookupSample.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Lookup.cs" />
     <Compile Include="src\SignedRequestHelper.cs" />
     <EmbeddedResource Include="ISBNLookupSample.resx">
       <DependentUpon>ISBNLookupSample.cs</DependentUpon>
