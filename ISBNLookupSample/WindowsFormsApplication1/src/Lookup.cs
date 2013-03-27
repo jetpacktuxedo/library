@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.Net;
 using System.Xml;
+using System.Windows.Forms;
 
 namespace AmazonProductAdvtApi {
     class Lookup {
@@ -32,6 +33,11 @@ namespace AmazonProductAdvtApi {
             }
 
             else if (!string.IsNullOrEmpty(isbn) && isbn.Length == 10) isbn10 = isbn;
+
+            else {
+                MessageBox.Show("Not a valid ISBN format. Please verify that the ISBN is correct.");
+                isbn10 = "False";
+            }
 
             return isbn10;
         }
@@ -71,8 +77,12 @@ namespace AmazonProductAdvtApi {
                 XmlNodeList errorMessageNodes = doc.GetElementsByTagName("Message", NAMESPACE);
                 if (errorMessageNodes != null && errorMessageNodes.Count > 0) {
                     String message = errorMessageNodes.Item(0).InnerText;
-                    string[] error = new string[1];
-                    error[0] = "Error: " + message + " (but signature worked)";
+                    string[] error = new string[7];
+
+                    MessageBox.Show("Can't find ISBN information. Please verify that the ISBN is correct and that you have an active internet connection.");
+                    //MessageBox.Show("Error: " + message + " (but signature worked)");
+
+                    for (int i = 0; i < 7; i++) error[i] = "";
                     return error;
                 }
 
