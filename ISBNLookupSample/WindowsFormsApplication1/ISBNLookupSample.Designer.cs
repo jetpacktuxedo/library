@@ -63,21 +63,21 @@
             // 
             this.txtISBN.Location = new System.Drawing.Point(118, 13);
             this.txtISBN.Name = "txtISBN";
-            this.txtISBN.Size = new System.Drawing.Size(100, 20);
+            this.txtISBN.Size = new System.Drawing.Size(154, 20);
             this.txtISBN.TabIndex = 3;
             // 
             // txtTitle
             // 
             this.txtTitle.Location = new System.Drawing.Point(118, 115);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(100, 20);
+            this.txtTitle.Size = new System.Drawing.Size(154, 20);
             this.txtTitle.TabIndex = 4;
             // 
             // txtAuthor
             // 
             this.txtAuthor.Location = new System.Drawing.Point(118, 147);
             this.txtAuthor.Name = "txtAuthor";
-            this.txtAuthor.Size = new System.Drawing.Size(100, 20);
+            this.txtAuthor.Size = new System.Drawing.Size(154, 20);
             this.txtAuthor.TabIndex = 5;
             // 
             // btnSubmit
