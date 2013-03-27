@@ -16,12 +16,12 @@ namespace AmazonProductAdvtApi {
         private const string NAMESPACE = "http://webservices.amazon.com/AWSECommerceService/2011-08-01";
 
         //Method to convert ISBN-13 to ISBN-10
-        public static string ConvertTo10(string isbn13) {
+        public static string ConvertTo10(string isbn) {
             string isbn10 = string.Empty;
             long temp;
 
-            if (!string.IsNullOrEmpty(isbn13) && isbn13.Length == 13 && Int64.TryParse(isbn13, out temp)) {
-                isbn10 = isbn13.Substring(3, 9);
+            if (!string.IsNullOrEmpty(isbn) && isbn.Length == 13 && Int64.TryParse(isbn, out temp)) {
+                isbn10 = isbn.Substring(3, 9);
                 int sum = 0;
                 for (int i = 0; i < 9; i++)
                     sum += Int32.Parse(isbn10[i].ToString()) * (i + 1);
@@ -30,6 +30,8 @@ namespace AmazonProductAdvtApi {
                 char checkDigit = (result > 9) ? 'X' : result.ToString()[0];
                 isbn10 += checkDigit;
             }
+
+            else if (!string.IsNullOrEmpty(isbn) && isbn.Length == 10) isbn10 = isbn;
 
             return isbn10;
         }
@@ -55,7 +57,9 @@ namespace AmazonProductAdvtApi {
         }
 
         //Method to take a signed URL and return information contained in the get response
-        public static string Fetch(string type, string url) {
+        public static string[] Fetch(string url) {
+            string[] output = new string[7];
+            string title = "", author = "", binding = "", publisher = "", date = "", price = "", pages = "";
             try {
                 //Makes a request, and exports the response into an XML file
                 WebRequest request = HttpWebRequest.Create(url);
@@ -67,22 +71,50 @@ namespace AmazonProductAdvtApi {
                 XmlNodeList errorMessageNodes = doc.GetElementsByTagName("Message", NAMESPACE);
                 if (errorMessageNodes != null && errorMessageNodes.Count > 0) {
                     String message = errorMessageNodes.Item(0).InnerText;
-                    return "Error: " + message + " (but signature worked)";
+                    string[] error = new string[1];
+                    error[0] = "Error: " + message + " (but signature worked)";
+                    return error;
                 }
 
-                //Pull title from title node
+                //Pull title from Title node
                 XmlNode titleNode = doc.GetElementsByTagName("Title", NAMESPACE).Item(0);
-                string title = titleNode.InnerText;
+                //      name      =                          "TAGNAME"           item[index]
+                //                                                               For pulling multiple items, like in a search
+                if(titleNode != null) title = titleNode.InnerText;
 
                 //Pull Author from Author node
                 XmlNode authorNode = doc.GetElementsByTagName("Author", NAMESPACE).Item(0);
-                string author = authorNode.InnerText;
+                if(authorNode != null) author = authorNode.InnerText;
 
-                //Switch case to return requested bits.
-                switch (type) {
-                    case ("title"): return title;
-                    case ("author"): return author;
-                }
+                //Pull binding type from Binding node
+                XmlNode bindingNode = doc.GetElementsByTagName("Binding", NAMESPACE).Item(0);
+                if(bindingNode != null) binding = bindingNode.InnerText;
+
+                //Pull Publisher from Publisher node
+                XmlNode publisherNode = doc.GetElementsByTagName("Publisher", NAMESPACE).Item(0);
+                if(publisherNode != null) publisher = publisherNode.InnerText;
+
+                //Pull Publisher from PublicationDate node
+                XmlNode dateNode = doc.GetElementsByTagName("PublicationDate", NAMESPACE).Item(0);
+                if(dateNode != null) date = dateNode.InnerText;
+
+                //Pull formatted price from FormattedPrice node
+                XmlNode priceNode = doc.GetElementsByTagName("FormattedPrice", NAMESPACE).Item(0);
+                if(priceNode != null) price = priceNode.InnerText;
+
+                //Pull number of pages from NumberOfPages node
+                XmlNode pagesNode = doc.GetElementsByTagName("NumberOfPages", NAMESPACE).Item(0);
+                if(pagesNode != null) pages = pagesNode.InnerText;
+
+                output[0] = title;
+                output[1] = author;
+                output[2] = binding;
+                output[3] = publisher;
+                output[4] = date;
+                output[5] = price;
+                output[6] = pages;
+
+                return output;
             }
             catch (Exception e) {
                 System.Console.WriteLine("Caught Exception: " + e.Message);

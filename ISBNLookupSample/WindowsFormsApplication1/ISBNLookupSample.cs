@@ -5,7 +5,7 @@ namespace AmazonProductAdvtApi {
 
     public partial class ISBNSample : Form {
         //Variables!
-        String requestUrl, title, author, itemID;
+        String requestUrl, title, author, binding, publisher, date, price, pages, itemID;
 
         //Create and launch form
         public static void Main() {
@@ -25,14 +25,26 @@ namespace AmazonProductAdvtApi {
 
             //Format url for the get request
             requestUrl = Lookup.lookup(itemID);
-            //Submit Get request, extract title from pulled form
-            title = Lookup.Fetch("title", requestUrl);
-            //Submit Get request, extract author from pulled form
-            author = Lookup.Fetch("author", requestUrl);
+
+            string[] result = Lookup.Fetch(requestUrl);
+
+            //Submit Get request, extract info from pulled form
+            title = result[0];
+            author = result[1];
+            binding = result[2];
+            publisher = result[3];
+            date = result[4];
+            price = result[5];
+            pages = result[6];
 
             //Push title and author data back into the form
             txtTitle.Text = title;
             txtAuthor.Text = author;
+            txtBinding.Text = binding;
+            txtPublisher.Text = publisher;
+            txtDate.Text = date;
+            txtPrice.Text = price;
+            txtPages.Text = pages;
         }
     }
 }
