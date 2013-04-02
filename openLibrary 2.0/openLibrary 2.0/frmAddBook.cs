@@ -66,8 +66,9 @@ namespace openLibrary_2._0
             format = txtFormat.Text;
 
             sqlstatement = "INSERT INTO BOOK (BOOK_ID, ISBN, TITLE, FORMAT, LANGUAGE, AUTHOR)" +
-                                      "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + language + "','" + author + "')";
+                                      "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + language + "','" + author + "');";
 
+            
             d.loadDatabaseTable(sqlstatement);
 
             txtISBN.Clear();
