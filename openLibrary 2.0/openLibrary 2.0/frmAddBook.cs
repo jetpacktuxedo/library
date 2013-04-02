@@ -23,7 +23,6 @@ namespace openLibrary_2._0
 
         databaseHandler d = new databaseHandler();
         public string sqlstatement;
-        private OleDbConnection mDB;
 
         public frmAddBook()
         {

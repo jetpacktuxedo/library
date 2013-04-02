@@ -17,9 +17,7 @@ namespace openLibrary_2._0
 
     class databaseHandler
     {
-        public string sqlstatement;
         public OleDbConnection mDB;
-
 
         public void openNew()
         {                  
