@@ -87,7 +87,7 @@ namespace openLibrary_2._0
 
         private string escapeHandling(string line)
         {
-            return line.Replace("'", @"\'");
+            return line.Replace("'", "''");
 
         }
 
