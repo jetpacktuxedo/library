@@ -19,6 +19,8 @@ namespace openLibrary_2._0
 
     public partial class frmAddBook : Form
     {
+        string requestUrl, title, author, binding, publisher, date, price, pages, itemID;
+
         databaseHandler d = new databaseHandler();
         public string sqlstatement;
         private OleDbConnection mDB;
@@ -51,43 +53,108 @@ namespace openLibrary_2._0
 
             string isbn;
             string title;
-            string language;
+            string publisher;
             string format;
             string author;
+            string pages;
+            string price;
+            string date;
+
+
             int bookid;
 
             bookid = d.findBookCount("SELECT Count(*) FROM book;");
             bookid++;
 
             isbn = txtISBN.Text;
-            title = txtTitle.Text;
+            title = escapeHandling(txtTitle.Text);
             author = txtAuthor.Text;
-            language = txtLanguage.Text;
-            format = txtFormat.Text;
+            publisher = txtPublisher.Text;
+            format = txtBinding.Text;
+            pages = txtPages.Text;
+            price = txtPrice.Text;
+            date = txtDate.Text;
 
-            sqlstatement = "INSERT INTO BOOK (BOOK_ID, ISBN, TITLE, FORMAT, PUB_LANGUAGE, AUTHOR)" +
-                                      "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + language + "','" + author + "');";
-
-            MessageBox.Show("asdf");
+            sqlstatement = "INSERT INTO BOOK (BOOK_ID, ISBN, TITLE, BINDING, PUBLISHER, AUTHOR, PUB_DATE, PRICE, PAGES)" +
+                                      "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + publisher + "','" + author + "','" + date + "','" + price + "','" + pages + "');";
             
             d.loadDatabaseTable(sqlstatement);
 
-            txtISBN.Clear();
-            txtTitle.Clear();
-            txtAuthor.Clear();
-            txtLanguage.Clear();
-            txtFormat.Clear();
+            clearFields();
 
             txtISBN.Focus();
         }
 
+        private string escapeHandling(string line)
+        {
+            return line.Replace("'", @"\'");
+
+        }
+
+        private void lookup()
+        {
+
+
+            //Convert ISBN-13 to ISBN-10
+            itemID = Lookup.ConvertTo10(txtISBN.Text);
+
+            if (txtISBN.Text == "")
+            {
+                MessageBox.Show("Please enter an ISBN.");
+            }
+            else if (itemID == "False") ; //intentionally empty.
+            else
+            {
+                //Format url for the get request
+                requestUrl = Lookup.lookup(itemID);
+
+                string[] result = Lookup.Fetch(requestUrl);
+
+                //Submit Get request, extract info from pulled form
+                title = result[0];
+                author = result[1];
+                binding = result[2];
+                publisher = result[3];
+                date = result[4];
+                price = result[5];
+                pages = result[6];
+
+                //Push title and author data back into the form
+                txtTitle.Text = title;
+                txtAuthor.Text = author;
+                txtBinding.Text = binding;
+                txtPublisher.Text = publisher;
+                txtDate.Text = date;
+                txtPrice.Text = price;
+                txtPages.Text = pages;
+            }
+        }
         private void btnClear_Click(object sender, EventArgs e)
         {
+            clearFields();   
+        }
+
+        private void clearFields() 
+        { 
             txtISBN.Clear();
             txtTitle.Clear();
             txtAuthor.Clear();
-            txtLanguage.Clear();
-            txtFormat.Clear();
+            txtPublisher.Clear();
+            txtBinding.Clear();
+            txtDate.Clear();
+            txtPrice.Clear();
+            txtPages.Clear(); 
+        
+        }
+
+        private void frmAddBook_Load(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void btnPopulate_Click(object sender, EventArgs e)
+        {
+            lookup();
         }
 
         

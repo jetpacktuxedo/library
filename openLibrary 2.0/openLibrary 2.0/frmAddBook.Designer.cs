@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtFormat = new System.Windows.Forms.TextBox();
-            this.txtLanguage = new System.Windows.Forms.TextBox();
+            this.txtBinding = new System.Windows.Forms.TextBox();
+            this.txtPublisher = new System.Windows.Forms.TextBox();
             this.txtAuthor = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.txtISBN = new System.Windows.Forms.TextBox();
@@ -40,25 +40,32 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtDate = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.txtPages = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnPopulate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // txtFormat
+            // txtBinding
             // 
-            this.txtFormat.Location = new System.Drawing.Point(103, 128);
-            this.txtFormat.Name = "txtFormat";
-            this.txtFormat.Size = new System.Drawing.Size(100, 20);
-            this.txtFormat.TabIndex = 5;
+            this.txtBinding.Location = new System.Drawing.Point(107, 136);
+            this.txtBinding.Name = "txtBinding";
+            this.txtBinding.Size = new System.Drawing.Size(100, 20);
+            this.txtBinding.TabIndex = 5;
             // 
-            // txtLanguage
+            // txtPublisher
             // 
-            this.txtLanguage.Location = new System.Drawing.Point(103, 101);
-            this.txtLanguage.Name = "txtLanguage";
-            this.txtLanguage.Size = new System.Drawing.Size(100, 20);
-            this.txtLanguage.TabIndex = 4;
+            this.txtPublisher.Location = new System.Drawing.Point(107, 107);
+            this.txtPublisher.Name = "txtPublisher";
+            this.txtPublisher.Size = new System.Drawing.Size(100, 20);
+            this.txtPublisher.TabIndex = 4;
             // 
             // txtAuthor
             // 
-            this.txtAuthor.Location = new System.Drawing.Point(103, 74);
+            this.txtAuthor.Location = new System.Drawing.Point(107, 78);
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(100, 20);
             this.txtAuthor.TabIndex = 3;
@@ -66,7 +73,7 @@
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(103, 47);
+            this.txtTitle.Location = new System.Drawing.Point(107, 49);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(100, 20);
             this.txtTitle.TabIndex = 2;
@@ -74,7 +81,7 @@
             // txtISBN
             // 
             this.txtISBN.AcceptsTab = true;
-            this.txtISBN.Location = new System.Drawing.Point(103, 20);
+            this.txtISBN.Location = new System.Drawing.Point(107, 20);
             this.txtISBN.Name = "txtISBN";
             this.txtISBN.Size = new System.Drawing.Size(100, 20);
             this.txtISBN.TabIndex = 1;
@@ -108,7 +115,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(44, 213);
+            this.btnAdd.Location = new System.Drawing.Point(45, 294);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 10;
@@ -118,7 +125,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(125, 213);
+            this.btnClear.Location = new System.Drawing.Point(126, 294);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 11;
@@ -129,27 +136,92 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(42, 108);
+            this.label4.Location = new System.Drawing.Point(47, 114);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 12;
-            this.label4.Text = "Language";
+            this.label4.Text = "Publisher";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(58, 135);
+            this.label5.Location = new System.Drawing.Point(55, 143);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.Size = new System.Drawing.Size(42, 13);
             this.label5.TabIndex = 13;
-            this.label5.Text = "Format";
+            this.label5.Text = "Binding";
+            // 
+            // txtDate
+            // 
+            this.txtDate.Location = new System.Drawing.Point(107, 165);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(100, 20);
+            this.txtDate.TabIndex = 14;
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(107, 194);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(100, 20);
+            this.txtPrice.TabIndex = 15;
+            // 
+            // txtPages
+            // 
+            this.txtPages.Location = new System.Drawing.Point(107, 223);
+            this.txtPages.Name = "txtPages";
+            this.txtPages.Size = new System.Drawing.Size(100, 20);
+            this.txtPages.TabIndex = 16;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 172);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(81, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Publishing Date";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(66, 201);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Price";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(60, 230);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(37, 13);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Pages";
+            // 
+            // btnPopulate
+            // 
+            this.btnPopulate.Location = new System.Drawing.Point(73, 262);
+            this.btnPopulate.Name = "btnPopulate";
+            this.btnPopulate.Size = new System.Drawing.Size(104, 26);
+            this.btnPopulate.TabIndex = 20;
+            this.btnPopulate.Text = "Populate";
+            this.btnPopulate.UseVisualStyleBackColor = true;
+            this.btnPopulate.Click += new System.EventHandler(this.btnPopulate_Click);
             // 
             // frmAddBook
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(255, 250);
+            this.ClientSize = new System.Drawing.Size(255, 332);
+            this.Controls.Add(this.btnPopulate);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtPages);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.txtDate);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnClear);
@@ -160,12 +232,13 @@
             this.Controls.Add(this.txtISBN);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.txtAuthor);
-            this.Controls.Add(this.txtLanguage);
-            this.Controls.Add(this.txtFormat);
-            this.MaximumSize = new System.Drawing.Size(271, 289);
+            this.Controls.Add(this.txtPublisher);
+            this.Controls.Add(this.txtBinding);
+            this.MaximumSize = new System.Drawing.Size(500, 500);
             this.MinimumSize = new System.Drawing.Size(271, 289);
             this.Name = "frmAddBook";
             this.Text = "Add New Book";
+            this.Load += new System.EventHandler(this.frmAddBook_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,8 +246,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtFormat;
-        private System.Windows.Forms.TextBox txtLanguage;
+        private System.Windows.Forms.TextBox txtBinding;
+        private System.Windows.Forms.TextBox txtPublisher;
         private System.Windows.Forms.TextBox txtAuthor;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.TextBox txtISBN;
@@ -185,5 +258,12 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtDate;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.TextBox txtPages;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnPopulate;
     }
 }
