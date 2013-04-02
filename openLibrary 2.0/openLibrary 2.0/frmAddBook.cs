@@ -68,6 +68,7 @@ namespace openLibrary_2._0
             sqlstatement = "INSERT INTO BOOK (BOOK_ID, ISBN, TITLE, FORMAT, PUB_LANGUAGE, AUTHOR)" +
                                       "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + language + "','" + author + "');";
 
+            MessageBox.Show("asdf");
             
             d.loadDatabaseTable(sqlstatement);
 
