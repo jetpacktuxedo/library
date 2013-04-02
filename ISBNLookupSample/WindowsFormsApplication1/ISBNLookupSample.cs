@@ -19,13 +19,18 @@ namespace AmazonProductAdvtApi {
 
         //On Submit click
         private void btnSubmit_Click(object sender, EventArgs e) {
+            lookup();
+        }
+
+        private void lookup() {
+
             //Convert ISBN-13 to ISBN-10
             itemID = Lookup.ConvertTo10(txtISBN.Text);
 
             if (txtISBN.Text == "") {
                 MessageBox.Show("Please enter an ISBN.");
             }
-            else if (itemID == "False"); //intentionally empty.
+            else if (itemID == "False") ; //intentionally empty.
             else {
                 //Format url for the get request
                 requestUrl = Lookup.lookup(itemID);
