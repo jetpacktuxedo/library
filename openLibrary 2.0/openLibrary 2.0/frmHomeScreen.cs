@@ -66,6 +66,12 @@ namespace openLibrary_2._0
           
         }
 
+        private void bookToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmViewBook form = new frmViewBook();
+            form.Show();
+        }
+
      
     }
 }

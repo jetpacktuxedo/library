@@ -47,9 +47,8 @@ namespace openLibrary_2._0
 
         }
 
-        private void btnAdd_Click_1(object sender, EventArgs e)
-        {
-
+        private void addToDB()
+        { 
             string isbn;
             string title;
             string publisher;
@@ -62,7 +61,7 @@ namespace openLibrary_2._0
 
             int bookid;
 
-            bookid = d.findBookCount("SELECT Count(*) FROM book;");
+            bookid = d.findBookCount("SELECT max(book_id) FROM book;");
             bookid++;
 
             isbn = txtISBN.Text;
@@ -81,6 +80,11 @@ namespace openLibrary_2._0
 
             clearFields();
 
+        }
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
+        {
+            addToDB();
             txtISBN.Focus();
         }
 
@@ -154,6 +158,20 @@ namespace openLibrary_2._0
         private void btnPopulate_Click(object sender, EventArgs e)
         {
             lookup();
+
+            if (chkAdd.Checked == true)
+            {
+                System.Threading.Thread.Sleep(2000);
+                addToDB();
+            }
+            
+
+            btnAdd.Focus();
+        }
+
+        private void chkAdd_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
 
         

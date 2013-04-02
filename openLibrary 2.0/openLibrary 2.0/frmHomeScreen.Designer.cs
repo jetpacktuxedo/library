@@ -248,19 +248,20 @@
             // bookToolStripMenuItem2
             // 
             this.bookToolStripMenuItem2.Name = "bookToolStripMenuItem2";
-            this.bookToolStripMenuItem2.Size = new System.Drawing.Size(116, 22);
+            this.bookToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.bookToolStripMenuItem2.Text = "Book...";
+            this.bookToolStripMenuItem2.Click += new System.EventHandler(this.bookToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem12
             // 
             this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new System.Drawing.Size(116, 22);
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem12.Text = "Movie...";
             // 
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(116, 22);
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem13.Text = "Music...";
             // 
             // helpToolStripMenuItem
