@@ -41,7 +41,7 @@ namespace AmazonProductAdvtApi {
         //Method to take a signed URL and return information contained in the get response
         public static string[] Fetch(string url) {
             string[] output = new string[7];
-            string title = "", author = "", binding = "", publisher = "", date = "", price = "", pages = "";
+            string title = "", artist = "", binding = "", publisher = "", date = "", price = "", discs = "";
             try {
                 //Makes a request, and exports the response into an XML file
                 WebRequest request = HttpWebRequest.Create(url);
@@ -70,7 +70,7 @@ namespace AmazonProductAdvtApi {
 
                 //Pull Author from Author node
                 XmlNode artistNode = doc.GetElementsByTagName("Artist", NAMESPACE).Item(0);
-                if(artistNode != null) author = artistNode.InnerText;
+                if(artistNode != null) artist = artistNode.InnerText;
 
                 //Pull binding type from Binding node
                 XmlNode bindingNode = doc.GetElementsByTagName("Binding", NAMESPACE).Item(0);
@@ -89,16 +89,16 @@ namespace AmazonProductAdvtApi {
                 if(priceNode != null) price = priceNode.InnerText;
 
                 //Pull number of pages from NumberOfPages node
-                XmlNode pagesNode = doc.GetElementsByTagName("NumberOfDiscs", NAMESPACE).Item(0);
-                if(pagesNode != null) pages = pagesNode.InnerText;
+                XmlNode discsNode = doc.GetElementsByTagName("NumberOfDiscs", NAMESPACE).Item(0);
+                if(discsNode != null) discs = discsNode.InnerText;
 
                 output[0] = title;
-                output[1] = author;
+                output[1] = artist;
                 output[2] = binding;
                 output[3] = publisher;
                 output[4] = date;
                 output[5] = price;
-                output[6] = pages;
+                output[6] = discs;
 
                 return output;
             }
