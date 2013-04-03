@@ -27,7 +27,7 @@ namespace AmazonProductAdvtApi {
             url["Version"] = "2011-08-01";
             url["Operation"] = "ItemLookup";
             url["IdType"] = "UPC";
-            url["SearchIndex"] = "Music";
+            url["SearchIndex"] = "All";
             url["ItemId"] = UPC;
             url["ResponseGroup"] = "Large";
             url["AssociateTag"] = "AssociateTag=openlibrary07-20";
@@ -41,7 +41,7 @@ namespace AmazonProductAdvtApi {
         //Method to take a signed URL and return information contained in the get response
         public static string[] Fetch(string url) {
             string[] output = new string[7];
-            string title = "", artist = "", binding = "", publisher = "", date = "", price = "", discs = "";
+            string type = "", title = "", artist = "", binding = "", publisher = "", date = "", price = "", length = "";
             try {
                 //Makes a request, and exports the response into an XML file
                 WebRequest request = HttpWebRequest.Create(url);
@@ -62,17 +62,42 @@ namespace AmazonProductAdvtApi {
                     return error;
                 }
 
+                XmlNode typeNode = doc.GetElementsByTagName("ProductGroup", NAMESPACE).Item(0);
+                if (typeNode != null) type = typeNode.InnerText;
+
                 //Pull title from Title node
                 XmlNode titleNode = doc.GetElementsByTagName("Title", NAMESPACE).Item(0);
                 //      name      =                          "TAGNAME"           item[index]
                 //                                                               For pulling multiple items, like in a search
                 if(titleNode != null) title = titleNode.InnerText;
 
-                //Pull Author from Author node
-                XmlNode artistNode = doc.GetElementsByTagName("Artist", NAMESPACE).Item(0);
-                if(artistNode != null) artist = artistNode.InnerText;
+                //If a CD was scanned, pull "Artist" and "Disc Count"
+                if (type == "Music") {
+                    XmlNode artistNode = doc.GetElementsByTagName("Artist", NAMESPACE).Item(0);
+                    if (artistNode != null) artist = artistNode.InnerText;
 
+                    XmlNode lengthNode = doc.GetElementsByTagName("NumberOfDiscs", NAMESPACE).Item(0);
+                    if (lengthNode != null) length = lengthNode.InnerText;
+                }
+                //If a Movie is scanned, pull "Director" and "Running time in minutes"
+                else if (type == "DVD") {
+                    XmlNode artistNode = doc.GetElementsByTagName("Director", NAMESPACE).Item(0);
+                    if (artistNode != null) artist = artistNode.InnerText;
+
+                    XmlNode lengthNode = doc.GetElementsByTagName("RunningTime", NAMESPACE).Item(0);
+                    if (lengthNode != null) length = lengthNode.InnerText;
+                }
+                //If a Movie is scanned, pull "Director" and "Running time in minutes"
+                else if (type == "Video Games") {
+                    XmlNode artistNode = doc.GetElementsByTagName("Brand", NAMESPACE).Item(0);
+                    if (artistNode != null) artist = artistNode.InnerText;
+
+                    XmlNode lengthNode = doc.GetElementsByTagName("Platform", NAMESPACE).Item(0);
+                    if (lengthNode != null) length = lengthNode.InnerText;
+                }
                 //Pull binding type from Binding node
+                //For CDs it will pull "CD" or "Vinyl" or similar
+                //For Movies it will pull "DVD" or "Blu-Ray" or similar
                 XmlNode bindingNode = doc.GetElementsByTagName("Binding", NAMESPACE).Item(0);
                 if(bindingNode != null) binding = bindingNode.InnerText;
 
@@ -81,6 +106,7 @@ namespace AmazonProductAdvtApi {
                 if(publisherNode != null) publisher = publisherNode.InnerText;
 
                 //Pull Publisher from PublicationDate node
+                //Will often be null, as there are many CDs and Movies that Amazon doesn't list a publication date for.
                 XmlNode dateNode = doc.GetElementsByTagName("PublicationDate", NAMESPACE).Item(0);
                 if(dateNode != null) date = dateNode.InnerText;
 
@@ -88,17 +114,13 @@ namespace AmazonProductAdvtApi {
                 XmlNode priceNode = doc.GetElementsByTagName("FormattedPrice", NAMESPACE).Item(0);
                 if(priceNode != null) price = priceNode.InnerText;
 
-                //Pull number of pages from NumberOfPages node
-                XmlNode discsNode = doc.GetElementsByTagName("NumberOfDiscs", NAMESPACE).Item(0);
-                if(discsNode != null) discs = discsNode.InnerText;
-
                 output[0] = title;
                 output[1] = artist;
                 output[2] = binding;
                 output[3] = publisher;
                 output[4] = date;
                 output[5] = price;
-                output[6] = discs;
+                output[6] = length;
 
                 return output;
             }
