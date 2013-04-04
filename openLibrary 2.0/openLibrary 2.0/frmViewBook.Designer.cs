@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.accDB = new openLibrary_2._0.AccDB();
+            this.bOOKBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bOOKTableAdapter = new openLibrary_2._0.AccDBTableAdapters.BOOKTableAdapter();
             this.bOOKIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iSBNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tITLEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,27 +42,10 @@
             this.pUBDATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pRICEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pAGESDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bOOKBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.libraryDataSet = new openLibrary_2._0.LibraryDataSet();
-            this.bOOKTableAdapter = new openLibrary_2._0.LibraryDataSetTableAdapters.BOOKTableAdapter();
-            this.libraryDataSet1 = new openLibrary_2._0.LibraryDataSet1();
-            this.bOOKBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.bOOKTableAdapter1 = new openLibrary_2._0.LibraryDataSet1TableAdapters.BOOKTableAdapter();
-            this.libraryDataSet3 = new openLibrary_2._0.LibraryDataSet3();
-            this.bOOKBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.bOOKTableAdapter2 = new openLibrary_2._0.LibraryDataSet3TableAdapters.BOOKTableAdapter();
-            this.libraryDataSet4 = new openLibrary_2._0.LibraryDataSet4();
-            this.bOOKBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.bOOKTableAdapter3 = new openLibrary_2._0.LibraryDataSet4TableAdapters.BOOKTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.libraryDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.libraryDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bOOKBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.libraryDataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bOOKBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.libraryDataSet4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bOOKBindingSource3)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -78,13 +64,26 @@
             this.pUBDATEDataGridViewTextBoxColumn,
             this.pRICEDataGridViewTextBoxColumn,
             this.pAGESDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.bOOKBindingSource3;
-            this.dataGridView1.Location = new System.Drawing.Point(30, 33);
+            this.dataGridView1.DataSource = this.bOOKBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 62);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(639, 377);
+            this.dataGridView1.Size = new System.Drawing.Size(1116, 507);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // accDB
+            // 
+            this.accDB.DataSetName = "AccDB";
+            this.accDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bOOKBindingSource
+            // 
+            this.bOOKBindingSource.DataMember = "BOOK";
+            this.bOOKBindingSource.DataSource = this.accDB;
+            // 
+            // bOOKTableAdapter
+            // 
+            this.bOOKTableAdapter.ClearBeforeFill = true;
             // 
             // bOOKIDDataGridViewTextBoxColumn
             // 
@@ -149,80 +148,29 @@
             this.pAGESDataGridViewTextBoxColumn.Name = "pAGESDataGridViewTextBoxColumn";
             this.pAGESDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // bOOKBindingSource
+            // button1
             // 
-            this.bOOKBindingSource.DataMember = "BOOK";
-            this.bOOKBindingSource.DataSource = this.libraryDataSet;
-            // 
-            // libraryDataSet
-            // 
-            this.libraryDataSet.DataSetName = "LibraryDataSet";
-            this.libraryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bOOKTableAdapter
-            // 
-            this.bOOKTableAdapter.ClearBeforeFill = true;
-            // 
-            // libraryDataSet1
-            // 
-            this.libraryDataSet1.DataSetName = "LibraryDataSet1";
-            this.libraryDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bOOKBindingSource1
-            // 
-            this.bOOKBindingSource1.DataMember = "BOOK";
-            this.bOOKBindingSource1.DataSource = this.libraryDataSet1;
-            // 
-            // bOOKTableAdapter1
-            // 
-            this.bOOKTableAdapter1.ClearBeforeFill = true;
-            // 
-            // libraryDataSet3
-            // 
-            this.libraryDataSet3.DataSetName = "LibraryDataSet3";
-            this.libraryDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bOOKBindingSource2
-            // 
-            this.bOOKBindingSource2.DataMember = "BOOK";
-            this.bOOKBindingSource2.DataSource = this.libraryDataSet3;
-            // 
-            // bOOKTableAdapter2
-            // 
-            this.bOOKTableAdapter2.ClearBeforeFill = true;
-            // 
-            // libraryDataSet4
-            // 
-            this.libraryDataSet4.DataSetName = "LibraryDataSet4";
-            this.libraryDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bOOKBindingSource3
-            // 
-            this.bOOKBindingSource3.DataMember = "BOOK";
-            this.bOOKBindingSource3.DataSource = this.libraryDataSet4;
-            // 
-            // bOOKTableAdapter3
-            // 
-            this.bOOKTableAdapter3.ClearBeforeFill = true;
+            this.button1.Location = new System.Drawing.Point(345, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(174, 42);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmViewBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(702, 508);
+            this.ClientSize = new System.Drawing.Size(1140, 581);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "frmViewBook";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Text = "frmViewBook";
+            this.Load += new System.EventHandler(this.frmViewBook_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.libraryDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.libraryDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bOOKBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.libraryDataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bOOKBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.libraryDataSet4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bOOKBindingSource3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -230,9 +178,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private LibraryDataSet libraryDataSet;
+        private AccDB accDB;
         private System.Windows.Forms.BindingSource bOOKBindingSource;
-        private LibraryDataSetTableAdapters.BOOKTableAdapter bOOKTableAdapter;
+        private AccDBTableAdapters.BOOKTableAdapter bOOKTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn bOOKIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iSBNDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tITLEDataGridViewTextBoxColumn;
@@ -242,14 +190,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pUBDATEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pRICEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pAGESDataGridViewTextBoxColumn;
-        private LibraryDataSet1 libraryDataSet1;
-        private System.Windows.Forms.BindingSource bOOKBindingSource1;
-        private LibraryDataSet1TableAdapters.BOOKTableAdapter bOOKTableAdapter1;
-        private LibraryDataSet3 libraryDataSet3;
-        private System.Windows.Forms.BindingSource bOOKBindingSource2;
-        private LibraryDataSet3TableAdapters.BOOKTableAdapter bOOKTableAdapter2;
-        private LibraryDataSet4 libraryDataSet4;
-        private System.Windows.Forms.BindingSource bOOKBindingSource3;
-        private LibraryDataSet4TableAdapters.BOOKTableAdapter bOOKTableAdapter3;
+        private System.Windows.Forms.Button button1;
     }
 }

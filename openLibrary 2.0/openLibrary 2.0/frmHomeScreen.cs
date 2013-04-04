@@ -65,12 +65,18 @@ namespace openLibrary_2._0
             mUserFile = "C:\\Users\\taiiiiiiiiiiiiii\\Documents\\GitHub\\library\\Library.mdb";
           
         }
+        
+
 
         private void bookToolStripMenuItem2_Click(object sender, EventArgs e)
         {
+            
             frmViewBook form = new frmViewBook();
+            
             form.Show();
         }
+
+       
 
      
     }

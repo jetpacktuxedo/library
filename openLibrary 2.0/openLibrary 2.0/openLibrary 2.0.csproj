@@ -81,6 +81,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccDB.xsd</DependentUpon>
+    </Compile>
     <Compile Include="databaseHandler.cs" />
     <Compile Include="frmViewBook.cs">
       <SubType>Form</SubType>
@@ -99,31 +104,6 @@
     </Compile>
     <Compile Include="frmHomeScreen.Designer.cs">
       <DependentUpon>frmHomeScreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LibraryDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LibraryDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="LibraryDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LibraryDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="LibraryDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LibraryDataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="LibraryDataSet3.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LibraryDataSet3.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="LibraryDataSet4.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LibraryDataSet4.xsd</DependentUpon>
     </Compile>
     <Compile Include="Lookup.cs" />
     <Compile Include="Program.cs" />
@@ -148,60 +128,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="LibraryDataSet.xsc">
-      <DependentUpon>LibraryDataSet.xsd</DependentUpon>
+    <None Include="AccDB.xsc">
+      <DependentUpon>AccDB.xsd</DependentUpon>
     </None>
-    <None Include="LibraryDataSet.xsd">
+    <None Include="AccDB.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>LibraryDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>AccDB.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="LibraryDataSet.xss">
-      <DependentUpon>LibraryDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="LibraryDataSet1.xsc">
-      <DependentUpon>LibraryDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="LibraryDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>LibraryDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="LibraryDataSet1.xss">
-      <DependentUpon>LibraryDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="LibraryDataSet2.xsc">
-      <DependentUpon>LibraryDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="LibraryDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>LibraryDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="LibraryDataSet2.xss">
-      <DependentUpon>LibraryDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="LibraryDataSet3.xsc">
-      <DependentUpon>LibraryDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="LibraryDataSet3.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>LibraryDataSet3.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="LibraryDataSet3.xss">
-      <DependentUpon>LibraryDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="LibraryDataSet4.xsc">
-      <DependentUpon>LibraryDataSet4.xsd</DependentUpon>
-    </None>
-    <None Include="LibraryDataSet4.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>LibraryDataSet4.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="LibraryDataSet4.xss">
-      <DependentUpon>LibraryDataSet4.xsd</DependentUpon>
+    <None Include="AccDB.xss">
+      <DependentUpon>AccDB.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -244,6 +180,9 @@
     <Content Include="Library.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

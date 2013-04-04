@@ -48,37 +48,47 @@ namespace openLibrary_2._0
         }
 
         private void addToDB()
-        { 
-            string isbn;
-            string title;
-            string publisher;
-            string format;
-            string author;
-            string pages;
-            string price;
-            string date;
+        {
+            try
+            {
+                string isbn;
+                string title;
+                string publisher;
+                string format;
+                string author;
+                string pages;
+                string price;
+                string date;
 
 
-            int bookid;
+                int bookid;
 
-            bookid = d.findBookCount("SELECT max(book_id) FROM book;");
-            bookid++;
+                bookid = d.findBookCount("SELECT max(book_id) FROM book;");
+                bookid++;
 
-            isbn = txtISBN.Text;
-            title = escapeHandling(txtTitle.Text);
-            author = txtAuthor.Text;
-            publisher = txtPublisher.Text;
-            format = txtBinding.Text;
-            pages = txtPages.Text;
-            price = txtPrice.Text;
-            date = txtDate.Text;
+                isbn = txtISBN.Text;
+                title = escapeHandling(txtTitle.Text);
+                author = txtAuthor.Text;
+                publisher = txtPublisher.Text;
+                format = txtBinding.Text;
+                pages = txtPages.Text;
+                price = txtPrice.Text;
+                date = txtDate.Text;
 
-            sqlstatement = "INSERT INTO BOOK (BOOK_ID, ISBN, TITLE, BINDING, PUBLISHER, AUTHOR, PUB_DATE, PRICE, PAGES)" +
-                                      "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + publisher + "','" + author + "','" + date + "','" + price + "','" + pages + "');";
-            
-            d.loadDatabaseTable(sqlstatement);
+                sqlstatement = "INSERT INTO BOOK (BOOK_ID, ISBN, TITLE, BINDING, PUBLISHER, AUTHOR, PUB_DATE, PRICE, PAGES)" +
+                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + publisher + "','" + author + "','" + date + "','" + price + "','" + pages + "');";
 
-            clearFields();
+                d.loadDatabaseTable(sqlstatement);
+
+                clearFields();
+
+                frmViewBook vb = new frmViewBook();
+                vb.filler();
+            }
+            catch
+            {
+                MessageBox.Show("The book could not be added. A common cause of this error is not having a database open.");
+            }
 
         }
 
