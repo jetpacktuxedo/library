@@ -92,8 +92,10 @@ namespace AmazonProductAdvtApi {
                     XmlNode artistNode = doc.GetElementsByTagName("Brand", NAMESPACE).Item(0);
                     if (artistNode != null) artist = artistNode.InnerText;
 
-                    XmlNode lengthNode = doc.GetElementsByTagName("Platform", NAMESPACE).Item(0);
-                    if (lengthNode != null) length = lengthNode.InnerText;
+                    XmlNode platformNode = doc.GetElementsByTagName("Platform", NAMESPACE).Item(0);
+                    XmlNode hwPlatformNode = doc.GetElementsByTagName("HardwarePlatform", NAMESPACE).Item(0);
+                    if (platformNode != null) length = platformNode.InnerText;
+                    if (hwPlatformNode != null) length = hwPlatformNode.InnerText;
                 }
                 //Pull binding type from Binding node
                 //For CDs it will pull "CD" or "Vinyl" or similar
@@ -105,11 +107,15 @@ namespace AmazonProductAdvtApi {
                 XmlNode publisherNode = doc.GetElementsByTagName("Publisher", NAMESPACE).Item(0);
                 if(publisherNode != null) publisher = publisherNode.InnerText;
 
-                //Pull Publisher from PublicationDate node
+                //Pull Publish date from PublicationDate node and Release Date from ReleaseDate node.
+                //If both exist, use release date. Otherwise use whichever is available.
+                //If neither are available, leave blank.
                 //Will often be null, as there are many CDs and Movies that Amazon doesn't list a publication date for.
-                XmlNode dateNode = doc.GetElementsByTagName("PublicationDate", NAMESPACE).Item(0);
-                if(dateNode != null) date = dateNode.InnerText;
-
+                XmlNode pubDateNode = doc.GetElementsByTagName("PublicationDate", NAMESPACE).Item(0);
+                XmlNode relDateNode = doc.GetElementsByTagName("ReleaseDate", NAMESPACE).Item(0);
+                if (pubDateNode != null) date = pubDateNode.InnerText;
+                if (relDateNode != null) date = relDateNode.InnerText;
+                
                 //Pull formatted price from FormattedPrice node
                 XmlNode priceNode = doc.GetElementsByTagName("FormattedPrice", NAMESPACE).Item(0);
                 if(priceNode != null) price = priceNode.InnerText;

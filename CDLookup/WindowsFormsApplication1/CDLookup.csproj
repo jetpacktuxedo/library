@@ -52,7 +52,7 @@
       <DependentUpon>CDLookup.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\Lookup.cs" />
+    <Compile Include="src\OtherLookup.cs" />
     <Compile Include="src\SignedRequestHelper.cs" />
     <EmbeddedResource Include="CDLookup.resx">
       <DependentUpon>CDLookup.cs</DependentUpon>
