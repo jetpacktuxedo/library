@@ -89,6 +89,10 @@ namespace openLibrary_2._0
             {
                 MessageBox.Show("The book could not be added. A common cause of this error is not having a database open.");
             }
+            finally
+            {
+                d.closeDatabaseConnection();
+            }
 
         }
 
