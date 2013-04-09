@@ -1,0 +1,9 @@
+C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\bin\Debug\ISBNLookupSample.exe.config
+C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\bin\Debug\ISBNLookupSample.exe
+C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\bin\Debug\ISBNLookupSample.pdb
+C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\CDLookup.csprojResolveAssemblyReference.cache
+C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\AmazonProductAdvtApi.ISBNSample.resources
+C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\ISBNLookupSample.Properties.Resources.resources
+C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\CDLookup.csproj.GenerateResource.Cache
+C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\ISBNLookupSample.exe
+C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\ISBNLookupSample.pdb
