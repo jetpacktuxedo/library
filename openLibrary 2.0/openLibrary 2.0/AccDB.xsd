@@ -100,7 +100,16 @@
               <Mapping SourceColumn="PRICE" DataSetColumn="PRICE" />
               <Mapping SourceColumn="PAGES" DataSetColumn="PAGES" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="LibraryConnectionString1 (Settings)" DbObjectName="BOOK" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT BOOK_ID, ISBN, TITLE, BINDING, PUBLISHER, AUTHOR, PUB_DATE, PRICE, PAGES FROM BOOK</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -110,7 +119,7 @@
   <xs:element name="AccDB" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="AccDB" msprop:Generator_UserDSName="AccDB">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="BOOK" msprop:Generator_TableClassName="BOOKDataTable" msprop:Generator_TableVarName="tableBOOK" msprop:Generator_TablePropName="BOOK" msprop:Generator_RowDeletingName="BOOKRowDeleting" msprop:Generator_RowChangingName="BOOKRowChanging" msprop:Generator_RowEvHandlerName="BOOKRowChangeEventHandler" msprop:Generator_RowDeletedName="BOOKRowDeleted" msprop:Generator_UserTableName="BOOK" msprop:Generator_RowChangedName="BOOKRowChanged" msprop:Generator_RowEvArgName="BOOKRowChangeEvent" msprop:Generator_RowClassName="BOOKRow">
+        <xs:element name="BOOK" msprop:Generator_TableClassName="BOOKDataTable" msprop:Generator_TableVarName="tableBOOK" msprop:Generator_RowChangedName="BOOKRowChanged" msprop:Generator_TablePropName="BOOK" msprop:Generator_RowDeletingName="BOOKRowDeleting" msprop:Generator_RowChangingName="BOOKRowChanging" msprop:Generator_RowEvHandlerName="BOOKRowChangeEventHandler" msprop:Generator_RowDeletedName="BOOKRowDeleted" msprop:Generator_RowClassName="BOOKRow" msprop:Generator_UserTableName="BOOK" msprop:Generator_RowEvArgName="BOOKRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="BOOK_ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnBOOK_ID" msprop:Generator_ColumnPropNameInRow="BOOK_ID" msprop:Generator_ColumnPropNameInTable="BOOK_IDColumn" msprop:Generator_UserColumnName="BOOK_ID" type="xs:int" />

@@ -1,43 +1,35 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
-namespace AmazonProductAdvtApi {
-
-    public partial class ISBNSample : Form {
-        //Variables!
+namespace openLibrary_2._0
+{
+    public partial class frmAddMovie : Form
+    {
         String requestUrl, title, author, binding, publisher, date, price, pages, itemID;
-
-        //Create and launch form
-        public static void Main() {
-            ISBNSample main = new ISBNSample();
-            Application.Run(main);
-        }
-
-        public ISBNSample() {
+        public frmAddMovie()
+        {
             InitializeComponent();
         }
 
-        //On Submit click
-        private void btnSubmit_Click(object sender, EventArgs e) {
-            lookup();
-        }
-
-        private void lookup() {
-
-            //Convert ISBN-13 to ISBN-10
+        private void btnPopulate_Click(object sender, EventArgs e)
+        {
             itemID = txtISBN.Text;
 
-            if (txtISBN.Text == "")
-            {
+            if (txtISBN.Text == "") {
                 MessageBox.Show("Please enter an ISBN.");
             }
-            else if (itemID == "False") ;  //intentionally empty.
-            else
-            {
+            else if (itemID == "False") ; //intentionally empty.
+            else {
                 //Format url for the get request
-                requestUrl = Lookup.lookup(itemID);
+                requestUrl = otherLookup.otherlookup(itemID);
 
-                string[] result = Lookup.Fetch(requestUrl);
+                string[] result = otherLookup.otherFetch(requestUrl);
 
                 //Submit Get request, extract info from pulled form
                 title = result[0];
@@ -58,5 +50,7 @@ namespace AmazonProductAdvtApi {
                 txtPages.Text = pages;
             }
         }
+
+    
     }
 }

@@ -71,8 +71,26 @@ namespace openLibrary_2._0
         private void bookToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             
-            frmViewBook form = new frmViewBook();
+            frmViewBooks form = new frmViewBooks();
             
+            form.Show();
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            frmAddMusic form = new frmAddMusic();
+            form.Show();
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            frmAddMovie form = new frmAddMovie();
+            form.Show();
+        }
+
+        private void gameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddGame form = new frmAddGame();
             form.Show();
         }
 

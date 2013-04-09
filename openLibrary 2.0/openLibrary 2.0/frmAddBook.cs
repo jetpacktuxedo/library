@@ -81,9 +81,6 @@ namespace openLibrary_2._0
                 d.loadDatabaseTable(sqlstatement);
 
                 clearFields();
-
-                frmViewBook vb = new frmViewBook();
-                vb.filler();
             }
             catch
             {
@@ -108,12 +105,12 @@ namespace openLibrary_2._0
 
         }
 
-        private void lookup()
+        private void booklookup()
         {
 
 
             //Convert ISBN-13 to ISBN-10
-            itemID = Lookup.ConvertTo10(txtISBN.Text);
+            itemID = bookLookup.ConvertTo10(txtISBN.Text);
 
             if (txtISBN.Text == "")
             {
@@ -123,9 +120,9 @@ namespace openLibrary_2._0
             else
             {
                 //Format url for the get request
-                requestUrl = Lookup.lookup(itemID);
+                requestUrl = bookLookup.lookup(itemID);
 
-                string[] result = Lookup.Fetch(requestUrl);
+                string[] result = bookLookup.Fetch(requestUrl);
 
                 //Submit Get request, extract info from pulled form
                 title = result[0];
@@ -171,14 +168,7 @@ namespace openLibrary_2._0
 
         private void btnPopulate_Click(object sender, EventArgs e)
         {
-            lookup();
-
-            if (chkAdd.Checked == true)
-            {
-                System.Threading.Thread.Sleep(2000);
-                addToDB();
-            }
-            
+            booklookup();        
 
             btnAdd.Focus();
         }
@@ -186,6 +176,11 @@ namespace openLibrary_2._0
         private void chkAdd_CheckedChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         

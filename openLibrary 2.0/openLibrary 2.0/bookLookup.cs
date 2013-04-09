@@ -8,7 +8,7 @@ using System.Xml;
 using System.Windows.Forms;
 
 namespace openLibrary_2._0 {
-    class Lookup {
+    class bookLookup {
 
         //Declare constants
         private const string MY_AWS_ACCESS_KEY_ID = "AKIAIJBCB63BMUXIE4MQ";

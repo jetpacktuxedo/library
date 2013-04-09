@@ -18,6 +18,7 @@ namespace openLibrary_2._0
     class databaseHandler
     {
         public OleDbConnection mDB;
+        public string connectionString;
 
         public void openNew()
         {                  
@@ -57,9 +58,12 @@ namespace openLibrary_2._0
         }
 
         public void openDatabaseConnection() {
-            string connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+            connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
             mDB = new OleDbConnection(connectionString);
         }
+
+        
+        
 
         public int findBookCount(string sql)
         {

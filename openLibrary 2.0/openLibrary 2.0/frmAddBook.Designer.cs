@@ -47,7 +47,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnPopulate = new System.Windows.Forms.Button();
-            this.chkAdd = new System.Windows.Forms.CheckBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtBinding
@@ -116,7 +116,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(45, 327);
+            this.btnAdd.Location = new System.Drawing.Point(45, 324);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 10;
@@ -126,7 +126,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(126, 327);
+            this.btnClear.Location = new System.Drawing.Point(126, 295);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 11;
@@ -202,25 +202,23 @@
             // 
             // btnPopulate
             // 
-            this.btnPopulate.Location = new System.Drawing.Point(73, 262);
+            this.btnPopulate.Location = new System.Drawing.Point(45, 295);
             this.btnPopulate.Name = "btnPopulate";
-            this.btnPopulate.Size = new System.Drawing.Size(104, 26);
+            this.btnPopulate.Size = new System.Drawing.Size(75, 23);
             this.btnPopulate.TabIndex = 20;
             this.btnPopulate.Text = "Populate";
             this.btnPopulate.UseVisualStyleBackColor = true;
             this.btnPopulate.Click += new System.EventHandler(this.btnPopulate_Click);
             // 
-            // chkAdd
+            // btnClose
             // 
-            this.chkAdd.AutoSize = true;
-            this.chkAdd.Location = new System.Drawing.Point(39, 298);
-            this.chkAdd.Name = "chkAdd";
-            this.chkAdd.Size = new System.Drawing.Size(168, 17);
-            this.chkAdd.TabIndex = 21;
-            this.chkAdd.Text = "Automatically add to database";
-            this.chkAdd.UseVisualStyleBackColor = true;
-            this.chkAdd.Visible = false;
-            this.chkAdd.CheckedChanged += new System.EventHandler(this.chkAdd_CheckedChanged);
+            this.btnClose.Location = new System.Drawing.Point(126, 324);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 21;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmAddBook
             // 
@@ -228,7 +226,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(255, 362);
-            this.Controls.Add(this.chkAdd);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPopulate);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -279,6 +277,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnPopulate;
-        private System.Windows.Forms.CheckBox chkAdd;
+        private System.Windows.Forms.Button btnClose;
     }
 }
