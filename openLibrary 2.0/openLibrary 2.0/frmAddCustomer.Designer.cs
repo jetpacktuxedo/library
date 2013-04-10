@@ -62,7 +62,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(52, 13);
             this.label11.TabIndex = 69;
-            this.label11.Text = "Hire Date";
+            this.label11.Text = "Join Date";
             // 
             // dtpJoinDate
             // 
@@ -115,7 +115,7 @@
             this.btnAdd.TabIndex = 55;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dtpBirthDate
             // 

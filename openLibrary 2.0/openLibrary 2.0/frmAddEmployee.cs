@@ -9,8 +9,10 @@ using System.Windows.Forms;
 
 namespace openLibrary_2._0
 {
-    public partial class frmAddEmployee : Form
-    {
+    public partial class frmAddEmployee : Form {
+
+        databaseHandler d = new databaseHandler();
+
         public frmAddEmployee()
         {
             InitializeComponent();
@@ -18,7 +20,7 @@ namespace openLibrary_2._0
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string first, last, address, phone, city, state, zip, email, card_code, birthdate, hiredate;
+            string first, last, address, phone, city, state, zip, email, card_code, birthdate, hiredate, sqlstatement;
             
 
             first = txtFirstName.Text;
@@ -33,13 +35,36 @@ namespace openLibrary_2._0
             birthdate = dtpBirthDate.Value.ToShortDateString();
             hiredate = dtpHireDate.Value.ToShortDateString();
 
-            //TODO: Add code to insert this data into the database.
+            sqlstatement = "INSERT INTO EMPLOYEE (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, ADDRESS, PHONE, BIRTH_DATE, HIRE_DATE, EMAIL_ADDR, STATE, CITY, ZIP )" +
+                "VALUES ('"
+                + card_code + "','"
+                + first + "','"
+                + last + "','"
+                + address + "','"
+                + phone + "','"
+                + birthdate + "','"
+                + hiredate + "','"
+                + email + "','"
+                + city + "','"
+                + state + "','"
+                + zip + "');";
 
+            d.loadDatabaseTable(sqlstatement);
 
+            clearFields();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            clearFields();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void clearFields() {
             txtFirstName.Text = "";
             txtLastName.Text = "";
             txtAddress.Text = "";
@@ -53,11 +78,6 @@ namespace openLibrary_2._0
             dtpHireDate.Value = DateTime.Today;
 
             txtFirstName.Focus();
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }
