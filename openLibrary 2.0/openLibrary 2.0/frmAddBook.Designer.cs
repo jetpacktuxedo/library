@@ -116,7 +116,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(45, 324);
+            this.btnAdd.Location = new System.Drawing.Point(285, 109);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 10;
@@ -126,7 +126,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(126, 295);
+            this.btnClear.Location = new System.Drawing.Point(285, 138);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 11;
@@ -202,7 +202,7 @@
             // 
             // btnPopulate
             // 
-            this.btnPopulate.Location = new System.Drawing.Point(45, 295);
+            this.btnPopulate.Location = new System.Drawing.Point(285, 81);
             this.btnPopulate.Name = "btnPopulate";
             this.btnPopulate.Size = new System.Drawing.Size(75, 23);
             this.btnPopulate.TabIndex = 20;
@@ -212,7 +212,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(126, 324);
+            this.btnClose.Location = new System.Drawing.Point(285, 167);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 21;
@@ -225,7 +225,7 @@
             this.AcceptButton = this.btnPopulate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(255, 362);
+            this.ClientSize = new System.Drawing.Size(380, 267);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPopulate);
             this.Controls.Add(this.label8);
