@@ -38,42 +38,21 @@ namespace openLibrary_2._0
             d.loadDatabaseTable(sql);
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        //CLOSE
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+            Close();
+        }
+
+        //OPEN
+        private void openToolStripMenuItem_Click(object sender, EventArgs e){
             d.openNew();
             pictureBox1.Visible = false;
             label1.Visible = false;
             label2.Visible = true;
             label3.Visible = true;
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            mUserFile = "C:\\Users\\taiiiiiiiiiiiiii\\Documents\\GitHub\\library\\Library.mdb";         
-        }
- 
-        private void bookToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            frmViewBooks form = new frmViewBooks();
-            form.Show();
-        }
-
-        private void toolStripMenuItem12_Click(object sender, EventArgs e)
-        {
-            frmViewMovies form = new frmViewMovies();
-            form.Show();
-        }
-
-        private void toolStripMenuItem13_Click(object sender, EventArgs e)
-        {
-            frmViewMusic form = new frmViewMusic();
-            form.Show();
-        }
-
-        private void gameToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            frmViewGames form = new frmViewGames();
-            form.Show();
+            addToolStripMenuItem.Enabled = true;
+            viewToolStripMenuItem.Enabled = true;
         }
 
         //ADD MENU ITEMS
@@ -103,7 +82,39 @@ namespace openLibrary_2._0
         }
 
         private void AddEmployeeToolStripMenuItem_Click(object sender, EventArgs e) {
+            frmAddEmployee form = new frmAddEmployee();
+            form.Show();
+        }
 
+        //VIEW MENU ITEMS
+        private void ViewBookToolStripMenuItem_Click(object sender, EventArgs e) {
+            frmViewBooks form = new frmViewBooks();
+            form.Show();
+        }
+
+        private void ViewMoviesToolStripMenuItem_Click(object sender, EventArgs e) {
+            frmViewMovies form = new frmViewMovies();
+            form.Show();
+        }
+
+        private void ViewMusicToolStripMenuItem_Click(object sender, EventArgs e) {
+            frmViewMusic form = new frmViewMusic();
+            form.Show();
+        }
+
+        private void ViewGamesToolStripMenuItem_Click(object sender, EventArgs e) {
+            frmViewGames form = new frmViewGames();
+            form.Show();
+        }
+
+        private void ViewCustomersToolStripMenuItem_Click(object sender, EventArgs e) {
+            frmViewCustomers form = new frmViewCustomers();
+            form.Show();
+        }
+
+        private void ViewEmployeesToolStripMenuItem_Click(object sender, EventArgs e) {
+            frmViewEmployees form = new frmViewEmployees();
+            form.Show();
         }
     }
 }
