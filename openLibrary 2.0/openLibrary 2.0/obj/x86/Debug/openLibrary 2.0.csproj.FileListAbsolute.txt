@@ -39,6 +39,7 @@ C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmViewMusic.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.Properties.Resources.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary 2.0.csproj.GenerateResource.Cache
+<<<<<<< HEAD
 C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\x86\Debug\openLibrary 2.0.exe.config
 C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary 2.0.exe
 C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary 2.0.pdb
@@ -61,3 +62,8 @@ C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\De
 C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmViewMusic.resources
 C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.Properties.Resources.resources
 C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary 2.0.csproj.GenerateResource.Cache
+=======
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary 2.0.csprojResolveAssemblyReference.cache
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmViewMovies.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmViewMusic.resources
+>>>>>>> Made add its own menu
