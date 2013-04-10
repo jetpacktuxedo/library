@@ -58,6 +58,10 @@ namespace openLibrary_2._0
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             d.openNew();
+            pictureBox1.Visible = false;
+            label1.Visible = false;
+            label2.Visible = true;
+            label3.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -91,6 +95,24 @@ namespace openLibrary_2._0
         private void gameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAddGame form = new frmAddGame();
+            form.Show();
+        }
+
+        private void toolStripMenuItem12_Click(object sender, EventArgs e)
+        {
+            frmViewMovies form = new frmViewMovies();
+            form.Show();
+        }
+
+        private void toolStripMenuItem13_Click(object sender, EventArgs e)
+        {
+            frmViewMusic form = new frmViewMusic();
+            form.Show();
+        }
+
+        private void gameToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmViewGames form = new frmViewGames();
             form.Show();
         }
 

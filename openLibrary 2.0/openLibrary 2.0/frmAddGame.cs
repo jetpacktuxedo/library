@@ -81,7 +81,7 @@ namespace openLibrary_2._0
 
                 int bookid;
 
-                bookid = d.findBookCount("SELECT max(book_id) FROM book;");
+                bookid = d.findBookCount("SELECT max(game_id) FROM game;");
                 bookid++;
 
                 isbn = txtISBN.Text;
@@ -126,6 +126,11 @@ namespace openLibrary_2._0
             txtPrice.Clear();
             txtPages.Clear();
 
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

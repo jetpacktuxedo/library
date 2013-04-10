@@ -41,6 +41,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnPopulate = new System.Windows.Forms.Button();
+            this.txtAuthor = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtISBN
@@ -52,35 +57,35 @@
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(139, 76);
+            this.txtTitle.Location = new System.Drawing.Point(139, 74);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(100, 20);
             this.txtTitle.TabIndex = 1;
             // 
             // txtBinding
             // 
-            this.txtBinding.Location = new System.Drawing.Point(139, 113);
+            this.txtBinding.Location = new System.Drawing.Point(139, 144);
             this.txtBinding.Name = "txtBinding";
             this.txtBinding.Size = new System.Drawing.Size(100, 20);
             this.txtBinding.TabIndex = 2;
             // 
             // txtPublisher
             // 
-            this.txtPublisher.Location = new System.Drawing.Point(139, 150);
+            this.txtPublisher.Location = new System.Drawing.Point(139, 179);
             this.txtPublisher.Name = "txtPublisher";
             this.txtPublisher.Size = new System.Drawing.Size(100, 20);
             this.txtPublisher.TabIndex = 3;
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(139, 187);
+            this.txtDate.Location = new System.Drawing.Point(139, 214);
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(100, 20);
             this.txtDate.TabIndex = 4;
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(139, 224);
+            this.txtPrice.Location = new System.Drawing.Point(139, 249);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(100, 20);
             this.txtPrice.TabIndex = 5;
@@ -88,7 +93,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(73, 46);
+            this.label1.Location = new System.Drawing.Point(76, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 6;
@@ -97,7 +102,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(71, 83);
+            this.label2.Location = new System.Drawing.Point(74, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 7;
@@ -106,7 +111,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(99, 120);
+            this.label3.Location = new System.Drawing.Point(102, 151);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 8;
@@ -115,7 +120,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(100, 157);
+            this.label4.Location = new System.Drawing.Point(103, 186);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 9;
@@ -124,7 +129,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(58, 194);
+            this.label5.Location = new System.Drawing.Point(61, 221);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 13);
             this.label5.TabIndex = 10;
@@ -133,7 +138,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(99, 231);
+            this.label6.Location = new System.Drawing.Point(102, 256);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 11;
@@ -141,7 +146,7 @@
             // 
             // btnPopulate
             // 
-            this.btnPopulate.Location = new System.Drawing.Point(121, 297);
+            this.btnPopulate.Location = new System.Drawing.Point(308, 95);
             this.btnPopulate.Name = "btnPopulate";
             this.btnPopulate.Size = new System.Drawing.Size(75, 23);
             this.btnPopulate.TabIndex = 12;
@@ -149,11 +154,63 @@
             this.btnPopulate.UseVisualStyleBackColor = true;
             this.btnPopulate.Click += new System.EventHandler(this.btnPopulate_Click);
             // 
+            // txtAuthor
+            // 
+            this.txtAuthor.Location = new System.Drawing.Point(139, 109);
+            this.txtAuthor.Name = "txtAuthor";
+            this.txtAuthor.Size = new System.Drawing.Size(100, 20);
+            this.txtAuthor.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(103, 116);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Artist";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(308, 124);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 15;
+            this.btnAdd.Text = "Add Music";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(308, 153);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 16;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(308, 181);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "Close";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // frmAddMusic
             // 
+            this.AcceptButton = this.btnPopulate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(325, 409);
+            this.ClientSize = new System.Drawing.Size(413, 306);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtAuthor);
             this.Controls.Add(this.btnPopulate);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -189,5 +246,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnPopulate;
+        private System.Windows.Forms.TextBox txtAuthor;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button button2;
     }
 }

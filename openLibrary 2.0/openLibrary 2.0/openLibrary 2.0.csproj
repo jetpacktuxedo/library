@@ -203,6 +203,12 @@
     <EmbeddedResource Include="frmViewGames.resx">
       <DependentUpon>frmViewGames.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmViewMovies.resx">
+      <DependentUpon>frmViewMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewMusic.resx">
+      <DependentUpon>frmViewMusic.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

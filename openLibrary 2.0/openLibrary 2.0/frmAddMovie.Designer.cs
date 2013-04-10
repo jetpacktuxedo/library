@@ -45,11 +45,14 @@
             this.Format = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPages = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPopulate
             // 
-            this.btnPopulate.Location = new System.Drawing.Point(115, 327);
+            this.btnPopulate.Location = new System.Drawing.Point(305, 100);
             this.btnPopulate.Name = "btnPopulate";
             this.btnPopulate.Size = new System.Drawing.Size(75, 23);
             this.btnPopulate.TabIndex = 25;
@@ -185,11 +188,45 @@
             this.txtPages.Size = new System.Drawing.Size(100, 20);
             this.txtPages.TabIndex = 28;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(305, 129);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 30;
+            this.btnAdd.Text = "Add Movie";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(305, 158);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 31;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(305, 187);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 32;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // frmAddMovie
             // 
+            this.AcceptButton = this.btnPopulate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 446);
+            this.ClientSize = new System.Drawing.Size(423, 333);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtPages);
             this.Controls.Add(this.Format);
@@ -209,6 +246,7 @@
             this.Controls.Add(this.txtISBN);
             this.Name = "frmAddMovie";
             this.Text = "frmAddMovie";
+            this.Load += new System.EventHandler(this.frmAddMovie_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,5 +271,8 @@
         private System.Windows.Forms.Label Format;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPages;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnClose;
     }
 }
