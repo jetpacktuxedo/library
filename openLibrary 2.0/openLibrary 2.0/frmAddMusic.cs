@@ -146,5 +146,10 @@ namespace openLibrary_2._0
         {
             webBrowser1.Navigate(new Uri("http://www.amazon.com/gp/dmusic/get_sample_url.html?ASIN=" + txtAPID.Text));
         }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
     }
 }
