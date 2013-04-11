@@ -141,5 +141,10 @@ namespace openLibrary_2._0
             clearFields();
             txtISBN.Focus();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            webBrowser1.Navigate(new Uri("http://www.amazon.com/gp/dmusic/get_sample_url.html?ASIN=" + txtAPID.Text));
+        }
     }
 }
