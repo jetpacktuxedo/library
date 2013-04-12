@@ -40,7 +40,7 @@ namespace openLibrary_2._0
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dt;
 
-                dataGridView1.DataSource = bs;
+                dgvMusic.DataSource = bs;
 
                 da.Update(dt);
 
@@ -67,10 +67,10 @@ namespace openLibrary_2._0
 
         private void clears()
         {
-            textBox4.Text = "Enter all or part of an ISBN here...";
-            textBox3.Text = "Enter all or part of a publisher here...";
-            textBox2.Text = "Enter all or part of an author here...";
-            textBox1.Text = "Enter all or part of a title here...";
+            txtISBNsearch.Text = "Enter all or part of an ISBN here...";
+            txtPublisherSearch.Text = "Enter all or part of a publisher here...";
+            txtAuthorSearch.Text = "Enter all or part of an author here...";
+            txtTitleSearch.Text = "Enter all or part of a title here...";
 
             try
             {
@@ -86,7 +86,7 @@ namespace openLibrary_2._0
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dt;
 
-                dataGridView1.DataSource = bs;
+                dgvMusic.DataSource = bs;
 
                 da.Update(dt);
 
@@ -117,7 +117,7 @@ namespace openLibrary_2._0
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dt;
 
-                dataGridView1.DataSource = bs;
+                dgvMusic.DataSource = bs;
 
                 da.Update(dt);
 
@@ -147,36 +147,36 @@ namespace openLibrary_2._0
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length >= 0)
+            if (txtTitleSearch.Text.Length >= 0)
             {
-                searcher(textBox1.Text, "title");
+                searcher(txtTitleSearch.Text, "title");
             }
             
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            if (textBox2.Text.Length >= 0)
+            if (txtAuthorSearch.Text.Length >= 0)
             {
-                searcher(textBox2.Text, "author");
+                searcher(txtAuthorSearch.Text, "author");
             }
             
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            if (textBox3.Text.Length >= 0)
+            if (txtPublisherSearch.Text.Length >= 0)
             {
-                searcher(textBox3.Text, "publisher");
+                searcher(txtPublisherSearch.Text, "publisher");
             }
             
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
-            if (textBox4.Text.Length >= 0)
+            if (txtISBNsearch.Text.Length >= 0)
             {
-                searcher(textBox4.Text, "isbn");
+                searcher(txtISBNsearch.Text, "isbn");
             }
             
         }
@@ -188,22 +188,22 @@ namespace openLibrary_2._0
 
         private void textBox3_Enter(object sender, EventArgs e)
         {
-            textBox3.Text = "";
+            txtPublisherSearch.Text = "";
         }
 
         private void textBox4_Enter(object sender, EventArgs e)
         {
-            textBox4.Text = "";
+            txtISBNsearch.Text = "";
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
         {
-            textBox1.Text = "";
+            txtTitleSearch.Text = "";
         }
 
         private void textBox2_Enter(object sender, EventArgs e)
         {
-            textBox2.Text = "";
+            txtAuthorSearch.Text = "";
         }
     }
 }

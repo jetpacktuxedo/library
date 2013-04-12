@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHomeScreen));
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,12 +62,24 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.lblCurrentUser = new System.Windows.Forms.Label();
+            this.dgvCheckedOut = new System.Windows.Forms.DataGridView();
+            this.grpUser = new System.Windows.Forms.GroupBox();
+            this.grpTasks = new System.Windows.Forms.GroupBox();
+            this.btnCheckOut = new System.Windows.Forms.Button();
+            this.btnCheckIn = new System.Windows.Forms.Button();
+            this.btnEditInfo = new System.Windows.Forms.Button();
+            this.btnFindUser = new System.Windows.Forms.Button();
+            this.btnFindItem = new System.Windows.Forms.Button();
+            this.btnEnd = new System.Windows.Forms.Button();
+            this.btnGO = new System.Windows.Forms.Button();
+            this.logInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCheckedOut)).BeginInit();
+            this.grpUser.SuspendLayout();
+            this.grpTasks.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -81,7 +92,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(635, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(670, 24);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -89,6 +100,7 @@
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
+            this.logInToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
@@ -97,14 +109,14 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -269,28 +281,28 @@
             // ViewBookToolStripMenuItem
             // 
             this.ViewBookToolStripMenuItem.Name = "ViewBookToolStripMenuItem";
-            this.ViewBookToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewBookToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.ViewBookToolStripMenuItem.Text = "Books...";
             this.ViewBookToolStripMenuItem.Click += new System.EventHandler(this.ViewBookToolStripMenuItem_Click);
             // 
             // ViewMoviesToolStripMenuItem
             // 
             this.ViewMoviesToolStripMenuItem.Name = "ViewMoviesToolStripMenuItem";
-            this.ViewMoviesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewMoviesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.ViewMoviesToolStripMenuItem.Text = "Movies...";
             this.ViewMoviesToolStripMenuItem.Click += new System.EventHandler(this.ViewMoviesToolStripMenuItem_Click);
             // 
             // ViewMusicToolStripMenuItem
             // 
             this.ViewMusicToolStripMenuItem.Name = "ViewMusicToolStripMenuItem";
-            this.ViewMusicToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewMusicToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.ViewMusicToolStripMenuItem.Text = "Music...";
             this.ViewMusicToolStripMenuItem.Click += new System.EventHandler(this.ViewMusicToolStripMenuItem_Click);
             // 
             // ViewGamesToolStripMenuItem
             // 
             this.ViewGamesToolStripMenuItem.Name = "ViewGamesToolStripMenuItem";
-            this.ViewGamesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewGamesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.ViewGamesToolStripMenuItem.Text = "Games...";
             this.ViewGamesToolStripMenuItem.Click += new System.EventHandler(this.ViewGamesToolStripMenuItem_Click);
             // 
@@ -298,20 +310,20 @@
             // 
             this.toolStripMenuItem4.Enabled = false;
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(140, 22);
             this.toolStripMenuItem4.Text = "------";
             // 
             // ViewCustomersToolStripMenuItem
             // 
             this.ViewCustomersToolStripMenuItem.Name = "ViewCustomersToolStripMenuItem";
-            this.ViewCustomersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewCustomersToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.ViewCustomersToolStripMenuItem.Text = "Customers...";
             this.ViewCustomersToolStripMenuItem.Click += new System.EventHandler(this.ViewCustomersToolStripMenuItem_Click);
             // 
             // ViewEmployeesToolStripMenuItem
             // 
             this.ViewEmployeesToolStripMenuItem.Name = "ViewEmployeesToolStripMenuItem";
-            this.ViewEmployeesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewEmployeesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.ViewEmployeesToolStripMenuItem.Text = "Employees...";
             this.ViewEmployeesToolStripMenuItem.Click += new System.EventHandler(this.ViewEmployeesToolStripMenuItem_Click);
             // 
@@ -336,61 +348,169 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.aboutToolStripMenuItem.Text = "About...";
             // 
-            // pictureBox1
+            // txtID
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-22, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(183, 179);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Location = new System.Drawing.Point(18, 32);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(297, 35);
+            this.txtID.TabIndex = 1;
+            // 
+            // lblCurrentUser
+            // 
+            this.lblCurrentUser.AutoSize = true;
+            this.lblCurrentUser.Location = new System.Drawing.Point(19, 143);
+            this.lblCurrentUser.Name = "lblCurrentUser";
+            this.lblCurrentUser.Size = new System.Drawing.Size(99, 13);
+            this.lblCurrentUser.TabIndex = 3;
+            this.lblCurrentUser.Text = "CURRENT USER: ";
+            this.lblCurrentUser.Visible = false;
+            // 
+            // dgvCheckedOut
+            // 
+            this.dgvCheckedOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCheckedOut.Location = new System.Drawing.Point(22, 174);
+            this.dgvCheckedOut.Name = "dgvCheckedOut";
+            this.dgvCheckedOut.Size = new System.Drawing.Size(380, 224);
+            this.dgvCheckedOut.TabIndex = 4;
+            this.dgvCheckedOut.Visible = false;
+            // 
+            // grpUser
+            // 
+            this.grpUser.Controls.Add(this.btnGO);
+            this.grpUser.Controls.Add(this.txtID);
+            this.grpUser.Location = new System.Drawing.Point(22, 42);
+            this.grpUser.Name = "grpUser";
+            this.grpUser.Size = new System.Drawing.Size(380, 83);
+            this.grpUser.TabIndex = 5;
+            this.grpUser.TabStop = false;
+            this.grpUser.Text = "User ID:";
+            this.grpUser.Visible = false;
+            // 
+            // grpTasks
+            // 
+            this.grpTasks.Controls.Add(this.btnEnd);
+            this.grpTasks.Controls.Add(this.btnFindItem);
+            this.grpTasks.Controls.Add(this.btnFindUser);
+            this.grpTasks.Controls.Add(this.btnEditInfo);
+            this.grpTasks.Controls.Add(this.btnCheckIn);
+            this.grpTasks.Controls.Add(this.btnCheckOut);
+            this.grpTasks.Location = new System.Drawing.Point(436, 42);
+            this.grpTasks.Name = "grpTasks";
+            this.grpTasks.Size = new System.Drawing.Size(222, 356);
+            this.grpTasks.TabIndex = 6;
+            this.grpTasks.TabStop = false;
+            this.grpTasks.Text = "Common Tasks";
+            this.grpTasks.Visible = false;
+            // 
+            // btnCheckOut
+            // 
+            this.btnCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckOut.Location = new System.Drawing.Point(21, 36);
+            this.btnCheckOut.Name = "btnCheckOut";
+            this.btnCheckOut.Size = new System.Drawing.Size(178, 47);
+            this.btnCheckOut.TabIndex = 7;
+            this.btnCheckOut.Text = "Check Out";
+            this.btnCheckOut.UseVisualStyleBackColor = true;
+            // 
+            // btnCheckIn
+            // 
+            this.btnCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckIn.Location = new System.Drawing.Point(21, 89);
+            this.btnCheckIn.Name = "btnCheckIn";
+            this.btnCheckIn.Size = new System.Drawing.Size(178, 47);
+            this.btnCheckIn.TabIndex = 8;
+            this.btnCheckIn.Text = "Check In";
+            this.btnCheckIn.UseVisualStyleBackColor = true;
+            // 
+            // btnEditInfo
+            // 
+            this.btnEditInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditInfo.Location = new System.Drawing.Point(21, 142);
+            this.btnEditInfo.Name = "btnEditInfo";
+            this.btnEditInfo.Size = new System.Drawing.Size(178, 47);
+            this.btnEditInfo.TabIndex = 9;
+            this.btnEditInfo.Text = "Edit User Information";
+            this.btnEditInfo.UseVisualStyleBackColor = true;
+            // 
+            // btnFindUser
+            // 
+            this.btnFindUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFindUser.Location = new System.Drawing.Point(21, 195);
+            this.btnFindUser.Name = "btnFindUser";
+            this.btnFindUser.Size = new System.Drawing.Size(178, 47);
+            this.btnFindUser.TabIndex = 7;
+            this.btnFindUser.Text = "Find User";
+            this.btnFindUser.UseVisualStyleBackColor = true;
+            // 
+            // btnFindItem
+            // 
+            this.btnFindItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFindItem.Location = new System.Drawing.Point(21, 248);
+            this.btnFindItem.Name = "btnFindItem";
+            this.btnFindItem.Size = new System.Drawing.Size(178, 47);
+            this.btnFindItem.TabIndex = 10;
+            this.btnFindItem.Text = "Find Item";
+            this.btnFindItem.UseVisualStyleBackColor = true;
+            // 
+            // btnEnd
+            // 
+            this.btnEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnd.Location = new System.Drawing.Point(21, 301);
+            this.btnEnd.Name = "btnEnd";
+            this.btnEnd.Size = new System.Drawing.Size(178, 47);
+            this.btnEnd.TabIndex = 11;
+            this.btnEnd.Text = "End Transaction";
+            this.btnEnd.UseVisualStyleBackColor = true;
+            // 
+            // btnGO
+            // 
+            this.btnGO.Location = new System.Drawing.Point(321, 32);
+            this.btnGO.Name = "btnGO";
+            this.btnGO.Size = new System.Drawing.Size(44, 35);
+            this.btnGO.TabIndex = 2;
+            this.btnGO.Text = "Go";
+            this.btnGO.UseVisualStyleBackColor = true;
+            this.btnGO.Click += new System.EventHandler(this.btnGO_Click);
+            // 
+            // logInToolStripMenuItem
+            // 
+            this.logInToolStripMenuItem.Name = "logInToolStripMenuItem";
+            this.logInToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logInToolStripMenuItem.Text = "Log In";
+            this.logInToolStripMenuItem.Click += new System.EventHandler(this.logInToolStripMenuItem_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 161);
+            this.label1.Location = new System.Drawing.Point(623, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(528, 55);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "First, open a database. ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(26, 138);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(552, 55);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Now, you can add a new";
-            this.label2.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(26, 193);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(595, 55);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "item, or view current items.";
-            this.label3.Visible = false;
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "label1";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.Visible = false;
             // 
             // frmHomeScreen
             // 
-            this.ClientSize = new System.Drawing.Size(635, 462);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.AcceptButton = this.btnGO;
+            this.ClientSize = new System.Drawing.Size(670, 430);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.grpTasks);
+            this.Controls.Add(this.lblCurrentUser);
+            this.Controls.Add(this.grpUser);
+            this.Controls.Add(this.dgvCheckedOut);
             this.Controls.Add(this.menuStrip2);
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "frmHomeScreen";
+            this.Load += new System.EventHandler(this.frmHomeScreen_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCheckedOut)).EndInit();
+            this.grpUser.ResumeLayout(false);
+            this.grpUser.PerformLayout();
+            this.grpTasks.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -429,11 +549,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem ViewGamesToolStripMenuItem;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AddBookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AddMovieToolStripMenuItem;
@@ -445,6 +561,20 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem ViewCustomersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ViewEmployeesToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label lblCurrentUser;
+        private System.Windows.Forms.DataGridView dgvCheckedOut;
+        private System.Windows.Forms.GroupBox grpUser;
+        private System.Windows.Forms.Button btnGO;
+        private System.Windows.Forms.GroupBox grpTasks;
+        private System.Windows.Forms.Button btnEnd;
+        private System.Windows.Forms.Button btnFindItem;
+        private System.Windows.Forms.Button btnFindUser;
+        private System.Windows.Forms.Button btnEditInfo;
+        private System.Windows.Forms.Button btnCheckIn;
+        private System.Windows.Forms.Button btnCheckOut;
+        private System.Windows.Forms.ToolStripMenuItem logInToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }
 

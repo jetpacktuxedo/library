@@ -17,6 +17,7 @@ namespace openLibrary_2._0
     {
         public static string mUserFile = "";
         databaseHandler d = new databaseHandler();
+        public string loggedin;
 
         public frmHomeScreen()
         {
@@ -46,11 +47,7 @@ namespace openLibrary_2._0
         //OPEN
         private void openToolStripMenuItem_Click(object sender, EventArgs e){
             d.openNew();
-            pictureBox1.Visible = false;
-            label1.Visible = false;
-            label2.Visible = true;
-            label3.Visible = true;
-
+         
             addToolStripMenuItem.Enabled = true;
             viewToolStripMenuItem.Enabled = true;
         }
@@ -115,6 +112,41 @@ namespace openLibrary_2._0
         private void ViewEmployeesToolStripMenuItem_Click(object sender, EventArgs e) {
             frmViewEmployees form = new frmViewEmployees();
             form.Show();
+        }
+
+        private void btnGO_Click(object sender, EventArgs e)
+        {
+            string userID = txtID.Text;
+
+
+        }
+
+        private void frmHomeScreen_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void logInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLogin frm = new frmLogin();
+            frm.Show();    
+        }
+        
+
+        public void checklog() 
+        {
+            loggedin = frmLogin.ID;
+            label1.Text = "Current Employee: " + loggedin;
+            
+            if (loggedin != null)
+            {
+                grpTasks.Visible = true;
+                grpUser.Visible = true;
+                lblCurrentUser.Visible = true;
+                dgvCheckedOut.Visible = true;
+                label1.Visible = true;
+            }
+
         }
     }
 }
