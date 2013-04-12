@@ -6,6 +6,7 @@ using System.Web;
 using System.Net;
 using System.Xml;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace AmazonProductAdvtApi {
     class Lookup {
@@ -39,8 +40,9 @@ namespace AmazonProductAdvtApi {
         }
 
         //Method to take a signed URL and return information contained in the get response
-        public static string[] Fetch(string url) {
-            string[] output = new string[7];
+        public static ArrayList Fetch(string url) {
+            ArrayList output = new ArrayList();
+            ArrayList tracks = new ArrayList();
             string type = "", title = "", artist = "", binding = "", publisher = "", date = "", price = "", length = "";
             try {
                 //Makes a request, and exports the response into an XML file
@@ -53,7 +55,7 @@ namespace AmazonProductAdvtApi {
                 XmlNodeList errorMessageNodes = doc.GetElementsByTagName("Message", NAMESPACE);
                 if (errorMessageNodes != null && errorMessageNodes.Count > 0) {
                     String message = errorMessageNodes.Item(0).InnerText;
-                    string[] error = new string[7];
+                    ArrayList error = new ArrayList();
 
                     MessageBox.Show("Can't find ISBN information. Please verify that the ISBN is correct and that you have an active internet connection.");
                     //MessageBox.Show("Error: " + message + " (but signature worked)");
@@ -78,6 +80,12 @@ namespace AmazonProductAdvtApi {
 
                     XmlNode lengthNode = doc.GetElementsByTagName("NumberOfDiscs", NAMESPACE).Item(0);
                     if (lengthNode != null) length = lengthNode.InnerText;
+
+                    XmlNodeList trackNodeList = doc.GetElementsByTagName("Track");
+
+                    for (int j = 0; j <= trackNodeList.Count - 1; j++) {
+                        tracks.Add(trackNodeList[j].InnerXml);
+                    }
                 }
                 //If a Movie is scanned, pull "Director" and "Running time in minutes"
                 else if (type == "DVD") {
@@ -120,13 +128,14 @@ namespace AmazonProductAdvtApi {
                 XmlNode priceNode = doc.GetElementsByTagName("FormattedPrice", NAMESPACE).Item(0);
                 if(priceNode != null) price = priceNode.InnerText;
 
-                output[0] = title;
-                output[1] = artist;
-                output[2] = binding;
-                output[3] = publisher;
-                output[4] = date;
-                output[5] = price;
-                output[6] = length;
+                output.Add(title);
+                output.Add(artist);
+                output.Add(binding);
+                output.Add(publisher);
+                output.Add(date);
+                output.Add(price);
+                output.Add(length);
+                output.Add(tracks);
 
                 return output;
             }
