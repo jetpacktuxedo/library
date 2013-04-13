@@ -6,12 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace openLibrary_2._0
 {
     public partial class frmAddMusic : Form
     {
         String requestUrl, title, author, binding, publisher, date, price, pages, itemID;
+        ArrayList tracks = new ArrayList();
+
 
         databaseHandler d = new databaseHandler();
         public string sqlstatement;
@@ -29,8 +32,11 @@ namespace openLibrary_2._0
         }
 
         private void lookupMusic()
-        { 
-        itemID = txtISBN.Text;
+        {
+            lstTracks.Items.Clear();
+            itemID = txtISBN.Text;
+
+
 
             if (txtISBN.Text == "") {
                 MessageBox.Show("Please enter an ISBN.");
@@ -40,17 +46,20 @@ namespace openLibrary_2._0
             {
                 //Format url for the get request
                 requestUrl = otherLookup.otherlookup(itemID);
+                ArrayList result = new ArrayList();
 
-                string[] result = otherLookup.otherFetch(requestUrl);
+                result = otherLookup.otherFetch(requestUrl);
 
                 //Submit Get request, extract info from pulled form
-                title = result[0];
-                author = result[1];
-                binding = result[2];
-                publisher = result[3];
-                date = result[4];
-                price = result[5];
-                pages = result[6];
+                title = result[0].ToString();
+                author = result[1].ToString();
+                binding = result[2].ToString();
+                publisher = result[3].ToString();
+                date = result[4].ToString();
+                price = result[5].ToString();
+                pages = result[6].ToString();
+                tracks = (ArrayList)result[7];
+
 
                 //Push title and author data back into the form
                 txtTitle.Text = title;
@@ -59,6 +68,15 @@ namespace openLibrary_2._0
                 txtPublisher.Text = publisher;
                 txtDate.Text = date;
                 txtPrice.Text = price;
+
+                int i = 0;
+                lstTracks.Items.Add("DISC \t NO. \t TRACK TITLE");
+                lstTracks.Items.Add("");
+                while (i < tracks.Count)
+                {
+                    lstTracks.Items.Add(tracks[i] + "\t" + tracks[i + 1] + " \t " + tracks[i + 2]);
+                    i += 3;
+                }
             }
                 
         
@@ -147,6 +165,11 @@ namespace openLibrary_2._0
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
+
+        private void frmAddMusic_Load(object sender, EventArgs e)
         {
 
         }

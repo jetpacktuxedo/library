@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace openLibrary_2._0
 {
@@ -31,17 +32,18 @@ namespace openLibrary_2._0
             else {
                 //Format url for the get request
                 requestUrl = otherLookup.otherlookup(itemID);
+                ArrayList result = new ArrayList();
 
-                string[] result = otherLookup.otherFetch(requestUrl);
+                result = otherLookup.otherFetch(requestUrl);
 
                 //Submit Get request, extract info from pulled form
-                title = result[0];
-                author = result[1];
-                binding = result[2];
-                publisher = result[3];
-                date = result[4];
-                price = result[5];
-                pages = result[6];
+                title = result[0].ToString();
+                author = result[1].ToString();
+                binding = result[2].ToString();
+                publisher = result[3].ToString();
+                date = result[4].ToString();
+                price = result[5].ToString();
+                pages = result[6].ToString();
 
                 //Push title and author data back into the form
                 txtTitle.Text = title;

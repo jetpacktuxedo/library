@@ -6,6 +6,7 @@ using System.Web;
 using System.Net;
 using System.Xml;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace openLibrary_2._0 {
     class otherLookup
@@ -41,10 +42,11 @@ namespace openLibrary_2._0 {
         }
 
         //Method to take a signed URL and return information contained in the get response
-        public static string[] otherFetch(string url)
+        public static ArrayList otherFetch(string url)
         {
-            string[] output = new string[7];
-            string type = "", title = "", artist = "", binding = "", publisher = "", date = "", price = "", length = "";
+            ArrayList output = new ArrayList();
+            ArrayList tracks = new ArrayList();
+            string type = " ", title = " ", artist = " ", binding = " ", publisher = " ", date = " ", price = " ", length = " ";
             try
             {
                 //Makes a request, and exports the response into an XML file
@@ -58,7 +60,7 @@ namespace openLibrary_2._0 {
                 if (errorMessageNodes != null && errorMessageNodes.Count > 0)
                 {
                     String message = errorMessageNodes.Item(0).InnerText;
-                    string[] error = new string[7];
+                    ArrayList error = new ArrayList();
 
                     MessageBox.Show("Can't find ISBN information. Please verify that the ISBN is correct and that you have an active internet connection.");
                     //MessageBox.Show("Error: " + message + " (but signature worked)");
@@ -76,7 +78,7 @@ namespace openLibrary_2._0 {
                 //                                                               For pulling multiple items, like in a search
                 if (titleNode != null) title = titleNode.InnerText;
 
-                //If a CD was scanned, pull "Artist" and "Disc Count"
+                //If a CD was scanned, pull "Artist", "Disc Count", and the track list.
                 if (type == "Music")
                 {
                     XmlNode artistNode = doc.GetElementsByTagName("Artist", NAMESPACE).Item(0);
@@ -84,6 +86,21 @@ namespace openLibrary_2._0 {
 
                     XmlNode lengthNode = doc.GetElementsByTagName("NumberOfDiscs", NAMESPACE).Item(0);
                     if (lengthNode != null) length = lengthNode.InnerText;
+
+                    XmlNodeList discNodeList = doc.GetElementsByTagName("Disc");
+
+                    XmlNodeList trackNodeList = doc.GetElementsByTagName("Track");
+
+                    for (int j = 0; j < discNodeList.Count; j++)
+                    {
+                        XmlNodeList tracklist = discNodeList[j].ChildNodes;
+                        for (int i = 0; i < tracklist.Count; i++)
+                        {
+                            tracks.Add((j + 1).ToString());
+                            tracks.Add((i + 1).ToString());
+                            tracks.Add(trackNodeList[i].InnerText);
+                        }
+                    }
                 }
                 //If a Movie is scanned, pull "Director" and "Running time in minutes"
                 else if (type == "DVD")
@@ -128,13 +145,14 @@ namespace openLibrary_2._0 {
                 XmlNode priceNode = doc.GetElementsByTagName("FormattedPrice", NAMESPACE).Item(0);
                 if (priceNode != null) price = priceNode.InnerText;
 
-                output[0] = title;
-                output[1] = artist;
-                output[2] = binding;
-                output[3] = publisher;
-                output[4] = date;
-                output[5] = price;
-                output[6] = length;
+                output.Add(title);
+                output.Add(artist);
+                output.Add(binding);
+                output.Add(publisher);
+                output.Add(date);
+                output.Add(price);
+                output.Add(length);
+                output.Add(tracks);
 
                 return output;
             }

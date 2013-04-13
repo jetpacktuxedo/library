@@ -46,6 +46,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.lstTracks = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // txtISBN
@@ -146,7 +147,7 @@
             // 
             // btnPopulate
             // 
-            this.btnPopulate.Location = new System.Drawing.Point(308, 95);
+            this.btnPopulate.Location = new System.Drawing.Point(301, 246);
             this.btnPopulate.Name = "btnPopulate";
             this.btnPopulate.Size = new System.Drawing.Size(75, 23);
             this.btnPopulate.TabIndex = 12;
@@ -172,7 +173,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(308, 124);
+            this.btnAdd.Location = new System.Drawing.Point(382, 246);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 15;
@@ -182,7 +183,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(308, 153);
+            this.btnClear.Location = new System.Drawing.Point(463, 246);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 16;
@@ -192,7 +193,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(308, 181);
+            this.button2.Location = new System.Drawing.Point(544, 246);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 17;
@@ -200,12 +201,21 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // lstTracks
+            // 
+            this.lstTracks.FormattingEnabled = true;
+            this.lstTracks.Location = new System.Drawing.Point(297, 43);
+            this.lstTracks.Name = "lstTracks";
+            this.lstTracks.Size = new System.Drawing.Size(321, 173);
+            this.lstTracks.TabIndex = 18;
+            // 
             // frmAddMusic
             // 
             this.AcceptButton = this.btnPopulate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 303);
+            this.ClientSize = new System.Drawing.Size(645, 303);
+            this.Controls.Add(this.lstTracks);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnAdd);
@@ -226,6 +236,7 @@
             this.Controls.Add(this.txtISBN);
             this.Name = "frmAddMusic";
             this.Text = "Add Music";
+            this.Load += new System.EventHandler(this.frmAddMusic_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,5 +262,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ListBox lstTracks;
     }
 }
