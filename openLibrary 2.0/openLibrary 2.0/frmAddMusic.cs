@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using System.Data.OleDb;
 
 namespace openLibrary_2._0
 {
@@ -96,9 +97,13 @@ namespace openLibrary_2._0
 
 
                 int bookid;
+                int trackid;
 
                 bookid = d.findBookCount("SELECT max(cd_id) FROM cd;");
                 bookid++;
+
+                trackid = d.findBookCount("SELECT max(track_id) from track;");
+                trackid++;
 
                 isbn = txtISBN.Text;
                 title = escapeHandling(txtTitle.Text);
@@ -111,13 +116,26 @@ namespace openLibrary_2._0
                 sqlstatement = "INSERT INTO CD (CD_ID, UPC, ALBUM, TYPE, PUBLISHER, RELEASE_DATE, PRICE, ARTIST)" +
                                           "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + publisher + "','" + date + "','" + price + "','" + author + "');";
 
+                           
                 d.loadDatabaseTable(sqlstatement);
+
+                int i = 0;
+                int j = 0;
+                while(i < tracks.Count)
+                {
+                    sqlstatement = "INSERT INTO TRACK (CD_ID, TRACK_ID, DISC_NUMBER, TRACK_NUMBER, TRACK_NAME)" +
+                                              "VALUES ('" + bookid + "','" + (trackid + j) + "','" + tracks[i] + "','" + tracks[i + 1] + "','" + tracks[i + 2] + "');";
+
+                    d.loadDatabaseTable(sqlstatement);
+                    i += 3;
+                    j++;
+                }
 
                 clearFields();
             }
-            catch
+            catch (Exception p)
             {
-                MessageBox.Show("The book could not be added. A common cause of this error is not having a database open.");
+                MessageBox.Show("The book could not be added. A common cause of this error is not having a database open." + p.Message);
             }
             finally
             {
@@ -141,6 +159,7 @@ namespace openLibrary_2._0
             txtBinding.Clear();
             txtDate.Clear();
             txtPrice.Clear();
+            lstTracks.Items.Clear();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
