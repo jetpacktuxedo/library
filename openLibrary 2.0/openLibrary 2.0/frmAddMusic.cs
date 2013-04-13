@@ -126,7 +126,7 @@ namespace openLibrary_2._0
                     sqlstatement = "INSERT INTO TRACK (CD_ID, TRACK_ID, DISC_NUMBER, TRACK_NUMBER, TRACK_NAME)" +
                                               "VALUES ('" + bookid + "','" + (trackid + j) + "','" + tracks[i] + "','" + tracks[i + 1] + "','" + tracks[i + 2] + "');";
 
-                    d.loadDatabaseTable(sqlstatement);
+                    d.inserter(sqlstatement);
                     i += 3;
                     j++;
                 }

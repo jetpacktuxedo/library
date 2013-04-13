@@ -36,6 +36,20 @@ namespace openLibrary_2._0
             catch (Exception ee) { MessageBox.Show("There was an error: " + ee.Message); }
         }
 
+        public void inserter(string sql)
+        {
+            try
+            {
+                OleDbCommand cmd;
+                cmd = new OleDbCommand(sql, mDB);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("Error: Nothing was added.");
+            }
+        }
+
         public void loadDatabaseTable(string sql) {
 
             try
