@@ -60,10 +60,11 @@ namespace AmazonProductAdvtApi {
                 txtPrice.Text = price;
                 txtPages.Text = pages;
 
+                //Throw tracks and shit into the listbox
                 int i = 0;
-                foreach (string t in tracks){
-                    listBox1.Items.Add(tracks[i]);
-                    i++;
+                while(i < tracks.Count){
+                    listBox1.Items.Add(tracks[i] + " - " + tracks[i+1]);
+                    i+=2;
                 }
             }
         }

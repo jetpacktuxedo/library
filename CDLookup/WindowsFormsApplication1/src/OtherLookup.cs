@@ -81,9 +81,12 @@ namespace AmazonProductAdvtApi {
                     XmlNode lengthNode = doc.GetElementsByTagName("NumberOfDiscs", NAMESPACE).Item(0);
                     if (lengthNode != null) length = lengthNode.InnerText;
 
+                    XmlNodeList discNodeList = doc.GetElementsByTagName("Disc");
+
                     XmlNodeList trackNodeList = doc.GetElementsByTagName("Track");
 
                     for (int j = 0; j <= trackNodeList.Count - 1; j++) {
+                        tracks.Add((j+1).ToString());
                         tracks.Add(trackNodeList[j].InnerXml);
                     }
                 }
