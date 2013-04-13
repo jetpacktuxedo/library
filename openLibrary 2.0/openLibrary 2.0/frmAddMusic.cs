@@ -42,7 +42,7 @@ namespace openLibrary_2._0
             if (txtISBN.Text == "") {
                 MessageBox.Show("Please enter an ISBN.");
             }
-            else if (itemID == "False") ; //intentionally empty.
+            else if (itemID == "False"); //intentionally empty.
             else
             {
                 //Format url for the get request
@@ -52,15 +52,16 @@ namespace openLibrary_2._0
                 result = otherLookup.otherFetch(requestUrl);
 
                 //Submit Get request, extract info from pulled form
-                title = result[0].ToString();
-                author = result[1].ToString();
-                binding = result[2].ToString();
-                publisher = result[3].ToString();
-                date = result[4].ToString();
-                price = result[5].ToString();
-                pages = result[6].ToString();
-                tracks = (ArrayList)result[7];
-
+                if (result != null) {
+                    title = result[0].ToString();
+                    author = result[1].ToString();
+                    binding = result[2].ToString();
+                    publisher = result[3].ToString();
+                    date = result[4].ToString();
+                    price = result[5].ToString();
+                    pages = result[6].ToString();
+                    tracks = (ArrayList)result[7];
+                }
 
                 //Push title and author data back into the form
                 txtTitle.Text = title;
@@ -94,7 +95,6 @@ namespace openLibrary_2._0
                 string author;
                 string price;
                 string date;
-
 
                 int bookid;
                 int trackid;

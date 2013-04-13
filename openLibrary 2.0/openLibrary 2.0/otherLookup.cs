@@ -62,7 +62,7 @@ namespace openLibrary_2._0 {
                     String message = errorMessageNodes.Item(0).InnerText;
                     ArrayList error = new ArrayList();
 
-                    MessageBox.Show("Can't find ISBN information. Please verify that the ISBN is correct and that you have an active internet connection.");
+                    MessageBox.Show("Can't find UPC information. Please verify that the UPC is correct and that you have an active internet connection.");
                     //MessageBox.Show("Error: " + message + " (but signature worked)");
 
                     for (int i = 0; i < 7; i++) error[i] = "";
