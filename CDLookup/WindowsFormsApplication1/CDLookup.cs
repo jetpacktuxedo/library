@@ -7,6 +7,7 @@ namespace AmazonProductAdvtApi {
     public partial class ISBNSample : Form {
         //Variables!
         String requestUrl, title, author, binding, publisher, date, price, pages, itemID;
+        ArrayList tracks = new ArrayList();
 
         //Create and launch form
         public static void Main() {
@@ -39,17 +40,20 @@ namespace AmazonProductAdvtApi {
                 //Format url for the get request
                 requestUrl = Lookup.lookup(itemID);
 
-                ArrayList result = Lookup.Fetch(requestUrl);
+                ArrayList result = new ArrayList();
+                result = Lookup.Fetch(requestUrl);
 
                 //Submit Get request, extract info from pulled form
-                title = result[0].ToString();
-                author = result[1].ToString();
-                binding = result[2].ToString();
-                publisher = result[3].ToString();
-                date = result[4].ToString();
-                price = result[5].ToString();
-                pages = result[6].ToString();
-                ArrayList tracks = (ArrayList)result[7];
+                if (result != null) {
+                    title = result[0].ToString();
+                    author = result[1].ToString();
+                    binding = result[2].ToString();
+                    publisher = result[3].ToString();
+                    date = result[4].ToString();
+                    price = result[5].ToString();
+                    pages = result[6].ToString();
+                    tracks = (ArrayList)result[7];
+                }
 
                 //Push title and author data back into the form
                 txtTitle.Text = title;
@@ -63,8 +67,8 @@ namespace AmazonProductAdvtApi {
                 //Throw tracks and shit into the listbox
                 int i = 0;
                 while(i < tracks.Count){
-                    listBox1.Items.Add(tracks[i] + " - " + tracks[i+1]);
-                    i+=2;
+                    listBox1.Items.Add(tracks[i] + "-" + tracks[i+1] + " - " + tracks[i+2]);
+                    i+=3;
                 }
             }
         }

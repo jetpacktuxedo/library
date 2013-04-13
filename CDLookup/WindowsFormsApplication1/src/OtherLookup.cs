@@ -43,7 +43,7 @@ namespace AmazonProductAdvtApi {
         public static ArrayList Fetch(string url) {
             ArrayList output = new ArrayList();
             ArrayList tracks = new ArrayList();
-            string type = "", title = "", artist = "", binding = "", publisher = "", date = "", price = "", length = "";
+            string type = " ", title = " ", artist = " ", binding = " ", publisher = " ", date = " ", price = " ", length = " ";
             try {
                 //Makes a request, and exports the response into an XML file
                 WebRequest request = HttpWebRequest.Create(url);
@@ -73,7 +73,7 @@ namespace AmazonProductAdvtApi {
                 //                                                               For pulling multiple items, like in a search
                 if(titleNode != null) title = titleNode.InnerText;
 
-                //If a CD was scanned, pull "Artist" and "Disc Count"
+                //If a CD was scanned, pull "Artist", "Disc Count", and the track list.
                 if (type == "Music") {
                     XmlNode artistNode = doc.GetElementsByTagName("Artist", NAMESPACE).Item(0);
                     if (artistNode != null) artist = artistNode.InnerText;
@@ -85,9 +85,13 @@ namespace AmazonProductAdvtApi {
 
                     XmlNodeList trackNodeList = doc.GetElementsByTagName("Track");
 
-                    for (int j = 0; j <= trackNodeList.Count - 1; j++) {
-                        tracks.Add((j+1).ToString());
-                        tracks.Add(trackNodeList[j].InnerXml);
+                    for (int j = 0; j < discNodeList.Count; j++) {
+                        XmlNodeList tracklist = discNodeList[j].ChildNodes;
+                        for (int i = 0; i < tracklist.Count; i++) {
+                            tracks.Add((j + 1).ToString());
+                            tracks.Add((i + 1).ToString());
+                            tracks.Add(trackNodeList[i].InnerText);
+                        }
                     }
                 }
                 //If a Movie is scanned, pull "Director" and "Running time in minutes"
