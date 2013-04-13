@@ -82,7 +82,6 @@ namespace AmazonProductAdvtApi {
                     if (lengthNode != null) length = lengthNode.InnerText;
 
                     XmlNodeList discNodeList = doc.GetElementsByTagName("Disc");
-
                     XmlNodeList trackNodeList = doc.GetElementsByTagName("Track");
 
                     for (int j = 0; j < discNodeList.Count; j++) {
@@ -101,6 +100,11 @@ namespace AmazonProductAdvtApi {
 
                     XmlNode lengthNode = doc.GetElementsByTagName("RunningTime", NAMESPACE).Item(0);
                     if (lengthNode != null) length = lengthNode.InnerText;
+
+                    XmlNodeList ActorNodeList = doc.GetElementsByTagName("Actor");
+                    for (int j = 0; j < ActorNodeList.Count; j++) {
+                        tracks.Add(ActorNodeList[j].InnerText);
+                    }
                 }
                 //If a Movie is scanned, pull "Director" and "Running time in minutes"
                 else if (type == "Video Games") {

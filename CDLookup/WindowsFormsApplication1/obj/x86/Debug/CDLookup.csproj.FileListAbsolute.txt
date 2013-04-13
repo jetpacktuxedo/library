@@ -14,9 +14,6 @@ C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\CDLookup\WindowsFormsApplicat
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\AmazonProductAdvtApi.ISBNSample.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\ISBNLookupSample.Properties.Resources.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\CDLookup.csproj.GenerateResource.Cache
-C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\tai\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\bin\Debug\ISBNLookupSample.exe.config
 C:\Users\tai\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\ISBNLookupSample.exe
 C:\Users\tai\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\ISBNLookupSample.pdb
@@ -26,3 +23,5 @@ C:\Users\tai\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\
 C:\Users\tai\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\AmazonProductAdvtApi.ISBNSample.resources
 C:\Users\tai\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\ISBNLookupSample.Properties.Resources.resources
 C:\Users\tai\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\CDLookup.csproj.GenerateResource.Cache
+C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\CDLookup.csprojResolveAssemblyReference.cache
+C:\Users\maddene\Documents\GitHub\library\CDLookup\WindowsFormsApplication1\obj\x86\Debug\CDLookup.csproj.GenerateResource.Cache
