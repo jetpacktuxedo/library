@@ -95,23 +95,35 @@ namespace openLibrary_2._0
                 string date;
 
 
-                int bookid;
+                int bookid, actorid;
 
                 bookid = d.findBookCount("SELECT max(movie_id) FROM movie;");
                 bookid++;
 
-                isbn = txtISBN.Text;
+                actorid = d.findBookCount("SELECT max(ACTOR_ID) FROM ACTOR;");
+                actorid++;
+
+                isbn = escapeHandling(txtISBN.Text);
                 title = escapeHandling(txtTitle.Text);
-                author = txtAuthor.Text;
-                publisher = txtPublisher.Text;
-                format = txtBinding.Text;
-                price = txtPrice.Text;
-                date = txtDate.Text;
+                author = escapeHandling(txtAuthor.Text);
+                publisher = escapeHandling(txtPublisher.Text);
+                format = escapeHandling(txtBinding.Text);
+                price = escapeHandling(txtPrice.Text);
+                date = escapeHandling(txtDate.Text);
 
                 sqlstatement = "INSERT INTO movie (movie_id, UPC, TITLE, DIRECTOR, TYPE, STUDIO, RELEASE_DATE, PRICE, RUNNING_TIME)" +
                                           "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + author + "','" + format + "','" + publisher + "','" + date + "','" + price + "','" + pages + "');";
 
                 d.loadDatabaseTable(sqlstatement);
+
+                int i = 0;
+                while (i < actors.Count) {
+                    sqlstatement = "INSERT INTO ACTOR (MOVIE_ID, ACTOR_ID, ACTOR_NAME)" +
+                                              "VALUES ('" + bookid + "','" + (actorid + i) + "','" + escapeHandling(actors[i].ToString()) + "');";
+
+                    d.inserter(sqlstatement);
+                    i++;
+                }
 
                 clearFields();
             }

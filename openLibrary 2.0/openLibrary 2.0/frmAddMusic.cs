@@ -105,13 +105,13 @@ namespace openLibrary_2._0
                 trackid = d.findBookCount("SELECT max(track_id) from track;");
                 trackid++;
 
-                isbn = txtISBN.Text;
+                isbn = escapeHandling(txtISBN.Text);
                 title = escapeHandling(txtTitle.Text);
-                author = txtAuthor.Text;
-                publisher = txtPublisher.Text;
-                format = txtBinding.Text;
-                price = txtPrice.Text;
-                date = txtDate.Text;
+                author = escapeHandling(txtAuthor.Text);
+                publisher = escapeHandling(txtPublisher.Text);
+                format = escapeHandling(txtBinding.Text);
+                price = escapeHandling(txtPrice.Text);
+                date = escapeHandling(txtDate.Text);
 
                 sqlstatement = "INSERT INTO CD (CD_ID, UPC, ALBUM, TYPE, PUBLISHER, RELEASE_DATE, PRICE, ARTIST)" +
                                           "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + publisher + "','" + date + "','" + price + "','" + author + "');";
@@ -124,7 +124,7 @@ namespace openLibrary_2._0
                 while(i < tracks.Count)
                 {
                     sqlstatement = "INSERT INTO TRACK (CD_ID, TRACK_ID, DISC_NUMBER, TRACK_NUMBER, TRACK_NAME)" +
-                                              "VALUES ('" + bookid + "','" + (trackid + j) + "','" + tracks[i] + "','" + tracks[i + 1] + "','" + tracks[i + 2] + "');";
+                                              "VALUES ('" + bookid + "','" + (trackid + j) + "','" + tracks[i] + "','" + tracks[i + 1] + "','" + escapeHandling(tracks[i + 2].ToString()) + "');";
 
                     d.inserter(sqlstatement);
                     i += 3;
