@@ -26,3 +26,31 @@ C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\De
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmViewMovies.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmViewMusic.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary 2.0.csproj.GenerateResource.Cache
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\Debug\openLibrary 2.0.exe.config
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\Interop.WMPLib.dll
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary 2.0.csproj.ResolveComReference.cache
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary 2.0.exe
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary 2.0.pdb
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\Debug\Library.mdb
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\Debug\openLibrary 2.0.exe
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\Debug\openLibrary 2.0.pdb
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\Debug\Interop.WMPLib.dll
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary 2.0.csprojResolveAssemblyReference.cache
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAddCustomer.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAddEmployee.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAddGame.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAddMovie.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAddMusic.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmLogin.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmViewBooks.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAddBook.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmHomeScreen.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmViewCustomers.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmViewEmployees.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmViewGames.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmViewMovies.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmViewMusic.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.Properties.Resources.resources
+C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary 2.0.csproj.GenerateResource.Cache

@@ -8,7 +8,8 @@ using System.Xml;
 using System.Windows.Forms;
 using System.Collections;
 
-namespace openLibrary_2._0 {
+namespace openLibrary_2._0
+{
     class otherLookup
     {
 
@@ -62,7 +63,7 @@ namespace openLibrary_2._0 {
                     String message = errorMessageNodes.Item(0).InnerText;
                     ArrayList error = new ArrayList();
 
-                    MessageBox.Show("Can't find UPC information. Please verify that the UPC is correct and that you have an active internet connection.");
+                    MessageBox.Show("Can't find ISBN information. Please verify that the ISBN is correct and that you have an active internet connection.");
                     //MessageBox.Show("Error: " + message + " (but signature worked)");
 
                     for (int i = 0; i < 7; i++) error[i] = "";
@@ -88,7 +89,6 @@ namespace openLibrary_2._0 {
                     if (lengthNode != null) length = lengthNode.InnerText;
 
                     XmlNodeList discNodeList = doc.GetElementsByTagName("Disc");
-
                     XmlNodeList trackNodeList = doc.GetElementsByTagName("Track");
 
                     for (int j = 0; j < discNodeList.Count; j++)
@@ -110,6 +110,12 @@ namespace openLibrary_2._0 {
 
                     XmlNode lengthNode = doc.GetElementsByTagName("RunningTime", NAMESPACE).Item(0);
                     if (lengthNode != null) length = lengthNode.InnerText;
+
+                    XmlNodeList ActorNodeList = doc.GetElementsByTagName("Actor");
+                    for (int j = 0; j < ActorNodeList.Count; j++)
+                    {
+                        tracks.Add(ActorNodeList[j].InnerText);
+                    }
                 }
                 //If a Movie is scanned, pull "Director" and "Running time in minutes"
                 else if (type == "Video Games")

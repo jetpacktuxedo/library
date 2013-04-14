@@ -104,6 +104,40 @@ namespace openLibrary_2._0
         {
             mPlayer.close();
         }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            int selectedRow = dataGridView1.CurrentRow.Index;
+
+            string cdid = dataGridView1[0, selectedRow].Value.ToString();
+            databaseHandler d = new databaseHandler();
+
+            if (cdid != "0")
+            {
+
+                string sql = "select * from track where cd_id = '" + cdid + "' order by track_number;";
+
+                try
+                {
+                    d.openDatabaseConnection();
+                    mDB.Open();
+                    OleDbCommand cmd;
+                    OleDbDataReader rdr;
+                    cmd = new OleDbCommand(sql, mDB);
+                    rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        lstCurrentTracks.Items.Add(rdr[0]);
+                    }
+
+                }
+                catch(Exception s)
+                {
+                    MessageBox.Show("Error." + s.Message + s.ToString());
+                }
+            }
+        }
         
         
 

@@ -33,6 +33,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.mPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.lstCurrentTracks = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).BeginInit();
             this.SuspendLayout();
@@ -40,14 +41,15 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 126);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 240);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1011, 656);
+            this.dataGridView1.Size = new System.Drawing.Size(1011, 542);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(925, 85);
+            this.button1.Location = new System.Drawing.Point(353, 96);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 23);
             this.button1.TabIndex = 3;
@@ -57,7 +59,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(925, 63);
+            this.textBox1.Location = new System.Drawing.Point(353, 74);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 4;
@@ -66,17 +68,26 @@
             // mPlayer
             // 
             this.mPlayer.Enabled = true;
-            this.mPlayer.Location = new System.Drawing.Point(702, 63);
+            this.mPlayer.Location = new System.Drawing.Point(353, 23);
             this.mPlayer.Name = "mPlayer";
             this.mPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mPlayer.OcxState")));
             this.mPlayer.Size = new System.Drawing.Size(217, 45);
             this.mPlayer.TabIndex = 6;
             // 
+            // lstCurrentTracks
+            // 
+            this.lstCurrentTracks.FormattingEnabled = true;
+            this.lstCurrentTracks.Location = new System.Drawing.Point(14, 23);
+            this.lstCurrentTracks.Name = "lstCurrentTracks";
+            this.lstCurrentTracks.Size = new System.Drawing.Size(323, 199);
+            this.lstCurrentTracks.TabIndex = 7;
+            // 
             // frmViewMusic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 794);
+            this.ClientSize = new System.Drawing.Size(1037, 741);
+            this.Controls.Add(this.lstCurrentTracks);
             this.Controls.Add(this.mPlayer);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
@@ -97,5 +108,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private AxWMPLib.AxWindowsMediaPlayer mPlayer;
+        private System.Windows.Forms.ListBox lstCurrentTracks;
     }
 }

@@ -65,17 +65,24 @@ namespace AmazonProductAdvtApi {
                 txtPages.Text = pages;
 
                 //Throw tracks and shit into the listbox
-                int i = 0;
-                while(i < tracks.Count){
-                    listBox1.Items.Add(tracks[i] + "-" + tracks[i+1] + " - " + tracks[i+2]);
-                    i+=3;
-                }
+                //int i = 0;
+                //while(i < tracks.Count){
+                //    listBox1.Items.Add(tracks[i] + "-" + tracks[i+1] + " - " + tracks[i+2]);
+                //    i+=3;
+                //}
                 //Movies
-                /*while (i < tracks.Count) {
+
+                int i = 0;
+                while (i < tracks.Count) {
                     listBox1.Items.Add(tracks[i]);
                     i++;
-                }*/
+                }
             }
+        }
+
+        private void ISBNSample_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

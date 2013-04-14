@@ -214,6 +214,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ISBNSample";
             this.Text = "Sample ISBN Lookup";
+            this.Load += new System.EventHandler(this.ISBNSample_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

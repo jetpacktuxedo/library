@@ -48,11 +48,12 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lstActors = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btnPopulate
             // 
-            this.btnPopulate.Location = new System.Drawing.Point(305, 100);
+            this.btnPopulate.Location = new System.Drawing.Point(310, 245);
             this.btnPopulate.Name = "btnPopulate";
             this.btnPopulate.Size = new System.Drawing.Size(75, 23);
             this.btnPopulate.TabIndex = 25;
@@ -190,7 +191,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(305, 129);
+            this.btnAdd.Location = new System.Drawing.Point(391, 245);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 30;
@@ -200,7 +201,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(305, 158);
+            this.btnClear.Location = new System.Drawing.Point(310, 274);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 31;
@@ -210,7 +211,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(305, 187);
+            this.btnClose.Location = new System.Drawing.Point(391, 274);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 32;
@@ -218,12 +219,21 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lstActors
+            // 
+            this.lstActors.FormattingEnabled = true;
+            this.lstActors.Location = new System.Drawing.Point(256, 34);
+            this.lstActors.Name = "lstActors";
+            this.lstActors.Size = new System.Drawing.Size(261, 186);
+            this.lstActors.TabIndex = 33;
+            // 
             // frmAddMovie
             // 
             this.AcceptButton = this.btnPopulate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(423, 333);
+            this.ClientSize = new System.Drawing.Size(556, 333);
+            this.Controls.Add(this.lstActors);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnAdd);
@@ -274,5 +284,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ListBox lstActors;
     }
 }

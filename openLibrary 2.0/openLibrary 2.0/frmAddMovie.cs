@@ -14,6 +14,8 @@ namespace openLibrary_2._0
     {
         String requestUrl, title, author, binding, publisher, date, price, pages, itemID;
         databaseHandler d = new databaseHandler();
+        ArrayList actors = new ArrayList();
+
         public string sqlstatement;
 
         public frmAddMovie()
@@ -23,27 +25,36 @@ namespace openLibrary_2._0
 
         private void btnPopulate_Click(object sender, EventArgs e)
         {
+            lstActors.Items.Clear();
+
+            //Convert ISBN-13 to ISBN-10
             itemID = txtISBN.Text;
 
-            if (txtISBN.Text == "") {
+            if (txtISBN.Text == "")
+            {
                 MessageBox.Show("Please enter an ISBN.");
             }
-            else if (itemID == "False") ; //intentionally empty.
-            else {
+            else if (itemID == "False") ;  //intentionally empty.
+            else
+            {
                 //Format url for the get request
                 requestUrl = otherLookup.otherlookup(itemID);
-                ArrayList result = new ArrayList();
 
+                ArrayList result = new ArrayList();
                 result = otherLookup.otherFetch(requestUrl);
 
                 //Submit Get request, extract info from pulled form
-                title = result[0].ToString();
-                author = result[1].ToString();
-                binding = result[2].ToString();
-                publisher = result[3].ToString();
-                date = result[4].ToString();
-                price = result[5].ToString();
-                pages = result[6].ToString();
+                if (result != null)
+                {
+                    title = result[0].ToString();
+                    author = result[1].ToString();
+                    binding = result[2].ToString();
+                    publisher = result[3].ToString();
+                    date = result[4].ToString();
+                    price = result[5].ToString();
+                    pages = result[6].ToString();
+                    actors = (ArrayList)result[7];
+                }
 
                 //Push title and author data back into the form
                 txtTitle.Text = title;
@@ -53,9 +64,22 @@ namespace openLibrary_2._0
                 txtDate.Text = date;
                 txtPrice.Text = price;
                 txtPages.Text = pages;
-            }
 
-            btnAdd.Focus();
+                //Throw tracks and shit into the listbox
+                //int i = 0;
+                //while(i < tracks.Count){
+                //    listBox1.Items.Add(tracks[i] + "-" + tracks[i+1] + " - " + tracks[i+2]);
+                //    i+=3;
+                //}
+                //Movies
+
+                int i = 0;
+                while (i < actors.Count)
+                {
+                    lstActors.Items.Add(actors[i]);
+                    i++;
+                }
+            }
         }
 
         private void addToDB()
@@ -118,6 +142,7 @@ namespace openLibrary_2._0
             txtDate.Clear();
             txtPrice.Clear();
             txtPages.Clear();
+            lstActors.Items.Clear();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
