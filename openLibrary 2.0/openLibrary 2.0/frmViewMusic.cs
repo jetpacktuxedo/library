@@ -12,7 +12,7 @@ using System.IO;
 using System.Configuration;
 using System.Net;
 using System.Collections;
-
+using System.Text.RegularExpressions;
 
 namespace openLibrary_2._0
 {
@@ -23,6 +23,7 @@ namespace openLibrary_2._0
         public OleDbConnection mDB;
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
         string path = null, path2 = null;
+        string cdid;
 
 
         public frmViewMusic()
@@ -110,7 +111,7 @@ namespace openLibrary_2._0
         {
             int selectedRow = dataGridView1.CurrentRow.Index;
 
-            string cdid = dataGridView1[0, selectedRow].Value.ToString();
+            cdid = dataGridView1[0, selectedRow].Value.ToString();
             databaseHandler d = new databaseHandler();
             lstCurrentTracks.Items.Clear();
 
@@ -127,6 +128,24 @@ namespace openLibrary_2._0
                 }
       
             }
+        }
+
+        private void lstCurrentTracks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string value = lstCurrentTracks.SelectedItem.ToString();
+            value = RemoveDigits(value);
+            MessageBox.Show(value);
+
+            string sql = "select track.track_name, cd.artist, cd.album from track inner join cd on track.CD_ID = cstr(cd.CD_ID) where track.cd_id = "
+                          + cdid + " and track_name = " + value + "";
+
+            MessageBox.Show(sql);
+
+        }
+
+        public static string RemoveDigits(string key)
+        {
+            return Regex.Replace(key, @"\d", "");
         }
         
         

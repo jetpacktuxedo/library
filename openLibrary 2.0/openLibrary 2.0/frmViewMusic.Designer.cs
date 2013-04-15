@@ -81,6 +81,7 @@
             this.lstCurrentTracks.Name = "lstCurrentTracks";
             this.lstCurrentTracks.Size = new System.Drawing.Size(323, 199);
             this.lstCurrentTracks.TabIndex = 7;
+            this.lstCurrentTracks.SelectedIndexChanged += new System.EventHandler(this.lstCurrentTracks_SelectedIndexChanged);
             // 
             // frmViewMusic
             // 
