@@ -23,7 +23,7 @@ namespace openLibrary_2._0
         public OleDbConnection mDB;
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
         string path = null, path2 = null;
-        string cdid;
+        string cdid, albumname, artistname;
 
 
         public frmViewMusic()
@@ -47,7 +47,7 @@ namespace openLibrary_2._0
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dt;
 
-                dataGridView1.DataSource = bs;
+                dgvMusic.DataSource = bs;
 
                 da.Update(dt);
 
@@ -60,9 +60,10 @@ namespace openLibrary_2._0
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       
+
+        private void beginPlay(string asin)
         {
-            string asin = textBox1.Text;
             path = Directory.GetCurrentDirectory() + "/tempMP3.mp3";
             path2 = Directory.GetCurrentDirectory() + "/temp2MP3.mp3";
             string url = "http://www.amazon.com/gp/dmusic/get_sample_url.html?ASIN=" + asin;
@@ -78,8 +79,7 @@ namespace openLibrary_2._0
             {
                 client.DownloadFile(url, path2);
                 player(path2);
-            }    
-
+            }
         }
 
         public void player(string loc) 
@@ -109,19 +109,22 @@ namespace openLibrary_2._0
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            int selectedRow = dataGridView1.CurrentRow.Index;
+            int selectedRow = dgvMusic.CurrentRow.Index;
 
-            cdid = dataGridView1[0, selectedRow].Value.ToString();
+            cdid = dgvMusic[0, selectedRow].Value.ToString();
+            albumname = dgvMusic[2, selectedRow].Value.ToString();
+            artistname = dgvMusic[7, selectedRow].Value.ToString();
             databaseHandler d = new databaseHandler();
             lstCurrentTracks.Items.Clear();
 
-            if (cdid != "0")
+            if (true)
             {
 
                 string sql = "select * from track where cd_id = '" + cdid + "' order by track_number;";
                 ArrayList adder = d.populateTracks(sql);
-                
-                
+
+                lstCurrentTracks.Items.Add("DISC \t NO. \t TITLE");
+                lstCurrentTracks.Items.Add("");
                 foreach(string x in adder)
                 {
                     lstCurrentTracks.Items.Add(x);
@@ -134,12 +137,9 @@ namespace openLibrary_2._0
         {
             string value = lstCurrentTracks.SelectedItem.ToString();
             value = RemoveDigits(value);
-            MessageBox.Show(value);
 
-            string sql = "select track.track_name, cd.artist, cd.album from track inner join cd on track.CD_ID = cstr(cd.CD_ID) where track.cd_id = "
-                          + cdid + " and track_name = " + value + "";
-
-            MessageBox.Show(sql);
+            lookup(value, albumname, artistname);
+            
 
         }
 
@@ -150,27 +150,19 @@ namespace openLibrary_2._0
         
         
 
-        //private void lookup()
-        //{
-        //    string track = dataGridView1.SelectedRows[1].ToString(), artist = txtTitle.Text, album = txtAuthor.Text;
+        private void lookup(string track, string album, string artist)
+        {
+            
+                //Format url for the get request
+                string requestUrl = TrackLookup.lookup(track, album, artist);
 
-        //    itemID = txtISBN.Text;
+                string result = TrackLookup.Fetch(requestUrl);
 
-          
-        //    else if (itemID == "False") ;  //intentionally empty.
-        //    else
-        //    {
-        //        //Format url for the get request
-        //        requestUrl = Lookup.lookup(track, album, artist);
+                //Submit Get request, extract info from pulled form
+                string asin = result;
 
-        //        string result = Lookup.Fetch(requestUrl);
+                beginPlay(asin);
 
-        //        //Submit Get request, extract info from pulled form
-        //        string asin = result;
-
-        //        //Push title and author data back into the form
-        //        txtPublisher.Text = asin;
-        //    }
-        //}
+        }
     }
 }

@@ -29,41 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewMusic));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dgvMusic = new System.Windows.Forms.DataGridView();
             this.mPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.lstCurrentTracks = new System.Windows.Forms.ListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMusic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvMusic
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 240);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1011, 542);
-            this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(353, 96);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(353, 74);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "B000S50QYC";
+            this.dgvMusic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMusic.Location = new System.Drawing.Point(14, 240);
+            this.dgvMusic.Name = "dgvMusic";
+            this.dgvMusic.Size = new System.Drawing.Size(1011, 542);
+            this.dgvMusic.TabIndex = 2;
+            this.dgvMusic.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // mPlayer
             // 
@@ -90,24 +70,19 @@
             this.ClientSize = new System.Drawing.Size(1037, 741);
             this.Controls.Add(this.lstCurrentTracks);
             this.Controls.Add(this.mPlayer);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvMusic);
             this.Name = "frmViewMusic";
             this.Text = "frmViewMusic";
             this.Load += new System.EventHandler(this.frmViewMusic_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMusic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView dgvMusic;
         private AxWMPLib.AxWindowsMediaPlayer mPlayer;
         private System.Windows.Forms.ListBox lstCurrentTracks;
     }
