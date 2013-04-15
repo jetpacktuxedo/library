@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Configuration;
+using System.Collections;
 
 
 namespace openLibrary_2._0
@@ -66,6 +67,37 @@ namespace openLibrary_2._0
             }
             catch (Exception ee) { MessageBox.Show("Something Went Wrong: " + ee.Message + ee.ToString()); }
         }
+
+        public ArrayList populateTracks(string sql) 
+        {
+            
+            ArrayList tracker = new ArrayList();
+            try
+            {
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                OleDbDataReader rdr;
+                cmd = new OleDbCommand(sql, mDB);
+                rdr = cmd.ExecuteReader();
+                
+
+                
+                while (rdr.Read())
+                {
+                    tracker.Add((string)rdr["Disc_Number"] + "  " + (string)rdr["Track_Number"] + "  " + (string)rdr["Track_name"]);
+                }
+
+            }
+            catch (Exception s)
+            {
+                MessageBox.Show("Error." + s.Message + s.ToString());
+            }
+
+            return tracker;
+        }
+
+
 
         public void closeDatabaseConnection() {
             if (mDB != null) mDB.Close();

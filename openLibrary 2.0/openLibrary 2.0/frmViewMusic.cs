@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Configuration;
 using System.Net;
+using System.Collections;
 
 
 namespace openLibrary_2._0
@@ -111,31 +112,20 @@ namespace openLibrary_2._0
 
             string cdid = dataGridView1[0, selectedRow].Value.ToString();
             databaseHandler d = new databaseHandler();
+            lstCurrentTracks.Items.Clear();
 
             if (cdid != "0")
             {
 
                 string sql = "select * from track where cd_id = '" + cdid + "' order by track_number;";
-
-                try
+                ArrayList adder = d.populateTracks(sql);
+                
+                
+                foreach(string x in adder)
                 {
-                    d.openDatabaseConnection();
-                    mDB.Open();
-                    OleDbCommand cmd;
-                    OleDbDataReader rdr;
-                    cmd = new OleDbCommand(sql, mDB);
-                    rdr = cmd.ExecuteReader();
-
-                    while (rdr.Read())
-                    {
-                        lstCurrentTracks.Items.Add(rdr[0]);
-                    }
-
+                    lstCurrentTracks.Items.Add(x);
                 }
-                catch(Exception s)
-                {
-                    MessageBox.Show("Error." + s.Message + s.ToString());
-                }
+      
             }
         }
         
