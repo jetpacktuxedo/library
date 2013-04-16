@@ -62,3 +62,27 @@ C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x8
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary 2.0.pdb
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmLogout.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmCurrentlyClocked.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\x86\Debug\Library.mdb
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\x86\Debug\openLibrary 2.0.exe
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\x86\Debug\openLibrary 2.0.pdb
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\x86\Debug\Interop.WMPLib.dll
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\x86\Debug\AxInterop.WMPLib.dll
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary 2.0.csprojResolveAssemblyReference.cache
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAddCustomer.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAddEmployee.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAddGame.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAddMovie.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAddMusic.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmCurrentlyClocked.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmLogin.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmLogout.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmViewBooks.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAddBook.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmHomeScreen.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmViewCustomers.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmViewEmployees.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmViewGames.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmViewMovies.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmViewMusic.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.Properties.Resources.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary 2.0.csproj.GenerateResource.Cache
