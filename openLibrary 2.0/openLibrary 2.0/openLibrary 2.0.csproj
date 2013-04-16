@@ -88,6 +88,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccDB.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmCurrentlyClocked.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCurrentlyClocked.Designer.cs">
+      <DependentUpon>frmCurrentlyClocked.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogout.Designer.cs">
+      <DependentUpon>frmLogout.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,8 +206,14 @@
     <EmbeddedResource Include="frmAddMusic.resx">
       <DependentUpon>frmAddMusic.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCurrentlyClocked.resx">
+      <DependentUpon>frmCurrentlyClocked.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogout.resx">
+      <DependentUpon>frmLogout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewBooks.resx">
       <DependentUpon>frmViewBooks.cs</DependentUpon>

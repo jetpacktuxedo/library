@@ -39,25 +39,26 @@
             // dgvMusic
             // 
             this.dgvMusic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMusic.Location = new System.Drawing.Point(14, 240);
+            this.dgvMusic.Location = new System.Drawing.Point(12, 226);
             this.dgvMusic.Name = "dgvMusic";
             this.dgvMusic.Size = new System.Drawing.Size(1011, 542);
             this.dgvMusic.TabIndex = 2;
+            this.dgvMusic.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMusic_CellContentClick);
             this.dgvMusic.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // mPlayer
             // 
             this.mPlayer.Enabled = true;
-            this.mPlayer.Location = new System.Drawing.Point(353, 23);
+            this.mPlayer.Location = new System.Drawing.Point(463, 166);
             this.mPlayer.Name = "mPlayer";
             this.mPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mPlayer.OcxState")));
-            this.mPlayer.Size = new System.Drawing.Size(217, 45);
+            this.mPlayer.Size = new System.Drawing.Size(219, 45);
             this.mPlayer.TabIndex = 6;
             // 
             // lstCurrentTracks
             // 
             this.lstCurrentTracks.FormattingEnabled = true;
-            this.lstCurrentTracks.Location = new System.Drawing.Point(14, 23);
+            this.lstCurrentTracks.Location = new System.Drawing.Point(700, 12);
             this.lstCurrentTracks.Name = "lstCurrentTracks";
             this.lstCurrentTracks.Size = new System.Drawing.Size(323, 199);
             this.lstCurrentTracks.TabIndex = 7;
@@ -67,7 +68,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 741);
+            this.ClientSize = new System.Drawing.Size(1037, 791);
             this.Controls.Add(this.lstCurrentTracks);
             this.Controls.Add(this.mPlayer);
             this.Controls.Add(this.dgvMusic);

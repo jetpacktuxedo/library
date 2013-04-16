@@ -109,27 +109,28 @@ namespace openLibrary_2._0
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            int selectedRow = dgvMusic.CurrentRow.Index;
 
-            cdid = dgvMusic[0, selectedRow].Value.ToString();
-            albumname = dgvMusic[2, selectedRow].Value.ToString();
-            artistname = dgvMusic[7, selectedRow].Value.ToString();
-            databaseHandler d = new databaseHandler();
-            lstCurrentTracks.Items.Clear();
-
-            if (true)
+            if (dgvMusic.CurrentRow.Index >= 0)
             {
+                int selectedRow = dgvMusic.CurrentRow.Index;
+                cdid = dgvMusic[0, selectedRow].Value.ToString();
+                albumname = dgvMusic[2, selectedRow].Value.ToString();
+                artistname = dgvMusic[7, selectedRow].Value.ToString();
+                databaseHandler d = new databaseHandler();
+                lstCurrentTracks.Items.Clear();
+
+
 
                 string sql = "select * from track where cd_id = '" + cdid + "' order by track_number;";
                 ArrayList adder = d.populateTracks(sql);
 
                 lstCurrentTracks.Items.Add("DISC \t NO. \t TITLE");
                 lstCurrentTracks.Items.Add("");
-                foreach(string x in adder)
+                foreach (string x in adder)
                 {
                     lstCurrentTracks.Items.Add(x);
                 }
-      
+
             }
         }
 
@@ -164,5 +165,12 @@ namespace openLibrary_2._0
                 beginPlay(asin);
 
         }
+
+        private void dgvMusic_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        
     }
 }

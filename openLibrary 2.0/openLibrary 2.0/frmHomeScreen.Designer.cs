@@ -31,15 +31,15 @@
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.patronToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +59,10 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewCustomersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewEmployeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timeClockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clockInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clockOutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.whosClockedInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,16 +70,15 @@
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.dgvCheckedOut = new System.Windows.Forms.DataGridView();
             this.grpUser = new System.Windows.Forms.GroupBox();
-            this.grpTasks = new System.Windows.Forms.GroupBox();
-            this.btnCheckOut = new System.Windows.Forms.Button();
-            this.btnCheckIn = new System.Windows.Forms.Button();
-            this.btnEditInfo = new System.Windows.Forms.Button();
-            this.btnFindUser = new System.Windows.Forms.Button();
-            this.btnFindItem = new System.Windows.Forms.Button();
-            this.btnEnd = new System.Windows.Forms.Button();
             this.btnGO = new System.Windows.Forms.Button();
-            this.logInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
+            this.grpTasks = new System.Windows.Forms.GroupBox();
+            this.btnEnd = new System.Windows.Forms.Button();
+            this.btnFindItem = new System.Windows.Forms.Button();
+            this.btnFindUser = new System.Windows.Forms.Button();
+            this.btnEditInfo = new System.Windows.Forms.Button();
+            this.btnCheckIn = new System.Windows.Forms.Button();
+            this.btnCheckOut = new System.Windows.Forms.Button();
+            this.lblCurrentEmp = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCheckedOut)).BeginInit();
             this.grpUser.SuspendLayout();
@@ -89,6 +92,7 @@
             this.editToolStripMenuItem,
             this.addToolStripMenuItem,
             this.viewToolStripMenuItem,
+            this.timeClockToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
@@ -101,6 +105,7 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
             this.logInToolStripMenuItem,
+            this.logOutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
@@ -113,6 +118,21 @@
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
+            // logInToolStripMenuItem
+            // 
+            this.logInToolStripMenuItem.Enabled = false;
+            this.logInToolStripMenuItem.Name = "logInToolStripMenuItem";
+            this.logInToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logInToolStripMenuItem.Text = "Login";
+            // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Enabled = false;
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logOutToolStripMenuItem.Text = "Logout";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.clockOutToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -123,39 +143,20 @@
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyToolStripMenuItem,
-            this.cutToolStripMenuItem,
-            this.pasteToolStripMenuItem,
             this.editItemToolStripMenuItem,
             this.editUserToolStripMenuItem});
+            this.editToolStripMenuItem.Enabled = false;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.copyToolStripMenuItem.Text = "Copy";
-            // 
-            // cutToolStripMenuItem
-            // 
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.cutToolStripMenuItem.Text = "Cut";
-            // 
-            // pasteToolStripMenuItem
-            // 
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // editItemToolStripMenuItem
             // 
             this.editItemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bookToolStripMenuItem1,
             this.toolStripMenuItem9,
-            this.toolStripMenuItem10});
+            this.toolStripMenuItem10,
+            this.gameToolStripMenuItem});
             this.editItemToolStripMenuItem.Name = "editItemToolStripMenuItem";
             this.editItemToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.editItemToolStripMenuItem.Text = "Edit Item";
@@ -177,6 +178,12 @@
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
             this.toolStripMenuItem10.Size = new System.Drawing.Size(116, 22);
             this.toolStripMenuItem10.Text = "Music...";
+            // 
+            // gameToolStripMenuItem
+            // 
+            this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.gameToolStripMenuItem.Text = "Game...";
             // 
             // editUserToolStripMenuItem
             // 
@@ -327,6 +334,38 @@
             this.ViewEmployeesToolStripMenuItem.Text = "Employees...";
             this.ViewEmployeesToolStripMenuItem.Click += new System.EventHandler(this.ViewEmployeesToolStripMenuItem_Click);
             // 
+            // timeClockToolStripMenuItem
+            // 
+            this.timeClockToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clockInToolStripMenuItem,
+            this.clockOutToolStripMenuItem1,
+            this.whosClockedInToolStripMenuItem});
+            this.timeClockToolStripMenuItem.Enabled = false;
+            this.timeClockToolStripMenuItem.Name = "timeClockToolStripMenuItem";
+            this.timeClockToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.timeClockToolStripMenuItem.Text = "Time Clock";
+            // 
+            // clockInToolStripMenuItem
+            // 
+            this.clockInToolStripMenuItem.Name = "clockInToolStripMenuItem";
+            this.clockInToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.clockInToolStripMenuItem.Text = "Clock In";
+            this.clockInToolStripMenuItem.Click += new System.EventHandler(this.clockInToolStripMenuItem_Click);
+            // 
+            // clockOutToolStripMenuItem1
+            // 
+            this.clockOutToolStripMenuItem1.Name = "clockOutToolStripMenuItem1";
+            this.clockOutToolStripMenuItem1.Size = new System.Drawing.Size(171, 22);
+            this.clockOutToolStripMenuItem1.Text = "Clock Out";
+            this.clockOutToolStripMenuItem1.Click += new System.EventHandler(this.clockOutToolStripMenuItem1_Click);
+            // 
+            // whosClockedInToolStripMenuItem
+            // 
+            this.whosClockedInToolStripMenuItem.Name = "whosClockedInToolStripMenuItem";
+            this.whosClockedInToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.whosClockedInToolStripMenuItem.Text = "Who\'s Clocked In?";
+            this.whosClockedInToolStripMenuItem.Click += new System.EventHandler(this.whosClockedInToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -369,9 +408,9 @@
             // dgvCheckedOut
             // 
             this.dgvCheckedOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCheckedOut.Location = new System.Drawing.Point(22, 174);
+            this.dgvCheckedOut.Location = new System.Drawing.Point(22, 178);
             this.dgvCheckedOut.Name = "dgvCheckedOut";
-            this.dgvCheckedOut.Size = new System.Drawing.Size(380, 224);
+            this.dgvCheckedOut.Size = new System.Drawing.Size(380, 251);
             this.dgvCheckedOut.TabIndex = 4;
             this.dgvCheckedOut.Visible = false;
             // 
@@ -387,6 +426,16 @@
             this.grpUser.Text = "User ID:";
             this.grpUser.Visible = false;
             // 
+            // btnGO
+            // 
+            this.btnGO.Location = new System.Drawing.Point(321, 32);
+            this.btnGO.Name = "btnGO";
+            this.btnGO.Size = new System.Drawing.Size(44, 35);
+            this.btnGO.TabIndex = 2;
+            this.btnGO.Text = "Go";
+            this.btnGO.UseVisualStyleBackColor = true;
+            this.btnGO.Click += new System.EventHandler(this.btnGO_Click);
+            // 
             // grpTasks
             // 
             this.grpTasks.Controls.Add(this.btnEnd);
@@ -395,63 +444,13 @@
             this.grpTasks.Controls.Add(this.btnEditInfo);
             this.grpTasks.Controls.Add(this.btnCheckIn);
             this.grpTasks.Controls.Add(this.btnCheckOut);
-            this.grpTasks.Location = new System.Drawing.Point(436, 42);
+            this.grpTasks.Location = new System.Drawing.Point(436, 64);
             this.grpTasks.Name = "grpTasks";
-            this.grpTasks.Size = new System.Drawing.Size(222, 356);
+            this.grpTasks.Size = new System.Drawing.Size(222, 365);
             this.grpTasks.TabIndex = 6;
             this.grpTasks.TabStop = false;
             this.grpTasks.Text = "Common Tasks";
             this.grpTasks.Visible = false;
-            // 
-            // btnCheckOut
-            // 
-            this.btnCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckOut.Location = new System.Drawing.Point(21, 36);
-            this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(178, 47);
-            this.btnCheckOut.TabIndex = 7;
-            this.btnCheckOut.Text = "Check Out";
-            this.btnCheckOut.UseVisualStyleBackColor = true;
-            // 
-            // btnCheckIn
-            // 
-            this.btnCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckIn.Location = new System.Drawing.Point(21, 89);
-            this.btnCheckIn.Name = "btnCheckIn";
-            this.btnCheckIn.Size = new System.Drawing.Size(178, 47);
-            this.btnCheckIn.TabIndex = 8;
-            this.btnCheckIn.Text = "Check In";
-            this.btnCheckIn.UseVisualStyleBackColor = true;
-            // 
-            // btnEditInfo
-            // 
-            this.btnEditInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditInfo.Location = new System.Drawing.Point(21, 142);
-            this.btnEditInfo.Name = "btnEditInfo";
-            this.btnEditInfo.Size = new System.Drawing.Size(178, 47);
-            this.btnEditInfo.TabIndex = 9;
-            this.btnEditInfo.Text = "Edit User Information";
-            this.btnEditInfo.UseVisualStyleBackColor = true;
-            // 
-            // btnFindUser
-            // 
-            this.btnFindUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFindUser.Location = new System.Drawing.Point(21, 195);
-            this.btnFindUser.Name = "btnFindUser";
-            this.btnFindUser.Size = new System.Drawing.Size(178, 47);
-            this.btnFindUser.TabIndex = 7;
-            this.btnFindUser.Text = "Find User";
-            this.btnFindUser.UseVisualStyleBackColor = true;
-            // 
-            // btnFindItem
-            // 
-            this.btnFindItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFindItem.Location = new System.Drawing.Point(21, 248);
-            this.btnFindItem.Name = "btnFindItem";
-            this.btnFindItem.Size = new System.Drawing.Size(178, 47);
-            this.btnFindItem.TabIndex = 10;
-            this.btnFindItem.Text = "Find Item";
-            this.btnFindItem.UseVisualStyleBackColor = true;
             // 
             // btnEnd
             // 
@@ -463,40 +462,71 @@
             this.btnEnd.Text = "End Transaction";
             this.btnEnd.UseVisualStyleBackColor = true;
             // 
-            // btnGO
+            // btnFindItem
             // 
-            this.btnGO.Location = new System.Drawing.Point(321, 32);
-            this.btnGO.Name = "btnGO";
-            this.btnGO.Size = new System.Drawing.Size(44, 35);
-            this.btnGO.TabIndex = 2;
-            this.btnGO.Text = "Go";
-            this.btnGO.UseVisualStyleBackColor = true;
-            this.btnGO.Click += new System.EventHandler(this.btnGO_Click);
+            this.btnFindItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFindItem.Location = new System.Drawing.Point(21, 248);
+            this.btnFindItem.Name = "btnFindItem";
+            this.btnFindItem.Size = new System.Drawing.Size(178, 47);
+            this.btnFindItem.TabIndex = 10;
+            this.btnFindItem.Text = "Find Item";
+            this.btnFindItem.UseVisualStyleBackColor = true;
             // 
-            // logInToolStripMenuItem
+            // btnFindUser
             // 
-            this.logInToolStripMenuItem.Name = "logInToolStripMenuItem";
-            this.logInToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.logInToolStripMenuItem.Text = "Log In";
-            this.logInToolStripMenuItem.Click += new System.EventHandler(this.logInToolStripMenuItem_Click);
+            this.btnFindUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFindUser.Location = new System.Drawing.Point(21, 195);
+            this.btnFindUser.Name = "btnFindUser";
+            this.btnFindUser.Size = new System.Drawing.Size(178, 47);
+            this.btnFindUser.TabIndex = 7;
+            this.btnFindUser.Text = "Find User";
+            this.btnFindUser.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // btnEditInfo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(623, 11);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label1.Visible = false;
+            this.btnEditInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditInfo.Location = new System.Drawing.Point(21, 142);
+            this.btnEditInfo.Name = "btnEditInfo";
+            this.btnEditInfo.Size = new System.Drawing.Size(178, 47);
+            this.btnEditInfo.TabIndex = 9;
+            this.btnEditInfo.Text = "Edit User Information";
+            this.btnEditInfo.UseVisualStyleBackColor = true;
+            // 
+            // btnCheckIn
+            // 
+            this.btnCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckIn.Location = new System.Drawing.Point(21, 89);
+            this.btnCheckIn.Name = "btnCheckIn";
+            this.btnCheckIn.Size = new System.Drawing.Size(178, 47);
+            this.btnCheckIn.TabIndex = 8;
+            this.btnCheckIn.Text = "Check In";
+            this.btnCheckIn.UseVisualStyleBackColor = true;
+            // 
+            // btnCheckOut
+            // 
+            this.btnCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckOut.Location = new System.Drawing.Point(21, 36);
+            this.btnCheckOut.Name = "btnCheckOut";
+            this.btnCheckOut.Size = new System.Drawing.Size(178, 47);
+            this.btnCheckOut.TabIndex = 7;
+            this.btnCheckOut.Text = "Check Out";
+            this.btnCheckOut.UseVisualStyleBackColor = true;
+            // 
+            // lblCurrentEmp
+            // 
+            this.lblCurrentEmp.Location = new System.Drawing.Point(558, 24);
+            this.lblCurrentEmp.Name = "lblCurrentEmp";
+            this.lblCurrentEmp.Size = new System.Drawing.Size(100, 23);
+            this.lblCurrentEmp.TabIndex = 7;
+            this.lblCurrentEmp.Text = "label1";
+            this.lblCurrentEmp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblCurrentEmp.Visible = false;
             // 
             // frmHomeScreen
             // 
             this.AcceptButton = this.btnGO;
-            this.ClientSize = new System.Drawing.Size(670, 430);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(670, 441);
+            this.Controls.Add(this.lblCurrentEmp);
             this.Controls.Add(this.grpTasks);
             this.Controls.Add(this.lblCurrentUser);
             this.Controls.Add(this.grpUser);
@@ -532,9 +562,6 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editItemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bookToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
@@ -574,7 +601,13 @@
         private System.Windows.Forms.Button btnCheckIn;
         private System.Windows.Forms.Button btnCheckOut;
         private System.Windows.Forms.ToolStripMenuItem logInToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCurrentEmp;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem timeClockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clockInToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clockOutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem whosClockedInToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
     }
 }
 

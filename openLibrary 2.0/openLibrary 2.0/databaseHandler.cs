@@ -108,6 +108,71 @@ namespace openLibrary_2._0
             mDB = new OleDbConnection(connectionString);
         }
 
+        public void clockIN(string id) 
+        {
+            try
+            {
+                string sql = "insert into timeclock(employee_id, time_in, time_out) values ('" + id + "','" + DateTime.Now + "','" + "Currently Clocked In" + "');";
+
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                cmd = new OleDbCommand(sql, mDB);
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Succesfully clocked in at: " + DateTime.Now.ToShortTimeString());
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Unfortunantely, there was an error." + e.ToString());
+            }
+        }
+
+        public void clockOUT(string id)
+        {
+            try
+            {
+                string sql = "update timeclock set time_out = '" + DateTime.Now + "' where employee_id = '" + id + "' and time_out = 'Currently Clocked In';";
+
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                cmd = new OleDbCommand(sql, mDB);
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Succesfully clocked out at: " + DateTime.Now.ToShortTimeString());
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Unfortunantely, there was an error." + e.ToString());
+            }
+        }
+
+        public ArrayList whoIsClockedIn()
+        {
+            ArrayList clocked = new ArrayList();
+            try
+            {
+                string sql = "select employee_id from timeclock where time_out = 'Currently Clocked In';";
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                OleDbDataReader rdr;
+                cmd = new OleDbCommand(sql, mDB);
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    clocked.Add((string)rdr["employee_id"]);
+                }
+
+            }
+            catch 
+            {
+                MessageBox.Show("Sorry, an error occured.");
+            }
+            return clocked;
+
+        }
         
         
 

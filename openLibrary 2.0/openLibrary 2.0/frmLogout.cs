@@ -9,29 +9,21 @@ using System.Windows.Forms;
 
 namespace openLibrary_2._0
 {
-    public partial class frmLogin : Form
+    public partial class frmLogout : Form
     {
-        public static string ID;
-
-        public frmLogin()
+        public frmLogout()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ID = textBox1.Text;
+            string id = textBox1.Text;
+
             databaseHandler d = new databaseHandler();
-            d.clockIN(ID);
-
-
+            d.clockOUT(id);
 
             Close();
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

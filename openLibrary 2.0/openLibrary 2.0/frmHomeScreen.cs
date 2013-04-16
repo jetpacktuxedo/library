@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Configuration;
+using System.Collections;
 
 namespace openLibrary_2._0
 {
@@ -18,6 +19,8 @@ namespace openLibrary_2._0
         public static string mUserFile = "";
         databaseHandler d = new databaseHandler();
         public string loggedin;
+        ToolStripMenuItem MI = new ToolStripMenuItem();
+
 
         public frmHomeScreen()
         {
@@ -50,6 +53,11 @@ namespace openLibrary_2._0
          
             addToolStripMenuItem.Enabled = true;
             viewToolStripMenuItem.Enabled = true;
+            timeClockToolStripMenuItem.Enabled = true;
+            logInToolStripMenuItem.Enabled = true;
+            editItemToolStripMenuItem.Enabled = true;
+            refresher();
+            
         }
 
         //ADD MENU ITEMS
@@ -121,32 +129,112 @@ namespace openLibrary_2._0
 
         }
 
-        private void frmHomeScreen_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void logInToolStripMenuItem_Click(object sender, EventArgs e)
+        private void frmLoginClosed(object sender, EventArgs e)
         {
-            frmLogin frm = new frmLogin();
-            frm.Show();    
-        }
-        
+            refresher();
+       }
 
-        public void checklog() 
+        private void refresher()
         {
-            loggedin = frmLogin.ID;
-            label1.Text = "Current Employee: " + loggedin;
-            
-            if (loggedin != null)
+            ArrayList clocked = d.whoIsClockedIn();
+            logInToolStripMenuItem.DropDownItems.Clear();
+
+            foreach(string x in clocked)
             {
-                grpTasks.Visible = true;
-                grpUser.Visible = true;
-                lblCurrentUser.Visible = true;
-                dgvCheckedOut.Visible = true;
-                label1.Visible = true;
+                ToolStripMenuItem temp = new ToolStripMenuItem();
+                temp.Name = "toolstripmenuitem." + x;
+                temp.Text = x;
+                logInToolStripMenuItem.DropDownItems.Insert(logInToolStripMenuItem.DropDownItems.Count, temp);
+                temp.Click += new EventHandler(MenuItemClickHandler);
+            
             }
 
+            if (clocked.Count == 0)
+                logInToolStripMenuItem.Enabled = false;
+            else
+                logInToolStripMenuItem.Enabled = true;
         }
+
+        private void logInToolStripMenuItem_ (object sender, ToolStripItemClickedEventArgs e)
+        {
+        }
+
+
+        private void frmLogoutClosed(object sender, EventArgs e)
+        {
+            refresher();
+        }
+            
+
+        private void clockInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //User clocks in. Multiple users can be clocked in at once.
+
+
+            frmLogin frm = new frmLogin();
+            frm.FormClosed += frmLoginClosed;
+            frm.Show(); 
+        }
+
+        private void clockOutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Clocking out.
+
+            frmLogout frm = new frmLogout();
+            frm.FormClosed += frmLogoutClosed;
+            frm.Show();
+        }
+
+
+
+        private void clockOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Code where user logs out. 
+
+            grpTasks.Visible = false;
+            grpUser.Visible = false;
+            lblCurrentUser.Visible = false;
+            dgvCheckedOut.Visible = false;
+            lblCurrentEmp.Visible = false;
+            logOutToolStripMenuItem.Enabled = false;
+            logInToolStripMenuItem.Enabled = true;
+
+        }
+
+        private void whosClockedInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Who is clocked in?
+            frmCurrentlyClocked frm = new frmCurrentlyClocked();
+            frm.FormClosed += frmCurrentlyClockedClosed;
+            frm.Show();
+        }
+
+        private void frmCurrentlyClockedClosed(object sender, EventArgs e)
+        {
+            refresher();
+        }
+
+        private void frmHomeScreen_Load(object sender, EventArgs e)
+        {
+        }
+
+
+        private void MenuItemClickHandler(object sender, EventArgs e)
+        {
+            ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
+
+            grpTasks.Visible = true;
+            grpUser.Visible = true;
+            lblCurrentUser.Visible = true;
+            dgvCheckedOut.Visible = true;
+            lblCurrentEmp.Visible = true;
+            logOutToolStripMenuItem.Enabled = true;
+            logInToolStripMenuItem.Enabled = false;
+
+            lblCurrentEmp.Text = clickedItem.ToString();
+        }
+        
+      
     }
 }
