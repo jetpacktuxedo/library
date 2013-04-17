@@ -36,7 +36,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from cd order by cd_id;";
+                string query = "select CD_ID, Album, Artist, Type, publisher, Release_Date, Price from cd order by cd_id;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -114,8 +114,8 @@ namespace openLibrary_2._0
             {
                 int selectedRow = dgvMusic.CurrentRow.Index;
                 cdid = dgvMusic[0, selectedRow].Value.ToString();
-                albumname = dgvMusic[2, selectedRow].Value.ToString();
-                artistname = dgvMusic[7, selectedRow].Value.ToString();
+                albumname = dgvMusic[1, selectedRow].Value.ToString();
+                artistname = dgvMusic[2, selectedRow].Value.ToString();
                 databaseHandler d = new databaseHandler();
                 lstCurrentTracks.Items.Clear();
 

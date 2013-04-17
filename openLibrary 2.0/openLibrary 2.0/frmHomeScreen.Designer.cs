@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHomeScreen));
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,10 +80,13 @@
             this.btnCheckIn = new System.Windows.Forms.Button();
             this.btnCheckOut = new System.Windows.Forms.Button();
             this.lblCurrentEmp = new System.Windows.Forms.Label();
+            this.pixLogo = new System.Windows.Forms.PictureBox();
+            this.lblCustomerName = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCheckedOut)).BeginInit();
             this.grpUser.SuspendLayout();
             this.grpTasks.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pixLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -96,7 +100,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(670, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(1072, 24);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -114,7 +118,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -122,21 +126,21 @@
             // 
             this.logInToolStripMenuItem.Enabled = false;
             this.logInToolStripMenuItem.Name = "logInToolStripMenuItem";
-            this.logInToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logInToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logInToolStripMenuItem.Text = "Login";
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Enabled = false;
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logOutToolStripMenuItem.Text = "Logout";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.clockOutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -522,16 +526,37 @@
             this.lblCurrentEmp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblCurrentEmp.Visible = false;
             // 
+            // pixLogo
+            // 
+            this.pixLogo.Image = ((System.Drawing.Image)(resources.GetObject("pixLogo.Image")));
+            this.pixLogo.Location = new System.Drawing.Point(479, 476);
+            this.pixLogo.Name = "pixLogo";
+            this.pixLogo.Size = new System.Drawing.Size(634, 381);
+            this.pixLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pixLogo.TabIndex = 8;
+            this.pixLogo.TabStop = false;
+            // 
+            // lblCustomerName
+            // 
+            this.lblCustomerName.AutoSize = true;
+            this.lblCustomerName.Location = new System.Drawing.Point(124, 143);
+            this.lblCustomerName.Name = "lblCustomerName";
+            this.lblCustomerName.Size = new System.Drawing.Size(35, 13);
+            this.lblCustomerName.TabIndex = 9;
+            this.lblCustomerName.Text = "label1";
+            // 
             // frmHomeScreen
             // 
             this.AcceptButton = this.btnGO;
-            this.ClientSize = new System.Drawing.Size(670, 441);
+            this.ClientSize = new System.Drawing.Size(1072, 659);
+            this.Controls.Add(this.lblCustomerName);
+            this.Controls.Add(this.pixLogo);
             this.Controls.Add(this.lblCurrentEmp);
             this.Controls.Add(this.grpTasks);
-            this.Controls.Add(this.lblCurrentUser);
             this.Controls.Add(this.grpUser);
-            this.Controls.Add(this.dgvCheckedOut);
             this.Controls.Add(this.menuStrip2);
+            this.Controls.Add(this.dgvCheckedOut);
+            this.Controls.Add(this.lblCurrentUser);
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "frmHomeScreen";
             this.Load += new System.EventHandler(this.frmHomeScreen_Load);
@@ -541,6 +566,7 @@
             this.grpUser.ResumeLayout(false);
             this.grpUser.PerformLayout();
             this.grpTasks.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pixLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -608,6 +634,8 @@
         private System.Windows.Forms.ToolStripMenuItem clockOutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem whosClockedInToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pixLogo;
+        private System.Windows.Forms.Label lblCustomerName;
     }
 }
 

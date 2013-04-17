@@ -97,8 +97,6 @@ namespace openLibrary_2._0
             return tracker;
         }
 
-
-
         public void closeDatabaseConnection() {
             if (mDB != null) mDB.Close();
         }
@@ -174,8 +172,6 @@ namespace openLibrary_2._0
 
         }
         
-        
-
         public int findBookCount(string sql)
         {
 
@@ -204,6 +200,31 @@ namespace openLibrary_2._0
 
             return -1;
         }
+
+        public string loadCustomerName(string sql)
+        {
+            string cname = "";
+            openDatabaseConnection();
+            mDB.Open();
+            OleDbCommand cmd;
+            OleDbDataReader rdr;
+            cmd = new OleDbCommand(sql, mDB);
+            rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+                cname = (string)rdr[0];
+
+            if (cname == "")
+            {
+                MessageBox.Show("This customer is not in the database.");
+                return "Customer is not in the database.";
+            }
+            else
+                return cname;
+        }
+
+      //  public ArrayList loadCustomerCheckouts(string sql)
+       // { }
+
 
     }
 }

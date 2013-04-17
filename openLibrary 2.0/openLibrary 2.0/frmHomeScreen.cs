@@ -51,11 +51,9 @@ namespace openLibrary_2._0
         private void openToolStripMenuItem_Click(object sender, EventArgs e){
             d.openNew();
          
-            addToolStripMenuItem.Enabled = true;
-            viewToolStripMenuItem.Enabled = true;
+   
             timeClockToolStripMenuItem.Enabled = true;
             logInToolStripMenuItem.Enabled = true;
-            editItemToolStripMenuItem.Enabled = true;
             refresher();
             
         }
@@ -125,6 +123,8 @@ namespace openLibrary_2._0
         private void btnGO_Click(object sender, EventArgs e)
         {
             string userID = txtID.Text;
+            string sql = "SELECT first_name & \" \" & last_name FROM customer WHERE customer_id = '" + userID + "'";
+            lblCustomerName.Text = d.loadCustomerName(sql);
 
 
         }
@@ -139,6 +139,7 @@ namespace openLibrary_2._0
         {
             ArrayList clocked = d.whoIsClockedIn();
             logInToolStripMenuItem.DropDownItems.Clear();
+            string userslogged = " (No users)";
 
             foreach(string x in clocked)
             {
@@ -151,9 +152,22 @@ namespace openLibrary_2._0
             }
 
             if (clocked.Count == 0)
+            {
                 logInToolStripMenuItem.Enabled = false;
+                clockOutToolStripMenuItem1.Enabled = false;
+                whosClockedInToolStripMenuItem.Enabled = false;
+                whosClockedInToolStripMenuItem.Text = "Who's Clocked In? (None)";
+                clockOutToolStripMenuItem1.Text += userslogged;
+            }
             else
+            {
                 logInToolStripMenuItem.Enabled = true;
+                clockOutToolStripMenuItem1.Enabled = true;
+                whosClockedInToolStripMenuItem.Enabled = true;
+                whosClockedInToolStripMenuItem.Text = "Who's Clocked in? (" + clocked.Count + ")";
+                clockOutToolStripMenuItem1.Text = "Clock Out";
+            }
+
         }
 
         private void logInToolStripMenuItem_ (object sender, ToolStripItemClickedEventArgs e)
@@ -199,7 +213,10 @@ namespace openLibrary_2._0
             lblCurrentEmp.Visible = false;
             logOutToolStripMenuItem.Enabled = false;
             logInToolStripMenuItem.Enabled = true;
-
+            pixLogo.Visible = true;
+            addToolStripMenuItem.Enabled = false;
+            viewToolStripMenuItem.Enabled = false;
+            editItemToolStripMenuItem.Enabled = false;
         }
 
         private void whosClockedInToolStripMenuItem_Click(object sender, EventArgs e)
@@ -222,6 +239,9 @@ namespace openLibrary_2._0
 
         private void MenuItemClickHandler(object sender, EventArgs e)
         {
+
+            //Code when a user logs in.
+
             ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
 
             grpTasks.Visible = true;
@@ -231,8 +251,13 @@ namespace openLibrary_2._0
             lblCurrentEmp.Visible = true;
             logOutToolStripMenuItem.Enabled = true;
             logInToolStripMenuItem.Enabled = false;
-
+            pixLogo.Visible = false;
             lblCurrentEmp.Text = clickedItem.ToString();
+            addToolStripMenuItem.Enabled = true;
+            viewToolStripMenuItem.Enabled = true;
+            editItemToolStripMenuItem.Enabled = true;
+
+
         }
         
       

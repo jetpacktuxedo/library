@@ -84,3 +84,5 @@ C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary 2.0.csproj.GenerateResource.Cache
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmCurrentlyClocked.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmLogout.resources
+C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmCurrentlyClocked.resources
+C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmLogout.resources
