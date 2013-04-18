@@ -69,7 +69,6 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtID = new System.Windows.Forms.TextBox();
             this.lblCurrentUser = new System.Windows.Forms.Label();
-            this.dgvCheckedOut = new System.Windows.Forms.DataGridView();
             this.grpUser = new System.Windows.Forms.GroupBox();
             this.btnGO = new System.Windows.Forms.Button();
             this.grpTasks = new System.Windows.Forms.GroupBox();
@@ -82,8 +81,8 @@
             this.lblCurrentEmp = new System.Windows.Forms.Label();
             this.pixLogo = new System.Windows.Forms.PictureBox();
             this.lblCustomerName = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCheckedOut)).BeginInit();
             this.grpUser.SuspendLayout();
             this.grpTasks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pixLogo)).BeginInit();
@@ -100,7 +99,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1072, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(774, 24);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -114,11 +113,12 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.toolStripMenuItem1.Text = "File";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -126,21 +126,21 @@
             // 
             this.logInToolStripMenuItem.Enabled = false;
             this.logInToolStripMenuItem.Name = "logInToolStripMenuItem";
-            this.logInToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.logInToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logInToolStripMenuItem.Text = "Login";
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Enabled = false;
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logOutToolStripMenuItem.Text = "Logout";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.clockOutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -396,7 +396,7 @@
             this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(18, 32);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(297, 35);
+            this.txtID.Size = new System.Drawing.Size(392, 35);
             this.txtID.TabIndex = 1;
             // 
             // lblCurrentUser
@@ -409,22 +409,13 @@
             this.lblCurrentUser.Text = "CURRENT USER: ";
             this.lblCurrentUser.Visible = false;
             // 
-            // dgvCheckedOut
-            // 
-            this.dgvCheckedOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCheckedOut.Location = new System.Drawing.Point(22, 178);
-            this.dgvCheckedOut.Name = "dgvCheckedOut";
-            this.dgvCheckedOut.Size = new System.Drawing.Size(380, 251);
-            this.dgvCheckedOut.TabIndex = 4;
-            this.dgvCheckedOut.Visible = false;
-            // 
             // grpUser
             // 
             this.grpUser.Controls.Add(this.btnGO);
             this.grpUser.Controls.Add(this.txtID);
             this.grpUser.Location = new System.Drawing.Point(22, 42);
             this.grpUser.Name = "grpUser";
-            this.grpUser.Size = new System.Drawing.Size(380, 83);
+            this.grpUser.Size = new System.Drawing.Size(495, 83);
             this.grpUser.TabIndex = 5;
             this.grpUser.TabStop = false;
             this.grpUser.Text = "User ID:";
@@ -432,7 +423,7 @@
             // 
             // btnGO
             // 
-            this.btnGO.Location = new System.Drawing.Point(321, 32);
+            this.btnGO.Location = new System.Drawing.Point(435, 32);
             this.btnGO.Name = "btnGO";
             this.btnGO.Size = new System.Drawing.Size(44, 35);
             this.btnGO.TabIndex = 2;
@@ -448,7 +439,7 @@
             this.grpTasks.Controls.Add(this.btnEditInfo);
             this.grpTasks.Controls.Add(this.btnCheckIn);
             this.grpTasks.Controls.Add(this.btnCheckOut);
-            this.grpTasks.Location = new System.Drawing.Point(436, 64);
+            this.grpTasks.Location = new System.Drawing.Point(537, 64);
             this.grpTasks.Name = "grpTasks";
             this.grpTasks.Size = new System.Drawing.Size(222, 365);
             this.grpTasks.TabIndex = 6;
@@ -518,7 +509,7 @@
             // 
             // lblCurrentEmp
             // 
-            this.lblCurrentEmp.Location = new System.Drawing.Point(558, 24);
+            this.lblCurrentEmp.Location = new System.Drawing.Point(659, 24);
             this.lblCurrentEmp.Name = "lblCurrentEmp";
             this.lblCurrentEmp.Size = new System.Drawing.Size(100, 23);
             this.lblCurrentEmp.TabIndex = 7;
@@ -529,9 +520,9 @@
             // pixLogo
             // 
             this.pixLogo.Image = ((System.Drawing.Image)(resources.GetObject("pixLogo.Image")));
-            this.pixLogo.Location = new System.Drawing.Point(479, 476);
+            this.pixLogo.Location = new System.Drawing.Point(58, 47);
             this.pixLogo.Name = "pixLogo";
-            this.pixLogo.Size = new System.Drawing.Size(634, 381);
+            this.pixLogo.Size = new System.Drawing.Size(659, 381);
             this.pixLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pixLogo.TabIndex = 8;
             this.pixLogo.TabStop = false;
@@ -541,28 +532,35 @@
             this.lblCustomerName.AutoSize = true;
             this.lblCustomerName.Location = new System.Drawing.Point(124, 143);
             this.lblCustomerName.Name = "lblCustomerName";
-            this.lblCustomerName.Size = new System.Drawing.Size(35, 13);
+            this.lblCustomerName.Size = new System.Drawing.Size(0, 13);
             this.lblCustomerName.TabIndex = 9;
-            this.lblCustomerName.Text = "label1";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(22, 177);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(495, 251);
+            this.listBox1.TabIndex = 10;
+            this.listBox1.Visible = false;
             // 
             // frmHomeScreen
             // 
             this.AcceptButton = this.btnGO;
-            this.ClientSize = new System.Drawing.Size(1072, 659);
-            this.Controls.Add(this.lblCustomerName);
+            this.ClientSize = new System.Drawing.Size(774, 446);
             this.Controls.Add(this.pixLogo);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lblCustomerName);
             this.Controls.Add(this.lblCurrentEmp);
             this.Controls.Add(this.grpTasks);
             this.Controls.Add(this.grpUser);
             this.Controls.Add(this.menuStrip2);
-            this.Controls.Add(this.dgvCheckedOut);
             this.Controls.Add(this.lblCurrentUser);
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "frmHomeScreen";
             this.Load += new System.EventHandler(this.frmHomeScreen_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCheckedOut)).EndInit();
             this.grpUser.ResumeLayout(false);
             this.grpUser.PerformLayout();
             this.grpTasks.ResumeLayout(false);
@@ -616,7 +614,6 @@
         private System.Windows.Forms.ToolStripMenuItem ViewEmployeesToolStripMenuItem;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lblCurrentUser;
-        private System.Windows.Forms.DataGridView dgvCheckedOut;
         private System.Windows.Forms.GroupBox grpUser;
         private System.Windows.Forms.Button btnGO;
         private System.Windows.Forms.GroupBox grpTasks;
@@ -636,6 +633,7 @@
         private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
         private System.Windows.Forms.PictureBox pixLogo;
         private System.Windows.Forms.Label lblCustomerName;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

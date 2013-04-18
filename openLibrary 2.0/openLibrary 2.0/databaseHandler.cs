@@ -222,8 +222,62 @@ namespace openLibrary_2._0
                 return cname;
         }
 
-      //  public ArrayList loadCustomerCheckouts(string sql)
-       // { }
+        public ArrayList loadCustomerCheckouts(string customerID)
+        {
+            ArrayList CurrentlyCheckedOut = new ArrayList();
+            try
+            {
+               
+                string booksql = "select title, due_date from book where checked_out = yes and customer_id = '" + customerID + "';";
+                string moviesql = "select title, due_date from movie where checked_out = yes and customer_id ='" + customerID + "';";
+                string gamesql = "select title, due_date from game where checked_out = yes and customer_id ='" + customerID + "';";
+                string musicsql = "select album, due_date from cd where checked_out = yes and customer_id ='" + customerID + "';";
+
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                OleDbDataReader rdr;
+
+                CurrentlyCheckedOut.Add("TYPE \t DUE DATE \t TITLE");
+                CurrentlyCheckedOut.Add("============================================================================");
+
+                //Add the customer's books to the ArrayList
+                cmd = new OleDbCommand(booksql, mDB);
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                    CurrentlyCheckedOut.Add("Book:       " + Convert.ToDateTime(rdr["due_date"]).ToString("dd/MM/yyyy") + "\t" + (string)rdr["title"]);
+
+                CurrentlyCheckedOut.Add("");
+
+                //Add the customer's movies to the ArrayList
+                cmd = new OleDbCommand(moviesql, mDB);
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                    CurrentlyCheckedOut.Add("Movie:      " + Convert.ToDateTime(rdr["due_date"]).ToString("dd/MM/yyyy") + "\t" + (string)rdr["title"]);
+
+                CurrentlyCheckedOut.Add("");
+
+                //Add the customer's games to the ArrayList
+                cmd = new OleDbCommand(gamesql, mDB);
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                    CurrentlyCheckedOut.Add("Game:      " + Convert.ToDateTime(rdr["due_date"]).ToString("dd/MM/yyyy") + "\t" + (string)rdr["title"]);
+
+                CurrentlyCheckedOut.Add("");
+
+                //Add the customer's music to the ArrayList
+                cmd = new OleDbCommand(musicsql, mDB);
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                    CurrentlyCheckedOut.Add("Music:      " + Convert.ToDateTime(rdr["due_date"]).ToString("dd/MM/yyyy") + "\t" + (string)rdr["album"]);
+            }
+            catch(Exception x)
+            {
+                MessageBox.Show(x.Message + x.ToString());
+            }
+
+            return CurrentlyCheckedOut;     
+        }
 
 
     }

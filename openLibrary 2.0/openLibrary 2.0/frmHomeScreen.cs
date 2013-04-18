@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Configuration;
 using System.Collections;
+using System.Configuration;
 
 namespace openLibrary_2._0
 {
@@ -20,6 +21,8 @@ namespace openLibrary_2._0
         databaseHandler d = new databaseHandler();
         public string loggedin;
         ToolStripMenuItem MI = new ToolStripMenuItem();
+        public string connectionString;
+
 
 
         public frmHomeScreen()
@@ -126,7 +129,13 @@ namespace openLibrary_2._0
             string sql = "SELECT first_name & \" \" & last_name FROM customer WHERE customer_id = '" + userID + "'";
             lblCustomerName.Text = d.loadCustomerName(sql);
 
+            ArrayList CheckedOut = new ArrayList();
+            CheckedOut = d.loadCustomerCheckouts(userID);
 
+            foreach (string x in CheckedOut)
+            {
+                listBox1.Items.Add(x);
+            }    
         }
 
 
@@ -209,7 +218,6 @@ namespace openLibrary_2._0
             grpTasks.Visible = false;
             grpUser.Visible = false;
             lblCurrentUser.Visible = false;
-            dgvCheckedOut.Visible = false;
             lblCurrentEmp.Visible = false;
             logOutToolStripMenuItem.Enabled = false;
             logInToolStripMenuItem.Enabled = true;
@@ -217,6 +225,7 @@ namespace openLibrary_2._0
             addToolStripMenuItem.Enabled = false;
             viewToolStripMenuItem.Enabled = false;
             editItemToolStripMenuItem.Enabled = false;
+            listBox1.Visible = false;
         }
 
         private void whosClockedInToolStripMenuItem_Click(object sender, EventArgs e)
@@ -247,7 +256,7 @@ namespace openLibrary_2._0
             grpTasks.Visible = true;
             grpUser.Visible = true;
             lblCurrentUser.Visible = true;
-            dgvCheckedOut.Visible = true;
+            listBox1.Visible = true;
             lblCurrentEmp.Visible = true;
             logOutToolStripMenuItem.Enabled = true;
             logInToolStripMenuItem.Enabled = false;
@@ -257,6 +266,11 @@ namespace openLibrary_2._0
             viewToolStripMenuItem.Enabled = true;
             editItemToolStripMenuItem.Enabled = true;
 
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
 
         }
         
