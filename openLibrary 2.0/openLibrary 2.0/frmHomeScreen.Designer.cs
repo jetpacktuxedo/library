@@ -81,7 +81,8 @@
             this.lblCurrentEmp = new System.Windows.Forms.Label();
             this.pixLogo = new System.Windows.Forms.PictureBox();
             this.lblCustomerName = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lstCurrentlyCheckedOut = new System.Windows.Forms.ListBox();
+            this.btnRenewItem = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.grpUser.SuspendLayout();
             this.grpTasks.SuspendLayout();
@@ -99,7 +100,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(774, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(1353, 24);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -118,7 +119,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -126,21 +127,21 @@
             // 
             this.logInToolStripMenuItem.Enabled = false;
             this.logInToolStripMenuItem.Name = "logInToolStripMenuItem";
-            this.logInToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logInToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logInToolStripMenuItem.Text = "Login";
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Enabled = false;
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logOutToolStripMenuItem.Text = "Logout";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.clockOutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -398,6 +399,7 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(392, 35);
             this.txtID.TabIndex = 1;
+            this.txtID.Text = "32967000742087";
             // 
             // lblCurrentUser
             // 
@@ -433,6 +435,7 @@
             // 
             // grpTasks
             // 
+            this.grpTasks.Controls.Add(this.btnRenewItem);
             this.grpTasks.Controls.Add(this.btnEnd);
             this.grpTasks.Controls.Add(this.btnFindItem);
             this.grpTasks.Controls.Add(this.btnFindUser);
@@ -450,9 +453,9 @@
             // btnEnd
             // 
             this.btnEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnd.Location = new System.Drawing.Point(21, 301);
+            this.btnEnd.Location = new System.Drawing.Point(21, 308);
             this.btnEnd.Name = "btnEnd";
-            this.btnEnd.Size = new System.Drawing.Size(178, 47);
+            this.btnEnd.Size = new System.Drawing.Size(178, 36);
             this.btnEnd.TabIndex = 11;
             this.btnEnd.Text = "End Transaction";
             this.btnEnd.UseVisualStyleBackColor = true;
@@ -460,9 +463,9 @@
             // btnFindItem
             // 
             this.btnFindItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFindItem.Location = new System.Drawing.Point(21, 248);
+            this.btnFindItem.Location = new System.Drawing.Point(21, 266);
             this.btnFindItem.Name = "btnFindItem";
-            this.btnFindItem.Size = new System.Drawing.Size(178, 47);
+            this.btnFindItem.Size = new System.Drawing.Size(178, 36);
             this.btnFindItem.TabIndex = 10;
             this.btnFindItem.Text = "Find Item";
             this.btnFindItem.UseVisualStyleBackColor = true;
@@ -470,9 +473,9 @@
             // btnFindUser
             // 
             this.btnFindUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFindUser.Location = new System.Drawing.Point(21, 195);
+            this.btnFindUser.Location = new System.Drawing.Point(21, 224);
             this.btnFindUser.Name = "btnFindUser";
-            this.btnFindUser.Size = new System.Drawing.Size(178, 47);
+            this.btnFindUser.Size = new System.Drawing.Size(178, 36);
             this.btnFindUser.TabIndex = 7;
             this.btnFindUser.Text = "Find User";
             this.btnFindUser.UseVisualStyleBackColor = true;
@@ -480,9 +483,9 @@
             // btnEditInfo
             // 
             this.btnEditInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditInfo.Location = new System.Drawing.Point(21, 142);
+            this.btnEditInfo.Location = new System.Drawing.Point(21, 182);
             this.btnEditInfo.Name = "btnEditInfo";
-            this.btnEditInfo.Size = new System.Drawing.Size(178, 47);
+            this.btnEditInfo.Size = new System.Drawing.Size(178, 36);
             this.btnEditInfo.TabIndex = 9;
             this.btnEditInfo.Text = "Edit User Information";
             this.btnEditInfo.UseVisualStyleBackColor = true;
@@ -490,9 +493,9 @@
             // btnCheckIn
             // 
             this.btnCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckIn.Location = new System.Drawing.Point(21, 89);
+            this.btnCheckIn.Location = new System.Drawing.Point(21, 78);
             this.btnCheckIn.Name = "btnCheckIn";
-            this.btnCheckIn.Size = new System.Drawing.Size(178, 47);
+            this.btnCheckIn.Size = new System.Drawing.Size(178, 36);
             this.btnCheckIn.TabIndex = 8;
             this.btnCheckIn.Text = "Check In";
             this.btnCheckIn.UseVisualStyleBackColor = true;
@@ -502,7 +505,7 @@
             this.btnCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckOut.Location = new System.Drawing.Point(21, 36);
             this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(178, 47);
+            this.btnCheckOut.Size = new System.Drawing.Size(178, 36);
             this.btnCheckOut.TabIndex = 7;
             this.btnCheckOut.Text = "Check Out";
             this.btnCheckOut.UseVisualStyleBackColor = true;
@@ -520,7 +523,7 @@
             // pixLogo
             // 
             this.pixLogo.Image = ((System.Drawing.Image)(resources.GetObject("pixLogo.Image")));
-            this.pixLogo.Location = new System.Drawing.Point(58, 47);
+            this.pixLogo.Location = new System.Drawing.Point(765, 27);
             this.pixLogo.Name = "pixLogo";
             this.pixLogo.Size = new System.Drawing.Size(659, 381);
             this.pixLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -535,21 +538,34 @@
             this.lblCustomerName.Size = new System.Drawing.Size(0, 13);
             this.lblCustomerName.TabIndex = 9;
             // 
-            // listBox1
+            // lstCurrentlyCheckedOut
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(22, 177);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(495, 251);
-            this.listBox1.TabIndex = 10;
-            this.listBox1.Visible = false;
+            this.lstCurrentlyCheckedOut.FormattingEnabled = true;
+            this.lstCurrentlyCheckedOut.Location = new System.Drawing.Point(22, 177);
+            this.lstCurrentlyCheckedOut.Name = "lstCurrentlyCheckedOut";
+            this.lstCurrentlyCheckedOut.Size = new System.Drawing.Size(495, 251);
+            this.lstCurrentlyCheckedOut.TabIndex = 10;
+            this.lstCurrentlyCheckedOut.Visible = false;
+            this.lstCurrentlyCheckedOut.SelectedIndexChanged += new System.EventHandler(this.lstCurrentlyCheckedOut_SelectedIndexChanged);
+            // 
+            // btnRenewItem
+            // 
+            this.btnRenewItem.Enabled = false;
+            this.btnRenewItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRenewItem.Location = new System.Drawing.Point(21, 120);
+            this.btnRenewItem.Name = "btnRenewItem";
+            this.btnRenewItem.Size = new System.Drawing.Size(178, 36);
+            this.btnRenewItem.TabIndex = 12;
+            this.btnRenewItem.Text = "Renew Item";
+            this.btnRenewItem.UseVisualStyleBackColor = true;
+            this.btnRenewItem.Click += new System.EventHandler(this.btnRenewItem_Click);
             // 
             // frmHomeScreen
             // 
             this.AcceptButton = this.btnGO;
-            this.ClientSize = new System.Drawing.Size(774, 446);
+            this.ClientSize = new System.Drawing.Size(1353, 717);
             this.Controls.Add(this.pixLogo);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lstCurrentlyCheckedOut);
             this.Controls.Add(this.lblCustomerName);
             this.Controls.Add(this.lblCurrentEmp);
             this.Controls.Add(this.grpTasks);
@@ -633,7 +649,8 @@
         private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
         private System.Windows.Forms.PictureBox pixLogo;
         private System.Windows.Forms.Label lblCustomerName;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lstCurrentlyCheckedOut;
+        private System.Windows.Forms.Button btnRenewItem;
     }
 }
 

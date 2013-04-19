@@ -22,7 +22,7 @@ namespace openLibrary_2._0
         public string connectionString;
 
         public void openNew()
-        {                  
+        {
             OpenFileDialog ofd;
             try
             {
@@ -51,11 +51,12 @@ namespace openLibrary_2._0
             }
         }
 
-        public void loadDatabaseTable(string sql) {
+        public void loadDatabaseTable(string sql)
+        {
 
             try
             {
-                
+
                 openDatabaseConnection();
                 mDB.Open();
                 OleDbCommand cmd;
@@ -68,9 +69,9 @@ namespace openLibrary_2._0
             catch (Exception ee) { MessageBox.Show("Something Went Wrong: " + ee.Message + ee.ToString()); }
         }
 
-        public ArrayList populateTracks(string sql) 
+        public ArrayList populateTracks(string sql)
         {
-            
+
             ArrayList tracker = new ArrayList();
             try
             {
@@ -80,9 +81,9 @@ namespace openLibrary_2._0
                 OleDbDataReader rdr;
                 cmd = new OleDbCommand(sql, mDB);
                 rdr = cmd.ExecuteReader();
-                
 
-                
+
+
                 while (rdr.Read())
                 {
                     tracker.Add((string)rdr["Disc_Number"] + "\t" + (string)rdr["Track_Number"] + "\t" + (string)rdr["Track_name"]);
@@ -97,16 +98,18 @@ namespace openLibrary_2._0
             return tracker;
         }
 
-        public void closeDatabaseConnection() {
+        public void closeDatabaseConnection()
+        {
             if (mDB != null) mDB.Close();
         }
 
-        public void openDatabaseConnection() {
+        public void openDatabaseConnection()
+        {
             connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
             mDB = new OleDbConnection(connectionString);
         }
 
-        public void clockIN(string id) 
+        public void clockIN(string id)
         {
             try
             {
@@ -120,7 +123,7 @@ namespace openLibrary_2._0
 
                 MessageBox.Show("Succesfully clocked in at: " + DateTime.Now.ToShortTimeString());
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show("Unfortunantely, there was an error." + e.ToString());
             }
@@ -140,7 +143,25 @@ namespace openLibrary_2._0
 
                 MessageBox.Show("Succesfully clocked out at: " + DateTime.Now.ToShortTimeString());
             }
-            catch(Exception e)
+            catch (Exception e)
+            {
+                MessageBox.Show("Unfortunantely, there was an error." + e.ToString());
+            }
+        }
+
+        public void renewDue(string sql)
+        {
+            try
+            {
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                cmd = new OleDbCommand(sql, mDB);
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("The book has been renewed successfully. It is now due " + System.DateTime.Now.AddDays(14).ToShortDateString());
+            }
+            catch (Exception e)
             {
                 MessageBox.Show("Unfortunantely, there was an error." + e.ToString());
             }
@@ -164,14 +185,14 @@ namespace openLibrary_2._0
                 }
 
             }
-            catch 
+            catch
             {
                 MessageBox.Show("Sorry, an error occured.");
             }
             return clocked;
 
         }
-        
+
         public int findBookCount(string sql)
         {
 
@@ -227,7 +248,7 @@ namespace openLibrary_2._0
             ArrayList CurrentlyCheckedOut = new ArrayList();
             try
             {
-               
+
                 string booksql = "select title, due_date from book where checked_out = yes and customer_id = '" + customerID + "';";
                 string moviesql = "select title, due_date from movie where checked_out = yes and customer_id ='" + customerID + "';";
                 string gamesql = "select title, due_date from game where checked_out = yes and customer_id ='" + customerID + "';";
@@ -237,6 +258,7 @@ namespace openLibrary_2._0
                 mDB.Open();
                 OleDbCommand cmd;
                 OleDbDataReader rdr;
+                bool added = false;
 
                 CurrentlyCheckedOut.Add("TYPE \t DUE DATE \t TITLE");
                 CurrentlyCheckedOut.Add("============================================================================");
@@ -245,40 +267,65 @@ namespace openLibrary_2._0
                 cmd = new OleDbCommand(booksql, mDB);
                 rdr = cmd.ExecuteReader();
                 while (rdr.Read())
-                    CurrentlyCheckedOut.Add("Book:       " + Convert.ToDateTime(rdr["due_date"]).ToString("dd/MM/yyyy") + "\t" + (string)rdr["title"]);
-
-                CurrentlyCheckedOut.Add("");
+                {
+                    CurrentlyCheckedOut.Add("Book:\t" + Convert.ToDateTime(rdr["due_date"]).ToString("MM/dd/yyyy") + "\t" + (string)rdr["title"]);
+                    added = true;
+                }
+                if (added == true)
+                    CurrentlyCheckedOut.Add("");
 
                 //Add the customer's movies to the ArrayList
                 cmd = new OleDbCommand(moviesql, mDB);
                 rdr = cmd.ExecuteReader();
+                added = false;
                 while (rdr.Read())
-                    CurrentlyCheckedOut.Add("Movie:      " + Convert.ToDateTime(rdr["due_date"]).ToString("dd/MM/yyyy") + "\t" + (string)rdr["title"]);
+                {
+                    CurrentlyCheckedOut.Add("Movie\t" + Convert.ToDateTime(rdr["due_date"]).ToString("MM/dd/yyyy") + "\t" + (string)rdr["title"]);
+                    added = true;
+                }
 
-                CurrentlyCheckedOut.Add("");
+                if (added == true)
+                    CurrentlyCheckedOut.Add("");
 
                 //Add the customer's games to the ArrayList
                 cmd = new OleDbCommand(gamesql, mDB);
                 rdr = cmd.ExecuteReader();
+                added = false;
                 while (rdr.Read())
-                    CurrentlyCheckedOut.Add("Game:      " + Convert.ToDateTime(rdr["due_date"]).ToString("dd/MM/yyyy") + "\t" + (string)rdr["title"]);
+                {
+                    CurrentlyCheckedOut.Add("Game:\t" + Convert.ToDateTime(rdr["due_date"]).ToString("MM/dd/yyyy") + "\t" + (string)rdr["title"]);
+                    added = true;
+                }
 
-                CurrentlyCheckedOut.Add("");
+                if (added == true)
+                    CurrentlyCheckedOut.Add("");
 
                 //Add the customer's music to the ArrayList
                 cmd = new OleDbCommand(musicsql, mDB);
                 rdr = cmd.ExecuteReader();
+                added = false;
+
                 while (rdr.Read())
-                    CurrentlyCheckedOut.Add("Music:      " + Convert.ToDateTime(rdr["due_date"]).ToString("dd/MM/yyyy") + "\t" + (string)rdr["album"]);
+                {
+                    CurrentlyCheckedOut.Add("Music:\t" + Convert.ToDateTime(rdr["due_date"]).ToString("MM/dd/yyyy") + "\t" + (string)rdr["album"]);
+                }
             }
-            catch(Exception x)
+            catch (Exception x)
             {
                 MessageBox.Show(x.Message + x.ToString());
             }
 
-            return CurrentlyCheckedOut;     
+            return CurrentlyCheckedOut;
+        }
+
+        public string[] Deserialize(string serializedRecord)
+        {
+            string[] values = serializedRecord.Split('\t');
+
+            return values;
         }
 
 
     }
 }
+

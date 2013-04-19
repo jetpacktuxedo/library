@@ -22,7 +22,7 @@ namespace openLibrary_2._0
         public string loggedin;
         ToolStripMenuItem MI = new ToolStripMenuItem();
         public string connectionString;
-
+        string[] listLine = new string[2];
 
 
         public frmHomeScreen()
@@ -125,6 +125,7 @@ namespace openLibrary_2._0
 
         private void btnGO_Click(object sender, EventArgs e)
         {
+            lstCurrentlyCheckedOut.Items.Clear();
             string userID = txtID.Text;
             string sql = "SELECT first_name & \" \" & last_name FROM customer WHERE customer_id = '" + userID + "'";
             lblCustomerName.Text = d.loadCustomerName(sql);
@@ -132,9 +133,12 @@ namespace openLibrary_2._0
             ArrayList CheckedOut = new ArrayList();
             CheckedOut = d.loadCustomerCheckouts(userID);
 
+            if (CheckedOut.Count == 0)
+                lstCurrentlyCheckedOut.Items.Add("The customer does not currently have any items checked out.");
+
             foreach (string x in CheckedOut)
             {
-                listBox1.Items.Add(x);
+                lstCurrentlyCheckedOut.Items.Add(x);
             }    
         }
 
@@ -225,7 +229,7 @@ namespace openLibrary_2._0
             addToolStripMenuItem.Enabled = false;
             viewToolStripMenuItem.Enabled = false;
             editItemToolStripMenuItem.Enabled = false;
-            listBox1.Visible = false;
+            lstCurrentlyCheckedOut.Visible = false;
         }
 
         private void whosClockedInToolStripMenuItem_Click(object sender, EventArgs e)
@@ -256,7 +260,7 @@ namespace openLibrary_2._0
             grpTasks.Visible = true;
             grpUser.Visible = true;
             lblCurrentUser.Visible = true;
-            listBox1.Visible = true;
+            lstCurrentlyCheckedOut.Visible = true;
             lblCurrentEmp.Visible = true;
             logOutToolStripMenuItem.Enabled = true;
             logInToolStripMenuItem.Enabled = false;
@@ -272,6 +276,66 @@ namespace openLibrary_2._0
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnRenewItem_Click(object sender, EventArgs e)
+        {
+        string table = "";
+
+        if (listLine[0] == "Book")
+            table = "book";
+        else if (listLine[0] == "Music")
+            table = "cd";
+        else if (listLine[0] == "Game")
+            table = "game";
+        else
+            table = "movie";
+
+
+        DateTime due = DateTime.Parse(listLine[1]);
+        due = due.AddDays(14);
+
+
+        string sql2 = "update " + table + "set (due_date = '" + System.DateTime.Now.AddDays(14).ToShortDateString() + "' where  ;";
+
+        d.renewDue(sql2);
+        
+        }
+
+        private void lstCurrentlyCheckedOut_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string mediaType = "", title = "", dueDate = "";
+        
+
+            if (lstCurrentlyCheckedOut.SelectedIndex > 1)
+            {
+                if (lstCurrentlyCheckedOut.SelectedItem.ToString() != "")
+                {
+                    btnRenewItem.Enabled = true;
+                    listLine = d.Deserialize(lstCurrentlyCheckedOut.SelectedItem.ToString());
+
+                    try
+                    {
+                        mediaType = listLine[0];
+                        dueDate = listLine[1];
+                        title = listLine[2];
+                    }
+                    catch (Exception ee)
+                    {
+                        MessageBox.Show(ee.Message);
+                    }
+
+                    
+
+
+
+
+                }
+                else
+                    btnRenewItem.Enabled = false;
+            }
+            else
+                btnRenewItem.Enabled = false;
         }
         
       
