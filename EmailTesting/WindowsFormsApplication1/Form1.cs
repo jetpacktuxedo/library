@@ -16,14 +16,17 @@ namespace WindowsFormsApplication1 {
 
         private void btnSend_Click(object sender, EventArgs e) {
             string email = txtEmail.Text, subject = txtSubject.Text, msg = txtBody.Text;
-
+            mail myMail = new mail();
+            myMail.send(email, subject, msg);
+/*
             System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
             message.To.Add(email);
             message.Subject = subject;
-            message.From = new System.Net.Mail.MailAddress("maddene@purdue.edu");
+            message.From = new System.Net.Mail.MailAddress("crazeh.monkeh@gmail.com");
             message.Body = msg;
-            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.purdue.edu");
-            smtp.Send(message);
+            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.google.com");
+            smtp.Send(message); 
+*/
         }
     }
 }
