@@ -23,6 +23,7 @@ namespace openLibrary_2._0
         ToolStripMenuItem MI = new ToolStripMenuItem();
         public string connectionString;
         string[] listLine = new string[2];
+        string userID;
 
 
         public frmHomeScreen()
@@ -125,10 +126,17 @@ namespace openLibrary_2._0
 
         private void btnGO_Click(object sender, EventArgs e)
         {
-            lstCurrentlyCheckedOut.Items.Clear();
-            string userID = txtID.Text;
+            userID = txtID.Text;
             string sql = "SELECT first_name & \" \" & last_name FROM customer WHERE customer_id = '" + userID + "'";
             lblCustomerName.Text = d.loadCustomerName(sql);
+
+            loadCheckouts(userID);
+            
+        }
+
+        private void loadCheckouts(string userID)
+        {   
+            lstCurrentlyCheckedOut.Items.Clear();
 
             ArrayList CheckedOut = new ArrayList();
             CheckedOut = d.loadCustomerCheckouts(userID);
@@ -140,6 +148,7 @@ namespace openLibrary_2._0
             {
                 lstCurrentlyCheckedOut.Items.Add(x);
             }    
+        
         }
 
 
@@ -281,24 +290,39 @@ namespace openLibrary_2._0
         private void btnRenewItem_Click(object sender, EventArgs e)
         {
         string table = "";
+        string column = "";
 
-        if (listLine[0] == "Book")
+        if (listLine[0] == "Book:")
+        {
             table = "book";
-        else if (listLine[0] == "Music")
+            column = "title";
+        }
+        else if (listLine[0] == "Music:")
+        {
             table = "cd";
-        else if (listLine[0] == "Game")
+            column = "album";
+        }
+        else if (listLine[0] == "Game:")
+        {
             table = "game";
+            column = "title";
+        }
         else
+        {
             table = "movie";
+            column = "title";
+        }
 
 
         DateTime due = DateTime.Parse(listLine[1]);
-        due = due.AddDays(14);
 
 
-        string sql2 = "update " + table + "set (due_date = '" + System.DateTime.Now.AddDays(14).ToShortDateString() + "' where  ;";
+
+        string sql2 = "update " + table + " set due_date = '" + System.DateTime.Now.AddDays(14).ToShortDateString() + "' where  " + column + " = '" + listLine[2] + "' and due_date = #" + due.ToShortDateString() + "# and customer_id = '" + userID + "';";
 
         d.renewDue(sql2);
+
+        loadCheckouts(userID);
         
         }
 
@@ -319,6 +343,7 @@ namespace openLibrary_2._0
                         mediaType = listLine[0];
                         dueDate = listLine[1];
                         title = listLine[2];
+
                     }
                     catch (Exception ee)
                     {
