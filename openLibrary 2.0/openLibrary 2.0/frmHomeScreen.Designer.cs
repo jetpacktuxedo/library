@@ -72,17 +72,21 @@
             this.grpUser = new System.Windows.Forms.GroupBox();
             this.btnGO = new System.Windows.Forms.Button();
             this.grpTasks = new System.Windows.Forms.GroupBox();
+            this.btnRenewItem = new System.Windows.Forms.Button();
             this.btnEnd = new System.Windows.Forms.Button();
             this.btnFindItem = new System.Windows.Forms.Button();
             this.btnFindUser = new System.Windows.Forms.Button();
             this.btnEditInfo = new System.Windows.Forms.Button();
             this.btnCheckIn = new System.Windows.Forms.Button();
-            this.btnCheckOut = new System.Windows.Forms.Button();
+            this.btnCheckout = new System.Windows.Forms.Button();
             this.lblCurrentEmp = new System.Windows.Forms.Label();
             this.pixLogo = new System.Windows.Forms.PictureBox();
             this.lblCustomerName = new System.Windows.Forms.Label();
             this.lstCurrentlyCheckedOut = new System.Windows.Forms.ListBox();
-            this.btnRenewItem = new System.Windows.Forms.Button();
+            this.lstCheckout = new System.Windows.Forms.ListBox();
+            this.txtCheckout = new System.Windows.Forms.TextBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnComplete = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.grpUser.SuspendLayout();
             this.grpTasks.SuspendLayout();
@@ -441,7 +445,7 @@
             this.grpTasks.Controls.Add(this.btnFindUser);
             this.grpTasks.Controls.Add(this.btnEditInfo);
             this.grpTasks.Controls.Add(this.btnCheckIn);
-            this.grpTasks.Controls.Add(this.btnCheckOut);
+            this.grpTasks.Controls.Add(this.btnCheckout);
             this.grpTasks.Location = new System.Drawing.Point(537, 64);
             this.grpTasks.Name = "grpTasks";
             this.grpTasks.Size = new System.Drawing.Size(222, 365);
@@ -449,6 +453,18 @@
             this.grpTasks.TabStop = false;
             this.grpTasks.Text = "Common Tasks";
             this.grpTasks.Visible = false;
+            // 
+            // btnRenewItem
+            // 
+            this.btnRenewItem.Enabled = false;
+            this.btnRenewItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRenewItem.Location = new System.Drawing.Point(21, 120);
+            this.btnRenewItem.Name = "btnRenewItem";
+            this.btnRenewItem.Size = new System.Drawing.Size(178, 36);
+            this.btnRenewItem.TabIndex = 12;
+            this.btnRenewItem.Text = "Renew Item";
+            this.btnRenewItem.UseVisualStyleBackColor = true;
+            this.btnRenewItem.Click += new System.EventHandler(this.btnRenewItem_Click);
             // 
             // btnEnd
             // 
@@ -500,15 +516,17 @@
             this.btnCheckIn.Text = "Check In";
             this.btnCheckIn.UseVisualStyleBackColor = true;
             // 
-            // btnCheckOut
+            // btnCheckout
             // 
-            this.btnCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckOut.Location = new System.Drawing.Point(21, 36);
-            this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(178, 36);
-            this.btnCheckOut.TabIndex = 7;
-            this.btnCheckOut.Text = "Check Out";
-            this.btnCheckOut.UseVisualStyleBackColor = true;
+            this.btnCheckout.Enabled = false;
+            this.btnCheckout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckout.Location = new System.Drawing.Point(21, 36);
+            this.btnCheckout.Name = "btnCheckout";
+            this.btnCheckout.Size = new System.Drawing.Size(178, 36);
+            this.btnCheckout.TabIndex = 7;
+            this.btnCheckout.Text = "Check Out";
+            this.btnCheckout.UseVisualStyleBackColor = true;
+            this.btnCheckout.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
             // lblCurrentEmp
             // 
@@ -548,22 +566,54 @@
             this.lstCurrentlyCheckedOut.Visible = false;
             this.lstCurrentlyCheckedOut.SelectedIndexChanged += new System.EventHandler(this.lstCurrentlyCheckedOut_SelectedIndexChanged);
             // 
-            // btnRenewItem
+            // lstCheckout
             // 
-            this.btnRenewItem.Enabled = false;
-            this.btnRenewItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRenewItem.Location = new System.Drawing.Point(21, 120);
-            this.btnRenewItem.Name = "btnRenewItem";
-            this.btnRenewItem.Size = new System.Drawing.Size(178, 36);
-            this.btnRenewItem.TabIndex = 12;
-            this.btnRenewItem.Text = "Renew Item";
-            this.btnRenewItem.UseVisualStyleBackColor = true;
-            this.btnRenewItem.Click += new System.EventHandler(this.btnRenewItem_Click);
+            this.lstCheckout.FormattingEnabled = true;
+            this.lstCheckout.Location = new System.Drawing.Point(22, 177);
+            this.lstCheckout.Name = "lstCheckout";
+            this.lstCheckout.Size = new System.Drawing.Size(495, 199);
+            this.lstCheckout.TabIndex = 11;
+            this.lstCheckout.Visible = false;
+            // 
+            // txtCheckout
+            // 
+            this.txtCheckout.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCheckout.Location = new System.Drawing.Point(22, 393);
+            this.txtCheckout.Name = "txtCheckout";
+            this.txtCheckout.Size = new System.Drawing.Size(325, 35);
+            this.txtCheckout.TabIndex = 3;
+            this.txtCheckout.Visible = false;
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(353, 393);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(79, 35);
+            this.btnSubmit.TabIndex = 3;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Visible = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnComplete_Click);
+            // 
+            // btnComplete
+            // 
+            this.btnComplete.Location = new System.Drawing.Point(438, 393);
+            this.btnComplete.Name = "btnComplete";
+            this.btnComplete.Size = new System.Drawing.Size(79, 35);
+            this.btnComplete.TabIndex = 12;
+            this.btnComplete.Text = "Complete";
+            this.btnComplete.UseVisualStyleBackColor = true;
+            this.btnComplete.Visible = false;
+            this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click_1);
             // 
             // frmHomeScreen
             // 
             this.AcceptButton = this.btnGO;
             this.ClientSize = new System.Drawing.Size(1353, 717);
+            this.Controls.Add(this.btnComplete);
+            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.txtCheckout);
+            this.Controls.Add(this.lstCheckout);
             this.Controls.Add(this.pixLogo);
             this.Controls.Add(this.lstCurrentlyCheckedOut);
             this.Controls.Add(this.lblCustomerName);
@@ -638,7 +688,7 @@
         private System.Windows.Forms.Button btnFindUser;
         private System.Windows.Forms.Button btnEditInfo;
         private System.Windows.Forms.Button btnCheckIn;
-        private System.Windows.Forms.Button btnCheckOut;
+        private System.Windows.Forms.Button btnCheckout;
         private System.Windows.Forms.ToolStripMenuItem logInToolStripMenuItem;
         private System.Windows.Forms.Label lblCurrentEmp;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
@@ -651,6 +701,10 @@
         private System.Windows.Forms.Label lblCustomerName;
         private System.Windows.Forms.ListBox lstCurrentlyCheckedOut;
         private System.Windows.Forms.Button btnRenewItem;
+        private System.Windows.Forms.ListBox lstCheckout;
+        private System.Windows.Forms.TextBox txtCheckout;
+        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnComplete;
     }
 }
 

@@ -167,6 +167,54 @@ namespace openLibrary_2._0
             }
         }
 
+        public void checkoutBook(string userID, string scanned)
+        {
+            string sql = "";
+            openDatabaseConnection();
+            mDB.Open();
+            OleDbCommand cmd;
+
+            try
+            {
+                sql = "update book set due_date = #" + DateTime.Now.AddDays(14).ToShortDateString() + "#, customer_id = '" + userID + "', checked_out = yes where isbn = '" + scanned + "';";
+                cmd = new OleDbCommand(sql, mDB);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                try
+                {
+                    sql = "update cd set due_date = #" + DateTime.Now.AddDays(14).ToShortDateString() + "#, customer_id = '" + userID + "', checked_out = yes where isbn = '" + scanned + "';";
+                    cmd = new OleDbCommand(sql, mDB);
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    try 
+                    {
+                        sql = "update movie set due_date = #" + DateTime.Now.AddDays(14).ToShortDateString() + "#, customer_id = '" + userID + "', checked_out = yes where isbn = '" + scanned + "';";
+                        cmd = new OleDbCommand(sql, mDB);
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch 
+                    {
+                        try 
+                        {
+                            sql = "update game set due_date = #" + DateTime.Now.AddDays(14).ToShortDateString() + "#, customer_id = '" + userID + "', checked_out = yes where isbn = '" + scanned + "';";
+                            cmd = new OleDbCommand(sql, mDB);
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Sorry, an error occured");
+                        }
+                    }
+                }
+            }
+
+            closeDatabaseConnection();
+        }
+
         public ArrayList whoIsClockedIn()
         {
             ArrayList clocked = new ArrayList();

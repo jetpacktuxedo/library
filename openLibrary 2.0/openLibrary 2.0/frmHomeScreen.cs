@@ -24,6 +24,7 @@ namespace openLibrary_2._0
         public string connectionString;
         string[] listLine = new string[2];
         string userID;
+        ArrayList toBeCheckedOut = new ArrayList();
 
 
         public frmHomeScreen()
@@ -126,11 +127,22 @@ namespace openLibrary_2._0
 
         private void btnGO_Click(object sender, EventArgs e)
         {
+            lstCurrentlyCheckedOut.Visible = false;
+            txtCheckout.Visible = false;
+            btnSubmit.Visible = false;
+
+            lblCurrentUser.Visible = true;
+            lblCustomerName.Visible = true;
+            grpUser.Visible = true;
+            lstCurrentlyCheckedOut.Visible = true;
+
             userID = txtID.Text;
             string sql = "SELECT first_name & \" \" & last_name FROM customer WHERE customer_id = '" + userID + "'";
             lblCustomerName.Text = d.loadCustomerName(sql);
 
             loadCheckouts(userID);
+
+            btnCheckout.Enabled = true;
             
         }
 
@@ -349,18 +361,53 @@ namespace openLibrary_2._0
                     {
                         MessageBox.Show(ee.Message);
                     }
-
-                    
-
-
-
-
                 }
                 else
                     btnRenewItem.Enabled = false;
             }
             else
                 btnRenewItem.Enabled = false;
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            lstCurrentlyCheckedOut.Visible = false;
+            btnCheckout.Enabled = false;
+            btnSubmit.Visible = true;
+            lstCheckout.Visible = true;
+            txtCheckout.Visible = true;
+            btnComplete.Visible = true;
+            btnComplete.Focus();
+        }
+
+        private void btnComplete_Click(object sender, EventArgs e)
+        {
+
+            string scannedItem = txtCheckout.Text;
+            lstCheckout.Items.Add(scannedItem);
+            toBeCheckedOut.Add(scannedItem);
+            txtCheckout.Text = "";
+        }
+
+        private void btnComplete_Click_1(object sender, EventArgs e)
+        {
+            lstCheckout.Items.Clear();
+            lstCurrentlyCheckedOut.Visible = true;
+            btnCheckout.Enabled = true;
+            btnSubmit.Visible = false;
+            lstCheckout.Visible = false;
+            txtCheckout.Visible = false;
+            btnComplete.Visible = false;
+
+            
+            MessageBox.Show(toBeCheckedOut[0].ToString());
+
+            foreach(string scannedItem in toBeCheckedOut)
+                d.checkoutBook(userID, scannedItem);
+
+            loadCheckouts(userID);
+            toBeCheckedOut.Clear();
+
         }
         
       
