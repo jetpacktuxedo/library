@@ -13,15 +13,19 @@ namespace openLibrary_2._0
     class otherLookup
     {
 
-        //Declare constants
+        /*Declare constants
         private const string MY_AWS_ACCESS_KEY_ID = "AKIAIJBCB63BMUXIE4MQ";
-        private const string MY_AWS_SECRET_KEY = "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";
+        private const string MY_AWS_SECRET_KEY = "lCtAv1tsgQBZwPzz3sR+sDxMWDIQcBLpjGCT8k7v";*/
         private const string DESTINATION = "ecs.amazonaws.com";
         private const string NAMESPACE = "http://webservices.amazon.com/AWSECommerceService/2011-08-01";
 
         //Method to do an ISBN-based lookup and return the signed URL
-        public static string otherlookup(string UPC)
-        {
+        public static string otherlookup(string UPC) {
+            settings set = new settings();
+            ArrayList parsed = new ArrayList();
+            parsed = set.parse();
+
+            string MY_AWS_ACCESS_KEY_ID = parsed[0].ToString(), MY_AWS_SECRET_KEY = parsed[1].ToString();
             //Helper signs the requests
             SignedRequestHelper helper = new SignedRequestHelper(MY_AWS_ACCESS_KEY_ID, MY_AWS_SECRET_KEY, DESTINATION);
 

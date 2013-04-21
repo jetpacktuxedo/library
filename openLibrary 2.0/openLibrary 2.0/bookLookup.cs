@@ -6,16 +6,43 @@ using System.Web;
 using System.Net;
 using System.Xml;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace openLibrary_2._0 {
     class bookLookup {
 
-        //Declare constants
+        /*Declare constants
         private const string MY_AWS_ACCESS_KEY_ID = "AKIAIJBCB63BMUXIE4MQ";
-        private const string MY_AWS_SECRET_KEY = "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";
+        private const string MY_AWS_SECRET_KEY = "lCtAv1tsgQBZwPzz3sR+sDxMWDIQcBLpjGCT8k7v";*/
         private const string DESTINATION = "ecs.amazonaws.com";
         private const string NAMESPACE = "http://webservices.amazon.com/AWSECommerceService/2011-08-01";
 
+        //Method to do an ISBN-based lookup and return the signed URL
+        public static string lookup(string ISBN) {
+
+            settings set = new settings();
+            ArrayList parsed = new ArrayList();
+            parsed = set.parse();
+
+            string MY_AWS_ACCESS_KEY_ID = parsed[0].ToString(), MY_AWS_SECRET_KEY = parsed[1].ToString();
+            //Helper signs the requests
+            SignedRequestHelper helper = new SignedRequestHelper(MY_AWS_ACCESS_KEY_ID, MY_AWS_SECRET_KEY, DESTINATION);
+
+            //Helper looks for a dictionary containing all of the bits of the URL
+            IDictionary<string, string> url = new Dictionary<string, String>();
+            url["Service"] = "AWSECommerceService";
+            url["Version"] = "2011-08-01";
+            url["Operation"] = "ItemLookup";
+            url["ItemId"] = ISBN;
+            url["ResponseGroup"] = "Large";
+            url["AssociateTag"] = "AssociateTag=openlibrary07-20";
+
+            //Pass dictionary to helper, get the signed URL back out as a string
+            string signedUrl = helper.Sign(url);
+
+            return signedUrl;
+        }      
+        
         //Method to convert ISBN-13 to ISBN-10
         public static string ConvertTo10(string isbn) {
             string isbn10 = string.Empty;
@@ -42,25 +69,7 @@ namespace openLibrary_2._0 {
             return isbn10;
         }
 
-        //Method to do an ISBN-based lookup and return the signed URL
-        public static string lookup(string ISBN) {
-            //Helper signs the requests
-            SignedRequestHelper helper = new SignedRequestHelper(MY_AWS_ACCESS_KEY_ID, MY_AWS_SECRET_KEY, DESTINATION);
 
-            //Helper looks for a dictionary containing all of the bits of the URL
-            IDictionary<string, string> url = new Dictionary<string, String>();
-            url["Service"] = "AWSECommerceService";
-            url["Version"] = "2011-08-01";
-            url["Operation"] = "ItemLookup";
-            url["ItemId"] = ISBN;
-            url["ResponseGroup"] = "Large";
-            url["AssociateTag"] = "AssociateTag=openlibrary07-20";
-
-            //Pass dictionary to helper, get the signed URL back out as a string
-            string signedUrl = helper.Sign(url);
-
-            return signedUrl;
-        }
 
         //Method to take a signed URL and return information contained in the get response
         public static string[] Fetch(string url) {

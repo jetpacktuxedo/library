@@ -88,6 +88,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccDB.xsd</DependentUpon>
     </Compile>
+    <Compile Include="settings.cs" />
     <Compile Include="frmOverdueItems.cs">
       <SubType>Form</SubType>
     </Compile>

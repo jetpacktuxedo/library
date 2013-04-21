@@ -6,18 +6,25 @@ using System.Web;
 using System.Net;
 using System.Xml;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace openLibrary_2._0{
     class TrackLookup {
 
-        //Declare constants
+        /*Declare constants
         private const string MY_AWS_ACCESS_KEY_ID = "AKIAIJBCB63BMUXIE4MQ";
-        private const string MY_AWS_SECRET_KEY = "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";
+        private const string MY_AWS_SECRET_KEY = "lCtAv1tsgQBZwPzz3sR+sDxMWDIQcBLpjGCT8k7v";*/
         private const string DESTINATION = "ecs.amazonaws.com";
         private const string NAMESPACE = "http://webservices.amazon.com/AWSECommerceService/2011-08-01";
 
         //Method to do an ISBN-based lookup and return the signed URL
         public static string lookup(string track, string album, string artist) {
+            settings set = new settings();
+            ArrayList parsed = new ArrayList();
+            parsed = set.parse();
+
+            string MY_AWS_ACCESS_KEY_ID = parsed[0].ToString(), MY_AWS_SECRET_KEY = parsed[1].ToString();
+
             //Helper signs the requests
             SignedRequestHelper helper = new SignedRequestHelper(MY_AWS_ACCESS_KEY_ID, MY_AWS_SECRET_KEY, DESTINATION);
 
