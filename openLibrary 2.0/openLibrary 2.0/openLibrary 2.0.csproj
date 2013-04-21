@@ -178,7 +178,7 @@
     <Compile Include="frmViewMusic.Designer.cs">
       <DependentUpon>frmViewMusic.cs</DependentUpon>
     </Compile>
-    <Compile Include="mail.cs" />
+    <Compile Include="frmMail.cs" />
     <Compile Include="otherLookup.cs" />
     <Compile Include="databaseHandler.cs" />
     <Compile Include="frmAddBook.cs">

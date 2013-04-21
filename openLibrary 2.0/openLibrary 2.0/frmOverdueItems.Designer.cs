@@ -36,6 +36,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnSendReport = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOverdueGames)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOverdueBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOverdueMovies)).BeginInit();
@@ -47,7 +49,7 @@
             this.dgvOverdueGames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOverdueGames.Location = new System.Drawing.Point(12, 378);
             this.dgvOverdueGames.Name = "dgvOverdueGames";
-            this.dgvOverdueGames.Size = new System.Drawing.Size(624, 91);
+            this.dgvOverdueGames.Size = new System.Drawing.Size(447, 91);
             this.dgvOverdueGames.TabIndex = 4;
             // 
             // dgvOverdueBooks
@@ -55,7 +57,7 @@
             this.dgvOverdueBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOverdueBooks.Location = new System.Drawing.Point(12, 24);
             this.dgvOverdueBooks.Name = "dgvOverdueBooks";
-            this.dgvOverdueBooks.Size = new System.Drawing.Size(624, 91);
+            this.dgvOverdueBooks.Size = new System.Drawing.Size(447, 91);
             this.dgvOverdueBooks.TabIndex = 0;
             // 
             // dgvOverdueMovies
@@ -63,7 +65,7 @@
             this.dgvOverdueMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOverdueMovies.Location = new System.Drawing.Point(12, 142);
             this.dgvOverdueMovies.Name = "dgvOverdueMovies";
-            this.dgvOverdueMovies.Size = new System.Drawing.Size(624, 91);
+            this.dgvOverdueMovies.Size = new System.Drawing.Size(447, 91);
             this.dgvOverdueMovies.TabIndex = 1;
             // 
             // dgvOverdueMusic
@@ -71,7 +73,7 @@
             this.dgvOverdueMusic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOverdueMusic.Location = new System.Drawing.Point(12, 260);
             this.dgvOverdueMusic.Name = "dgvOverdueMusic";
-            this.dgvOverdueMusic.Size = new System.Drawing.Size(624, 91);
+            this.dgvOverdueMusic.Size = new System.Drawing.Size(447, 91);
             this.dgvOverdueMusic.TabIndex = 3;
             // 
             // label1
@@ -110,11 +112,33 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Overdue Games";
             // 
+            // btnSendReport
+            // 
+            this.btnSendReport.Location = new System.Drawing.Point(60, 493);
+            this.btnSendReport.Name = "btnSendReport";
+            this.btnSendReport.Size = new System.Drawing.Size(125, 30);
+            this.btnSendReport.TabIndex = 9;
+            this.btnSendReport.Text = "Send Report";
+            this.btnSendReport.UseVisualStyleBackColor = true;
+            this.btnSendReport.Click += new System.EventHandler(this.btnSendReport_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(191, 493);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(125, 30);
+            this.btnClose.TabIndex = 10;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // frmOverdueItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 524);
+            this.ClientSize = new System.Drawing.Size(477, 549);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnSendReport);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -145,6 +169,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnSendReport;
+        private System.Windows.Forms.Button btnClose;
 
     }
 }

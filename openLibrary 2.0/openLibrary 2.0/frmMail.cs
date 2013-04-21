@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApplication1 {
+namespace openLibrary_2._0
+{
     class mail {
         public void send(string to, string subject, string body) {
             System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
