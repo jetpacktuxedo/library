@@ -167,48 +167,125 @@ namespace openLibrary_2._0
             }
         }
 
-        public void checkoutBook(string userID, string scanned)
+        public Tuple<string, string> whatKindOfItem(string code)
         {
-            string sql = "";
+            try
+            {
+                string sql = "select 'book', cstr(book_id) as 'ID' from book where isbn = '"+code+"' union select 'movie', cstr(movie_id) as 'ID' from movie where upc = '"+code+"' union select 'cd', cstr(cd_id) as 'ID' from cd where upc = '"+code+"' union select 'game', cstr(game_id) as 'ID' from game where upc = '"+code+"'";
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                OleDbDataReader readdr;
+                cmd = new OleDbCommand(sql, mDB);
+                readdr = cmd.ExecuteReader();
+                while (readdr.Read())
+                {
+                    return new Tuple<string, string>((string)readdr[0], (string)readdr[1]);
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Something went wrong." + e.Message + e.ToString());
+            }
+
+            return new Tuple<string, string>("Not found", "Not Found");
+
+        }
+
+        public void checkoutBook(string userID, string empID, string scanned)
+        {
+            //find out what the checkout id should be for this transaction
+            int checkoutID = findBookCount("select max(checkout_id) from checkout");
+            checkoutID++;
+
+            //make a new record in the checkout table.
+            string sql = "insert into checkout (checkout_id, checkout_date, employee_id, customer_id) values ('" + checkoutID + "',#" + System.DateTime.Now + "#, '" + empID + "','" + userID + "');";
             openDatabaseConnection();
             mDB.Open();
             OleDbCommand cmd;
 
             try
             {
-                sql = "update book set due_date = #" + DateTime.Now.AddDays(14).ToShortDateString() + "#, customer_id = '" + userID + "', checked_out = yes where isbn = '" + scanned + "';";
                 cmd = new OleDbCommand(sql, mDB);
                 cmd.ExecuteNonQuery();
             }
             catch
             {
+                MessageBox.Show("There was an error adding the checkout.");
+            }
+
+
+            //find out if the scanned item
+            string itemType;
+            string itemID;
+            itemType = whatKindOfItem(scanned).Item1;
+            itemID = whatKindOfItem(scanned).Item2;
+
+            if (itemType == "game")
+            {
+                string newSQL = "insert into game_checkout values('" + scanned + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand newCMD;
                 try
                 {
-                    sql = "update cd set due_date = #" + DateTime.Now.AddDays(14).ToShortDateString() + "#, customer_id = '" + userID + "', checked_out = yes where isbn = '" + scanned + "';";
-                    cmd = new OleDbCommand(sql, mDB);
-                    cmd.ExecuteNonQuery();
+                    newCMD = new OleDbCommand(newSQL, mDB);
+                    newCMD.ExecuteNonQuery();
                 }
                 catch
                 {
-                    try 
-                    {
-                        sql = "update movie set due_date = #" + DateTime.Now.AddDays(14).ToShortDateString() + "#, customer_id = '" + userID + "', checked_out = yes where isbn = '" + scanned + "';";
-                        cmd = new OleDbCommand(sql, mDB);
-                        cmd.ExecuteNonQuery();
-                    }
-                    catch 
-                    {
-                        try 
-                        {
-                            sql = "update game set due_date = #" + DateTime.Now.AddDays(14).ToShortDateString() + "#, customer_id = '" + userID + "', checked_out = yes where isbn = '" + scanned + "';";
-                            cmd = new OleDbCommand(sql, mDB);
-                            cmd.ExecuteNonQuery();
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Sorry, an error occured");
-                        }
-                    }
+                    MessageBox.Show("There was an error adding the game_checkout.");
+                }
+            }
+
+            if (itemType == "cd")
+            {
+                string newSQL = "insert into cd_checkout values('" + scanned + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand newCMD;
+                try
+                {
+                    newCMD = new OleDbCommand(newSQL, mDB);
+                    newCMD.ExecuteNonQuery();
+                }
+                catch
+                {
+                    MessageBox.Show("There was an error adding the cd_checkout.");
+                }
+            }
+
+            if (itemType == "movie")
+            {
+                string newSQL = "insert into movie_checkout values('" + scanned + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand newCMD;
+                try
+                {
+                    newCMD = new OleDbCommand(newSQL, mDB);
+                    newCMD.ExecuteNonQuery();
+                }
+                catch
+                {
+                    MessageBox.Show("There was an error adding the movie_checkout.");
+                }
+            }
+
+            if (itemType == "book")
+            {
+                string newSQL = "insert into book_checkout values('" + scanned + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand newCMD;
+                try
+                {
+                    newCMD = new OleDbCommand(newSQL, mDB);
+                    newCMD.ExecuteNonQuery();
+                }
+                catch
+                {
+                    MessageBox.Show("There was an error adding the book_checkout.");
                 }
             }
 

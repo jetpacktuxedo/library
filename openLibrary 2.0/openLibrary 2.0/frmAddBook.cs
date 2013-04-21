@@ -183,6 +183,11 @@ namespace openLibrary_2._0
             Close();
         }
 
+        private void txtISBN_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         
     }
 }

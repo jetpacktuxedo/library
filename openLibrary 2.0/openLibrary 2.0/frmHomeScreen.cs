@@ -377,7 +377,7 @@ namespace openLibrary_2._0
             lstCheckout.Visible = true;
             txtCheckout.Visible = true;
             btnComplete.Visible = true;
-            btnComplete.Focus();
+
         }
 
         private void btnComplete_Click(object sender, EventArgs e)
@@ -400,10 +400,9 @@ namespace openLibrary_2._0
             btnComplete.Visible = false;
 
             
-            MessageBox.Show(toBeCheckedOut[0].ToString());
 
             foreach(string scannedItem in toBeCheckedOut)
-                d.checkoutBook(userID, scannedItem);
+                d.checkoutBook(userID, lblCurrentEmp.Text, scannedItem);
 
             loadCheckouts(userID);
             toBeCheckedOut.Clear();
@@ -415,7 +414,11 @@ namespace openLibrary_2._0
             frmOverdueItems frm = new frmOverdueItems();
             frm.Show();
         }
-        
-      
+
+        private void txtCheckout_TextChanged(object sender, EventArgs e)
+        {
+
+
+        }
     }
 }
