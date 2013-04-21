@@ -52,5 +52,10 @@ namespace openLibrary_2._0
                 MessageBox.Show(ee.Message);
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

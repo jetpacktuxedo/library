@@ -409,6 +409,12 @@ namespace openLibrary_2._0
             toBeCheckedOut.Clear();
 
         }
+
+        private void overdueBooksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmOverdueItems frm = new frmOverdueItems();
+            frm.Show();
+        }
         
       
     }

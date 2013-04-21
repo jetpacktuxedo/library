@@ -88,6 +88,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccDB.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmOverdueItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOverdueItems.Designer.cs">
+      <DependentUpon>frmOverdueItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCurrentlyClocked.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,7 @@
     <Compile Include="frmViewMusic.Designer.cs">
       <DependentUpon>frmViewMusic.cs</DependentUpon>
     </Compile>
+    <Compile Include="mail.cs" />
     <Compile Include="otherLookup.cs" />
     <Compile Include="databaseHandler.cs" />
     <Compile Include="frmAddBook.cs">
@@ -214,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogout.resx">
       <DependentUpon>frmLogout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOverdueItems.resx">
+      <DependentUpon>frmOverdueItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewBooks.resx">
       <DependentUpon>frmViewBooks.cs</DependentUpon>

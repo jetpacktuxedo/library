@@ -250,13 +250,13 @@ namespace openLibrary_2._0
                 openDatabaseConnection();
                 mDB.Open();
                 OleDbCommand cmd;
-                OleDbDataReader rdr;
+                OleDbDataReader readdr;
                 cmd = new OleDbCommand(sql, mDB);
-                rdr = cmd.ExecuteReader();
+                readdr = cmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (readdr.Read())
                 {
-                    return (int)rdr[0];
+                    return (int)readdr[0];
                 }
 
             }
@@ -267,6 +267,7 @@ namespace openLibrary_2._0
                 return (int)-1;
             }
 
+            closeDatabaseConnection();
             return -1;
         }
 

@@ -95,13 +95,21 @@ namespace openLibrary_2._0
                 string date;
 
 
-                int bookid, actorid;
+                int bookid = 0; 
+                int actorid = 0;
 
-                bookid = d.findBookCount("SELECT max(movie_id) FROM movie;");
-                bookid++;
+                try
+                {
+                    bookid = d.findBookCount("SELECT max(movie_id) FROM movie;");
+                    bookid++;
 
-                actorid = d.findBookCount("SELECT max(ACTOR_ID) FROM ACTOR;");
-                actorid++;
+                    actorid = d.findBookCount("SELECT max(ACTOR_ID) FROM ACTOR;");
+                    actorid++;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString() + e.Message);
+                }
 
                 isbn = escapeHandling(txtISBN.Text);
                 title = escapeHandling(txtTitle.Text);
@@ -111,15 +119,15 @@ namespace openLibrary_2._0
                 price = escapeHandling(txtPrice.Text);
                 date = escapeHandling(txtDate.Text);
 
-                sqlstatement = "INSERT INTO movie (movie_id, UPC, TITLE, DIRECTOR, TYPE, STUDIO, RELEASE_DATE, PRICE, RUNNING_TIME)" +
-                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + author + "','" + format + "','" + publisher + "','" + date + "','" + price + "','" + pages + "');";
+                sqlstatement = "INSERT INTO movie (movie_id, UPC, TITLE, DIRECTOR, TYPE, STUDIO, RELEASE_DATE, PRICE, RUNNING_TIME, CHECKED_OUT, DUE_DATE, CUSTOMER_ID )" +
+                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + author + "','" + format + "','" + publisher + "','" + date + "','" + price + "','" + pages + "', false , null ,'');";
 
                 d.loadDatabaseTable(sqlstatement);
 
                 int i = 0;
                 while (i < actors.Count) {
                     sqlstatement = "INSERT INTO ACTOR (MOVIE_ID, ACTOR_ID, ACTOR_NAME)" +
-                                              "VALUES ('" + bookid + "','" + (actorid + i) + "','" + escapeHandling(actors[i].ToString()) + "');";
+                                              "VALUES ('" + bookid + "','" + (actorid + i).ToString() +"','" + escapeHandling(actors[i].ToString()) + "');";
 
                     d.inserter(sqlstatement);
                     i++;
