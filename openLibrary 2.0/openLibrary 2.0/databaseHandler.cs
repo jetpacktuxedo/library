@@ -195,7 +195,7 @@ namespace openLibrary_2._0
         public void checkoutBook(string userID, string empID, string scanned)
         {
             //find out what the checkout id should be for this transaction
-            int checkoutID = findBookCount("select max(checkout_id) from checkout");
+            int checkoutID = findBookCount("select max(cint(checkout_id)) from checkout");
             checkoutID++;
 
             //make a new record in the checkout table.
@@ -223,7 +223,7 @@ namespace openLibrary_2._0
 
             if (itemType == "game")
             {
-                string newSQL = "insert into game_checkout values('" + scanned + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
+                string newSQL = "insert into game_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
                 openDatabaseConnection();
                 mDB.Open();
                 OleDbCommand newCMD;
@@ -240,7 +240,7 @@ namespace openLibrary_2._0
 
             if (itemType == "cd")
             {
-                string newSQL = "insert into cd_checkout values('" + scanned + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
+                string newSQL = "insert into cd_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
                 openDatabaseConnection();
                 mDB.Open();
                 OleDbCommand newCMD;
@@ -257,7 +257,7 @@ namespace openLibrary_2._0
 
             if (itemType == "movie")
             {
-                string newSQL = "insert into movie_checkout values('" + scanned + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
+                string newSQL = "insert into movie_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
                 openDatabaseConnection();
                 mDB.Open();
                 OleDbCommand newCMD;
@@ -274,7 +274,7 @@ namespace openLibrary_2._0
 
             if (itemType == "book")
             {
-                string newSQL = "insert into book_checkout values('" + scanned + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
+                string newSQL = "insert into book_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
                 openDatabaseConnection();
                 mDB.Open();
                 OleDbCommand newCMD;
@@ -333,7 +333,7 @@ namespace openLibrary_2._0
 
                 while (readdr.Read())
                 {
-                    return (int)readdr[0];
+                    return readdr.GetInt16(0);
                 }
 
             }
@@ -375,10 +375,10 @@ namespace openLibrary_2._0
             try
             {
 
-                string booksql = "select title, due_date from book where checked_out = yes and customer_id = '" + customerID + "';";
-                string moviesql = "select title, due_date from movie where checked_out = yes and customer_id ='" + customerID + "';";
-                string gamesql = "select title, due_date from game where checked_out = yes and customer_id ='" + customerID + "';";
-                string musicsql = "select album, due_date from cd where checked_out = yes and customer_id ='" + customerID + "';";
+                string booksql = "SELECT book_CHECKOUT.DUE_DATE, book.TITLE FROM CHECKOUT INNER JOIN (book INNER JOIN book_CHECKOUT ON book.book_ID = book_CHECKOUT.book_ID) ON CHECKOUT.CHECKOUT_ID = book_CHECKOUT.CHECKOUT_ID WHERE (((CHECKOUT.CUSTOMER_ID)= '" + customerID + "'));";
+                string moviesql = "SELECT MOVIE_CHECKOUT.DUE_DATE, MOVIE.TITLE FROM CHECKOUT INNER JOIN (MOVIE INNER JOIN MOVIE_CHECKOUT ON MOVIE.MOVIE_ID = MOVIE_CHECKOUT.MOVIE_ID) ON CHECKOUT.CHECKOUT_ID = MOVIE_CHECKOUT.CHECKOUT_ID WHERE (((CHECKOUT.CUSTOMER_ID)= '"+ customerID + "'));";
+                string gamesql = "SELECT game_CHECKOUT.DUE_DATE, game.TITLE FROM CHECKOUT INNER JOIN (game INNER JOIN game_CHECKOUT ON game.game_ID = game_CHECKOUT.game_ID) ON CHECKOUT.CHECKOUT_ID = game_CHECKOUT.CHECKOUT_ID WHERE (((CHECKOUT.CUSTOMER_ID)= '" + customerID + "'));";
+                string musicsql = "SELECT cd_CHECKOUT.DUE_DATE, cd.album FROM CHECKOUT INNER JOIN (cd INNER JOIN cd_CHECKOUT ON cd.cd_ID = cd_CHECKOUT.cd_ID) ON CHECKOUT.CHECKOUT_ID = cd_CHECKOUT.CHECKOUT_ID WHERE (((CHECKOUT.CUSTOMER_ID)= '"+ customerID + "'));";
 
                 openDatabaseConnection();
                 mDB.Open();
