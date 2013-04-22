@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Configuration;
 using System.Collections;
-using System.Configuration;
 
 namespace openLibrary_2._0
 {
@@ -25,6 +24,7 @@ namespace openLibrary_2._0
         string[] listLine = new string[2];
         string userID;
         ArrayList toBeCheckedOut = new ArrayList();
+        ArrayList toBeCheckedIn = new ArrayList();
 
 
         public frmHomeScreen()
@@ -127,6 +127,11 @@ namespace openLibrary_2._0
 
         private void btnGO_Click(object sender, EventArgs e)
         {
+            goStuff();
+        }
+
+        private void goStuff()
+        {
             lstCurrentlyCheckedOut.Visible = false;
             txtCheckout.Visible = false;
             btnSubmit.Visible = false;
@@ -143,7 +148,6 @@ namespace openLibrary_2._0
             loadCheckouts(userID);
 
             btnCheckout.Enabled = true;
-            
         }
 
         private void loadCheckouts(string userID)
@@ -177,9 +181,10 @@ namespace openLibrary_2._0
 
             foreach(string x in clocked)
             {
+                string employeeName = d.getEmpName(x);
                 ToolStripMenuItem temp = new ToolStripMenuItem();
                 temp.Name = "toolstripmenuitem." + x;
-                temp.Text = x;
+                temp.Text = employeeName;
                 logInToolStripMenuItem.DropDownItems.Insert(logInToolStripMenuItem.DropDownItems.Count, temp);
                 temp.Click += new EventHandler(MenuItemClickHandler);
             
@@ -251,6 +256,7 @@ namespace openLibrary_2._0
             viewToolStripMenuItem.Enabled = false;
             editItemToolStripMenuItem.Enabled = false;
             lstCurrentlyCheckedOut.Visible = false;
+            adminMenu.Enabled = false;
         }
 
         private void whosClockedInToolStripMenuItem_Click(object sender, EventArgs e)
@@ -290,6 +296,7 @@ namespace openLibrary_2._0
             addToolStripMenuItem.Enabled = true;
             viewToolStripMenuItem.Enabled = true;
             editItemToolStripMenuItem.Enabled = true;
+            adminMenu.Enabled = true;
 
 
         }
@@ -327,10 +334,9 @@ namespace openLibrary_2._0
 
 
         DateTime due = DateTime.Parse(listLine[1]);
+        string item_ID = d.codeFromTitle(listLine[2]);
 
-
-
-        string sql2 = "update " + table + " set due_date = '" + System.DateTime.Now.AddDays(14).ToShortDateString() + "' where  " + column + " = '" + listLine[2] + "' and due_date = #" + due.ToShortDateString() + "# and customer_id = '" + userID + "';";
+        string sql2 = "update " + table + "_checkout set due_date = '" + System.DateTime.Now.AddDays(14).ToShortDateString() + "' where  " + table + "_id = '" + item_ID + "';";
 
         d.renewDue(sql2);
 
@@ -407,6 +413,8 @@ namespace openLibrary_2._0
             loadCheckouts(userID);
             toBeCheckedOut.Clear();
 
+            goStuff();
+
         }
 
         private void overdueBooksToolStripMenuItem_Click(object sender, EventArgs e)
@@ -419,6 +427,57 @@ namespace openLibrary_2._0
         {
 
 
+        }
+
+        private void btnCheckIn_Click(object sender, EventArgs e)
+        {
+            lstCurrentlyCheckedOut.Visible = false;
+            btnCheckout.Enabled = false;
+            btnCheckIn.Enabled = false;
+            btnSubmitCheckIn.Visible = true;
+            btnCompleteCheckIn.Visible = true;
+            lstCheckIn.Visible = true;
+            txtCheckIn.Visible = true;
+        }
+
+        private void btnCompleteCheckIn_Click(object sender, EventArgs e)
+        {
+            lstCheckIn.Items.Clear();
+            lstCurrentlyCheckedOut.Visible = true;
+            btnCheckout.Enabled = true;
+            btnCheckIn.Enabled = true;
+            btnSubmitCheckIn.Visible = false;
+            btnCompleteCheckIn.Visible = false;
+            lstCheckIn.Visible = false;
+            txtCheckIn.Visible = false;
+
+            foreach (string item in toBeCheckedIn)
+                d.checkinBook(item);
+
+            loadCheckouts(userID);
+            toBeCheckedIn.Clear();
+            goStuff();
+            
+        }
+
+        private void btnSubmitCheckIn_Click(object sender, EventArgs e)
+        {
+            string checkInItem = txtCheckIn.Text;
+            lstCheckIn.Items.Add(checkInItem);
+            toBeCheckedIn.Add(checkInItem);
+            txtCheckIn.Text = "";
+        }
+
+        private void aPIKeysToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAmazonKeys frm = new frmAmazonKeys();
+            frm.Show();
+        }
+
+        private void btnFindUser_Click(object sender, EventArgs e)
+        {
+            frmViewCustomers frm = new frmViewCustomers();
+            frm.Show();
         }
     }
 }

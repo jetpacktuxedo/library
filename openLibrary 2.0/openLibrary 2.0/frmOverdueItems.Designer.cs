@@ -114,17 +114,17 @@
             // 
             // btnSendReport
             // 
-            this.btnSendReport.Location = new System.Drawing.Point(60, 493);
+            this.btnSendReport.Location = new System.Drawing.Point(105, 497);
             this.btnSendReport.Name = "btnSendReport";
             this.btnSendReport.Size = new System.Drawing.Size(125, 30);
             this.btnSendReport.TabIndex = 9;
-            this.btnSendReport.Text = "Send Report";
+            this.btnSendReport.Text = "Send Reports";
             this.btnSendReport.UseVisualStyleBackColor = true;
             this.btnSendReport.Click += new System.EventHandler(this.btnSendReport_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(191, 493);
+            this.btnClose.Location = new System.Drawing.Point(236, 497);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(125, 30);
             this.btnClose.TabIndex = 10;
@@ -136,7 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 549);
+            this.ClientSize = new System.Drawing.Size(477, 552);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSendReport);
             this.Controls.Add(this.label4);

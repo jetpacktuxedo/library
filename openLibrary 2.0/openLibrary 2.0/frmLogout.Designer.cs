@@ -60,10 +60,10 @@
             this.textBox1.Size = new System.Drawing.Size(225, 47);
             this.textBox1.TabIndex = 3;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // frmLogout
             // 
-            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(321, 198);
@@ -72,6 +72,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "frmLogout";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.frmLogout_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

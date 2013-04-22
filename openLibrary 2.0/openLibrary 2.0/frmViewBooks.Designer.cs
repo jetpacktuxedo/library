@@ -57,7 +57,7 @@
             this.dgvMusic.Location = new System.Drawing.Point(12, 136);
             this.dgvMusic.Name = "dgvMusic";
             this.dgvMusic.ReadOnly = true;
-            this.dgvMusic.Size = new System.Drawing.Size(868, 512);
+            this.dgvMusic.Size = new System.Drawing.Size(868, 230);
             this.dgvMusic.TabIndex = 1;
             this.dgvMusic.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -169,12 +169,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 660);
+            this.ClientSize = new System.Drawing.Size(892, 376);
             this.Controls.Add(this.tabSet1);
             this.Controls.Add(this.dgvMusic);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmViewBooks";
-            this.Text = "View Music";
+            this.Text = "View Books";
             this.Load += new System.EventHandler(this.frmBookView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMusic)).EndInit();
             this.tabSet1.ResumeLayout(false);

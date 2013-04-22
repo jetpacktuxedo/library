@@ -171,6 +171,151 @@ namespace openLibrary_2._0
 
         }
 
+        private void txtISBNsearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtISBNsearch.Text.Length >= 0)
+            {
+                searcher(txtISBNsearch.Text, "upc");
+            }
+        }
+
+        private void txtTitleSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTitleSearch.Text.Length >= 0)
+            {
+                searcher(txtTitleSearch.Text, "album");
+            }
+        }
+
+        private void txtAuthorSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAuthorSearch.Text.Length >= 0)
+            {
+                searcher(txtAuthorSearch.Text, "artist");
+            }
+        }
+
+        private void txtPublisherSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPublisherSearch.Text.Length >= 0)
+            {
+                searcher(txtPublisherSearch.Text, "publisher");
+            }
+        }
+
+        private void txtPublisherSearch_Enter(object sender, EventArgs e)
+        {
+            txtPublisherSearch.Text = "";
+
+        }
+
+        private void txtAuthorSearch_Enter(object sender, EventArgs e)
+        {
+            txtAuthorSearch.Text = "";
+        }
+
+        private void txtTitleSearch_Enter(object sender, EventArgs e)
+        {
+            txtTitleSearch.Text = "";
+        }
+
+        private void txtISBNsearch_Enter(object sender, EventArgs e)
+        {
+            txtISBNsearch.Text = "";
+        }
+
+        private void tabPageISBN_Click(object sender, EventArgs e)
+        {
+            clears();
+        }
+
+        private void tabPageTitle_Click(object sender, EventArgs e)
+        {
+            clears();
+
+        }
+
+        private void tabPageAuthor_Click(object sender, EventArgs e)
+        {
+            clears();
+
+        }
+
+        private void tabPagePublisher_Click(object sender, EventArgs e)
+        {
+            clears();
+
+        }
+
+        private void searcher(string field, string column)
+        {
+            try
+            {
+
+                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+                string query = "select CD_ID, Album, Artist, Type, publisher, Release_Date, Price from cd where " + column + " like '%" + field + "%' order by cd_id;";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
+                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dt;
+
+                dgvMusic.DataSource = bs;
+
+                da.Update(dt);
+
+                databaseHandler d = new databaseHandler();
+                d.closeDatabaseConnection();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        }
+
+        private void clears()
+        {
+            txtISBNsearch.Text = "Enter all or part of an ISBN here...";
+            txtPublisherSearch.Text = "Enter all or part of a publisher here...";
+            txtAuthorSearch.Text = "Enter all or part of an author here...";
+            txtTitleSearch.Text = "Enter all or part of a title here...";
+
+            try
+            {
+                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+                string query = "select CD_ID, Album, Artist, Type, publisher, Release_Date, Price from cd order by cd_id;";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
+                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dt;
+
+                dgvMusic.DataSource = bs;
+
+                da.Update(dt);
+
+                databaseHandler d = new databaseHandler();
+                d.closeDatabaseConnection();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+
+        }
+
+        private void tabSet1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clears();
+        }
         
     }
 }

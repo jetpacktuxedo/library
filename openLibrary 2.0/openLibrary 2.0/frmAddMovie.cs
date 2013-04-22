@@ -100,10 +100,10 @@ namespace openLibrary_2._0
 
                 try
                 {
-                    bookid = d.findBookCount("SELECT max(movie_id) FROM movie;");
+                    bookid = d.findBookCount("SELECT max(cint(movie_id)) FROM movie;");
                     bookid++;
 
-                    actorid = d.findBookCount("SELECT max(ACTOR_ID) FROM ACTOR;");
+                    actorid = d.findBookCount("SELECT max(cint(ACTOR_ID)) FROM ACTOR;");
                     actorid++;
                 }
                 catch (Exception e)
@@ -119,8 +119,8 @@ namespace openLibrary_2._0
                 price = escapeHandling(txtPrice.Text);
                 date = escapeHandling(txtDate.Text);
 
-                sqlstatement = "INSERT INTO movie (movie_id, UPC, TITLE, DIRECTOR, TYPE, STUDIO, RELEASE_DATE, PRICE, RUNNING_TIME, CHECKED_OUT, DUE_DATE, CUSTOMER_ID )" +
-                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + author + "','" + format + "','" + publisher + "','" + date + "','" + price + "','" + pages + "', false , null ,'');";
+                sqlstatement = "INSERT INTO movie (movie_id, UPC, TITLE, DIRECTOR, TYPE, STUDIO, RELEASE_DATE, PRICE, RUNNING_TIME)" +
+                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + author + "','" + format + "','" + publisher + "','" + date + "','" + price + "','" + pages + "');";
 
                 d.loadDatabaseTable(sqlstatement);
 

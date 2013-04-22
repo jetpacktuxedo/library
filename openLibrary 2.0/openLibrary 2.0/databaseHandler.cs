@@ -20,6 +20,8 @@ namespace openLibrary_2._0
     {
         public OleDbConnection mDB;
         public string connectionString;
+        ArrayList clocked = new ArrayList();
+
 
         public void openNew()
         {
@@ -35,19 +37,52 @@ namespace openLibrary_2._0
 
             }
             catch (Exception ee) { MessageBox.Show("There was an error: " + ee.Message); }
+
+        }
+
+        public string getEmpName(string id)
+        {
+            string sql = "select first_name &' '& last_name from employee where employee_id = '" + id + "';";
+            try
+            {
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                OleDbDataReader rdr;
+                cmd = new OleDbCommand(sql, mDB);
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                    return (string)rdr[0];
+            }
+            catch (Exception e)
+            {
+                return "UNAUTHORIZED USER";
+            }
+            finally
+            {
+                closeDatabaseConnection();
+            }
+
+            return "UNAUTHORIZED USER";
         }
 
         public void inserter(string sql)
         {
             try
             {
+                openDatabaseConnection();
+                mDB.Open();
                 OleDbCommand cmd;
                 cmd = new OleDbCommand(sql, mDB);
                 cmd.ExecuteNonQuery();
             }
-            catch
+            catch (Exception e)
             {
-                MessageBox.Show("Error: Nothing was added.");
+                MessageBox.Show("Error: Nothing was added." + e.ToString() + e.Message);
+            }
+            finally
+            {
+                closeDatabaseConnection();
             }
         }
 
@@ -67,6 +102,10 @@ namespace openLibrary_2._0
                 rdr.Close();
             }
             catch (Exception ee) { MessageBox.Show("Something Went Wrong: " + ee.Message + ee.ToString()); }
+            finally
+            {
+                closeDatabaseConnection();
+            }
         }
 
         public ArrayList populateTracks(string sql)
@@ -94,6 +133,10 @@ namespace openLibrary_2._0
             {
                 MessageBox.Show("Error." + s.Message + s.ToString());
             }
+            finally
+            {
+                closeDatabaseConnection();
+            }
 
             return tracker;
         }
@@ -111,10 +154,17 @@ namespace openLibrary_2._0
 
         public void clockIN(string id)
         {
+            whoIsClockedIn();
+            if (clocked.Contains(id) == true)
+            {
+                MessageBox.Show("This employee is already clocked in.");
+                return;
+            }
+
             try
             {
                 string sql = "insert into timeclock(employee_id, time_in, time_out) values ('" + id + "','" + DateTime.Now + "','" + "Currently Clocked In" + "');";
-
+                clocked.Add(id);
                 openDatabaseConnection();
                 mDB.Open();
                 OleDbCommand cmd;
@@ -127,10 +177,22 @@ namespace openLibrary_2._0
             {
                 MessageBox.Show("Unfortunantely, there was an error." + e.ToString());
             }
+            finally
+            {
+                closeDatabaseConnection();
+            }
         }
 
         public void clockOUT(string id)
         {
+
+            whoIsClockedIn();
+            if (clocked.Contains(id) == false)
+            {
+                MessageBox.Show("This employee is not clocked in.");
+                return;
+            }
+
             try
             {
                 string sql = "update timeclock set time_out = '" + DateTime.Now + "' where employee_id = '" + id + "' and time_out = 'Currently Clocked In';";
@@ -146,6 +208,10 @@ namespace openLibrary_2._0
             catch (Exception e)
             {
                 MessageBox.Show("Unfortunantely, there was an error." + e.ToString());
+            }
+            finally
+            {
+                closeDatabaseConnection();
             }
         }
 
@@ -165,13 +231,17 @@ namespace openLibrary_2._0
             {
                 MessageBox.Show("Unfortunantely, there was an error." + e.ToString());
             }
+            finally
+            {
+                closeDatabaseConnection();
+            }
         }
 
-        public Tuple<string, string> whatKindOfItem(string code)
+        public Tuple<string, string, string> whatKindOfItem(string code)
         {
             try
             {
-                string sql = "select 'book', cstr(book_id) as 'ID' from book where isbn = '"+code+"' union select 'movie', cstr(movie_id) as 'ID' from movie where upc = '"+code+"' union select 'cd', cstr(cd_id) as 'ID' from cd where upc = '"+code+"' union select 'game', cstr(game_id) as 'ID' from game where upc = '"+code+"'";
+                string sql = "select 'book', cstr(book_id) as 'ID', title from book where isbn = '"+code+"' union select 'movie', cstr(movie_id) as 'ID', title from movie where upc = '"+code+"' union select 'cd', cstr(cd_id) as 'ID', album from cd where upc = '"+code+"' union select 'game', cstr(game_id) as 'ID', title from game where upc = '"+code+"'";
                 openDatabaseConnection();
                 mDB.Open();
                 OleDbCommand cmd;
@@ -180,16 +250,51 @@ namespace openLibrary_2._0
                 readdr = cmd.ExecuteReader();
                 while (readdr.Read())
                 {
-                    return new Tuple<string, string>((string)readdr[0], (string)readdr[1]);
+                    return new Tuple<string, string, string>((string)readdr[0], (string)readdr[1], (string)readdr[2]);
                 }
             }
             catch(Exception e)
             {
                 MessageBox.Show("Something went wrong." + e.Message + e.ToString());
             }
+            finally
+            {
+                closeDatabaseConnection();
+            }
 
-            return new Tuple<string, string>("Not found", "Not Found");
+            return new Tuple<string, string, string>("Not found", "Not Found", "Not Found");
 
+        }
+
+        public string codeFromTitle(string title)
+        {
+            string sql = "select book_id from book where title = '" + title + "' union " +
+                         "select movie_id from movie where title = '" + title + "' union " +
+                         "select game_id from game where title = '" + title + "' union " +
+                         "select cd_id from cd where album = '" + title + "';";
+
+            try
+            {
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                OleDbDataReader rdr;
+                cmd = new OleDbCommand(sql, mDB);
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                    return (string)rdr[0];
+            }
+            catch (Exception e)
+            {
+                return "Item Not Found";
+            }
+            finally
+            {
+                closeDatabaseConnection();
+            }
+
+            return "Item Not Found";
+        
         }
 
         public void checkoutBook(string userID, string empID, string scanned)
@@ -213,9 +318,12 @@ namespace openLibrary_2._0
             {
                 MessageBox.Show("There was an error adding the checkout.");
             }
+            finally
+            {
+                closeDatabaseConnection();
+            }
 
 
-            //find out if the scanned item
             string itemType;
             string itemID;
             itemType = whatKindOfItem(scanned).Item1;
@@ -223,7 +331,7 @@ namespace openLibrary_2._0
 
             if (itemType == "game")
             {
-                string newSQL = "insert into game_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
+                string newSQL = "insert into game_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.AddDays(14).ToShortDateString() + "#);";
                 openDatabaseConnection();
                 mDB.Open();
                 OleDbCommand newCMD;
@@ -236,11 +344,15 @@ namespace openLibrary_2._0
                 {
                     MessageBox.Show("There was an error adding the game_checkout.");
                 }
+                finally
+                {
+                    closeDatabaseConnection();
+                }
             }
 
             if (itemType == "cd")
             {
-                string newSQL = "insert into cd_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
+                string newSQL = "insert into cd_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.AddDays(14).ToShortDateString() + "#);";
                 openDatabaseConnection();
                 mDB.Open();
                 OleDbCommand newCMD;
@@ -253,11 +365,15 @@ namespace openLibrary_2._0
                 {
                     MessageBox.Show("There was an error adding the cd_checkout.");
                 }
+                finally
+                {
+                    closeDatabaseConnection();
+                }
             }
 
             if (itemType == "movie")
             {
-                string newSQL = "insert into movie_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
+                string newSQL = "insert into movie_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.AddDays(14).ToShortDateString() + "#);";
                 openDatabaseConnection();
                 mDB.Open();
                 OleDbCommand newCMD;
@@ -270,11 +386,15 @@ namespace openLibrary_2._0
                 {
                     MessageBox.Show("There was an error adding the movie_checkout.");
                 }
+                finally
+                {
+                    closeDatabaseConnection();
+                }
             }
 
             if (itemType == "book")
             {
-                string newSQL = "insert into book_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.ToShortDateString() + "#);";
+                string newSQL = "insert into book_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.AddDays(14).ToShortDateString() + "#);";
                 openDatabaseConnection();
                 mDB.Open();
                 OleDbCommand newCMD;
@@ -287,14 +407,48 @@ namespace openLibrary_2._0
                 {
                     MessageBox.Show("There was an error adding the book_checkout.");
                 }
+                finally
+                {
+                    closeDatabaseConnection();
+                }
             }
 
             closeDatabaseConnection();
         }
 
+        public void checkinBook(string scanned)
+        {
+            string itemType;
+            string itemID;
+            itemType = whatKindOfItem(scanned).Item1;
+            itemID = whatKindOfItem(scanned).Item2;
+
+            string sql = "delete from " + itemType + "_checkout where " + itemType + "_id = '" + itemID + "';";
+
+            openDatabaseConnection();
+            mDB.Open();
+            OleDbCommand cmd;
+
+            try
+            {
+                cmd = new OleDbCommand(sql, mDB);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("There was an error checking in the book.");
+            }
+            finally
+            {
+                closeDatabaseConnection();
+            }
+ 
+        }
+
         public ArrayList whoIsClockedIn()
         {
-            ArrayList clocked = new ArrayList();
+
+            clocked.Clear();
             try
             {
                 string sql = "select employee_id from timeclock where time_out = 'Currently Clocked In';";
@@ -313,6 +467,10 @@ namespace openLibrary_2._0
             catch
             {
                 MessageBox.Show("Sorry, an error occured.");
+            }
+            finally
+            {
+                closeDatabaseConnection();
             }
             return clocked;
 
@@ -343,8 +501,11 @@ namespace openLibrary_2._0
                 MessageBox.Show("Something went wrong: " + ee.Message + ee.ToString());
                 return (int)-1;
             }
+            finally
+            {
+                closeDatabaseConnection();
+            }
 
-            closeDatabaseConnection();
             return -1;
         }
 
@@ -353,20 +514,29 @@ namespace openLibrary_2._0
             string cname = "";
             openDatabaseConnection();
             mDB.Open();
-            OleDbCommand cmd;
-            OleDbDataReader rdr;
-            cmd = new OleDbCommand(sql, mDB);
-            rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-                cname = (string)rdr[0];
 
-            if (cname == "")
+            try
             {
-                MessageBox.Show("This customer is not in the database.");
-                return "Customer is not in the database.";
+                OleDbCommand cmd;
+                OleDbDataReader rdr;
+                cmd = new OleDbCommand(sql, mDB);
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                    cname = (string)rdr[0];
+
+                if (cname == "")
+                {
+                    MessageBox.Show("This customer is not in the database.");
+                    return "Customer is not in the database.";
+                }
+                else
+                    return cname;
             }
-            else
-                return cname;
+            catch { return "not found"; }
+            finally
+            {
+                closeDatabaseConnection();
+            }
         }
 
         public ArrayList loadCustomerCheckouts(string customerID)
@@ -439,6 +609,10 @@ namespace openLibrary_2._0
             catch (Exception x)
             {
                 MessageBox.Show(x.Message + x.ToString());
+            }
+            finally
+            {
+                closeDatabaseConnection();
             }
 
             return CurrentlyCheckedOut;

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace openLibrary_2._0 {
-    public class settings{
+    public class APIsettings{
         string myFile = "settings.txt";
         public string accessKey, secretKey, emailAddress;
 
@@ -45,21 +45,32 @@ namespace openLibrary_2._0 {
         public ArrayList parse() {
             ArrayList output = new ArrayList();
             ArrayList realout = new ArrayList();
-            using (System.IO.StreamReader sr = System.IO.File.OpenText(myFile)) {
-                string s = "";
-                while ((s = sr.ReadLine()) != null) {
-                    output.Add(s);
+            try
+            {
+                using (System.IO.StreamReader sr = System.IO.File.OpenText(myFile))
+                {
+                    string s = "";
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        output.Add(s);
+                    }
                 }
+                for (int i = 2; i < 5; i++)
+                {
+                    char[] delimiters = new char[] { ':', ' ' };
+                    string[] parse = (output[i].ToString()).Split(delimiters);
+                    realout.Add(parse[3]);
+                }
+                accessKey = realout[0].ToString();
+                secretKey = realout[1].ToString();
+                emailAddress = realout[2].ToString();
+                return realout;
             }
-            for (int i = 2; i < 5; i++) {
-                char[] delimiters = new char[] { ':', ' ' };
-                string[] parse = (output[i].ToString()).Split(delimiters);
-                realout.Add(parse[3]);
-            }
-            accessKey = realout[0].ToString();
-            secretKey = realout[1].ToString();
-            emailAddress = realout[2].ToString();
+
+            catch { }
+
             return realout;
+            
         }
     }
 }

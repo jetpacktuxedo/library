@@ -90,6 +90,7 @@
             this.tabSet1.SelectedIndex = 0;
             this.tabSet1.Size = new System.Drawing.Size(768, 113);
             this.tabSet1.TabIndex = 8;
+            this.tabSet1.SelectedIndexChanged += new System.EventHandler(this.tabSet1_SelectedIndexChanged);
             // 
             // tabPageISBN
             // 
@@ -99,7 +100,8 @@
             this.tabPageISBN.Name = "tabPageISBN";
             this.tabPageISBN.Size = new System.Drawing.Size(760, 84);
             this.tabPageISBN.TabIndex = 3;
-            this.tabPageISBN.Text = "ISBN";
+            this.tabPageISBN.Text = "UPC";
+            this.tabPageISBN.Click += new System.EventHandler(this.tabPageISBN_Click);
             // 
             // txtISBNsearch
             // 
@@ -108,7 +110,9 @@
             this.txtISBNsearch.Name = "txtISBNsearch";
             this.txtISBNsearch.Size = new System.Drawing.Size(725, 42);
             this.txtISBNsearch.TabIndex = 1;
-            this.txtISBNsearch.Text = "Enter all or part of an ISBN here...";
+            this.txtISBNsearch.Text = "Enter all or part of a UPC here...";
+            this.txtISBNsearch.TextChanged += new System.EventHandler(this.txtISBNsearch_TextChanged);
+            this.txtISBNsearch.Enter += new System.EventHandler(this.txtISBNsearch_Enter);
             // 
             // tabPageTitle
             // 
@@ -119,16 +123,19 @@
             this.tabPageTitle.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageTitle.Size = new System.Drawing.Size(760, 84);
             this.tabPageTitle.TabIndex = 0;
-            this.tabPageTitle.Text = "Title";
+            this.tabPageTitle.Text = "Album ";
+            this.tabPageTitle.Click += new System.EventHandler(this.tabPageTitle_Click);
             // 
             // txtTitleSearch
             // 
             this.txtTitleSearch.Font = new System.Drawing.Font("Maiandra GD", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitleSearch.Location = new System.Drawing.Point(18, 23);
             this.txtTitleSearch.Name = "txtTitleSearch";
-            this.txtTitleSearch.Size = new System.Drawing.Size(821, 42);
+            this.txtTitleSearch.Size = new System.Drawing.Size(725, 42);
             this.txtTitleSearch.TabIndex = 0;
-            this.txtTitleSearch.Text = "Enter all or part of a title here...";
+            this.txtTitleSearch.Text = "Enter all or part of an album title here...";
+            this.txtTitleSearch.TextChanged += new System.EventHandler(this.txtTitleSearch_TextChanged);
+            this.txtTitleSearch.Enter += new System.EventHandler(this.txtTitleSearch_Enter);
             // 
             // tabPageAuthor
             // 
@@ -139,16 +146,19 @@
             this.tabPageAuthor.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageAuthor.Size = new System.Drawing.Size(760, 84);
             this.tabPageAuthor.TabIndex = 1;
-            this.tabPageAuthor.Text = "Author";
+            this.tabPageAuthor.Text = "Artist";
+            this.tabPageAuthor.Click += new System.EventHandler(this.tabPageAuthor_Click);
             // 
             // txtAuthorSearch
             // 
             this.txtAuthorSearch.Font = new System.Drawing.Font("Maiandra GD", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAuthorSearch.Location = new System.Drawing.Point(18, 23);
             this.txtAuthorSearch.Name = "txtAuthorSearch";
-            this.txtAuthorSearch.Size = new System.Drawing.Size(821, 42);
+            this.txtAuthorSearch.Size = new System.Drawing.Size(725, 42);
             this.txtAuthorSearch.TabIndex = 1;
-            this.txtAuthorSearch.Text = "Enter all or part of an author here...";
+            this.txtAuthorSearch.Text = "Enter all or part of an artist here...";
+            this.txtAuthorSearch.TextChanged += new System.EventHandler(this.txtAuthorSearch_TextChanged);
+            this.txtAuthorSearch.Enter += new System.EventHandler(this.txtAuthorSearch_Enter);
             // 
             // tabPagePublisher
             // 
@@ -159,15 +169,18 @@
             this.tabPagePublisher.Size = new System.Drawing.Size(760, 84);
             this.tabPagePublisher.TabIndex = 2;
             this.tabPagePublisher.Text = "Publisher";
+            this.tabPagePublisher.Click += new System.EventHandler(this.tabPagePublisher_Click);
             // 
             // txtPublisherSearch
             // 
             this.txtPublisherSearch.Font = new System.Drawing.Font("Maiandra GD", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPublisherSearch.Location = new System.Drawing.Point(18, 23);
             this.txtPublisherSearch.Name = "txtPublisherSearch";
-            this.txtPublisherSearch.Size = new System.Drawing.Size(821, 42);
+            this.txtPublisherSearch.Size = new System.Drawing.Size(725, 42);
             this.txtPublisherSearch.TabIndex = 1;
             this.txtPublisherSearch.Text = "Enter all or part of a publisher here...";
+            this.txtPublisherSearch.TextChanged += new System.EventHandler(this.txtPublisherSearch_TextChanged);
+            this.txtPublisherSearch.Enter += new System.EventHandler(this.txtPublisherSearch_Enter);
             // 
             // frmViewMusic
             // 

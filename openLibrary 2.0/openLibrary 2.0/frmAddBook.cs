@@ -63,7 +63,7 @@ namespace openLibrary_2._0
 
                 int bookid;
 
-                bookid = d.findBookCount("SELECT max(book_id) FROM book;");
+                bookid = d.findBookCount("SELECT max(cint(book_id)) FROM book;");
                 bookid++;
 
                 isbn = txtISBN.Text;

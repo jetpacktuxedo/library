@@ -32,11 +32,12 @@
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adminMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.overdueBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aPIKeysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.overdueBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,6 +90,10 @@
             this.txtCheckout = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnComplete = new System.Windows.Forms.Button();
+            this.lstCheckIn = new System.Windows.Forms.ListBox();
+            this.txtCheckIn = new System.Windows.Forms.TextBox();
+            this.btnSubmitCheckIn = new System.Windows.Forms.Button();
+            this.btnCompleteCheckIn = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.grpUser.SuspendLayout();
             this.grpTasks.SuspendLayout();
@@ -114,10 +119,10 @@
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
+            this.adminMenu,
             this.logInToolStripMenuItem,
             this.logOutToolStripMenuItem,
-            this.exitToolStripMenuItem,
-            this.createReportToolStripMenuItem});
+            this.exitToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.toolStripMenuItem1.Text = "File";
@@ -126,46 +131,55 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // adminMenu
+            // 
+            this.adminMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.overdueBooksToolStripMenuItem,
+            this.aPIKeysToolStripMenuItem});
+            this.adminMenu.Enabled = false;
+            this.adminMenu.Name = "adminMenu";
+            this.adminMenu.Size = new System.Drawing.Size(151, 22);
+            this.adminMenu.Text = "Administrative";
+            // 
+            // overdueBooksToolStripMenuItem
+            // 
+            this.overdueBooksToolStripMenuItem.Name = "overdueBooksToolStripMenuItem";
+            this.overdueBooksToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.overdueBooksToolStripMenuItem.Text = "Overdue Report";
+            this.overdueBooksToolStripMenuItem.Click += new System.EventHandler(this.overdueBooksToolStripMenuItem_Click);
+            // 
+            // aPIKeysToolStripMenuItem
+            // 
+            this.aPIKeysToolStripMenuItem.Name = "aPIKeysToolStripMenuItem";
+            this.aPIKeysToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.aPIKeysToolStripMenuItem.Text = "API Keys";
+            this.aPIKeysToolStripMenuItem.Click += new System.EventHandler(this.aPIKeysToolStripMenuItem_Click);
             // 
             // logInToolStripMenuItem
             // 
             this.logInToolStripMenuItem.Enabled = false;
             this.logInToolStripMenuItem.Name = "logInToolStripMenuItem";
-            this.logInToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.logInToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.logInToolStripMenuItem.Text = "Login";
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Enabled = false;
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.logOutToolStripMenuItem.Text = "Logout";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.clockOutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // createReportToolStripMenuItem
-            // 
-            this.createReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.overdueBooksToolStripMenuItem});
-            this.createReportToolStripMenuItem.Name = "createReportToolStripMenuItem";
-            this.createReportToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.createReportToolStripMenuItem.Text = "Create Report...";
-            // 
-            // overdueBooksToolStripMenuItem
-            // 
-            this.overdueBooksToolStripMenuItem.Name = "overdueBooksToolStripMenuItem";
-            this.overdueBooksToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.overdueBooksToolStripMenuItem.Text = "Overdue Books";
-            this.overdueBooksToolStripMenuItem.Click += new System.EventHandler(this.overdueBooksToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -421,7 +435,6 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(392, 35);
             this.txtID.TabIndex = 1;
-            this.txtID.Text = "32967000742087";
             // 
             // lblCurrentUser
             // 
@@ -513,6 +526,7 @@
             this.btnFindUser.TabIndex = 7;
             this.btnFindUser.Text = "Find User";
             this.btnFindUser.UseVisualStyleBackColor = true;
+            this.btnFindUser.Click += new System.EventHandler(this.btnFindUser_Click);
             // 
             // btnEditInfo
             // 
@@ -533,6 +547,7 @@
             this.btnCheckIn.TabIndex = 8;
             this.btnCheckIn.Text = "Check In";
             this.btnCheckIn.UseVisualStyleBackColor = true;
+            this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
             // 
             // btnCheckout
             // 
@@ -625,9 +640,53 @@
             this.btnComplete.Visible = false;
             this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click_1);
             // 
+            // lstCheckIn
+            // 
+            this.lstCheckIn.FormattingEnabled = true;
+            this.lstCheckIn.Location = new System.Drawing.Point(22, 177);
+            this.lstCheckIn.Name = "lstCheckIn";
+            this.lstCheckIn.Size = new System.Drawing.Size(495, 199);
+            this.lstCheckIn.TabIndex = 13;
+            this.lstCheckIn.Visible = false;
+            // 
+            // txtCheckIn
+            // 
+            this.txtCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCheckIn.Location = new System.Drawing.Point(22, 393);
+            this.txtCheckIn.Name = "txtCheckIn";
+            this.txtCheckIn.Size = new System.Drawing.Size(325, 35);
+            this.txtCheckIn.TabIndex = 14;
+            this.txtCheckIn.Visible = false;
+            // 
+            // btnSubmitCheckIn
+            // 
+            this.btnSubmitCheckIn.Location = new System.Drawing.Point(353, 394);
+            this.btnSubmitCheckIn.Name = "btnSubmitCheckIn";
+            this.btnSubmitCheckIn.Size = new System.Drawing.Size(79, 35);
+            this.btnSubmitCheckIn.TabIndex = 15;
+            this.btnSubmitCheckIn.Text = "Submit";
+            this.btnSubmitCheckIn.UseVisualStyleBackColor = true;
+            this.btnSubmitCheckIn.Visible = false;
+            this.btnSubmitCheckIn.Click += new System.EventHandler(this.btnSubmitCheckIn_Click);
+            // 
+            // btnCompleteCheckIn
+            // 
+            this.btnCompleteCheckIn.Location = new System.Drawing.Point(438, 393);
+            this.btnCompleteCheckIn.Name = "btnCompleteCheckIn";
+            this.btnCompleteCheckIn.Size = new System.Drawing.Size(79, 35);
+            this.btnCompleteCheckIn.TabIndex = 16;
+            this.btnCompleteCheckIn.Text = "Complete";
+            this.btnCompleteCheckIn.UseVisualStyleBackColor = true;
+            this.btnCompleteCheckIn.Visible = false;
+            this.btnCompleteCheckIn.Click += new System.EventHandler(this.btnCompleteCheckIn_Click);
+            // 
             // frmHomeScreen
             // 
             this.ClientSize = new System.Drawing.Size(1353, 717);
+            this.Controls.Add(this.btnCompleteCheckIn);
+            this.Controls.Add(this.btnSubmitCheckIn);
+            this.Controls.Add(this.txtCheckIn);
+            this.Controls.Add(this.lstCheckIn);
             this.Controls.Add(this.btnComplete);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtCheckout);
@@ -723,8 +782,13 @@
         private System.Windows.Forms.TextBox txtCheckout;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnComplete;
-        private System.Windows.Forms.ToolStripMenuItem createReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adminMenu;
         private System.Windows.Forms.ToolStripMenuItem overdueBooksToolStripMenuItem;
+        private System.Windows.Forms.ListBox lstCheckIn;
+        private System.Windows.Forms.TextBox txtCheckIn;
+        private System.Windows.Forms.Button btnSubmitCheckIn;
+        private System.Windows.Forms.Button btnCompleteCheckIn;
+        private System.Windows.Forms.ToolStripMenuItem aPIKeysToolStripMenuItem;
     }
 }
 

@@ -20,7 +20,7 @@ namespace openLibrary_2._0 {
         //Method to do an ISBN-based lookup and return the signed URL
         public static string lookup(string ISBN) {
 
-            settings set = new settings();
+            APIsettings set = new APIsettings();
             ArrayList parsed = new ArrayList();
             parsed = set.parse();
 

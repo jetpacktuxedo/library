@@ -99,10 +99,10 @@ namespace openLibrary_2._0
                 int bookid;
                 int trackid;
 
-                bookid = d.findBookCount("SELECT max(cd_id) FROM cd;");
+                bookid = d.findBookCount("SELECT max(cint(cd_id)) FROM cd;");
                 bookid++;
 
-                trackid = d.findBookCount("SELECT max(track_id) from track;");
+                trackid = d.findBookCount("SELECT max(cint(track_id)) from track;");
                 trackid++;
 
                 isbn = escapeHandling(txtISBN.Text);

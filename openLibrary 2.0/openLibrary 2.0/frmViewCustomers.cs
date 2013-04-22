@@ -51,5 +51,24 @@ namespace openLibrary_2._0
                 MessageBox.Show(ee.Message);
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow.Index >= 0)
+            {
+                int selectedRow = dataGridView1.CurrentRow.Index;
+                string customerID = dataGridView1[0, selectedRow].Value.ToString();
+                Clipboard.SetText(customerID);
+
+                toolStripStatusLabel1.Text = "The customer ID for " + dataGridView1[1, selectedRow].Value.ToString() + " " + dataGridView1[2, selectedRow].Value.ToString() + " has been copied to the clipboard.";
+            }
+        }
+
+
     }
 }

@@ -45,7 +45,9 @@ namespace openLibrary_2._0
             clocked = d.whoIsClockedIn();
 
             foreach (string x in clocked)
+            {
                 lstClockedIN.Items.Add(x);
+            }
         }
 
         private void btnClockThemOut_Click(object sender, EventArgs e)
@@ -54,7 +56,6 @@ namespace openLibrary_2._0
             {
                 d.clockOUT(lstClockedIN.SelectedItem.ToString());
                 loadList();
-
             }
         }
     }

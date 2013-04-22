@@ -25,5 +25,16 @@ namespace openLibrary_2._0
 
             Close();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length > 13)
+                button1.Focus();
+        }
+
+        private void frmLogout_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
