@@ -36,7 +36,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select CD_ID, Album, Artist, Type, publisher, Release_Date, Price from cd order by cd_id;";
+                string query = "select CD_ID, UPC, Album, Artist, Type, publisher, Release_Date, Price from cd order by cint(cd_id);";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -198,25 +198,25 @@ namespace openLibrary_2._0
 
         private void txtISBNsearch_TextChanged(object sender, EventArgs e)
         {
-            if (txtISBNsearch.Text.Length >= 0)
+            if (txtUPCsearch.Text.Length >= 0)
             {
-                searcher(txtISBNsearch.Text, "upc");
+                searcher(txtUPCsearch.Text, "upc");
             }
         }
 
         private void txtTitleSearch_TextChanged(object sender, EventArgs e)
         {
-            if (txtTitleSearch.Text.Length >= 0)
+            if (txtAlbumSearch.Text.Length >= 0)
             {
-                searcher(txtTitleSearch.Text, "album");
+                searcher(txtAlbumSearch.Text, "album");
             }
         }
 
         private void txtAuthorSearch_TextChanged(object sender, EventArgs e)
         {
-            if (txtAuthorSearch.Text.Length >= 0)
+            if (txtArtistSearch.Text.Length >= 0)
             {
-                searcher(txtAuthorSearch.Text, "artist");
+                searcher(txtArtistSearch.Text, "artist");
             }
         }
 
@@ -236,17 +236,17 @@ namespace openLibrary_2._0
 
         private void txtAuthorSearch_Enter(object sender, EventArgs e)
         {
-            txtAuthorSearch.Text = "";
+            txtArtistSearch.Text = "";
         }
 
         private void txtTitleSearch_Enter(object sender, EventArgs e)
         {
-            txtTitleSearch.Text = "";
+            txtAlbumSearch.Text = "";
         }
 
         private void txtISBNsearch_Enter(object sender, EventArgs e)
         {
-            txtISBNsearch.Text = "";
+            txtUPCsearch.Text = "";
         }
 
         private void tabPageISBN_Click(object sender, EventArgs e)
@@ -278,7 +278,7 @@ namespace openLibrary_2._0
             {
 
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select CD_ID, Album, Artist, Type, publisher, Release_Date, Price from cd where " + column + " like '%" + field + "%' order by cd_id;";
+                string query = "select CD_ID, UPC, Album, Artist, Type, publisher, Release_Date, Price from cd where " + column + " like '%" + field + "%' order by cint(cd_id);";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -304,15 +304,15 @@ namespace openLibrary_2._0
 
         private void clears()
         {
-            txtISBNsearch.Text = "Enter all or part of an ISBN here...";
+            txtUPCsearch.Text = "Enter all or part of a UPC here...";
             txtPublisherSearch.Text = "Enter all or part of a publisher here...";
-            txtAuthorSearch.Text = "Enter all or part of an author here...";
-            txtTitleSearch.Text = "Enter all or part of a title here...";
+            txtArtistSearch.Text = "Enter all or part of an author here...";
+            txtAlbumSearch.Text = "Enter all or part of a title here...";
 
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select CD_ID, Album, Artist, Type, publisher, Release_Date, Price from cd order by cd_id;";
+                string query = "select CD_ID, UPC, Album, Artist, Type, publisher, Release_Date, Price from cd order by cint(cd_id);";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);

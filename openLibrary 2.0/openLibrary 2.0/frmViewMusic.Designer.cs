@@ -34,11 +34,11 @@
             this.lstCurrentTracks = new System.Windows.Forms.ListBox();
             this.tabSet1 = new System.Windows.Forms.TabControl();
             this.tabPageISBN = new System.Windows.Forms.TabPage();
-            this.txtISBNsearch = new System.Windows.Forms.TextBox();
+            this.txtUPCsearch = new System.Windows.Forms.TextBox();
             this.tabPageTitle = new System.Windows.Forms.TabPage();
-            this.txtTitleSearch = new System.Windows.Forms.TextBox();
+            this.txtAlbumSearch = new System.Windows.Forms.TextBox();
             this.tabPageAuthor = new System.Windows.Forms.TabPage();
-            this.txtAuthorSearch = new System.Windows.Forms.TextBox();
+            this.txtArtistSearch = new System.Windows.Forms.TextBox();
             this.tabPagePublisher = new System.Windows.Forms.TabPage();
             this.txtPublisherSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMusic)).BeginInit();
@@ -95,7 +95,7 @@
             // tabPageISBN
             // 
             this.tabPageISBN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.tabPageISBN.Controls.Add(this.txtISBNsearch);
+            this.tabPageISBN.Controls.Add(this.txtUPCsearch);
             this.tabPageISBN.Location = new System.Drawing.Point(4, 25);
             this.tabPageISBN.Name = "tabPageISBN";
             this.tabPageISBN.Size = new System.Drawing.Size(760, 84);
@@ -103,21 +103,21 @@
             this.tabPageISBN.Text = "UPC";
             this.tabPageISBN.Click += new System.EventHandler(this.tabPageISBN_Click);
             // 
-            // txtISBNsearch
+            // txtUPCsearch
             // 
-            this.txtISBNsearch.Font = new System.Drawing.Font("Maiandra GD", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtISBNsearch.Location = new System.Drawing.Point(18, 23);
-            this.txtISBNsearch.Name = "txtISBNsearch";
-            this.txtISBNsearch.Size = new System.Drawing.Size(725, 42);
-            this.txtISBNsearch.TabIndex = 1;
-            this.txtISBNsearch.Text = "Enter all or part of a UPC here...";
-            this.txtISBNsearch.TextChanged += new System.EventHandler(this.txtISBNsearch_TextChanged);
-            this.txtISBNsearch.Enter += new System.EventHandler(this.txtISBNsearch_Enter);
+            this.txtUPCsearch.Font = new System.Drawing.Font("Maiandra GD", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUPCsearch.Location = new System.Drawing.Point(18, 23);
+            this.txtUPCsearch.Name = "txtUPCsearch";
+            this.txtUPCsearch.Size = new System.Drawing.Size(725, 42);
+            this.txtUPCsearch.TabIndex = 1;
+            this.txtUPCsearch.Text = "Enter all or part of a UPC here...";
+            this.txtUPCsearch.TextChanged += new System.EventHandler(this.txtISBNsearch_TextChanged);
+            this.txtUPCsearch.Enter += new System.EventHandler(this.txtISBNsearch_Enter);
             // 
             // tabPageTitle
             // 
             this.tabPageTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.tabPageTitle.Controls.Add(this.txtTitleSearch);
+            this.tabPageTitle.Controls.Add(this.txtAlbumSearch);
             this.tabPageTitle.Location = new System.Drawing.Point(4, 25);
             this.tabPageTitle.Name = "tabPageTitle";
             this.tabPageTitle.Padding = new System.Windows.Forms.Padding(3);
@@ -126,21 +126,21 @@
             this.tabPageTitle.Text = "Album ";
             this.tabPageTitle.Click += new System.EventHandler(this.tabPageTitle_Click);
             // 
-            // txtTitleSearch
+            // txtAlbumSearch
             // 
-            this.txtTitleSearch.Font = new System.Drawing.Font("Maiandra GD", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitleSearch.Location = new System.Drawing.Point(18, 23);
-            this.txtTitleSearch.Name = "txtTitleSearch";
-            this.txtTitleSearch.Size = new System.Drawing.Size(725, 42);
-            this.txtTitleSearch.TabIndex = 0;
-            this.txtTitleSearch.Text = "Enter all or part of an album title here...";
-            this.txtTitleSearch.TextChanged += new System.EventHandler(this.txtTitleSearch_TextChanged);
-            this.txtTitleSearch.Enter += new System.EventHandler(this.txtTitleSearch_Enter);
+            this.txtAlbumSearch.Font = new System.Drawing.Font("Maiandra GD", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAlbumSearch.Location = new System.Drawing.Point(18, 23);
+            this.txtAlbumSearch.Name = "txtAlbumSearch";
+            this.txtAlbumSearch.Size = new System.Drawing.Size(725, 42);
+            this.txtAlbumSearch.TabIndex = 0;
+            this.txtAlbumSearch.Text = "Enter all or part of an album title here...";
+            this.txtAlbumSearch.TextChanged += new System.EventHandler(this.txtTitleSearch_TextChanged);
+            this.txtAlbumSearch.Enter += new System.EventHandler(this.txtTitleSearch_Enter);
             // 
             // tabPageAuthor
             // 
             this.tabPageAuthor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.tabPageAuthor.Controls.Add(this.txtAuthorSearch);
+            this.tabPageAuthor.Controls.Add(this.txtArtistSearch);
             this.tabPageAuthor.Location = new System.Drawing.Point(4, 25);
             this.tabPageAuthor.Name = "tabPageAuthor";
             this.tabPageAuthor.Padding = new System.Windows.Forms.Padding(3);
@@ -149,16 +149,16 @@
             this.tabPageAuthor.Text = "Artist";
             this.tabPageAuthor.Click += new System.EventHandler(this.tabPageAuthor_Click);
             // 
-            // txtAuthorSearch
+            // txtArtistSearch
             // 
-            this.txtAuthorSearch.Font = new System.Drawing.Font("Maiandra GD", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAuthorSearch.Location = new System.Drawing.Point(18, 23);
-            this.txtAuthorSearch.Name = "txtAuthorSearch";
-            this.txtAuthorSearch.Size = new System.Drawing.Size(725, 42);
-            this.txtAuthorSearch.TabIndex = 1;
-            this.txtAuthorSearch.Text = "Enter all or part of an artist here...";
-            this.txtAuthorSearch.TextChanged += new System.EventHandler(this.txtAuthorSearch_TextChanged);
-            this.txtAuthorSearch.Enter += new System.EventHandler(this.txtAuthorSearch_Enter);
+            this.txtArtistSearch.Font = new System.Drawing.Font("Maiandra GD", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtArtistSearch.Location = new System.Drawing.Point(18, 23);
+            this.txtArtistSearch.Name = "txtArtistSearch";
+            this.txtArtistSearch.Size = new System.Drawing.Size(725, 42);
+            this.txtArtistSearch.TabIndex = 1;
+            this.txtArtistSearch.Text = "Enter all or part of an artist here...";
+            this.txtArtistSearch.TextChanged += new System.EventHandler(this.txtAuthorSearch_TextChanged);
+            this.txtArtistSearch.Enter += new System.EventHandler(this.txtAuthorSearch_Enter);
             // 
             // tabPagePublisher
             // 
@@ -216,11 +216,11 @@
         private System.Windows.Forms.ListBox lstCurrentTracks;
         private System.Windows.Forms.TabControl tabSet1;
         private System.Windows.Forms.TabPage tabPageISBN;
-        private System.Windows.Forms.TextBox txtISBNsearch;
+        private System.Windows.Forms.TextBox txtUPCsearch;
         private System.Windows.Forms.TabPage tabPageTitle;
-        private System.Windows.Forms.TextBox txtTitleSearch;
+        private System.Windows.Forms.TextBox txtAlbumSearch;
         private System.Windows.Forms.TabPage tabPageAuthor;
-        private System.Windows.Forms.TextBox txtAuthorSearch;
+        private System.Windows.Forms.TextBox txtArtistSearch;
         private System.Windows.Forms.TabPage tabPagePublisher;
         private System.Windows.Forms.TextBox txtPublisherSearch;
     }

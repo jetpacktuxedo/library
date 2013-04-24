@@ -29,7 +29,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book order by book_id;";
+                string query = "select Book_ID,ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book order by cint(book_id);";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -75,7 +75,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book order by book_id;";
+                string query = "select Book_ID,ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book order by cint(book_id);";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -100,13 +100,17 @@ namespace openLibrary_2._0
 
         }
 
+        private string escapeHandling(string line) {
+            return line.Replace("'", "''");
+        }
+
         private void searcher(string field, string column)
         {
             try
             {
                 
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book where " + column + " like '%" + field + "%' order by book_id;";
+                string query = "select Book_ID,ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book where " + column + " like '%" + escapeHandling(field) + "%' order by cint(book_id);";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);

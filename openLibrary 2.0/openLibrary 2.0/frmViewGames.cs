@@ -28,7 +28,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from game order by game_id;";
+                string query = "select * from game order by cint(game_id);";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -52,7 +52,9 @@ namespace openLibrary_2._0
             }
         }
 
-        
+        private string escapeHandling(string line) {
+            return line.Replace("'", "''");
+        }
 
         private void searcher(string field, string column)
         {
@@ -60,7 +62,7 @@ namespace openLibrary_2._0
             {
 
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from game where " + column + " like '%" + field + "%' order by game_id;";
+                string query = "select * from game where " + column + " like '%" + escapeHandling(field) + "%' order by cint(game_id);";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
