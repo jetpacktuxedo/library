@@ -49,9 +49,9 @@
             // dgvGames
             // 
             this.dgvGames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGames.Location = new System.Drawing.Point(12, 140);
+            this.dgvGames.Location = new System.Drawing.Point(12, 131);
             this.dgvGames.Name = "dgvGames";
-            this.dgvGames.Size = new System.Drawing.Size(868, 327);
+            this.dgvGames.Size = new System.Drawing.Size(867, 250);
             this.dgvGames.TabIndex = 3;
             // 
             // tabSet1
@@ -64,7 +64,7 @@
             this.tabSet1.Location = new System.Drawing.Point(12, 12);
             this.tabSet1.Name = "tabSet1";
             this.tabSet1.SelectedIndex = 0;
-            this.tabSet1.Size = new System.Drawing.Size(868, 113);
+            this.tabSet1.Size = new System.Drawing.Size(867, 113);
             this.tabSet1.TabIndex = 4;
             this.tabSet1.SelectedIndexChanged += new System.EventHandler(this.tabSet1_SelectedIndexChanged);
             // 
@@ -74,7 +74,7 @@
             this.tabPageISBN.Controls.Add(this.txtISBNsearch);
             this.tabPageISBN.Location = new System.Drawing.Point(4, 25);
             this.tabPageISBN.Name = "tabPageISBN";
-            this.tabPageISBN.Size = new System.Drawing.Size(860, 84);
+            this.tabPageISBN.Size = new System.Drawing.Size(859, 84);
             this.tabPageISBN.TabIndex = 3;
             this.tabPageISBN.Text = "UPC";
             this.tabPageISBN.Click += new System.EventHandler(this.tabPageISBN_Click);
@@ -162,7 +162,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 485);
+            this.ClientSize = new System.Drawing.Size(891, 393);
             this.Controls.Add(this.tabSet1);
             this.Controls.Add(this.dgvGames);
             this.Name = "frmViewGames";

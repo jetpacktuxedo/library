@@ -54,10 +54,10 @@
             this.dgvMusic.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.dgvMusic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMusic.GridColor = System.Drawing.SystemColors.Menu;
-            this.dgvMusic.Location = new System.Drawing.Point(12, 136);
+            this.dgvMusic.Location = new System.Drawing.Point(12, 131);
             this.dgvMusic.Name = "dgvMusic";
             this.dgvMusic.ReadOnly = true;
-            this.dgvMusic.Size = new System.Drawing.Size(868, 230);
+            this.dgvMusic.Size = new System.Drawing.Size(864, 250);
             this.dgvMusic.TabIndex = 1;
             this.dgvMusic.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -68,10 +68,10 @@
             this.tabSet1.Controls.Add(this.tabPageAuthor);
             this.tabSet1.Controls.Add(this.tabPagePublisher);
             this.tabSet1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabSet1.Location = new System.Drawing.Point(12, 17);
+            this.tabSet1.Location = new System.Drawing.Point(12, 12);
             this.tabSet1.Name = "tabSet1";
             this.tabSet1.SelectedIndex = 0;
-            this.tabSet1.Size = new System.Drawing.Size(868, 113);
+            this.tabSet1.Size = new System.Drawing.Size(865, 113);
             this.tabSet1.TabIndex = 2;
             this.tabSet1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -81,7 +81,7 @@
             this.tabPageISBN.Controls.Add(this.txtISBNsearch);
             this.tabPageISBN.Location = new System.Drawing.Point(4, 25);
             this.tabPageISBN.Name = "tabPageISBN";
-            this.tabPageISBN.Size = new System.Drawing.Size(860, 84);
+            this.tabPageISBN.Size = new System.Drawing.Size(857, 84);
             this.tabPageISBN.TabIndex = 3;
             this.tabPageISBN.Text = "ISBN";
             this.tabPageISBN.Click += new System.EventHandler(this.tabPage4_Click);
@@ -169,7 +169,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 376);
+            this.ClientSize = new System.Drawing.Size(889, 393);
             this.Controls.Add(this.tabSet1);
             this.Controls.Add(this.dgvMusic);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

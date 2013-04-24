@@ -111,7 +111,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1353, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(769, 24);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -574,9 +574,9 @@
             // pixLogo
             // 
             this.pixLogo.Image = ((System.Drawing.Image)(resources.GetObject("pixLogo.Image")));
-            this.pixLogo.Location = new System.Drawing.Point(765, 27);
+            this.pixLogo.Location = new System.Drawing.Point(12, 27);
             this.pixLogo.Name = "pixLogo";
-            this.pixLogo.Size = new System.Drawing.Size(659, 381);
+            this.pixLogo.Size = new System.Drawing.Size(747, 531);
             this.pixLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pixLogo.TabIndex = 8;
             this.pixLogo.TabStop = false;
@@ -682,7 +682,8 @@
             // 
             // frmHomeScreen
             // 
-            this.ClientSize = new System.Drawing.Size(1353, 717);
+            this.ClientSize = new System.Drawing.Size(769, 564);
+            this.Controls.Add(this.pixLogo);
             this.Controls.Add(this.btnCompleteCheckIn);
             this.Controls.Add(this.btnSubmitCheckIn);
             this.Controls.Add(this.txtCheckIn);
@@ -691,7 +692,6 @@
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtCheckout);
             this.Controls.Add(this.lstCheckout);
-            this.Controls.Add(this.pixLogo);
             this.Controls.Add(this.lstCurrentlyCheckedOut);
             this.Controls.Add(this.lblCustomerName);
             this.Controls.Add(this.lblCurrentEmp);
