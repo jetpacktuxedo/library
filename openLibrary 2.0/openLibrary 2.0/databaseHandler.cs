@@ -125,7 +125,7 @@ namespace openLibrary_2._0
 
                 while (rdr.Read())
                 {
-                    tracker.Add((string)rdr["Disc_Number"] + "\t" + (string)rdr["Track_Number"] + "\t" + (string)rdr["Track_name"]);
+                    tracker.Add(rdr["Disc_Number"] + "\t" + rdr["Track_Number"] + "\t" + (string)rdr["Track_name"]);
                 }
 
             }

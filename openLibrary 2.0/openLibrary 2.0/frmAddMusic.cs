@@ -124,7 +124,7 @@ namespace openLibrary_2._0
                 while(i < tracks.Count)
                 {
                     sqlstatement = "INSERT INTO TRACK (CD_ID, TRACK_ID, DISC_NUMBER, TRACK_NUMBER, TRACK_NAME)" +
-                                              "VALUES ('" + bookid + "','" + (trackid + j) + "','" + tracks[i] + "','" + tracks[i + 1] + "','" + escapeHandling(tracks[i + 2].ToString()) + "');";
+                                              "VALUES ('" + bookid + "','" + (trackid + j) + "', " + tracks[i] + ", " + tracks[i + 1] + ",'" + escapeHandling(tracks[i + 2].ToString()) + "');";
 
                     d.inserter(sqlstatement);
                     i += 3;

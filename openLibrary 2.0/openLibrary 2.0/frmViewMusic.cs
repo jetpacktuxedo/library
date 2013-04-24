@@ -22,7 +22,7 @@ namespace openLibrary_2._0
         public string connectionString;
         public OleDbConnection mDB;
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
-        string path = null, path2 = null;
+        string path = null, path2 = null, path3 = null;
         string cdid, albumname, artistname;
 
 
@@ -60,42 +60,70 @@ namespace openLibrary_2._0
             }
         }
 
-       
+        protected virtual bool IsFileLocked(FileInfo file) {
+            FileStream stream = null;
+
+            try {
+                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+            }
+            catch (IOException) {
+                //the file is unavailable because it is:
+                //still being written to
+                //or being processed by another thread
+                //or does not exist (has already been processed)
+                return true;
+            }
+            finally {
+                if (stream != null)
+                    stream.Close();
+            }
+
+            //file is not locked
+            return false;
+        }
 
         private void beginPlay(string asin)
         {
             path = Directory.GetCurrentDirectory() + "/tempMP3.mp3";
             path2 = Directory.GetCurrentDirectory() + "/temp2MP3.mp3";
+            path3 = Directory.GetCurrentDirectory() + "/temp3MP3.mp3";
             string url = "http://www.amazon.com/gp/dmusic/get_sample_url.html?ASIN=" + asin;
 
             WebClient client = new WebClient();
+            FileInfo file = new FileInfo(path);
+            FileInfo file2 = new FileInfo(path2);
+            FileInfo file3 = new FileInfo(path3);
 
             try
             {
-                client.DownloadFile(url, path);
-                player(path);
+                if(!IsFileLocked(file)){
+                    client.DownloadFile(url, path);
+                    player(path);
+                } 
+                else if (!IsFileLocked(file2)) {
+                    client.DownloadFile(url, path2);
+                    player(path2);
+                }
+                else if (!IsFileLocked(file3)) {
+                    client.DownloadFile(url, path2);
+                    player(path3);
+                }
             }
             catch (Exception x)
             {
-                client.DownloadFile(url, path2);
-                player(path2);
+                MessageBox.Show("Busy. Please try again in a moment.");
             }
         }
 
         public void player(string loc) 
         {
-
             mPlayer.URL = loc;
-        
         }
 
-        public void stopper(string loc)
-        {
+        public void stopper(string loc) {
             wplayer.controls.stop();
             wplayer.close();
         }
-
-     
 
         private void wplayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
@@ -109,7 +137,6 @@ namespace openLibrary_2._0
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-
             if (dgvMusic.CurrentRow.Index >= 0)
             {
                 int selectedRow = dgvMusic.CurrentRow.Index;
@@ -119,9 +146,7 @@ namespace openLibrary_2._0
                 databaseHandler d = new databaseHandler();
                 lstCurrentTracks.Items.Clear();
 
-
-
-                string sql = "select * from track where cd_id = '" + cdid + "' order by track_number;";
+                string sql = "select * from track where cd_id = '" + cdid + "' order by disc_number, track_number;";
                 ArrayList adder = d.populateTracks(sql);
 
                 lstCurrentTracks.Items.Add("DISC \t NO. \t TITLE");
