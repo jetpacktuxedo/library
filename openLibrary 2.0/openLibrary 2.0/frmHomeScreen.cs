@@ -25,6 +25,11 @@ namespace openLibrary_2._0
         string userID;
         ArrayList toBeCheckedOut = new ArrayList();
         ArrayList toBeCheckedIn = new ArrayList();
+        ArrayList toBePrinted = new ArrayList();
+        ArrayList CheckedOut = new ArrayList();
+
+        
+      
 
 
         public frmHomeScreen()
@@ -154,7 +159,7 @@ namespace openLibrary_2._0
         {   
             lstCurrentlyCheckedOut.Items.Clear();
 
-            ArrayList CheckedOut = new ArrayList();
+            CheckedOut.Clear();
             CheckedOut = d.loadCustomerCheckouts(userID);
 
             if (CheckedOut.Count == 0)
@@ -178,7 +183,7 @@ namespace openLibrary_2._0
             ArrayList clocked = d.whoIsClockedIn();
             logInToolStripMenuItem.DropDownItems.Clear();
             string userslogged = " (No users)";
-
+            
             foreach(string x in clocked)
             {
                 string employeeName = d.getEmpName(x);
@@ -274,6 +279,7 @@ namespace openLibrary_2._0
 
         private void frmHomeScreen_Load(object sender, EventArgs e)
         {
+            
         }
 
 
@@ -478,6 +484,44 @@ namespace openLibrary_2._0
         {
             frmViewCustomers frm = new frmViewCustomers();
             frm.Show();
+        }
+
+        private void btnEnd_Click(object sender, EventArgs e)
+        {
+
+            toBePrinted.Clear();
+            toBePrinted.Add("============================================================================");
+            toBePrinted.Add("                                                                         YOUR LOCAL LIBRARY    ");
+            toBePrinted.Add("                                                                          121 FIRST STREET     ");
+            toBePrinted.Add("                                                                         WEST LAFAYETTE, IN    ");
+            toBePrinted.Add("                                                                          (765) 555 - 5555     ");
+            toBePrinted.Add("============================================================================");
+            toBePrinted.Add("");
+            toBePrinted.Add("");
+            toBePrinted.Add("");
+            toBePrinted.Add("TIME OF SALE:   " + System.DateTime.Now.ToString());
+            toBePrinted.Add("");
+            toBePrinted.Add("");
+            toBePrinted.Add("CURRENT EMPLOYEE:   " + lblCurrentEmp.Text);
+            toBePrinted.Add("");
+            toBePrinted.Add("CURRENT CUSTOMER:   " + lblCustomerName.Text);
+            toBePrinted.Add("");
+            toBePrinted.Add("");
+            toBePrinted.Add("This is an updated list of the items that you currently have checked out:");
+            toBePrinted.Add("");
+      
+            foreach (string print in CheckedOut)
+            {
+                toBePrinted.Add(print);
+            }
+
+            frmPrint frm = new frmPrint();
+            frm.getArrayList = toBePrinted;
+            frm.Show();
+
+            txtID.Text = "";
+            lstCurrentlyCheckedOut.Items.Clear();
+            lblCustomerName.Text = "";
         }
     }
 }

@@ -131,7 +131,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -142,7 +142,7 @@
             this.aPIKeysToolStripMenuItem});
             this.adminMenu.Enabled = false;
             this.adminMenu.Name = "adminMenu";
-            this.adminMenu.Size = new System.Drawing.Size(151, 22);
+            this.adminMenu.Size = new System.Drawing.Size(152, 22);
             this.adminMenu.Text = "Administrative";
             // 
             // overdueBooksToolStripMenuItem
@@ -163,21 +163,21 @@
             // 
             this.logInToolStripMenuItem.Enabled = false;
             this.logInToolStripMenuItem.Name = "logInToolStripMenuItem";
-            this.logInToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.logInToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logInToolStripMenuItem.Text = "Login";
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Enabled = false;
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logOutToolStripMenuItem.Text = "Logout";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.clockOutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -506,6 +506,7 @@
             this.btnEnd.TabIndex = 11;
             this.btnEnd.Text = "End Transaction";
             this.btnEnd.UseVisualStyleBackColor = true;
+            this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
             // 
             // btnFindItem
             // 
@@ -574,9 +575,9 @@
             // pixLogo
             // 
             this.pixLogo.Image = ((System.Drawing.Image)(resources.GetObject("pixLogo.Image")));
-            this.pixLogo.Location = new System.Drawing.Point(12, 27);
+            this.pixLogo.Location = new System.Drawing.Point(115, 42);
             this.pixLogo.Name = "pixLogo";
-            this.pixLogo.Size = new System.Drawing.Size(747, 531);
+            this.pixLogo.Size = new System.Drawing.Size(525, 376);
             this.pixLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pixLogo.TabIndex = 8;
             this.pixLogo.TabStop = false;
@@ -682,7 +683,7 @@
             // 
             // frmHomeScreen
             // 
-            this.ClientSize = new System.Drawing.Size(769, 564);
+            this.ClientSize = new System.Drawing.Size(769, 445);
             this.Controls.Add(this.pixLogo);
             this.Controls.Add(this.btnCompleteCheckIn);
             this.Controls.Add(this.btnSubmitCheckIn);
