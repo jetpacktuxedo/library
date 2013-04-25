@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewBooks));
-            this.dgvMusic = new System.Windows.Forms.DataGridView();
+            this.dgvBook = new System.Windows.Forms.DataGridView();
             this.tabSet1 = new System.Windows.Forms.TabControl();
             this.tabPageISBN = new System.Windows.Forms.TabPage();
             this.txtISBNsearch = new System.Windows.Forms.TextBox();
@@ -39,27 +40,32 @@
             this.txtAuthorSearch = new System.Windows.Forms.TextBox();
             this.tabPagePublisher = new System.Windows.Forms.TabPage();
             this.txtPublisherSearch = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMusic)).BeginInit();
+            this.dgvClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBook)).BeginInit();
             this.tabSet1.SuspendLayout();
             this.tabPageISBN.SuspendLayout();
             this.tabPageTitle.SuspendLayout();
             this.tabPageAuthor.SuspendLayout();
             this.tabPagePublisher.SuspendLayout();
+            this.dgvClick.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgvMusic
+            // dgvBook
             // 
-            this.dgvMusic.AllowUserToAddRows = false;
-            this.dgvMusic.AllowUserToDeleteRows = false;
-            this.dgvMusic.BackgroundColor = System.Drawing.SystemColors.Menu;
-            this.dgvMusic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMusic.GridColor = System.Drawing.SystemColors.Menu;
-            this.dgvMusic.Location = new System.Drawing.Point(12, 131);
-            this.dgvMusic.Name = "dgvMusic";
-            this.dgvMusic.ReadOnly = true;
-            this.dgvMusic.Size = new System.Drawing.Size(864, 250);
-            this.dgvMusic.TabIndex = 1;
-            this.dgvMusic.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvBook.AllowUserToAddRows = false;
+            this.dgvBook.AllowUserToDeleteRows = false;
+            this.dgvBook.BackgroundColor = System.Drawing.SystemColors.Menu;
+            this.dgvBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBook.GridColor = System.Drawing.SystemColors.Menu;
+            this.dgvBook.Location = new System.Drawing.Point(12, 131);
+            this.dgvBook.Name = "dgvBook";
+            this.dgvBook.ReadOnly = true;
+            this.dgvBook.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBook.Size = new System.Drawing.Size(864, 250);
+            this.dgvBook.TabIndex = 1;
+            this.dgvBook.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMusic_CellMouseDown);
             // 
             // tabSet1
             // 
@@ -104,7 +110,7 @@
             this.tabPageTitle.Location = new System.Drawing.Point(4, 25);
             this.tabPageTitle.Name = "tabPageTitle";
             this.tabPageTitle.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTitle.Size = new System.Drawing.Size(860, 84);
+            this.tabPageTitle.Size = new System.Drawing.Size(857, 84);
             this.tabPageTitle.TabIndex = 0;
             this.tabPageTitle.Text = "Title";
             this.tabPageTitle.Click += new System.EventHandler(this.tabPage1_Click);
@@ -127,7 +133,7 @@
             this.tabPageAuthor.Location = new System.Drawing.Point(4, 25);
             this.tabPageAuthor.Name = "tabPageAuthor";
             this.tabPageAuthor.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAuthor.Size = new System.Drawing.Size(860, 84);
+            this.tabPageAuthor.Size = new System.Drawing.Size(857, 84);
             this.tabPageAuthor.TabIndex = 1;
             this.tabPageAuthor.Text = "Author";
             this.tabPageAuthor.Click += new System.EventHandler(this.tabPage2_Click);
@@ -149,7 +155,7 @@
             this.tabPagePublisher.Controls.Add(this.txtPublisherSearch);
             this.tabPagePublisher.Location = new System.Drawing.Point(4, 25);
             this.tabPagePublisher.Name = "tabPagePublisher";
-            this.tabPagePublisher.Size = new System.Drawing.Size(860, 84);
+            this.tabPagePublisher.Size = new System.Drawing.Size(857, 84);
             this.tabPagePublisher.TabIndex = 2;
             this.tabPagePublisher.Text = "Publisher";
             this.tabPagePublisher.Click += new System.EventHandler(this.tabPage3_Click);
@@ -165,18 +171,40 @@
             this.txtPublisherSearch.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             this.txtPublisherSearch.Enter += new System.EventHandler(this.textBox3_Enter);
             // 
+            // dgvClick
+            // 
+            this.dgvClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.dgvClick.Name = "contextMenuStrip1";
+            this.dgvClick.Size = new System.Drawing.Size(108, 48);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // frmViewBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(889, 393);
             this.Controls.Add(this.tabSet1);
-            this.Controls.Add(this.dgvMusic);
+            this.Controls.Add(this.dgvBook);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmViewBooks";
             this.Text = "View Books";
             this.Load += new System.EventHandler(this.frmBookView_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMusic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBook)).EndInit();
             this.tabSet1.ResumeLayout(false);
             this.tabPageISBN.ResumeLayout(false);
             this.tabPageISBN.PerformLayout();
@@ -186,13 +214,14 @@
             this.tabPageAuthor.PerformLayout();
             this.tabPagePublisher.ResumeLayout(false);
             this.tabPagePublisher.PerformLayout();
+            this.dgvClick.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvMusic;
+        private System.Windows.Forms.DataGridView dgvBook;
         private System.Windows.Forms.TabControl tabSet1;
         private System.Windows.Forms.TabPage tabPageISBN;
         private System.Windows.Forms.TextBox txtISBNsearch;
@@ -202,5 +231,8 @@
         private System.Windows.Forms.TextBox txtAuthorSearch;
         private System.Windows.Forms.TabPage tabPagePublisher;
         private System.Windows.Forms.TextBox txtPublisherSearch;
+        private System.Windows.Forms.ContextMenuStrip dgvClick;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

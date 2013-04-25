@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvGames = new System.Windows.Forms.DataGridView();
             this.tabSet1 = new System.Windows.Forms.TabControl();
             this.tabPageISBN = new System.Windows.Forms.TabPage();
@@ -38,21 +39,30 @@
             this.txtAuthorSearch = new System.Windows.Forms.TextBox();
             this.tabPagePublisher = new System.Windows.Forms.TabPage();
             this.txtPublisherSearch = new System.Windows.Forms.TextBox();
+            this.dgvClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGames)).BeginInit();
             this.tabSet1.SuspendLayout();
             this.tabPageISBN.SuspendLayout();
             this.tabPageTitle.SuspendLayout();
             this.tabPageAuthor.SuspendLayout();
             this.tabPagePublisher.SuspendLayout();
+            this.dgvClick.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvGames
             // 
+            this.dgvGames.AllowUserToAddRows = false;
+            this.dgvGames.AllowUserToDeleteRows = false;
             this.dgvGames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGames.Location = new System.Drawing.Point(12, 131);
             this.dgvGames.Name = "dgvGames";
+            this.dgvGames.ReadOnly = true;
+            this.dgvGames.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGames.Size = new System.Drawing.Size(867, 250);
             this.dgvGames.TabIndex = 3;
+            this.dgvGames.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvGames_CellMouseDown);
             // 
             // tabSet1
             // 
@@ -97,7 +107,7 @@
             this.tabPageTitle.Location = new System.Drawing.Point(4, 25);
             this.tabPageTitle.Name = "tabPageTitle";
             this.tabPageTitle.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTitle.Size = new System.Drawing.Size(860, 84);
+            this.tabPageTitle.Size = new System.Drawing.Size(859, 84);
             this.tabPageTitle.TabIndex = 0;
             this.tabPageTitle.Text = "Title";
             this.tabPageTitle.Click += new System.EventHandler(this.tabPageTitle_Click);
@@ -120,7 +130,7 @@
             this.tabPageAuthor.Location = new System.Drawing.Point(4, 25);
             this.tabPageAuthor.Name = "tabPageAuthor";
             this.tabPageAuthor.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAuthor.Size = new System.Drawing.Size(860, 84);
+            this.tabPageAuthor.Size = new System.Drawing.Size(859, 84);
             this.tabPageAuthor.TabIndex = 1;
             this.tabPageAuthor.Text = "Studio";
             this.tabPageAuthor.Click += new System.EventHandler(this.tabPageAuthor_Click);
@@ -142,7 +152,7 @@
             this.tabPagePublisher.Controls.Add(this.txtPublisherSearch);
             this.tabPagePublisher.Location = new System.Drawing.Point(4, 25);
             this.tabPagePublisher.Name = "tabPagePublisher";
-            this.tabPagePublisher.Size = new System.Drawing.Size(860, 84);
+            this.tabPagePublisher.Size = new System.Drawing.Size(859, 84);
             this.tabPagePublisher.TabIndex = 2;
             this.tabPagePublisher.Text = "Platform";
             this.tabPagePublisher.Click += new System.EventHandler(this.tabPagePublisher_Click);
@@ -157,6 +167,28 @@
             this.txtPublisherSearch.Text = "Enter all or part of a platform here...";
             this.txtPublisherSearch.TextChanged += new System.EventHandler(this.txtPublisherSearch_TextChanged);
             this.txtPublisherSearch.Enter += new System.EventHandler(this.txtPublisherSearch_Enter);
+            // 
+            // dgvClick
+            // 
+            this.dgvClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.dgvClick.Name = "contextMenuStrip1";
+            this.dgvClick.Size = new System.Drawing.Size(108, 48);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // frmViewGames
             // 
@@ -178,6 +210,7 @@
             this.tabPageAuthor.PerformLayout();
             this.tabPagePublisher.ResumeLayout(false);
             this.tabPagePublisher.PerformLayout();
+            this.dgvClick.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -194,5 +227,8 @@
         private System.Windows.Forms.TextBox txtAuthorSearch;
         private System.Windows.Forms.TabPage tabPagePublisher;
         private System.Windows.Forms.TextBox txtPublisherSearch;
+        private System.Windows.Forms.ContextMenuStrip dgvClick;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

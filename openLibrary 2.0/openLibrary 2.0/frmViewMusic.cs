@@ -16,8 +16,7 @@ using System.Text.RegularExpressions;
 
 namespace openLibrary_2._0
 {
-    public partial class frmViewMusic : Form
-    {
+    public partial class frmViewMusic : Form {
 
         public string connectionString;
         public OleDbConnection mDB;
@@ -25,16 +24,12 @@ namespace openLibrary_2._0
         string path = null, path2 = null, path3 = null;
         string cdid, albumname, artistname;
 
-
-        public frmViewMusic()
-        {
+        public frmViewMusic() {
             InitializeComponent();
         }
 
-        private void frmViewMusic_Load(object sender, EventArgs e)
-        {
-            try
-            {
+        private void frmViewMusic_Load(object sender, EventArgs e) {
+            try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
                 string query = "select CD_ID, UPC, Album, Artist, Type, publisher, Release_Date, Price from cd order by cint(cd_id);";
 
@@ -54,8 +49,7 @@ namespace openLibrary_2._0
                 databaseHandler d = new databaseHandler();
                 d.closeDatabaseConnection();
             }
-            catch (Exception ee)
-            {
+            catch (Exception ee) {
                 MessageBox.Show(ee.Message);
             }
         }
@@ -67,23 +61,16 @@ namespace openLibrary_2._0
                 stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
             }
             catch (IOException) {
-                //the file is unavailable because it is:
-                //still being written to
-                //or being processed by another thread
-                //or does not exist (has already been processed)
                 return true;
             }
             finally {
                 if (stream != null)
                     stream.Close();
             }
-
-            //file is not locked
             return false;
         }
 
-        private void beginPlay(string asin)
-        {
+        private void beginPlay(string asin) {
             path = Directory.GetCurrentDirectory() + "/tempMP3.mp3";
             path2 = Directory.GetCurrentDirectory() + "/temp2MP3.mp3";
             path3 = Directory.GetCurrentDirectory() + "/temp3MP3.mp3";
@@ -94,12 +81,11 @@ namespace openLibrary_2._0
             FileInfo file2 = new FileInfo(path2);
             FileInfo file3 = new FileInfo(path3);
 
-            try
-            {
-                if(!IsFileLocked(file)){
+            try {
+                if (!IsFileLocked(file)) {
                     client.DownloadFile(url, path);
                     player(path);
-                } 
+                }
                 else if (!IsFileLocked(file2)) {
                     client.DownloadFile(url, path2);
                     player(path2);
@@ -109,14 +95,12 @@ namespace openLibrary_2._0
                     player(path3);
                 }
             }
-            catch (Exception x)
-            {
+            catch (Exception x) {
                 MessageBox.Show("Busy. Please try again in a moment.");
             }
         }
 
-        public void player(string loc) 
-        {
+        public void player(string loc) {
             mPlayer.URL = loc;
         }
 
@@ -125,157 +109,94 @@ namespace openLibrary_2._0
             wplayer.close();
         }
 
-        private void wplayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
-        {
-;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
+        private void button2_Click(object sender, EventArgs e) {
             mPlayer.close();
         }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvMusic.CurrentRow.Index >= 0)
-            {
-                int selectedRow = dgvMusic.CurrentRow.Index;
-                cdid = dgvMusic[0, selectedRow].Value.ToString();
-                albumname = dgvMusic[1, selectedRow].Value.ToString();
-                artistname = dgvMusic[2, selectedRow].Value.ToString();
-                databaseHandler d = new databaseHandler();
-                lstCurrentTracks.Items.Clear();
-
-                string sql = "select * from track where cd_id = '" + cdid + "' order by disc_number, track_number;";
-                ArrayList adder = d.populateTracks(sql);
-
-                lstCurrentTracks.Items.Add("DISC \t NO. \t TITLE");
-                lstCurrentTracks.Items.Add("");
-                foreach (string x in adder)
-                {
-                    lstCurrentTracks.Items.Add(x);
-                }
-
-            }
+        private void wplayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e) {
+            ;
         }
 
-        private void lstCurrentTracks_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string value = lstCurrentTracks.SelectedItem.ToString();
-            value = RemoveDigits(value);
-
-            lookup(value, albumname, artistname);
-            
-
-        }
-
-        public static string RemoveDigits(string key)
-        {
+        public static string RemoveDigits(string key) {
             return Regex.Replace(key, @"\d", "");
         }
-        
-        
 
-        private void lookup(string track, string album, string artist)
-        {
-            
-                //Format url for the get request
-                string requestUrl = TrackLookup.lookup(track, album, artist);
+        private void lookup(string track, string album, string artist) {
 
-                string result = TrackLookup.Fetch(requestUrl);
+            //Format url for the get request
+            string requestUrl = TrackLookup.lookup(track, album, artist);
 
-                //Submit Get request, extract info from pulled form
-                string asin = result;
+            string result = TrackLookup.Fetch(requestUrl);
 
-                beginPlay(asin);
+            //Submit Get request, extract info from pulled form
+            string asin = result;
+
+            beginPlay(asin);
 
         }
 
-        private void dgvMusic_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void txtISBNsearch_TextChanged(object sender, EventArgs e)
-        {
-            if (txtUPCsearch.Text.Length >= 0)
-            {
+        private void txtISBNsearch_TextChanged(object sender, EventArgs e) {
+            if (txtUPCsearch.Text.Length >= 0) {
                 searcher(txtUPCsearch.Text, "upc");
             }
         }
 
-        private void txtTitleSearch_TextChanged(object sender, EventArgs e)
-        {
-            if (txtAlbumSearch.Text.Length >= 0)
-            {
+        private void txtTitleSearch_TextChanged(object sender, EventArgs e) {
+            if (txtAlbumSearch.Text.Length >= 0) {
                 searcher(txtAlbumSearch.Text, "album");
             }
         }
 
-        private void txtAuthorSearch_TextChanged(object sender, EventArgs e)
-        {
-            if (txtArtistSearch.Text.Length >= 0)
-            {
+        private void txtAuthorSearch_TextChanged(object sender, EventArgs e) {
+            if (txtArtistSearch.Text.Length >= 0) {
                 searcher(txtArtistSearch.Text, "artist");
             }
         }
 
-        private void txtPublisherSearch_TextChanged(object sender, EventArgs e)
-        {
-            if (txtPublisherSearch.Text.Length >= 0)
-            {
+        private void txtPublisherSearch_TextChanged(object sender, EventArgs e) {
+            if (txtPublisherSearch.Text.Length >= 0) {
                 searcher(txtPublisherSearch.Text, "publisher");
             }
         }
 
-        private void txtPublisherSearch_Enter(object sender, EventArgs e)
-        {
+        private void txtPublisherSearch_Enter(object sender, EventArgs e) {
             txtPublisherSearch.Text = "";
 
         }
 
-        private void txtAuthorSearch_Enter(object sender, EventArgs e)
-        {
+        private void txtAuthorSearch_Enter(object sender, EventArgs e) {
             txtArtistSearch.Text = "";
         }
 
-        private void txtTitleSearch_Enter(object sender, EventArgs e)
-        {
+        private void txtTitleSearch_Enter(object sender, EventArgs e) {
             txtAlbumSearch.Text = "";
         }
 
-        private void txtISBNsearch_Enter(object sender, EventArgs e)
-        {
+        private void txtISBNsearch_Enter(object sender, EventArgs e) {
             txtUPCsearch.Text = "";
         }
 
-        private void tabPageISBN_Click(object sender, EventArgs e)
-        {
+        private void tabPageISBN_Click(object sender, EventArgs e) {
             clears();
         }
 
-        private void tabPageTitle_Click(object sender, EventArgs e)
-        {
+        private void tabPageTitle_Click(object sender, EventArgs e) {
             clears();
 
         }
 
-        private void tabPageAuthor_Click(object sender, EventArgs e)
-        {
+        private void tabPageAuthor_Click(object sender, EventArgs e) {
             clears();
 
         }
 
-        private void tabPagePublisher_Click(object sender, EventArgs e)
-        {
+        private void tabPagePublisher_Click(object sender, EventArgs e) {
             clears();
 
         }
 
-        private void searcher(string field, string column)
-        {
-            try
-            {
+        private void searcher(string field, string column) {
+            try {
 
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
                 string query = "select CD_ID, UPC, Album, Artist, Type, publisher, Release_Date, Price from cd where " + column + " like '%" + field + "%' order by cint(cd_id);";
@@ -296,21 +217,18 @@ namespace openLibrary_2._0
                 databaseHandler d = new databaseHandler();
                 d.closeDatabaseConnection();
             }
-            catch (Exception ee)
-            {
+            catch (Exception ee) {
                 MessageBox.Show(ee.Message);
             }
         }
 
-        private void clears()
-        {
+        private void clears() {
             txtUPCsearch.Text = "Enter all or part of a UPC here...";
             txtPublisherSearch.Text = "Enter all or part of a publisher here...";
             txtArtistSearch.Text = "Enter all or part of an author here...";
             txtAlbumSearch.Text = "Enter all or part of a title here...";
 
-            try
-            {
+            try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
                 string query = "select CD_ID, UPC, Album, Artist, Type, publisher, Release_Date, Price from cd order by cint(cd_id);";
 
@@ -330,17 +248,49 @@ namespace openLibrary_2._0
                 databaseHandler d = new databaseHandler();
                 d.closeDatabaseConnection();
             }
-            catch (Exception ee)
-            {
+            catch (Exception ee) {
                 MessageBox.Show(ee.Message);
             }
 
         }
 
-        private void tabSet1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void tabSet1_SelectedIndexChanged(object sender, EventArgs e) {
             clears();
         }
-        
+
+        private void lstCurrentTracks_SelectedIndexChanged(object sender, EventArgs e) {
+            string value = lstCurrentTracks.SelectedItem.ToString();
+            value = RemoveDigits(value.Replace("\t", ""));
+
+            lookup(value, albumname, artistname);
+        }
+
+        private void dgvMusic_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {
+            if (e.RowIndex >= 0) {
+                dgvMusic.ClearSelection();
+                dgvMusic.CurrentCell = dgvMusic.Rows[e.RowIndex].Cells[1];
+                dgvMusic.Rows[e.RowIndex].Selected = true;
+
+                int selectedRow = dgvMusic.CurrentRow.Index;
+                cdid = dgvMusic[0, selectedRow].Value.ToString();
+                albumname = dgvMusic[2, selectedRow].Value.ToString();
+                artistname = dgvMusic[3, selectedRow].Value.ToString();
+                databaseHandler d = new databaseHandler();
+                lstCurrentTracks.Items.Clear();
+
+                string sql = "select * from track where cd_id = '" + cdid + "' order by disc_number, track_number;";
+                ArrayList adder = d.populateTracks(sql);
+
+                lstCurrentTracks.Items.Add("DISC \t NO. \t TITLE");
+                lstCurrentTracks.Items.Add("");
+                foreach (string x in adder) {
+                    lstCurrentTracks.Items.Add(x);
+                }
+
+                if (e.Button == MouseButtons.Right) {
+                    dgvClick.Show(Cursor.Position);
+                }
+            }
+        }
     }
 }

@@ -202,8 +202,82 @@ namespace openLibrary_2._0
 
         }
 
-       
+        private void dgvGames_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {
+            if (e.RowIndex >= 0) {
+                dgvGames.ClearSelection();
+                dgvGames.CurrentCell = dgvGames.Rows[e.RowIndex].Cells[1];
+                dgvGames.Rows[e.RowIndex].Selected = true;
 
-     
+                if (e.Button == MouseButtons.Right) {
+                    dgvClick.Show(Cursor.Position);
+                }
+            }
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
+            string row = dgvGames[0, dgvGames.CurrentRow.Index].Value.ToString();
+
+            if (MessageBox.Show("Are you sure?", "Confirm Deletion", MessageBoxButtons.YesNo) == DialogResult.No) {
+                MessageBox.Show("Request ignored");
+                dgvGames.ClearSelection();
+                return;
+            }
+
+            try {
+                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+                string query = "delete from game where game_ID = '" + row + "';";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
+                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dt;
+
+                dgvGames.DataSource = bs;
+
+                da.Update(dt);
+
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Unexpected error: " + ex);
+            }
+            finally {
+                databaseHandler d = new databaseHandler();
+                d.closeDatabaseConnection();
+            }
+
+            try {
+                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+                string query = "select * from game order by game_id;";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
+                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dt;
+
+                dgvGames.DataSource = bs;
+
+                da.Update(dt);
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Unexpected error: " + ex);
+            }
+            finally {
+                databaseHandler d = new databaseHandler();
+                d.closeDatabaseConnection();
+            }
+            dgvGames.ClearSelection();
+        }     
     }
 }

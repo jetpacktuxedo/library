@@ -66,14 +66,14 @@ namespace openLibrary_2._0
                 bookid = d.findBookCount("SELECT max(cint(book_id)) FROM book;");
                 bookid++;
 
-                isbn = txtISBN.Text;
+                isbn = escapeHandling(txtISBN.Text);
                 title = escapeHandling(txtTitle.Text);
-                author = txtAuthor.Text;
-                publisher = txtPublisher.Text;
-                format = txtBinding.Text;
-                pages = txtPages.Text;
-                price = txtPrice.Text;
-                date = txtDate.Text;
+                author = escapeHandling(txtAuthor.Text);
+                publisher = escapeHandling(txtPublisher.Text);
+                format = escapeHandling(txtBinding.Text);
+                pages = escapeHandling(txtPages.Text);
+                price = escapeHandling(txtPrice.Text);
+                date = escapeHandling(txtDate.Text);
 
                 sqlstatement = "INSERT INTO BOOK (BOOK_ID, ISBN, TITLE, BINDING, PUBLISHER, AUTHOR, PUB_DATE, PRICE, PAGES)" +
                                           "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + publisher + "','" + author + "','" + date + "','" + price + "','" + pages + "');";

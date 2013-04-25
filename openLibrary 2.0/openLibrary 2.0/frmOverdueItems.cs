@@ -185,9 +185,8 @@ namespace openLibrary_2._0
             }
 
 
-            btnSendReport.Text = "Send Reports";
+            btnSendReport.Text = "Already Sent";
             btnClose.Text = "Close";
-            btnSendReport.Enabled = true;
             btnClose.Enabled = true;
 
             MessageBox.Show("Successfully sent " + numberSent + " overdue notices.");

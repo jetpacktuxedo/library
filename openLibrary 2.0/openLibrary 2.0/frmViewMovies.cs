@@ -40,7 +40,7 @@ namespace openLibrary_2._0
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dt;
 
-                dataGridView1.DataSource = bs;
+                dgvMovies.DataSource = bs;
 
                 da.Update(dt);
 
@@ -72,7 +72,7 @@ namespace openLibrary_2._0
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dt;
 
-                dataGridView1.DataSource = bs;
+                dgvMovies.DataSource = bs;
 
                 da.Update(dt);
 
@@ -122,7 +122,7 @@ namespace openLibrary_2._0
                 BindingSource bs = new BindingSource();
                 bs.DataSource = dt;
 
-                dataGridView1.DataSource = bs;
+                dgvMovies.DataSource = bs;
 
                 da.Update(dt);
 
@@ -158,5 +158,86 @@ namespace openLibrary_2._0
             }
         }
 
+        private void dgvMovies_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {
+            if (e.RowIndex >= 0) {
+                dgvMovies.ClearSelection();
+                dgvMovies.CurrentCell = dgvMovies.Rows[e.RowIndex].Cells[1];
+                dgvMovies.Rows[e.RowIndex].Selected = true;
+
+                if (e.Button == MouseButtons.Right) {
+                    dgvClick.Show(Cursor.Position);
+                }
+            }
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
+            string row = dgvMovies[0, dgvMovies.CurrentRow.Index].Value.ToString();
+
+            if (MessageBox.Show("Are you sure?", "Confirm Deletion", MessageBoxButtons.YesNo) == DialogResult.No) {
+                MessageBox.Show("Request ignored");
+                dgvMovies.ClearSelection();
+                return;
+            }
+
+            try {
+                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+                string query = "delete from Movie where movie_ID = '" + row + "';";
+                string query2 = "delete from Actor where movie_ID = '" + row + "';";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
+                OleDbDataAdapter da2 = new OleDbDataAdapter(query2, connectionString);
+                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
+                OleDbCommandBuilder cb2 = new OleDbCommandBuilder(da2);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dt;
+
+                dgvMovies.DataSource = bs;
+
+                da.Update(dt);
+
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Unexpected error: " + ex);
+            }
+            finally {
+                databaseHandler d = new databaseHandler();
+                d.closeDatabaseConnection();
+            }
+
+            try {
+                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+                string query = "select * from Movie order by cint(Movie_id);";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
+                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dt;
+
+                dgvMovies.DataSource = bs;
+
+                da.Update(dt);
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Unexpected error: " + ex);
+            }
+            finally {
+                databaseHandler d = new databaseHandler();
+                d.closeDatabaseConnection();
+            }
+
+            dgvMovies.ClearSelection();
+        }
     }
 }

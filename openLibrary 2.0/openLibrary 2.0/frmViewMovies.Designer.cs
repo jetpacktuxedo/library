@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.components = new System.ComponentModel.Container();
+            this.dgvMovies = new System.Windows.Forms.DataGridView();
             this.tabSet1 = new System.Windows.Forms.TabControl();
             this.tabPageUPC = new System.Windows.Forms.TabPage();
             this.txtUPCsearch = new System.Windows.Forms.TextBox();
@@ -38,21 +39,30 @@
             this.txtDirectorSearch = new System.Windows.Forms.TextBox();
             this.tabPagePublisher = new System.Windows.Forms.TabPage();
             this.txtPublisherSearch = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMovies)).BeginInit();
             this.tabSet1.SuspendLayout();
             this.tabPageUPC.SuspendLayout();
             this.tabPageTitle.SuspendLayout();
             this.tabPageDirector.SuspendLayout();
             this.tabPagePublisher.SuspendLayout();
+            this.dgvClick.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvMovies
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 131);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(866, 250);
-            this.dataGridView1.TabIndex = 2;
+            this.dgvMovies.AllowUserToAddRows = false;
+            this.dgvMovies.AllowUserToDeleteRows = false;
+            this.dgvMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMovies.Location = new System.Drawing.Point(12, 131);
+            this.dgvMovies.Name = "dgvMovies";
+            this.dgvMovies.ReadOnly = true;
+            this.dgvMovies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMovies.Size = new System.Drawing.Size(866, 250);
+            this.dgvMovies.TabIndex = 2;
+            this.dgvMovies.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMovies_CellMouseDown);
             // 
             // tabSet1
             // 
@@ -154,17 +164,39 @@
             this.txtPublisherSearch.TextChanged += new System.EventHandler(this.txtPublisherSearch_TextChanged);
             this.txtPublisherSearch.Enter += new System.EventHandler(this.txtPublisherSearch_Enter);
             // 
+            // dgvClick
+            // 
+            this.dgvClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.dgvClick.Name = "dgvClick";
+            this.dgvClick.Size = new System.Drawing.Size(108, 48);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // frmViewMovies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 393);
             this.Controls.Add(this.tabSet1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvMovies);
             this.Name = "frmViewMovies";
             this.Text = "frmMovieView";
             this.Load += new System.EventHandler(this.frmViewMovies_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMovies)).EndInit();
             this.tabSet1.ResumeLayout(false);
             this.tabPageUPC.ResumeLayout(false);
             this.tabPageUPC.PerformLayout();
@@ -174,13 +206,14 @@
             this.tabPageDirector.PerformLayout();
             this.tabPagePublisher.ResumeLayout(false);
             this.tabPagePublisher.PerformLayout();
+            this.dgvClick.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvMovies;
         private System.Windows.Forms.TabControl tabSet1;
         private System.Windows.Forms.TabPage tabPageUPC;
         private System.Windows.Forms.TextBox txtUPCsearch;
@@ -190,5 +223,8 @@
         private System.Windows.Forms.TextBox txtDirectorSearch;
         private System.Windows.Forms.TabPage tabPagePublisher;
         private System.Windows.Forms.TextBox txtPublisherSearch;
+        private System.Windows.Forms.ContextMenuStrip dgvClick;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

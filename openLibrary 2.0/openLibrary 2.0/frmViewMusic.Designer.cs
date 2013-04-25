@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewMusic));
             this.dgvMusic = new System.Windows.Forms.DataGridView();
             this.mPlayer = new AxWMPLib.AxWindowsMediaPlayer();
@@ -41,6 +42,9 @@
             this.txtArtistSearch = new System.Windows.Forms.TextBox();
             this.tabPagePublisher = new System.Windows.Forms.TabPage();
             this.txtPublisherSearch = new System.Windows.Forms.TextBox();
+            this.dgvClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMusic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).BeginInit();
             this.tabSet1.SuspendLayout();
@@ -48,17 +52,21 @@
             this.tabPageTitle.SuspendLayout();
             this.tabPageAuthor.SuspendLayout();
             this.tabPagePublisher.SuspendLayout();
+            this.dgvClick.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvMusic
             // 
+            this.dgvMusic.AllowUserToAddRows = false;
+            this.dgvMusic.AllowUserToDeleteRows = false;
             this.dgvMusic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMusic.Location = new System.Drawing.Point(12, 131);
             this.dgvMusic.Name = "dgvMusic";
+            this.dgvMusic.ReadOnly = true;
+            this.dgvMusic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMusic.Size = new System.Drawing.Size(768, 248);
             this.dgvMusic.TabIndex = 2;
-            this.dgvMusic.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMusic_CellContentClick);
-            this.dgvMusic.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            this.dgvMusic.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMusic_CellMouseDown);
             // 
             // mPlayer
             // 
@@ -182,6 +190,26 @@
             this.txtPublisherSearch.TextChanged += new System.EventHandler(this.txtPublisherSearch_TextChanged);
             this.txtPublisherSearch.Enter += new System.EventHandler(this.txtPublisherSearch_Enter);
             // 
+            // dgvClick
+            // 
+            this.dgvClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.dgvClick.Name = "dgvClick";
+            this.dgvClick.Size = new System.Drawing.Size(108, 48);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            // 
             // frmViewMusic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -205,6 +233,7 @@
             this.tabPageAuthor.PerformLayout();
             this.tabPagePublisher.ResumeLayout(false);
             this.tabPagePublisher.PerformLayout();
+            this.dgvClick.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -223,5 +252,8 @@
         private System.Windows.Forms.TextBox txtArtistSearch;
         private System.Windows.Forms.TabPage tabPagePublisher;
         private System.Windows.Forms.TextBox txtPublisherSearch;
+        private System.Windows.Forms.ContextMenuStrip dgvClick;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
