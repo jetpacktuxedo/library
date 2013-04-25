@@ -2,4 +2,4 @@ Amazon Advertizing API
 ----------------------
 Access Key: AKIAIJBCB63BMUXIE4MQ
 Secret Key: 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
-Email address: openLibrary@gmail.com
+Email address: 

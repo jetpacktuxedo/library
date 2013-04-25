@@ -24,13 +24,11 @@ namespace openLibrary_2._0
         {
             if (checkBox1.Checked == true)
             {
-                txtEmail.UseSystemPasswordChar = true;
                 txtPrivate.UseSystemPasswordChar = true;
                 txtPublic.UseSystemPasswordChar = true;
             }
             if (checkBox1.Checked == false)
             {
-                txtEmail.UseSystemPasswordChar = false;
                 txtPrivate.UseSystemPasswordChar = false;
                 txtPublic.UseSystemPasswordChar = false;
             }
@@ -38,18 +36,17 @@ namespace openLibrary_2._0
 
         private void frmAmazonKeys_Load(object sender, EventArgs e)
         {
-
+            s.create();
             info = s.parse();
 
             txtPublic.Text = info[0].ToString();
             txtPrivate.Text = info[1].ToString();
-            txtEmail.Text = info[2].ToString();
 
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            s.write(txtPublic.Text, txtPrivate.Text, txtEmail.Text);
+            s.write(txtPublic.Text, txtPrivate.Text, "");
             Close();
         }
     }

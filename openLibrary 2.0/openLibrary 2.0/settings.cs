@@ -9,6 +9,21 @@ namespace openLibrary_2._0 {
         string myFile = "settings.txt";
         public string accessKey, secretKey, emailAddress;
 
+        public void create() {
+            if (System.IO.File.Exists(myFile)) {
+                // Create the file. 
+                using (System.IO.FileStream fs = System.IO.File.Create(myFile, 1024)) {
+                    // Add some information to the file. 
+                    byte[] settings = new System.Text.UTF8Encoding(true).GetBytes("Amazon Advertizing API \n" +
+                                                                              "----------------------\n" +
+                                                                              "Access Key: \n" +
+                                                                              "Secret Key: \n" +
+                                                                              "Email address: \n");
+                    fs.Write(settings, 0, settings.Length);
+                }
+            }
+        }
+
         public void write(string access, string secret, string email) {
             // Delete the file if it exists. 
             if (System.IO.File.Exists(myFile)) {
