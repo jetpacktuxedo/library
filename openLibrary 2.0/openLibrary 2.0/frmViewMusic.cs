@@ -113,10 +113,6 @@ namespace openLibrary_2._0
             mPlayer.close();
         }
 
-        private void wplayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e) {
-            ;
-        }
-
         public static string RemoveDigits(string key) {
             return Regex.Replace(key, @"\d", "");
         }
@@ -132,7 +128,6 @@ namespace openLibrary_2._0
             string asin = result;
 
             beginPlay(asin);
-
         }
 
         private void txtISBNsearch_TextChanged(object sender, EventArgs e) {
@@ -161,7 +156,6 @@ namespace openLibrary_2._0
 
         private void txtPublisherSearch_Enter(object sender, EventArgs e) {
             txtPublisherSearch.Text = "";
-
         }
 
         private void txtAuthorSearch_Enter(object sender, EventArgs e) {
@@ -182,17 +176,14 @@ namespace openLibrary_2._0
 
         private void tabPageTitle_Click(object sender, EventArgs e) {
             clears();
-
         }
 
         private void tabPageAuthor_Click(object sender, EventArgs e) {
             clears();
-
         }
 
         private void tabPagePublisher_Click(object sender, EventArgs e) {
             clears();
-
         }
 
         private void searcher(string field, string column) {
@@ -291,6 +282,77 @@ namespace openLibrary_2._0
                     dgvClick.Show(Cursor.Position);
                 }
             }
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
+            string row = dgvMusic[0, dgvMusic.CurrentRow.Index].Value.ToString();
+
+            if (MessageBox.Show("Are you sure?", "Confirm Deletion", MessageBoxButtons.YesNo) == DialogResult.No) {
+                MessageBox.Show("Request ignored");
+                dgvMusic.ClearSelection();
+                return;
+            }
+
+            try {
+                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+                string query = "delete from cd where cd_ID = '" + row + "';";
+                string query2 = "delete from track where cd_ID = '" + row + "';";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
+                OleDbDataAdapter da2 = new OleDbDataAdapter(query2, connectionString);
+                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
+                OleDbCommandBuilder cb2 = new OleDbCommandBuilder(da2);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dt;
+
+                dgvMusic.DataSource = bs;
+
+                da.Update(dt);
+
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Unexpected error: " + ex);
+            }
+            finally {
+                databaseHandler d = new databaseHandler();
+                d.closeDatabaseConnection();
+            }
+
+            try {
+                lstCurrentTracks.Items.Clear();
+                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+                string query = "select CD_ID, UPC, Album, Artist, Type, publisher, Release_Date, Price from cd order by cint(cd_id);";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
+                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dt;
+
+                dgvMusic.DataSource = bs;
+
+                da.Update(dt);
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Unexpected error: " + ex);
+            }
+            finally {
+                databaseHandler d = new databaseHandler();
+                d.closeDatabaseConnection();
+            }
+
+            dgvMusic.ClearSelection();
         }
     }
 }
