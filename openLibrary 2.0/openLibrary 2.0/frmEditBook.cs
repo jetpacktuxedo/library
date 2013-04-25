@@ -10,7 +10,10 @@ using System.Windows.Forms;
 namespace openLibrary_2._0 {
     public partial class frmEditBook : Form {
 
+
+        frmViewBooks view = new frmViewBooks();
         public string bookID;
+        string[] bookinfo = new string[8];
 
         public frmEditBook(string book) {
             bookID = book;
@@ -31,12 +34,6 @@ namespace openLibrary_2._0 {
                 string price;
                 string date;
 
-
-                int bookid;
-
-                bookid = d.findBookCount("SELECT max(cint(book_id)) FROM book;");
-                bookid++;
-
                 isbn = escapeHandling(txtISBN.Text);
                 title = escapeHandling(txtTitle.Text);
                 author = escapeHandling(txtAuthor.Text);
@@ -46,12 +43,20 @@ namespace openLibrary_2._0 {
                 price = escapeHandling(txtPrice.Text);
                 date = escapeHandling(txtDate.Text);
 
-                sqlstatement = "INSERT INTO BOOK (BOOK_ID, ISBN, TITLE, BINDING, PUBLISHER, AUTHOR, PUB_DATE, PRICE, PAGES)" +
-                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + publisher + "','" + author + "','" + date + "','" + price + "','" + pages + "');";
+                sqlstatement = "UPDATE Book " +
+                                    "SET TITLE = '" + title + "', " +
+                                    "AUTHOR = '" + author + "', " +
+                                    "PUBLISHER = '" + publisher + "', " +
+                                    "BINDING = '" + format + "', " +
+                                    "PUB_DATE = '" + date + "', " +
+                                    "PRICE = '" + price + "', " +
+                                    "PAGES = '" + pages + "' " +
+                                    "WHERE ISBN = '" + isbn + "';";
 
                 d.loadDatabaseTable(sqlstatement);
 
                 clearFields();
+                Close();
             }
             catch {
                 MessageBox.Show("The book could not be added. A common cause of this error is not having a database open.");
@@ -74,7 +79,6 @@ namespace openLibrary_2._0 {
         }
 
         private void clearFields() {
-            txtBookID.Clear();
             txtISBN.Clear();
             txtTitle.Clear();
             txtAuthor.Clear();
@@ -83,6 +87,19 @@ namespace openLibrary_2._0 {
             txtDate.Clear();
             txtPrice.Clear();
             txtPages.Clear();
+        }
+
+        private void frmEditBook_Load(object sender, EventArgs e) {
+            bookinfo = d.BookResults(bookID);
+
+            txtISBN.Text = bookID;
+            txtTitle.Text = bookinfo[0];
+            txtAuthor.Text = bookinfo[1];
+            txtBinding.Text = bookinfo[2];
+            txtPublisher.Text = bookinfo[3];
+            txtDate.Text = bookinfo[4];
+            txtPrice.Text = bookinfo[5];
+            txtPages.Text = bookinfo[6];
         }
     }
 }

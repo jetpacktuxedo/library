@@ -42,8 +42,6 @@
             this.txtAuthor = new System.Windows.Forms.TextBox();
             this.txtPublisher = new System.Windows.Forms.TextBox();
             this.txtBinding = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtBookID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnClose
@@ -172,6 +170,7 @@
             // txtISBN
             // 
             this.txtISBN.AcceptsTab = true;
+            this.txtISBN.Enabled = false;
             this.txtISBN.Location = new System.Drawing.Point(103, 12);
             this.txtISBN.Name = "txtISBN";
             this.txtISBN.Size = new System.Drawing.Size(100, 20);
@@ -205,30 +204,11 @@
             this.txtBinding.Size = new System.Drawing.Size(100, 20);
             this.txtBinding.TabIndex = 26;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(209, 19);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 13);
-            this.label9.TabIndex = 43;
-            this.label9.Text = "Book ID";
-            // 
-            // txtBookID
-            // 
-            this.txtBookID.AcceptsTab = true;
-            this.txtBookID.Location = new System.Drawing.Point(256, 12);
-            this.txtBookID.Name = "txtBookID";
-            this.txtBookID.Size = new System.Drawing.Size(100, 20);
-            this.txtBookID.TabIndex = 42;
-            // 
             // frmEditBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(370, 251);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtBookID);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -250,6 +230,7 @@
             this.Controls.Add(this.txtBinding);
             this.Name = "frmEditBook";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.frmEditBook_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,8 +257,6 @@
         private System.Windows.Forms.TextBox txtAuthor;
         private System.Windows.Forms.TextBox txtPublisher;
         private System.Windows.Forms.TextBox txtBinding;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtBookID;
 
     }
 }

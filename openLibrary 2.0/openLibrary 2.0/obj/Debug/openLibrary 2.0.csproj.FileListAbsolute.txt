@@ -92,3 +92,5 @@ C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmEditBook.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmOverdueItems.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmPrint.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmEditBook.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmPrint.resources

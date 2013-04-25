@@ -29,7 +29,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book order by cint(book_id);";
+                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book order by TITLE;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -69,7 +69,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book order by cint(book_id);";
+                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book order by TITLE;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -98,13 +98,13 @@ namespace openLibrary_2._0
             return line.Replace("'", "''");
         }
 
-        private void searcher(string field, string column)
+        public void searcher(string field, string column)
         {
             try
             {
                 
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book where " + column + " like '%" + escapeHandling(field) + "%' order by cint(book_id);";
+                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book where " + column + " like '%" + escapeHandling(field) + "%' order by TITLE;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -221,7 +221,12 @@ namespace openLibrary_2._0
         private void editToolStripMenuItem_Click(object sender, EventArgs e) {
             string row = dgvBook[0, dgvBook.CurrentRow.Index].Value.ToString();
             frmEditBook form = new frmEditBook(row);
+            form.FormClosed += new FormClosedEventHandler(frmEditBook_FormClosed);
             form.Show();
+        }
+
+        private void frmEditBook_FormClosed(object sender, FormClosedEventArgs e) {
+            searcher("", "isbn");
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -262,7 +267,7 @@ namespace openLibrary_2._0
 
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book order by cint(book_id);";
+                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book order by TITLE;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);

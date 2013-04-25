@@ -625,7 +625,33 @@ namespace openLibrary_2._0
             return values;
         }
 
+        public string[] BookResults(string bookID) {
+            string query = "SELECT * FROM Book where ISBN = '" + bookID + "';";
+            string[] output = new string[8];
 
+            try {
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                OleDbDataReader rdr;
+                cmd = new OleDbCommand(query, mDB);
+                rdr = cmd.ExecuteReader();
+
+                rdr.Read();
+
+                output[0] = (string)rdr["TITLE"];
+                output[1] = (string)rdr["AUTHOR"];
+                output[2] = (string)rdr["BINDING"];
+                output[3] = (string)rdr["PUBLISHER"];
+                output[4] = (string)rdr["PUB_DATE"];
+                output[5] = (string)rdr["PRICE"];
+                output[6] = (string)rdr["PAGES"];
+            }
+            catch (Exception EX) {
+
+            }
+            return output;
+        }
     }
 }
 
