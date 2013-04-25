@@ -229,7 +229,7 @@
             this.Controls.Add(this.txtPublisher);
             this.Controls.Add(this.txtBinding);
             this.Name = "frmEditBook";
-            this.Text = "Form1";
+            this.Text = "Edit Book";
             this.Load += new System.EventHandler(this.frmEditBook_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

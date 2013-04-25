@@ -8,48 +8,42 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace openLibrary_2._0 {
-    public partial class frmEditBook : Form {
+    public partial class frmEditMusic : Form {
 
-        frmViewBooks view = new frmViewBooks();
-        public string bookID;
-        string[] bookinfo = new string[8];
+        public string cdID;
+        string[] cdinfo = new string[8];
         databaseHandler d = new databaseHandler();
         public string sqlstatement;
 
-        public frmEditBook(string book) {
-            bookID = book;
+        public frmEditMusic(string cd) {
+            cdID = cd;
             InitializeComponent();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e) {
             try {
-                string isbn;
                 string title;
                 string publisher;
                 string format;
                 string author;
-                string pages;
                 string price;
                 string date;
 
-                isbn = escapeHandling(txtISBN.Text);
                 title = escapeHandling(txtTitle.Text);
                 author = escapeHandling(txtAuthor.Text);
                 publisher = escapeHandling(txtPublisher.Text);
                 format = escapeHandling(txtBinding.Text);
-                pages = escapeHandling(txtPages.Text);
                 price = escapeHandling(txtPrice.Text);
                 date = escapeHandling(txtDate.Text);
 
-                sqlstatement = "UPDATE Book " +
-                                    "SET TITLE = '" + title + "', " +
-                                    "AUTHOR = '" + author + "', " +
+                sqlstatement = "UPDATE CD " +
+                                    "SET ALBUM = '" + title + "', " +
+                                    "ARTIST = '" + author + "', " +
                                     "PUBLISHER = '" + publisher + "', " +
-                                    "BINDING = '" + format + "', " +
-                                    "PUB_DATE = '" + date + "', " +
-                                    "PRICE = '" + price + "', " +
-                                    "PAGES = '" + pages + "' " +
-                                    "WHERE ISBN = '" + isbn + "';";
+                                    "TYPE = '" + format + "', " +
+                                    "RELEASE_DATE = '" + date + "', " +
+                                    "PRICE = '" + price + "' " +
+                                    "WHERE UPC = '" + cdID + "';";
 
                 d.loadDatabaseTable(sqlstatement);
 
@@ -68,8 +62,16 @@ namespace openLibrary_2._0 {
             clearFields();
         }
 
-        private void btnClose_Click(object sender, EventArgs e) {
-            Close();
+        private void frmEditMusic_Load(object sender, EventArgs e) {
+            cdinfo = d.CDResults(cdID);
+
+            txtISBN.Text = cdID;
+            txtTitle.Text = cdinfo[0];
+            txtAuthor.Text = cdinfo[1];
+            txtBinding.Text = cdinfo[2];
+            txtPublisher.Text = cdinfo[3];
+            txtDate.Text = cdinfo[4];
+            txtPrice.Text = cdinfo[5];
         }
 
         private string escapeHandling(string line) {
@@ -84,20 +86,10 @@ namespace openLibrary_2._0 {
             txtBinding.Clear();
             txtDate.Clear();
             txtPrice.Clear();
-            txtPages.Clear();
         }
 
-        private void frmEditBook_Load(object sender, EventArgs e) {
-            bookinfo = d.BookResults(bookID);
-
-            txtISBN.Text = bookID;
-            txtTitle.Text = bookinfo[0];
-            txtAuthor.Text = bookinfo[1];
-            txtBinding.Text = bookinfo[2];
-            txtPublisher.Text = bookinfo[3];
-            txtDate.Text = bookinfo[4];
-            txtPrice.Text = bookinfo[5];
-            txtPages.Text = bookinfo[6];
+        private void btnClose_Click(object sender, EventArgs e) {
+            Close();
         }
     }
 }

@@ -123,9 +123,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(103, 186);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Artist";
+            this.label4.Text = "Studio";
             // 
             // label5
             // 

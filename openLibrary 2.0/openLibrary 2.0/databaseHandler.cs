@@ -652,6 +652,33 @@ namespace openLibrary_2._0
             }
             return output;
         }
+
+        public string[] CDResults(string cdID) {
+            string query = "SELECT * FROM CD where UPC = '" + cdID + "';";
+            string[] output = new string[8];
+
+            try {
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                OleDbDataReader rdr;
+                cmd = new OleDbCommand(query, mDB);
+                rdr = cmd.ExecuteReader();
+
+                rdr.Read();
+
+                output[0] = (string)rdr["ALBUM"];
+                output[1] = (string)rdr["ARTIST"];
+                output[2] = (string)rdr["TYPE"];
+                output[3] = (string)rdr["PUBLISHER"];
+                output[4] = (string)rdr["RELEASE_DATE"];
+                output[5] = (string)rdr["PRICE"];
+            }
+            catch (Exception EX) {
+
+            }
+            return output;
+        }
     }
 }
 
