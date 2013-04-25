@@ -36,17 +36,6 @@ namespace openLibrary_2._0
             Close();
         }
 
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtAuthor_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void addToDB()
         {
             try
@@ -90,10 +79,9 @@ namespace openLibrary_2._0
             {
                 d.closeDatabaseConnection();
             }
-
         }
 
-        private void btnAdd_Click_1(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             addToDB();
             txtISBN.Focus();
@@ -102,7 +90,6 @@ namespace openLibrary_2._0
         private string escapeHandling(string line)
         {
             return line.Replace("'", "''");
-
         }
 
         private void booklookup()
@@ -158,36 +145,17 @@ namespace openLibrary_2._0
             txtDate.Clear();
             txtPrice.Clear();
             txtPages.Clear(); 
-        
-        }
-
-        private void frmAddBook_Load(object sender, EventArgs e)
-        {
-        
         }
 
         private void btnPopulate_Click(object sender, EventArgs e)
         {
             booklookup();        
-
             btnAdd.Focus();
-        }
-
-        private void chkAdd_CheckedChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void txtISBN_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        
+        }      
     }
 }

@@ -219,7 +219,9 @@ namespace openLibrary_2._0
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e) {
-
+            string row = dgvBook[0, dgvBook.CurrentRow.Index].Value.ToString();
+            frmEditBook form = new frmEditBook(row);
+            form.Show();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
