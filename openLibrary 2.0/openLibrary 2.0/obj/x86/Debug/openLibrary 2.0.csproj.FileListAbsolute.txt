@@ -72,8 +72,6 @@ C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x8
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAddMovie.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAddMusic.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmCurrentlyClocked.resources
-C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmLogin.resources
-C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmLogout.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmViewBooks.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAddBook.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmHomeScreen.resources
@@ -100,8 +98,11 @@ C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAbout.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmHelp.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmBugReport.resources
-C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary 2.0.csprojResolveAssemblyReference.cache
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAbout.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmBugReport.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmHelp.resources
-C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary 2.0.csproj.GenerateResource.Cache
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmClockIn.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmClockOut.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\GenerateResource.write.1.tlog

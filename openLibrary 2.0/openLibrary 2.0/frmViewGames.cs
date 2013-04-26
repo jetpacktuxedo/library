@@ -28,7 +28,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from game order by cint(game_id);";
+                string query = "select UPC, TITLE, DISC_TYPE, STUDIO, RELEASE_DATE, PRICE, PLATFORM, AVAILABLE from game order by PLATFORM, TITLE;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -62,7 +62,7 @@ namespace openLibrary_2._0
             {
 
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from game where " + column + " like '%" + escapeHandling(field) + "%' order by cint(game_id);";
+                string query = "select UPC, TITLE, DISC_TYPE, STUDIO, RELEASE_DATE, PRICE, PLATFORM, AVAILABLE from game where " + column + " like '%" + escapeHandling(field) + "%' order by PLATFORM, TITLE;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -96,7 +96,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from game order by game_id;";
+                string query = "select UPC, TITLE, DISC_TYPE, STUDIO, RELEASE_DATE, PRICE, PLATFORM, AVAILABLE from game order by PLATFORM, TITLE;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -262,7 +262,7 @@ namespace openLibrary_2._0
 
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from game order by game_id;";
+                string query = "select UPC, TITLE, DISC_TYPE, STUDIO, RELEASE_DATE, PRICE, PLATFORM, AVAILABLE from game order by PLATFORM, TITLE;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
