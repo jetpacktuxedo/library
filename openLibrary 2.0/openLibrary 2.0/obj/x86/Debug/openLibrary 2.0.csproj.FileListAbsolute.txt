@@ -84,14 +84,11 @@ C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x8
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmViewMusic.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.Properties.Resources.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmOverdueItems.resources
-C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary 2.0.csprojResolveAssemblyReference.cache
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAmazonKeys.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAmazonKeys.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmOverdueItems.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmEditBook.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmPrint.resources
-C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\x86\Debug\openLibrary 2.0.exe.CodeAnalysisLog.xml
-C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\x86\Debug\openLibrary 2.0.exe.lastcodeanalysissucceeded
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmEditMovies.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmEditMusic.resources
@@ -100,3 +97,9 @@ C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x8
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmEditGames.resources
+C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmEditGames.resources
+C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmEditMovies.resources
+C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmEditMusic.resources
+C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmAbout.resources
+C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmHelp.resources
+C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmBugReport.resources

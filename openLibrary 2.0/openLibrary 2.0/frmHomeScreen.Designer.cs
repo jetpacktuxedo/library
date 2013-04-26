@@ -38,15 +38,6 @@
             this.logInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
-            this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.patronToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddMovieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,7 +95,6 @@
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.editToolStripMenuItem,
             this.addToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.timeClockToolStripMenuItem,
@@ -131,7 +121,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -142,7 +132,7 @@
             this.aPIKeysToolStripMenuItem});
             this.adminMenu.Enabled = false;
             this.adminMenu.Name = "adminMenu";
-            this.adminMenu.Size = new System.Drawing.Size(152, 22);
+            this.adminMenu.Size = new System.Drawing.Size(151, 22);
             this.adminMenu.Text = "Administrative";
             // 
             // overdueBooksToolStripMenuItem
@@ -163,89 +153,23 @@
             // 
             this.logInToolStripMenuItem.Enabled = false;
             this.logInToolStripMenuItem.Name = "logInToolStripMenuItem";
-            this.logInToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logInToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.logInToolStripMenuItem.Text = "Login";
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Enabled = false;
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.logOutToolStripMenuItem.Text = "Logout";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.clockOutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editItemToolStripMenuItem,
-            this.editUserToolStripMenuItem});
-            this.editToolStripMenuItem.Enabled = false;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // editItemToolStripMenuItem
-            // 
-            this.editItemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bookToolStripMenuItem1,
-            this.toolStripMenuItem9,
-            this.toolStripMenuItem10,
-            this.gameToolStripMenuItem});
-            this.editItemToolStripMenuItem.Name = "editItemToolStripMenuItem";
-            this.editItemToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.editItemToolStripMenuItem.Text = "Edit Item";
-            // 
-            // bookToolStripMenuItem1
-            // 
-            this.bookToolStripMenuItem1.Name = "bookToolStripMenuItem1";
-            this.bookToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
-            this.bookToolStripMenuItem1.Text = "Book...";
-            // 
-            // toolStripMenuItem9
-            // 
-            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(116, 22);
-            this.toolStripMenuItem9.Text = "Movie...";
-            // 
-            // toolStripMenuItem10
-            // 
-            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(116, 22);
-            this.toolStripMenuItem10.Text = "Music...";
-            // 
-            // gameToolStripMenuItem
-            // 
-            this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.gameToolStripMenuItem.Text = "Game...";
-            // 
-            // editUserToolStripMenuItem
-            // 
-            this.editUserToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.patronToolStripMenuItem1,
-            this.toolStripMenuItem11});
-            this.editUserToolStripMenuItem.Name = "editUserToolStripMenuItem";
-            this.editUserToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.editUserToolStripMenuItem.Text = "Edit User";
-            // 
-            // patronToolStripMenuItem1
-            // 
-            this.patronToolStripMenuItem1.Name = "patronToolStripMenuItem1";
-            this.patronToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
-            this.patronToolStripMenuItem1.Text = "Patron...";
-            // 
-            // toolStripMenuItem11
-            // 
-            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(135, 22);
-            this.toolStripMenuItem11.Text = "Employee...";
             // 
             // addToolStripMenuItem
             // 
@@ -425,8 +349,9 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // txtID
             // 
@@ -729,14 +654,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editItemToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bookToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
-        private System.Windows.Forms.ToolStripMenuItem editUserToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem patronToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ViewBookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ViewMoviesToolStripMenuItem;
@@ -756,7 +673,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem ViewCustomersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ViewEmployeesToolStripMenuItem;
-        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label lblCurrentUser;
         private System.Windows.Forms.GroupBox grpUser;
         private System.Windows.Forms.Button btnGO;
@@ -774,7 +690,6 @@
         private System.Windows.Forms.ToolStripMenuItem clockInToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clockOutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem whosClockedInToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
         private System.Windows.Forms.PictureBox pixLogo;
         private System.Windows.Forms.Label lblCustomerName;
         private System.Windows.Forms.ListBox lstCurrentlyCheckedOut;
@@ -790,6 +705,7 @@
         private System.Windows.Forms.Button btnSubmitCheckIn;
         private System.Windows.Forms.Button btnCompleteCheckIn;
         private System.Windows.Forms.ToolStripMenuItem aPIKeysToolStripMenuItem;
+        public System.Windows.Forms.TextBox txtID;
     }
 }
 

@@ -132,10 +132,11 @@ namespace openLibrary_2._0
 
         private void btnGO_Click(object sender, EventArgs e)
         {
-            goStuff();
+            userID = txtID.Text;
+            goStuff(userID);
         }
 
-        private void goStuff()
+        public void goStuff(string userID)
         {
             lstCurrentlyCheckedOut.Visible = false;
             txtCheckout.Visible = false;
@@ -146,7 +147,7 @@ namespace openLibrary_2._0
             grpUser.Visible = true;
             lstCurrentlyCheckedOut.Visible = true;
 
-            userID = txtID.Text;
+            
             string sql = "SELECT first_name & \" \" & last_name FROM customer WHERE customer_id = '" + userID + "'";
             lblCustomerName.Text = d.loadCustomerName(sql);
 
@@ -259,7 +260,6 @@ namespace openLibrary_2._0
             pixLogo.Visible = true;
             addToolStripMenuItem.Enabled = false;
             viewToolStripMenuItem.Enabled = false;
-            editItemToolStripMenuItem.Enabled = false;
             lstCurrentlyCheckedOut.Visible = false;
             adminMenu.Enabled = false;
         }
@@ -301,7 +301,6 @@ namespace openLibrary_2._0
             lblCurrentEmp.Text = clickedItem.ToString();
             addToolStripMenuItem.Enabled = true;
             viewToolStripMenuItem.Enabled = true;
-            editItemToolStripMenuItem.Enabled = true;
             adminMenu.Enabled = true;
 
 
@@ -419,7 +418,7 @@ namespace openLibrary_2._0
             loadCheckouts(userID);
             toBeCheckedOut.Clear();
 
-            goStuff();
+            goStuff(userID);
 
         }
 
@@ -462,7 +461,7 @@ namespace openLibrary_2._0
 
             loadCheckouts(userID);
             toBeCheckedIn.Clear();
-            goStuff();
+            goStuff(userID);
             
         }
 
@@ -522,6 +521,12 @@ namespace openLibrary_2._0
             txtID.Text = "";
             lstCurrentlyCheckedOut.Items.Clear();
             lblCustomerName.Text = "";
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAbout frm = new frmAbout();
+            frm.Show();
         }
     }
 }
