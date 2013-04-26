@@ -99,3 +99,4 @@ C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x8
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmPrint.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\x86\Debug\openLibrary_2._0.frmEditGames.resources

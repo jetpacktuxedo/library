@@ -215,7 +215,14 @@ namespace openLibrary_2._0
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e) {
+            string row = dgvGames[1, dgvGames.CurrentRow.Index].Value.ToString();
+            frmEditGames form = new frmEditGames(row);
+            form.FormClosed += new FormClosedEventHandler(frmEditGames_FormClosed);
+            form.Show();
+        }
 
+        private void frmEditGames_FormClosed(object sender, FormClosedEventArgs e) {
+            searcher("", "UPC");
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {

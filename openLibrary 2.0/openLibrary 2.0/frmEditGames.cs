@@ -8,29 +8,28 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace openLibrary_2._0 {
-    public partial class frmEditMovies : Form {
+    public partial class frmEditGames : Form {
 
-        public string movieID;
-        string[] movieinfo = new string[8];
+        public string gameID;
+        string[] gameinfo = new string[8];
         databaseHandler d = new databaseHandler();
         public string sqlstatement;
 
-        public frmEditMovies(string movie) {
-            movieID = movie;
+        public frmEditGames(string game) {
+            gameID = game;
             InitializeComponent();
         }
 
-        private void frmEditMovies_Load(object sender, EventArgs e) {
-            movieinfo = d.movieResults(movieID);
+        private void frmEditGames_Load(object sender, EventArgs e) {
+            gameinfo = d.gameResults(gameID);
 
-            txtISBN.Text = movieID;
-            txtTitle.Text = movieinfo[0];
-            txtAuthor.Text = movieinfo[1];
-            txtBinding.Text = movieinfo[2];
-            txtPublisher.Text = movieinfo[3];
-            txtDate.Text = movieinfo[4];
-            txtPrice.Text = movieinfo[5];
-            txtPages.Text = movieinfo[6];
+            txtISBN.Text = gameID;
+            txtTitle.Text = gameinfo[0];
+            txtBinding.Text = gameinfo[1];
+            txtPublisher.Text = gameinfo[2];
+            txtDate.Text = gameinfo[3];
+            txtPrice.Text = gameinfo[4];
+            txtPages.Text = gameinfo[5];
         }
 
         private string escapeHandling(string line) {
@@ -40,12 +39,11 @@ namespace openLibrary_2._0 {
         private void clearFields() {
             txtISBN.Clear();
             txtTitle.Clear();
-            txtAuthor.Clear();
+            txtPages.Clear();
             txtPublisher.Clear();
             txtBinding.Clear();
             txtDate.Clear();
             txtPrice.Clear();
-            txtPages.Clear();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e) {
@@ -59,22 +57,20 @@ namespace openLibrary_2._0 {
                 string time;
 
                 title = escapeHandling(txtTitle.Text);
-                author = escapeHandling(txtAuthor.Text);
                 publisher = escapeHandling(txtPublisher.Text);
                 format = escapeHandling(txtBinding.Text);
                 price = escapeHandling(txtPrice.Text);
                 date = escapeHandling(txtDate.Text);
                 time = escapeHandling(txtPages.Text);
 
-                sqlstatement = "UPDATE MOVIE " +
+                sqlstatement = "UPDATE GAME " +
                                     "SET TITLE = '" + title + "', " +
-                                    "DIRECTOR = '" + author + "', " +
                                     "STUDIO = '" + publisher + "', " +
-                                    "TYPE = '" + format + "', " +
+                                    "DISC_TYPE = '" + format + "', " +
                                     "RELEASE_DATE = '" + date + "', " +
-                                    "RUNNING_TIME = '" + time + "', " +
+                                    "PLATFORM = '" + time + "', " +
                                     "PRICE = '" + price + "' " +
-                                    "WHERE UPC = '" + movieID + "';";
+                                    "WHERE UPC = '" + gameID + "';";
 
                 d.loadDatabaseTable(sqlstatement);
 

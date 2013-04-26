@@ -707,6 +707,33 @@ namespace openLibrary_2._0
             }
             return output;
         }
+
+        public string[] gameResults(string gameID) {
+            string query = "SELECT * FROM GAME where UPC = '" + gameID + "';";
+            string[] output = new string[8];
+
+            try {
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                OleDbDataReader rdr;
+                cmd = new OleDbCommand(query, mDB);
+                rdr = cmd.ExecuteReader();
+
+                rdr.Read();
+
+                output[0] = (string)rdr["TITLE"];
+                output[1] = (string)rdr["DISC_TYPE"];
+                output[2] = (string)rdr["STUDIO"];
+                output[3] = (string)rdr["RELEASE_DATE"];
+                output[4] = (string)rdr["PRICE"];
+                output[5] = (string)rdr["PLATFORM"];
+            }
+            catch (Exception EX) {
+
+            }
+            return output;
+        }
     }
 }
 

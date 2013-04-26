@@ -294,6 +294,7 @@ namespace openLibrary_2._0
         private void frmEditMusic_FormClosed(object sender, FormClosedEventArgs e) {
             searcher("", "UPC");
         }
+
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
             string row = dgvMusic[0, dgvMusic.CurrentRow.Index].Value.ToString();
 
