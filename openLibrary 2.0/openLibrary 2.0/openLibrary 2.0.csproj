@@ -155,11 +155,11 @@
     <Compile Include="frmCurrentlyClocked.Designer.cs">
       <DependentUpon>frmCurrentlyClocked.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogout.cs">
+    <Compile Include="frmClockOut.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogout.Designer.cs">
-      <DependentUpon>frmLogout.cs</DependentUpon>
+    <Compile Include="frmClockOut.Designer.cs">
+      <DependentUpon>frmClockOut.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAddCustomer.cs">
       <SubType>Form</SubType>
@@ -173,11 +173,11 @@
     <Compile Include="frmAddEmployee.Designer.cs">
       <DependentUpon>frmAddEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="frmClockIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <Compile Include="frmClockIn.Designer.cs">
+      <DependentUpon>frmClockIn.cs</DependentUpon>
     </Compile>
     <Compile Include="frmViewBooks.cs">
       <SubType>Form</SubType>
@@ -295,11 +295,11 @@
     <EmbeddedResource Include="frmHelp.resx">
       <DependentUpon>frmHelp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <EmbeddedResource Include="frmClockIn.resx">
+      <DependentUpon>frmClockIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogout.resx">
-      <DependentUpon>frmLogout.cs</DependentUpon>
+    <EmbeddedResource Include="frmClockOut.resx">
+      <DependentUpon>frmClockOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOverdueItems.resx">
       <DependentUpon>frmOverdueItems.cs</DependentUpon>

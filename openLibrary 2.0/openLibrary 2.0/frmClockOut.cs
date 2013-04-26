@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace openLibrary_2._0
 {
-    public partial class frmLogout : Form
+    public partial class frmClockOut : Form
     {
-        public frmLogout()
+        public frmClockOut()
         {
             InitializeComponent();
         }

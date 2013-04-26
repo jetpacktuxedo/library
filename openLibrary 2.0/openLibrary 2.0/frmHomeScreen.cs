@@ -28,10 +28,6 @@ namespace openLibrary_2._0
         ArrayList toBePrinted = new ArrayList();
         ArrayList CheckedOut = new ArrayList();
 
-        
-      
-
-
         public frmHomeScreen()
         {
             InitializeComponent();
@@ -61,7 +57,6 @@ namespace openLibrary_2._0
         private void openToolStripMenuItem_Click(object sender, EventArgs e){
             d.openNew();
          
-   
             timeClockToolStripMenuItem.Enabled = true;
             logInToolStripMenuItem.Enabled = true;
             refresher();
@@ -170,14 +165,12 @@ namespace openLibrary_2._0
             {
                 lstCurrentlyCheckedOut.Items.Add(x);
             }    
-        
         }
-
 
         private void frmLoginClosed(object sender, EventArgs e)
         {
             refresher();
-       }
+        }
 
         private void refresher()
         {
@@ -231,7 +224,7 @@ namespace openLibrary_2._0
             //User clocks in. Multiple users can be clocked in at once.
 
 
-            frmLogin frm = new frmLogin();
+            frmClockIn frm = new frmClockIn();
             frm.FormClosed += frmLoginClosed;
             frm.Show(); 
         }
@@ -240,7 +233,7 @@ namespace openLibrary_2._0
         {
             //Clocking out.
 
-            frmLogout frm = new frmLogout();
+            frmClockOut frm = new frmClockOut();
             frm.FormClosed += frmLogoutClosed;
             frm.Show();
         }

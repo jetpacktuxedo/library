@@ -21,6 +21,7 @@ namespace openLibrary_2._0
         public OleDbConnection mDB;
         public string connectionString;
         ArrayList clocked = new ArrayList();
+        ArrayList employeeList = new ArrayList();
 
 
         public void openNew()
@@ -88,10 +89,8 @@ namespace openLibrary_2._0
 
         public void loadDatabaseTable(string sql)
         {
-
             try
             {
-
                 openDatabaseConnection();
                 mDB.Open();
                 OleDbCommand cmd;
@@ -155,9 +154,14 @@ namespace openLibrary_2._0
         public void clockIN(string id)
         {
             whoIsClockedIn();
-            if (clocked.Contains(id) == true)
-            {
+            getEmployees();
+            if (clocked.Contains(id) == true){
                 MessageBox.Show("This employee is already clocked in.");
+                return;
+            }
+
+            if (employeeList.Contains(id) == false) {
+                MessageBox.Show("Please enter a valid Employee ID.");
                 return;
             }
 
@@ -470,6 +474,31 @@ namespace openLibrary_2._0
             }
             finally
             {
+                closeDatabaseConnection();
+            }
+            return clocked;
+        }
+
+        public ArrayList getEmployees() {
+            employeeList.Clear();
+
+            try {
+                string sql = "select employee_id from employee;";
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                OleDbDataReader rdr;
+                cmd = new OleDbCommand(sql, mDB);
+                rdr = cmd.ExecuteReader();
+                while (rdr.Read()) {
+                    employeeList.Add((string)rdr["employee_id"]);
+                }
+
+            }
+            catch {
+                MessageBox.Show("Sorry, an error occured.");
+            }
+            finally {
                 closeDatabaseConnection();
             }
             return clocked;
