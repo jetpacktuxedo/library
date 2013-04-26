@@ -171,7 +171,14 @@ namespace openLibrary_2._0
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e) {
+            string row = dgvMovies[1, dgvMovies.CurrentRow.Index].Value.ToString();
+            frmEditMovies form = new frmEditMovies(row);
+            form.FormClosed += new FormClosedEventHandler(frmEditMovies_FormClosed);
+            form.Show();
+        }
 
+        private void frmEditMovies_FormClosed(object sender, FormClosedEventArgs e) {
+            searcher("", "UPC");
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {

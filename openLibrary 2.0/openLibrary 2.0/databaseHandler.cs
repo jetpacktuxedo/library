@@ -679,6 +679,34 @@ namespace openLibrary_2._0
             }
             return output;
         }
+
+        public string[] movieResults(string movieID) {
+            string query = "SELECT * FROM MOVIE where UPC = '" + movieID + "';";
+            string[] output = new string[8];
+
+            try {
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                OleDbDataReader rdr;
+                cmd = new OleDbCommand(query, mDB);
+                rdr = cmd.ExecuteReader();
+
+                rdr.Read();
+
+                output[0] = (string)rdr["TITLE"];
+                output[1] = (string)rdr["DIRECTOR"];
+                output[2] = (string)rdr["TYPE"];
+                output[3] = (string)rdr["STUDIO"];
+                output[4] = (string)rdr["RELEASE_DATE"];
+                output[5] = (string)rdr["PRICE"];
+                output[6] = (string)rdr["RUNNING_TIME"];
+            }
+            catch (Exception EX) {
+
+            }
+            return output;
+        }
     }
 }
 

@@ -12,7 +12,6 @@ C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\De
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\Debug\Library.mdb
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\Debug\Interop.WMPLib.dll
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\Debug\AxInterop.WMPLib.dll
-C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary 2.0.csprojResolveAssemblyReference.cache
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAddCustomer.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAddEmployee.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAddGame.resources
@@ -25,7 +24,6 @@ C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\De
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmViewGames.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmViewMovies.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmViewMusic.resources
-C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary 2.0.csproj.GenerateResource.Cache
 C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\bin\Debug\openLibrary 2.0.exe.config
 C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\Interop.WMPLib.dll
 C:\Users\tai\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\AxInterop.WMPLib.dll
@@ -95,3 +93,7 @@ C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmEditBook.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmPrint.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmEditMusic.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmEditMovies.resources
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\GenerateResource.write.1.tlog
