@@ -502,13 +502,10 @@ namespace openLibrary_2._0
                 closeDatabaseConnection();
             }
             return clocked;
-
         }
 
         public int findBookCount(string sql)
         {
-
-
             try
             {
                 openDatabaseConnection();

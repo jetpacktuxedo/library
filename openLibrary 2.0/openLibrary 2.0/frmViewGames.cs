@@ -28,7 +28,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, TITLE, DISC_TYPE, STUDIO, RELEASE_DATE, PRICE, PLATFORM, AVAILABLE from game order by PLATFORM, TITLE;";
+                string query = "select UPC, TITLE, PLATFORM, STUDIO, RELEASE_DATE, AVAILABLE from game order by PLATFORM, TITLE;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -62,7 +62,7 @@ namespace openLibrary_2._0
             {
 
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, TITLE, DISC_TYPE, STUDIO, RELEASE_DATE, PRICE, PLATFORM, AVAILABLE from game where " + column + " like '%" + escapeHandling(field) + "%' order by PLATFORM, TITLE;";
+                string query = "select UPC, TITLE, PLATFORM, STUDIO, RELEASE_DATE, AVAILABLE from game where " + column + " like '%" + escapeHandling(field) + "%' order by PLATFORM, TITLE;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -96,7 +96,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, TITLE, DISC_TYPE, STUDIO, RELEASE_DATE, PRICE, PLATFORM, AVAILABLE from game order by PLATFORM, TITLE;";
+                string query = "select UPC, TITLE, PLATFORM, STUDIO, RELEASE_DATE, AVAILABLE from game order by PLATFORM, TITLE;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -215,7 +215,7 @@ namespace openLibrary_2._0
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e) {
-            string row = dgvGames[1, dgvGames.CurrentRow.Index].Value.ToString();
+            string row = dgvGames[0, dgvGames.CurrentRow.Index].Value.ToString();
             frmEditGames form = new frmEditGames(row);
             form.FormClosed += new FormClosedEventHandler(frmEditGames_FormClosed);
             form.Show();
@@ -262,7 +262,7 @@ namespace openLibrary_2._0
 
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, TITLE, DISC_TYPE, STUDIO, RELEASE_DATE, PRICE, PLATFORM, AVAILABLE from game order by PLATFORM, TITLE;";
+                string query = "select UPC, TITLE, PLATFORM, STUDIO, RELEASE_DATE, AVAILABLE from game order by PLATFORM, TITLE;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);

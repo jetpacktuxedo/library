@@ -29,7 +29,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book order by TITLE;";
+                string query = "select ISBN, Title, Author, Publisher, Binding, pub_date as Publication_Date, Pages, Available from book order by Author, Title;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -69,7 +69,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book order by TITLE;";
+                string query = "select ISBN, Title, Author, Publisher, Binding, pub_date as Publication_Date, Pages, Available from book order by Author, Title;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -104,7 +104,7 @@ namespace openLibrary_2._0
             {
                 
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book where " + column + " like '%" + escapeHandling(field) + "%' order by TITLE;";
+                string query = "select ISBN, Title, Author, Publisher, Binding, pub_date as Publication_Date, Pages, Available from book where " + column + " like '%" + escapeHandling(field) + "%' order by Author, Title;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -267,7 +267,7 @@ namespace openLibrary_2._0
 
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN,Title,Author,Publisher,Binding,pub_date as Publication_Date, Price,Pages from book order by TITLE;";
+                string query = "select ISBN, Author, Title, Publisher, Binding, pub_date as Publication_Date, Pages, Available from book order by Author, Title;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);

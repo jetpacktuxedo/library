@@ -15,7 +15,6 @@ namespace openLibrary_2._0
 {
     public partial class frmViewMovies : Form
     {
-
         public string connectionString;
         public OleDbConnection mDB;
 
@@ -29,7 +28,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from movie order by cint(movie_id);";
+                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time from movie order by Title, Release_Date;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -61,7 +60,7 @@ namespace openLibrary_2._0
 
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from Movie order by cint(Movie_id);";
+                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time from movie order by Title, Release_Date;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -111,7 +110,7 @@ namespace openLibrary_2._0
         private void searcher(string field, string column) {
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from Movie where " + column + " like '%" + escapeHandling(field) + "%' order by cint(movie_id);";
+                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time from movie where " + column + " like '%" + escapeHandling(field) + "%' order by Title, Release_Date;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -171,7 +170,7 @@ namespace openLibrary_2._0
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e) {
-            string row = dgvMovies[1, dgvMovies.CurrentRow.Index].Value.ToString();
+            string row = dgvMovies[0, dgvMovies.CurrentRow.Index].Value.ToString();
             frmEditMovies form = new frmEditMovies(row);
             form.FormClosed += new FormClosedEventHandler(frmEditMovies_FormClosed);
             form.Show();
@@ -221,7 +220,7 @@ namespace openLibrary_2._0
 
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from Movie order by cint(Movie_id);";
+                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time from movie order by Title, Release_Date;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);

@@ -31,7 +31,7 @@ namespace openLibrary_2._0
         private void frmViewMusic_Load(object sender, EventArgs e) {
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select CD_ID, UPC, Album, Artist, Type, publisher, Release_Date, Price from cd order by cint(cd_id);";
+                string query = "select UPC, Artist, Album, Type, Publisher, Release_Date, Available from cd order by Artist, Album;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -188,9 +188,8 @@ namespace openLibrary_2._0
 
         private void searcher(string field, string column) {
             try {
-
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select CD_ID, UPC, Album, Artist, Type, publisher, Release_Date, Price from cd where " + column + " like '%" + field + "%' order by cint(cd_id);";
+                string query = "select UPC, Artist, Album, Type, Publisher, Release_Date, Available from cd where " + column + " like '%" + field + "%' order by Artist, Album;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -221,7 +220,7 @@ namespace openLibrary_2._0
 
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select CD_ID, UPC, Album, Artist, Type, publisher, Release_Date, Price from cd order by cint(cd_id);";
+                string query = "select UPC, Artist, Album, Type, Publisher, Release_Date, Available from cd order by Artist, Album;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -285,7 +284,7 @@ namespace openLibrary_2._0
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e) {
-            string row = dgvMusic[1, dgvMusic.CurrentRow.Index].Value.ToString();
+            string row = dgvMusic[0, dgvMusic.CurrentRow.Index].Value.ToString();
             frmEditMusic form = new frmEditMusic(row);
             form.FormClosed += new FormClosedEventHandler(frmEditMusic_FormClosed);
             form.Show();
@@ -336,7 +335,7 @@ namespace openLibrary_2._0
             try {
                 lstCurrentTracks.Items.Clear();
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select CD_ID, UPC, Album, Artist, Type, publisher, Release_Date, Price from cd order by cint(cd_id);";
+                string query = "select UPC, Artist, Album, Type, Publisher, Release_Date, Available from cd order by Artist, Album;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
