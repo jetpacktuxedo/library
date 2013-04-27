@@ -116,7 +116,6 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.toolStripMenuItem1.Text = "File";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // openToolStripMenuItem
             // 
@@ -627,7 +626,6 @@
             this.Controls.Add(this.lblCurrentUser);
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "frmHomeScreen";
-            this.Load += new System.EventHandler(this.frmHomeScreen_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.grpUser.ResumeLayout(false);

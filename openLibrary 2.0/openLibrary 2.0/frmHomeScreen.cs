@@ -208,13 +208,7 @@ namespace openLibrary_2._0
 
         }
 
-        private void logInToolStripMenuItem_ (object sender, ToolStripItemClickedEventArgs e)
-        {
-        }
-
-
-        private void frmLogoutClosed(object sender, EventArgs e)
-        {
+        private void frmLogoutClosed(object sender, EventArgs e){
             refresher();
         }
             
@@ -222,7 +216,6 @@ namespace openLibrary_2._0
         private void clockInToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //User clocks in. Multiple users can be clocked in at once.
-
 
             frmClockIn frm = new frmClockIn();
             frm.FormClosed += frmLoginClosed;
@@ -270,12 +263,6 @@ namespace openLibrary_2._0
             refresher();
         }
 
-        private void frmHomeScreen_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-
         private void MenuItemClickHandler(object sender, EventArgs e)
         {
 
@@ -295,13 +282,6 @@ namespace openLibrary_2._0
             addToolStripMenuItem.Enabled = true;
             viewToolStripMenuItem.Enabled = true;
             adminMenu.Enabled = true;
-
-
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnRenewItem_Click(object sender, EventArgs e)
@@ -334,9 +314,9 @@ namespace openLibrary_2._0
         DateTime due = DateTime.Parse(listLine[1]);
         string item_ID = d.codeFromTitle(listLine[2]);
 
-        string sql2 = "update " + table + "_checkout set due_date = '" + System.DateTime.Now.AddDays(14).ToShortDateString() + "' where  " + table + "_id = '" + item_ID + "';";
+        string sqlCheckout = "update " + table + "_checkout set due_date = '" + System.DateTime.Now.AddDays(14).ToShortDateString() + "' where  " + table + "_id = '" + item_ID + "';";
 
-        d.renewDue(sql2);
+        d.renewDue(sqlCheckout);
 
         loadCheckouts(userID);
         
@@ -381,7 +361,6 @@ namespace openLibrary_2._0
             lstCheckout.Visible = true;
             txtCheckout.Visible = true;
             btnComplete.Visible = true;
-
         }
 
         private void btnComplete_Click(object sender, EventArgs e)
