@@ -88,6 +88,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccDB.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmFindMedia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFindMedia.Designer.cs">
+      <DependentUpon>frmFindMedia.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -330,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewMusic.resx">
       <DependentUpon>frmViewMusic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFindMedia.resx">
+      <DependentUpon>frmFindMedia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -135,12 +135,13 @@ namespace openLibrary_2._0
         {
             lstCurrentlyCheckedOut.Visible = false;
             txtCheckout.Visible = false;
-            btnSubmit.Visible = false;
+            btnSubmitCheckOut.Visible = false;
 
             lblCurrentUser.Visible = true;
             lblCustomerName.Visible = true;
             grpUser.Visible = true;
             lstCurrentlyCheckedOut.Visible = true;
+            btnEnd.Enabled = true;
 
             
             string sql = "SELECT first_name & \" \" & last_name FROM customer WHERE customer_id = '" + userID + "'";
@@ -149,6 +150,7 @@ namespace openLibrary_2._0
             loadCheckouts(userID);
 
             btnCheckout.Enabled = true;
+            btnCheckIn.Enabled = true;
         }
 
         private void loadCheckouts(string userID)
@@ -357,10 +359,11 @@ namespace openLibrary_2._0
         {
             lstCurrentlyCheckedOut.Visible = false;
             btnCheckout.Enabled = false;
-            btnSubmit.Visible = true;
+            btnSubmitCheckOut.Visible = true;
             lstCheckout.Visible = true;
             txtCheckout.Visible = true;
-            btnComplete.Visible = true;
+            btnCompleteCheckOut.Visible = true;
+            btnFindItem.Enabled = true;
         }
 
         private void btnComplete_Click(object sender, EventArgs e)
@@ -370,6 +373,7 @@ namespace openLibrary_2._0
             lstCheckout.Items.Add(scannedItem);
             toBeCheckedOut.Add(scannedItem);
             txtCheckout.Text = "";
+            btnCompleteCheckOut.Enabled = true;
         }
 
         private void btnComplete_Click_1(object sender, EventArgs e)
@@ -377,11 +381,12 @@ namespace openLibrary_2._0
             lstCheckout.Items.Clear();
             lstCurrentlyCheckedOut.Visible = true;
             btnCheckout.Enabled = true;
-            btnSubmit.Visible = false;
+            btnSubmitCheckOut.Visible = false;
             lstCheckout.Visible = false;
             txtCheckout.Visible = false;
-            btnComplete.Visible = false;
-
+            btnCompleteCheckOut.Visible = false;
+            btnFindItem.Enabled = false;
+            btnCompleteCheckOut.Enabled = false;
             
 
             foreach(string scannedItem in toBeCheckedOut)
@@ -402,7 +407,10 @@ namespace openLibrary_2._0
 
         private void txtCheckout_TextChanged(object sender, EventArgs e)
         {
-
+            if (txtCheckout.Text.Length > 0)
+                btnSubmitCheckOut.Enabled = true;
+            else
+                btnSubmitCheckOut.Enabled = false;
 
         }
 
@@ -415,6 +423,7 @@ namespace openLibrary_2._0
             btnCompleteCheckIn.Visible = true;
             lstCheckIn.Visible = true;
             txtCheckIn.Visible = true;
+            btnFindItem.Enabled = true;
         }
 
         private void btnCompleteCheckIn_Click(object sender, EventArgs e)
@@ -427,6 +436,8 @@ namespace openLibrary_2._0
             btnCompleteCheckIn.Visible = false;
             lstCheckIn.Visible = false;
             txtCheckIn.Visible = false;
+            btnFindItem.Enabled = false;
+            btnCompleteCheckIn.Enabled = false;
 
             foreach (string item in toBeCheckedIn)
                 d.checkinBook(item);
@@ -443,6 +454,7 @@ namespace openLibrary_2._0
             lstCheckIn.Items.Add(checkInItem);
             toBeCheckedIn.Add(checkInItem);
             txtCheckIn.Text = "";
+            btnCompleteCheckIn.Enabled = true;
         }
 
         private void aPIKeysToolStripMenuItem_Click(object sender, EventArgs e)
@@ -500,5 +512,42 @@ namespace openLibrary_2._0
             frmAbout frm = new frmAbout();
             frm.Show();
         }
+
+        private void btnFindItem_Click(object sender, EventArgs e)
+        {
+            frmFindMedia frm = new frmFindMedia();
+            frm.FormClosed += new FormClosedEventHandler(frmFindMedia_FormClosed);
+            frm.Show();
+        }
+
+        private void frmFindMedia_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        
+        }
+
+        private void frmHomeScreen_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCheckIn_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCheckIn.Text.Length > 0)
+                btnSubmitCheckIn.Enabled = true;
+            else
+                btnSubmitCheckIn.Enabled = false;
+        }
+
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+            if (txtID.Text.Length > 0)
+                btnGO.Enabled = true;
+            else
+                btnGO.Enabled = false;
+        }
+
+
+
     }
 }
