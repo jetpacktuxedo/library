@@ -64,8 +64,8 @@ namespace openLibrary_2._0
                 price = escapeHandling(txtPrice.Text);
                 date = escapeHandling(txtDate.Text);
 
-                sqlstatement = "INSERT INTO BOOK (BOOK_ID, ISBN, TITLE, BINDING, PUBLISHER, AUTHOR, PUB_DATE, PRICE, PAGES)" +
-                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + publisher + "','" + author + "','" + date + "','" + price + "','" + pages + "');";
+                sqlstatement = "INSERT INTO BOOK (BOOK_ID, ISBN, TITLE, BINDING, PUBLISHER, AUTHOR, PUB_DATE, PRICE, PAGES, AVAILABLE)" +
+                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + publisher + "','" + author + "','" + date + "','" + price + "','" + pages + "', true);";
 
                 d.loadDatabaseTable(sqlstatement);
 

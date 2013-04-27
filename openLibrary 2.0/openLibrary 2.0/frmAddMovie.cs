@@ -119,8 +119,8 @@ namespace openLibrary_2._0
                 price = escapeHandling(txtPrice.Text);
                 date = escapeHandling(txtDate.Text);
 
-                sqlstatement = "INSERT INTO movie (movie_id, UPC, TITLE, DIRECTOR, TYPE, STUDIO, RELEASE_DATE, PRICE, RUNNING_TIME)" +
-                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + author + "','" + format + "','" + publisher + "','" + date + "','" + price + "','" + pages + "');";
+                sqlstatement = "INSERT INTO movie (movie_id, UPC, TITLE, DIRECTOR, TYPE, STUDIO, RELEASE_DATE, PRICE, RUNNING_TIME, available)" +
+                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + author + "','" + format + "','" + publisher + "','" + date + "','" + price + "','" + pages + "', true);";
 
                 d.loadDatabaseTable(sqlstatement);
 

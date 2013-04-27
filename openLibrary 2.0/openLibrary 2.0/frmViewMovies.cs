@@ -28,7 +28,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time from movie order by Title, Release_Date;";
+                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time, Available from movie order by Title, Release_Date;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);

@@ -94,8 +94,8 @@ namespace openLibrary_2._0
                 price = txtPrice.Text;
                 date = txtDate.Text;
 
-                sqlstatement = "INSERT INTO GAME (GAME_ID, UPC, TITLE, DISC_TYPE, STUDIO, RELEASE_DATE, PRICE, PLATFORM)" +
-                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + publisher + "','" + date + "','" + price + "','" + pages + "');";
+                sqlstatement = "INSERT INTO GAME (GAME_ID, UPC, TITLE, DISC_TYPE, STUDIO, RELEASE_DATE, PRICE, PLATFORM, available)" +
+                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + publisher + "','" + date + "','" + price + "','" + pages + "', true);";
 
                 d.loadDatabaseTable(sqlstatement);
 
@@ -133,6 +133,11 @@ namespace openLibrary_2._0
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void frmAddGame_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

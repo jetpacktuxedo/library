@@ -225,6 +225,7 @@
             this.Controls.Add(this.txtISBN);
             this.Name = "frmAddGame";
             this.Text = "Add New Game";
+            this.Load += new System.EventHandler(this.frmAddGame_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -68,7 +68,6 @@ C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAddGame.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAddMovie.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAddMusic.resources
-C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmLogin.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmViewBooks.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAddBook.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmHomeScreen.resources
@@ -81,7 +80,6 @@ C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary 2.0.csproj.GenerateResource.Cache
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmCurrentlyClocked.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmCurrentlyClocked.resources
-C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmLogout.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAmazonKeys.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmOverdueItems.resources
 C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAmazonKeys.resources
@@ -103,3 +101,8 @@ C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\De
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary 2.0.csproj.GenerateResource.Cache
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmClockIn.resources
 C:\Users\maddene\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmClockOut.resources
+C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmAbout.resources
+C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmBugReport.resources
+C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmHelp.resources
+C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmClockIn.resources
+C:\Users\taiiiiiiiiiiiiii\Documents\GitHub\library\openLibrary 2.0\openLibrary 2.0\obj\Debug\openLibrary_2._0.frmClockOut.resources

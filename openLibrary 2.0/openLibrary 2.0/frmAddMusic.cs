@@ -129,8 +129,8 @@ namespace openLibrary_2._0
                 price = escapeHandling(txtPrice.Text);
                 date = escapeHandling(txtDate.Text);
 
-                sqlstatement = "INSERT INTO CD (CD_ID, UPC, ALBUM, TYPE, PUBLISHER, RELEASE_DATE, PRICE, ARTIST)" +
-                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + publisher + "','" + date + "','" + price + "','" + author + "');";
+                sqlstatement = "INSERT INTO CD (CD_ID, UPC, ALBUM, TYPE, PUBLISHER, RELEASE_DATE, PRICE, ARTIST, available)" +
+                                          "VALUES ('" + bookid + "','" + isbn + "','" + title + "','" + format + "','" + publisher + "','" + date + "','" + price + "','" + author + "', true);";
 
                            
                 d.loadDatabaseTable(sqlstatement);
