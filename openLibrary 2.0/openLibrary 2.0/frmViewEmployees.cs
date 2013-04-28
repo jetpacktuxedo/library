@@ -176,7 +176,7 @@ namespace openLibrary_2._0
             try
             {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time from movie where " + column + " like '%" + escapeHandling(field) + "%' order by Title, Release_Date;";
+                string query = "select * from employee where " + column + " like '%" + escapeHandling(field) + "%' order by last_name;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -209,5 +209,91 @@ namespace openLibrary_2._0
         {
             clears();
         }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e) {
+            string row = dgvEmployees[0, dgvEmployees.CurrentRow.Index].Value.ToString();
+            frmEditEmployee form = new frmEditEmployee(row);
+            form.FormClosed += new FormClosedEventHandler(frmEditEmployees_FormClosed);
+            form.Show();
+        }
+
+        private void frmEditEmployees_FormClosed(object sender, FormClosedEventArgs e) {
+            searcher("", "Employee_ID");
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
+            
+            string row = dgvEmployees[0, dgvEmployees.CurrentRow.Index].Value.ToString();
+
+            if (MessageBox.Show("Are you sure?", "Confirm Deletion", MessageBoxButtons.YesNo) == DialogResult.No) {
+                MessageBox.Show("Request ignored");
+                dgvEmployees.ClearSelection();
+                return;
+            }
+
+            try {
+                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+                string query = "delete from employee where employee_ID = '" + row + "';";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
+                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dt;
+
+                dgvEmployees.DataSource = bs;
+
+                da.Update(dt);
+
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Unexpected error: " + ex);
+            }
+            finally {
+                databaseHandler d = new databaseHandler();
+                d.closeDatabaseConnection();
+            }
+
+            try {
+                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+                string query = "select * from employee order by last_name;";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
+                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dt;
+
+                dgvEmployees.DataSource = bs;
+
+                da.Update(dt);
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Unexpected error: " + ex);
+            }
+            finally {
+                databaseHandler d = new databaseHandler();
+                d.closeDatabaseConnection();
+            }
+            dgvEmployees.ClearSelection();
+        }
+
+        private void dgvEmployees_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {
+            if (e.RowIndex >= 0) {
+                dgvEmployees.ClearSelection();
+                dgvEmployees.CurrentCell = dgvEmployees.Rows[e.RowIndex].Cells[1];
+                dgvEmployees.Rows[e.RowIndex].Selected = true;
+
+                if (e.Button == MouseButtons.Right) {
+                    dgvClick.Show(Cursor.Position);
+                }
+            }
+        }     
     }
 }

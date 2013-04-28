@@ -714,6 +714,37 @@ namespace openLibrary_2._0
             return output;
         }
 
+        public string[] employeeResults(string employeeID) {
+            string query = "SELECT * FROM employee where Employee_ID = '" + employeeID + "';";
+            string[] output = new string[10];
+
+            try {
+                openDatabaseConnection();
+                mDB.Open();
+                OleDbCommand cmd;
+                OleDbDataReader rdr;
+                cmd = new OleDbCommand(query, mDB);
+                rdr = cmd.ExecuteReader();
+
+                rdr.Read();
+
+                output[0] = (string)rdr["First_Name"];
+                output[1] = (string)rdr["Last_Name"];
+                output[2] = (string)rdr["Phone"];
+                output[3] = (string)rdr["Address"];
+                output[4] = (string)rdr["City"];
+                output[5] = (string)rdr["State"];
+                output[6] = (string)rdr["Zip"];
+                output[7] = (string)rdr["Email_addr"];
+                output[8] = ((DateTime)rdr["Birth_Date"]).ToString();
+                output[9] = ((DateTime)rdr["Hire_Date"]).ToString();
+            }
+            catch (Exception EX) {
+
+            }
+            return output;
+        }
+
         public string[] movieResults(string movieID) {
             string query = "SELECT * FROM MOVIE where UPC = '" + movieID + "';";
             string[] output = new string[8];

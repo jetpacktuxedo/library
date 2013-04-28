@@ -28,16 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvEmployees = new System.Windows.Forms.DataGridView();
             this.tabSet1 = new System.Windows.Forms.TabControl();
             this.tabPageName = new System.Windows.Forms.TabPage();
             this.txtNameSearch = new System.Windows.Forms.TextBox();
             this.tabPageECode = new System.Windows.Forms.TabPage();
             this.txtECSearch = new System.Windows.Forms.TextBox();
+            this.dgvClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             this.tabSet1.SuspendLayout();
             this.tabPageName.SuspendLayout();
             this.tabPageECode.SuspendLayout();
+            this.dgvClick.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvEmployees
@@ -52,6 +57,7 @@
             this.dgvEmployees.Size = new System.Drawing.Size(865, 274);
             this.dgvEmployees.TabIndex = 2;
             this.dgvEmployees.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvEmployees.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvEmployees_CellMouseDown);
             // 
             // tabSet1
             // 
@@ -78,10 +84,10 @@
             // 
             // txtNameSearch
             // 
-            this.txtNameSearch.Font = new System.Drawing.Font("Maiandra GD", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNameSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNameSearch.Location = new System.Drawing.Point(18, 23);
             this.txtNameSearch.Name = "txtNameSearch";
-            this.txtNameSearch.Size = new System.Drawing.Size(820, 42);
+            this.txtNameSearch.Size = new System.Drawing.Size(820, 40);
             this.txtNameSearch.TabIndex = 1;
             this.txtNameSearch.Text = "Enter all or part of a name here...";
             this.txtNameSearch.TextChanged += new System.EventHandler(this.txtUPCsearch_TextChanged);
@@ -100,14 +106,36 @@
             // 
             // txtECSearch
             // 
-            this.txtECSearch.Font = new System.Drawing.Font("Maiandra GD", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtECSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtECSearch.Location = new System.Drawing.Point(18, 23);
             this.txtECSearch.Name = "txtECSearch";
-            this.txtECSearch.Size = new System.Drawing.Size(821, 42);
+            this.txtECSearch.Size = new System.Drawing.Size(821, 40);
             this.txtECSearch.TabIndex = 0;
             this.txtECSearch.Text = "Scan an employee card here...";
             this.txtECSearch.TextChanged += new System.EventHandler(this.txtTitleSearch_TextChanged);
             this.txtECSearch.Enter += new System.EventHandler(this.txtECSearch_Enter);
+            // 
+            // dgvClick
+            // 
+            this.dgvClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.dgvClick.Name = "contextMenuStrip1";
+            this.dgvClick.Size = new System.Drawing.Size(153, 70);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // frmViewEmployees
             // 
@@ -125,6 +153,7 @@
             this.tabPageName.PerformLayout();
             this.tabPageECode.ResumeLayout(false);
             this.tabPageECode.PerformLayout();
+            this.dgvClick.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -137,5 +166,8 @@
         private System.Windows.Forms.TextBox txtNameSearch;
         private System.Windows.Forms.TabPage tabPageECode;
         private System.Windows.Forms.TextBox txtECSearch;
+        private System.Windows.Forms.ContextMenuStrip dgvClick;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
