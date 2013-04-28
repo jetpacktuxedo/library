@@ -19,29 +19,42 @@ namespace openLibrary_2._0{
 
         //Method to do an ISBN-based lookup and return the signed URL
         public static string lookup(string track, string album, string artist) {
-            APIsettings set = new APIsettings();
-            ArrayList parsed = new ArrayList();
-            parsed = set.parse();
 
-            string MY_AWS_ACCESS_KEY_ID = parsed[0].ToString(), MY_AWS_SECRET_KEY = parsed[1].ToString();
+            string signedUrl = "";
 
-            //Helper signs the requests
-            SignedRequestHelper helper = new SignedRequestHelper(MY_AWS_ACCESS_KEY_ID, MY_AWS_SECRET_KEY, DESTINATION);
+            try
+            {
+                APIsettings set = new APIsettings();
+                ArrayList parsed = new ArrayList();
+                parsed = set.parse();
 
-            //Helper looks for a dictionary containing all of the bits of the URL
-            IDictionary<string, string> url = new Dictionary<string, String>();
-            url["Service"] = "AWSECommerceService";
-            url["Version"] = "2011-08-01";
-            url["Operation"] = "ItemSearch";
-            url["Keywords"] = track + ", " + album + ", " + artist;
-            url["SearchIndex"] = "MP3Downloads";
-            url["ResponseGroup"] = "Large";
-            url["AssociateTag"] = "AssociateTag=openlibrary07-20";
+                string MY_AWS_ACCESS_KEY_ID = parsed[0].ToString(), MY_AWS_SECRET_KEY = parsed[1].ToString();
 
-            //Pass dictionary to helper, get the signed URL back out as a string
-            string signedUrl = helper.Sign(url);
+                //Helper signs the requests
+                SignedRequestHelper helper = new SignedRequestHelper(MY_AWS_ACCESS_KEY_ID, MY_AWS_SECRET_KEY, DESTINATION);
 
+                //Helper looks for a dictionary containing all of the bits of the URL
+                IDictionary<string, string> url = new Dictionary<string, String>();
+                url["Service"] = "AWSECommerceService";
+                url["Version"] = "2011-08-01";
+                url["Operation"] = "ItemSearch";
+                url["Keywords"] = track + ", " + album + ", " + artist;
+                url["SearchIndex"] = "MP3Downloads";
+                url["ResponseGroup"] = "Large";
+                url["AssociateTag"] = "AssociateTag=openlibrary07-20";
+
+                //Pass dictionary to helper, get the signed URL back out as a string
+                signedUrl = helper.Sign(url);
+                return signedUrl;
+
+            }
+            catch
+            {
+                MessageBox.Show("Unfortunately, music preview isn't available for this track.");
+            }
             return signedUrl;
+
+
         }
 
         //Method to take a signed URL and return information contained in the get response
