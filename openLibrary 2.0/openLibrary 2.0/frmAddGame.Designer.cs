@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddGame));
             this.btnPopulate = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -223,8 +224,10 @@
             this.Controls.Add(this.txtBinding);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.txtISBN);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmAddGame";
-            this.Text = "Add New Game";
+            this.Text = "Add Game";
             this.Load += new System.EventHandler(this.frmAddGame_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

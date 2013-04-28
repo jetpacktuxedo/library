@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOverdueItems));
             this.dgvOverdueGames = new System.Windows.Forms.DataGridView();
             this.dgvOverdueBooks = new System.Windows.Forms.DataGridView();
             this.dgvOverdueMovies = new System.Windows.Forms.DataGridView();
@@ -147,8 +148,10 @@
             this.Controls.Add(this.dgvOverdueMusic);
             this.Controls.Add(this.dgvOverdueMovies);
             this.Controls.Add(this.dgvOverdueBooks);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmOverdueItems";
-            this.Text = "Form1";
+            this.Text = "Overdue Items Report";
             this.Load += new System.EventHandler(this.frmOverdueItems_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOverdueGames)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOverdueBooks)).EndInit();

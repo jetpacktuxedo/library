@@ -196,19 +196,19 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.dgvClick.Name = "dgvClick";
-            this.dgvClick.Size = new System.Drawing.Size(153, 70);
+            this.dgvClick.Size = new System.Drawing.Size(108, 48);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -221,8 +221,10 @@
             this.Controls.Add(this.lstCurrentTracks);
             this.Controls.Add(this.mPlayer);
             this.Controls.Add(this.dgvMusic);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmViewMusic";
-            this.Text = "frmViewMusic";
+            this.Text = "View Music";
             this.Load += new System.EventHandler(this.frmViewMusic_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMusic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mPlayer)).EndInit();

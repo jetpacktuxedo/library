@@ -622,8 +622,11 @@
             this.Controls.Add(this.grpUser);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.lblCurrentUser);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip2;
+            this.MaximizeBox = false;
             this.Name = "frmHomeScreen";
+            this.Text = "openLibrary";
             this.Load += new System.EventHandler(this.frmHomeScreen_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();

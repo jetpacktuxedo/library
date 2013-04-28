@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditBook));
             this.btnClose = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -228,6 +229,8 @@
             this.Controls.Add(this.txtAuthor);
             this.Controls.Add(this.txtPublisher);
             this.Controls.Add(this.txtBinding);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmEditBook";
             this.Text = "Edit Book";
             this.Load += new System.EventHandler(this.frmEditBook_Load);

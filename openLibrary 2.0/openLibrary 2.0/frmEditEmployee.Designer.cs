@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditEmployee));
             this.label11 = new System.Windows.Forms.Label();
             this.dtpHireDate = new System.Windows.Forms.DateTimePicker();
             this.txtCardCode = new System.Windows.Forms.TextBox();
@@ -286,6 +287,8 @@
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtFirstName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmEditEmployee";
             this.Text = "Edit Employee";
             this.Load += new System.EventHandler(this.frmEditEmployee_Load);

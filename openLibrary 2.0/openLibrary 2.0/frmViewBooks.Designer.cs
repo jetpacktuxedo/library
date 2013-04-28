@@ -201,6 +201,7 @@
             this.Controls.Add(this.tabSet1);
             this.Controls.Add(this.dgvBook);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmViewBooks";
             this.Text = "View Books";
             this.Load += new System.EventHandler(this.frmBookView_Load);

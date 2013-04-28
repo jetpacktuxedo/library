@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAmazonKeys));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -116,8 +117,10 @@
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmAmazonKeys";
-            this.Text = "Form1";
+            this.Text = "Amazon Keys";
             this.Load += new System.EventHandler(this.frmAmazonKeys_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

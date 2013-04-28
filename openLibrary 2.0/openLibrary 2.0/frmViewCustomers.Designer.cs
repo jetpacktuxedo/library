@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewCustomers));
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -135,8 +136,10 @@
             this.Controls.Add(this.tabSet1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.dgvCustomers);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmViewCustomers";
-            this.Text = "frmViewCustomers";
+            this.Text = "View Customers";
             this.Load += new System.EventHandler(this.frmViewCustomers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             this.statusStrip1.ResumeLayout(false);

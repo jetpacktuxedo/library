@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBugReport));
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtMessage = new System.Windows.Forms.RichTextBox();
@@ -120,8 +121,10 @@
             this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmBugReport";
-            this.Text = "frmBugReport";
+            this.Text = "Bug Reporting";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddCustomer));
             this.label11 = new System.Windows.Forms.Label();
             this.dtpJoinDate = new System.Windows.Forms.DateTimePicker();
             this.txtCardCode = new System.Windows.Forms.TextBox();
@@ -291,8 +292,10 @@
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtFirstName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmAddCustomer";
-            this.Text = "Add New Customer";
+            this.Text = "Add Customer";
             this.ResumeLayout(false);
             this.PerformLayout();
 

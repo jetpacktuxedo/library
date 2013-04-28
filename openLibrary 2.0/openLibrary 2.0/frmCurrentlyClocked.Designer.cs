@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCurrentlyClocked));
             this.lstClockedIN = new System.Windows.Forms.ListBox();
             this.btnClockThemOut = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -71,8 +72,10 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnClockThemOut);
             this.Controls.Add(this.lstClockedIN);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmCurrentlyClocked";
-            this.Text = "frmCurrentlyClocked";
+            this.Text = "Currently Clocked In";
             this.Load += new System.EventHandler(this.frmCurrentlyClocked_Load);
             this.ResumeLayout(false);
 

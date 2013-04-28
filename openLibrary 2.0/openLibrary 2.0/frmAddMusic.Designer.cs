@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddMusic));
             this.txtISBN = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.txtBinding = new System.Windows.Forms.TextBox();
@@ -234,6 +235,8 @@
             this.Controls.Add(this.txtBinding);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.txtISBN);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmAddMusic";
             this.Text = "Add Music";
             this.Load += new System.EventHandler(this.frmAddMusic_Load);

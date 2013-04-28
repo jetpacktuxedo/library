@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddBook));
             this.txtBinding = new System.Windows.Forms.TextBox();
             this.txtPublisher = new System.Windows.Forms.TextBox();
             this.txtAuthor = new System.Windows.Forms.TextBox();
@@ -245,10 +246,12 @@
             this.Controls.Add(this.txtAuthor);
             this.Controls.Add(this.txtPublisher);
             this.Controls.Add(this.txtBinding);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(500, 500);
             this.MinimumSize = new System.Drawing.Size(271, 289);
             this.Name = "frmAddBook";
-            this.Text = "Add New Book";
+            this.Text = "Add Book";
             this.ResumeLayout(false);
             this.PerformLayout();
 

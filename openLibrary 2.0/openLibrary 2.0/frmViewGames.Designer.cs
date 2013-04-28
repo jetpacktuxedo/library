@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewGames));
             this.dgvGames = new System.Windows.Forms.DataGridView();
             this.tabSet1 = new System.Windows.Forms.TabControl();
             this.tabPageISBN = new System.Windows.Forms.TabPage();
@@ -197,8 +198,10 @@
             this.ClientSize = new System.Drawing.Size(891, 393);
             this.Controls.Add(this.tabSet1);
             this.Controls.Add(this.dgvGames);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmViewGames";
-            this.Text = "frmViewGames";
+            this.Text = "View Games";
             this.Load += new System.EventHandler(this.frmViewGames_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGames)).EndInit();
             this.tabSet1.ResumeLayout(false);
