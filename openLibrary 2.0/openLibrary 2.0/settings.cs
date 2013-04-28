@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace openLibrary_2._0 {
     public class APIsettings{
@@ -10,7 +11,7 @@ namespace openLibrary_2._0 {
         public string accessKey, secretKey, emailAddress;
 
         public void create() {
-            if (System.IO.File.Exists(myFile)) {
+            if (!System.IO.File.Exists(myFile)) {
                 // Create the file. 
                 using (System.IO.FileStream fs = System.IO.File.Create(myFile, 1024)) {
                     // Add some information to the file. 
@@ -79,6 +80,11 @@ namespace openLibrary_2._0 {
                 accessKey = realout[0].ToString();
                 secretKey = realout[1].ToString();
                 emailAddress = realout[2].ToString();
+
+                if (accessKey == "" || secretKey == "") {
+                    MessageBox.Show("This feature is unavailable if the Amazon access key and secret key are empty.\nIf you qwould like to use this feature, please enter your Amazon keys under the Administrative menu before proceeding.");
+                }
+
                 return realout;
             }
 

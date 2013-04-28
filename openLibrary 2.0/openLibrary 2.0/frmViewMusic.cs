@@ -50,6 +50,8 @@ namespace openLibrary_2._0
         }
 
         private void beginPlay(string asin) {
+            mPlayer.close();
+
             path = Directory.GetCurrentDirectory() + "/tempMP3.mp3";
             path2 = Directory.GetCurrentDirectory() + "/temp2MP3.mp3";
             path3 = Directory.GetCurrentDirectory() + "/temp3MP3.mp3";
@@ -63,15 +65,24 @@ namespace openLibrary_2._0
             try {
                 if (!IsFileLocked(file)) {
                     client.DownloadFile(url, path);
-                    player(path);
+                    if (client.ResponseHeaders.AllKeys[0] == "x-amz-id-1") {
+                        MessageBox.Show("Track unavailable");
+                    }
+                    else player(path);
                 }
                 else if (!IsFileLocked(file2)) {
                     client.DownloadFile(url, path2);
-                    player(path2);
+                    if (client.ResponseHeaders.AllKeys[0] == "x-amz-id-1") {
+                        MessageBox.Show("Track unavailable");
+                    }
+                    else player(path2);
                 }
                 else if (!IsFileLocked(file3)) {
                     client.DownloadFile(url, path2);
-                    player(path3);
+                    if (client.ResponseHeaders.AllKeys[0] == "x-amz-id-1") {
+                        MessageBox.Show("Track unavailable");
+                    }
+                    else player(path3);
                 }
             }
             catch (Exception x) {

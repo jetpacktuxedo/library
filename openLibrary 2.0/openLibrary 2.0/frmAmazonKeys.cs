@@ -41,7 +41,6 @@ namespace openLibrary_2._0
 
             txtPublic.Text = info[0].ToString();
             txtPrivate.Text = info[1].ToString();
-
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
