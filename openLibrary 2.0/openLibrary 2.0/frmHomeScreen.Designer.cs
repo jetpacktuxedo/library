@@ -252,28 +252,28 @@
             // ViewBookToolStripMenuItem
             // 
             this.ViewBookToolStripMenuItem.Name = "ViewBookToolStripMenuItem";
-            this.ViewBookToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewBookToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.ViewBookToolStripMenuItem.Text = "Books...";
             this.ViewBookToolStripMenuItem.Click += new System.EventHandler(this.ViewBookToolStripMenuItem_Click);
             // 
             // ViewMoviesToolStripMenuItem
             // 
             this.ViewMoviesToolStripMenuItem.Name = "ViewMoviesToolStripMenuItem";
-            this.ViewMoviesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewMoviesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.ViewMoviesToolStripMenuItem.Text = "Movies...";
             this.ViewMoviesToolStripMenuItem.Click += new System.EventHandler(this.ViewMoviesToolStripMenuItem_Click);
             // 
             // ViewMusicToolStripMenuItem
             // 
             this.ViewMusicToolStripMenuItem.Name = "ViewMusicToolStripMenuItem";
-            this.ViewMusicToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewMusicToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.ViewMusicToolStripMenuItem.Text = "Music...";
             this.ViewMusicToolStripMenuItem.Click += new System.EventHandler(this.ViewMusicToolStripMenuItem_Click);
             // 
             // ViewGamesToolStripMenuItem
             // 
             this.ViewGamesToolStripMenuItem.Name = "ViewGamesToolStripMenuItem";
-            this.ViewGamesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewGamesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.ViewGamesToolStripMenuItem.Text = "Games...";
             this.ViewGamesToolStripMenuItem.Click += new System.EventHandler(this.ViewGamesToolStripMenuItem_Click);
             // 
@@ -281,20 +281,20 @@
             // 
             this.toolStripMenuItem4.Enabled = false;
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(140, 22);
             this.toolStripMenuItem4.Text = "------";
             // 
             // ViewCustomersToolStripMenuItem
             // 
             this.ViewCustomersToolStripMenuItem.Name = "ViewCustomersToolStripMenuItem";
-            this.ViewCustomersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewCustomersToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.ViewCustomersToolStripMenuItem.Text = "Customers...";
             this.ViewCustomersToolStripMenuItem.Click += new System.EventHandler(this.ViewCustomersToolStripMenuItem_Click);
             // 
             // ViewEmployeesToolStripMenuItem
             // 
             this.ViewEmployeesToolStripMenuItem.Name = "ViewEmployeesToolStripMenuItem";
-            this.ViewEmployeesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ViewEmployeesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.ViewEmployeesToolStripMenuItem.Text = "Employees...";
             this.ViewEmployeesToolStripMenuItem.Click += new System.EventHandler(this.ViewEmployeesToolStripMenuItem_Click);
             // 
@@ -558,7 +558,7 @@
             this.btnSubmitCheckOut.Text = "Submit";
             this.btnSubmitCheckOut.UseVisualStyleBackColor = true;
             this.btnSubmitCheckOut.Visible = false;
-            this.btnSubmitCheckOut.Click += new System.EventHandler(this.btnComplete_Click);
+            this.btnSubmitCheckOut.Click += new System.EventHandler(this.btnSubmitCheckOut_Click);
             // 
             // btnCompleteCheckOut
             // 
@@ -570,7 +570,7 @@
             this.btnCompleteCheckOut.Text = "Complete";
             this.btnCompleteCheckOut.UseVisualStyleBackColor = true;
             this.btnCompleteCheckOut.Visible = false;
-            this.btnCompleteCheckOut.Click += new System.EventHandler(this.btnComplete_Click_1);
+            this.btnCompleteCheckOut.Click += new System.EventHandler(this.btnCompleteCheckOut_Click);
             // 
             // lstCheckIn
             // 

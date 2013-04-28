@@ -315,125 +315,112 @@ namespace openLibrary_2._0
                 {
                     checkoutID = findBookCount("select max(cint(checkout_id)) from checkout");
                     checkoutID++;
-                    
+                    try {
+                        //make a new record in the checkout table.
+                        string sql = "insert into checkout (checkout_id, checkout_date, employee_id, customer_id) values ('" + checkoutID + "',#" + System.DateTime.Now + "#, '" + empID + "','" + userID + "');";
+                        openDatabaseConnection();
+                        mDB.Open();
+                        OleDbCommand cmd;
+                        cmd = new OleDbCommand(sql, mDB);
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch {
+                        MessageBox.Show("There was an error adding the checkout.");
+                    }
+                    finally {
+                        closeDatabaseConnection();
+                    }
+
+                    if (itemType == "game") {
+                        string newSQL = "insert into game_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.AddDays(14).ToShortDateString() + "#);";
+                        string sqlAvailable = "update game set Available = NO where game_id = " + itemID + ";";
+
+                        openDatabaseConnection();
+                        mDB.Open();
+                        OleDbCommand newCMD;
+                        try {
+                            newCMD = new OleDbCommand(newSQL, mDB);
+                            newCMD.ExecuteNonQuery();
+                            newCMD = new OleDbCommand(sqlAvailable, mDB);
+                            newCMD.ExecuteNonQuery();
+                        }
+                        catch {
+                            MessageBox.Show("There was an error adding the game_checkout.");
+                        }
+                        finally {
+                            closeDatabaseConnection();
+                        }
+                    }
+
+                    if (itemType == "cd") {
+                        string newSQL = "insert into cd_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.AddDays(14).ToShortDateString() + "#);";
+                        string sqlAvailable = "update cd set Available = NO where cd_id = " + itemID + ";";
+
+                        openDatabaseConnection();
+                        mDB.Open();
+                        OleDbCommand newCMD;
+                        try {
+                            newCMD = new OleDbCommand(newSQL, mDB);
+                            newCMD.ExecuteNonQuery();
+                            newCMD = new OleDbCommand(sqlAvailable, mDB);
+                            newCMD.ExecuteNonQuery();
+                        }
+                        catch {
+                            MessageBox.Show("There was an error adding the cd_checkout.");
+                        }
+                        finally {
+                            closeDatabaseConnection();
+                        }
+                    }
+
+                    if (itemType == "movie") {
+                        string newSQL = "insert into movie_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.AddDays(14).ToShortDateString() + "#);";
+                        string sqlAvailable = "update movie set Available = false where movie_id = " + itemID + ";";
+
+                        openDatabaseConnection();
+                        mDB.Open();
+                        OleDbCommand newCMD;
+                        try {
+                            newCMD = new OleDbCommand(newSQL, mDB);
+                            newCMD.ExecuteNonQuery();
+                            newCMD = new OleDbCommand(sqlAvailable, mDB);
+                            newCMD.ExecuteNonQuery();
+                        }
+                        catch (Exception ee) {
+                            MessageBox.Show("There was an error adding the movie_checkout." + ee.ToString());
+                        }
+                        finally {
+                            closeDatabaseConnection();
+                        }
+                    }
+
+                    if (itemType == "book") {
+                        string newSQL = "insert into book_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.AddDays(14).ToShortDateString() + "#);";
+                        string sqlAvailable = "update book set Available = NO where book_id = " + itemID + ";";
+
+                        openDatabaseConnection();
+                        mDB.Open();
+                        OleDbCommand newCMD;
+                        try {
+                            newCMD = new OleDbCommand(newSQL, mDB);
+                            newCMD.ExecuteNonQuery();
+                            newCMD = new OleDbCommand(sqlAvailable, mDB);
+                            newCMD.ExecuteNonQuery();
+                        }
+                        catch {
+                            MessageBox.Show("There was an error adding the book_checkout.");
+                        }
+                        finally {
+                            closeDatabaseConnection();
+                        }
+                    }
                 }
+                else MessageBox.Show("Sorry, that item is already checked out.");
             }
             catch(Exception ee)
             {
                 MessageBox.Show(ee.ToString());
             }
-
-                try 
-                {
-                    //make a new record in the checkout table.
-                    string sql = "insert into checkout (checkout_id, checkout_date, employee_id, customer_id) values ('" + checkoutID + "',#" + System.DateTime.Now + "#, '" + empID + "','" + userID + "');";
-                    openDatabaseConnection();
-                    mDB.Open();
-                    OleDbCommand cmd;
-                    cmd = new OleDbCommand(sql, mDB);
-                    cmd.ExecuteNonQuery();
-                }
-                catch 
-                {
-                    MessageBox.Show("There was an error adding the checkout.");
-                }
-                finally 
-                {
-                    closeDatabaseConnection();
-                }
-
-                if (itemType == "game") {
-                    string newSQL = "insert into game_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.AddDays(14).ToShortDateString() + "#);";
-                    string sqlAvailable = "update game set Available = NO where game_id = " + itemID + ";";
-
-                    openDatabaseConnection();
-                    mDB.Open();
-                    OleDbCommand newCMD;
-                    try 
-                    {
-                        newCMD = new OleDbCommand(newSQL, mDB);
-                        newCMD.ExecuteNonQuery();
-                        newCMD = new OleDbCommand(sqlAvailable, mDB);
-                        newCMD.ExecuteNonQuery();
-                    }
-                    catch 
-                    {
-                        MessageBox.Show("There was an error adding the game_checkout.");
-                    }
-                    finally 
-                    {
-                        closeDatabaseConnection();
-                    }
-                }
-
-                if (itemType == "cd") {
-                    string newSQL = "insert into cd_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.AddDays(14).ToShortDateString() + "#);";
-                    string sqlAvailable = "update cd set Available = NO where cd_id = " + itemID + ";";
-
-                    openDatabaseConnection();
-                    mDB.Open();
-                    OleDbCommand newCMD;
-                    try
-                    {
-                        newCMD = new OleDbCommand(newSQL, mDB);
-                        newCMD.ExecuteNonQuery();
-                        newCMD = new OleDbCommand(sqlAvailable, mDB);
-                        newCMD.ExecuteNonQuery();
-                    }
-                    catch
-                    {
-                        MessageBox.Show("There was an error adding the cd_checkout.");
-                    }
-                    finally
-                    {
-                        closeDatabaseConnection();
-                    }
-                }
-
-                if (itemType == "movie") {
-                    string newSQL = "insert into movie_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.AddDays(14).ToShortDateString() + "#);";
-                    string sqlAvailable = "update movie set Available = false where movie_id = " + itemID + ";";
-
-                    openDatabaseConnection();
-                    mDB.Open();
-                    OleDbCommand newCMD;
-                    try
-                    {
-                        newCMD = new OleDbCommand(newSQL, mDB);
-                        newCMD.ExecuteNonQuery();
-                        newCMD = new OleDbCommand(sqlAvailable, mDB);
-                        newCMD.ExecuteNonQuery();
-                    }
-                    catch (Exception ee)
-                    {
-                        MessageBox.Show("There was an error adding the movie_checkout." + ee.ToString());
-                    }
-                    finally 
-                    {
-                        closeDatabaseConnection();
-                    }
-                }
-
-                if (itemType == "book") {
-                    string newSQL = "insert into book_checkout values('" + itemID + "', '" + checkoutID + "', #" + System.DateTime.Now.AddDays(14).ToShortDateString() + "#);";
-                    string sqlAvailable = "update book set Available = NO where book_id = " + itemID + ";";
-
-                    openDatabaseConnection();
-                    mDB.Open();
-                    OleDbCommand newCMD;
-                    try {
-                        newCMD = new OleDbCommand(newSQL, mDB);
-                        newCMD.ExecuteNonQuery();
-                        newCMD = new OleDbCommand(sqlAvailable, mDB);
-                        newCMD.ExecuteNonQuery();
-                    }
-                    catch {
-                        MessageBox.Show("There was an error adding the book_checkout.");
-                    }
-                    finally {
-                        closeDatabaseConnection();
-                    }
-                }
                 closeDatabaseConnection();
             }
         
@@ -446,25 +433,31 @@ namespace openLibrary_2._0
             itemID = whatKindOfItem(scanned).Item2;
 
             string sql = "delete from " + itemType + "_checkout where " + itemType + "_id = " + itemID + ";";
+            string sqlAvailable = "update book set Available = YES where book_id = " + itemID + ";";
 
             openDatabaseConnection();
             mDB.Open();
             OleDbCommand cmd;
 
-            try
+            if (!checkAvail(itemType, itemID))
             {
-                cmd = new OleDbCommand(sql, mDB);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd = new OleDbCommand(sql, mDB);
+                    cmd.ExecuteNonQuery();
+                    cmd = new OleDbCommand(sqlAvailable, mDB);
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    MessageBox.Show("There was an error checking in the book.");
+                }
+                finally
+                {
+                    closeDatabaseConnection();
+                }
             }
-            catch
-            {
-                MessageBox.Show("There was an error checking in the book.");
-            }
-            finally
-            {
-                closeDatabaseConnection();
-            }
- 
+            else MessageBox.Show("Sorry, that item is already checked in.");
         }
 
         public ArrayList whoIsClockedIn(){
@@ -713,6 +706,7 @@ namespace openLibrary_2._0
                 output[3] = (string)rdr["PUBLISHER"];
                 output[4] = (string)rdr["RELEASE_DATE"];
                 output[5] = (string)rdr["PRICE"];
+                output[6] = ((int)rdr["CD_ID"]).ToString();
             }
             catch (Exception EX) {
 

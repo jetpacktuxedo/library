@@ -366,9 +366,8 @@ namespace openLibrary_2._0
             btnFindItem.Enabled = true;
         }
 
-        private void btnComplete_Click(object sender, EventArgs e)
+        private void btnSubmitCheckOut_Click(object sender, EventArgs e)
         {
-
             string scannedItem = txtCheckout.Text;
             lstCheckout.Items.Add(scannedItem);
             toBeCheckedOut.Add(scannedItem);
@@ -376,7 +375,7 @@ namespace openLibrary_2._0
             btnCompleteCheckOut.Enabled = true;
         }
 
-        private void btnComplete_Click_1(object sender, EventArgs e)
+        private void btnCompleteCheckOut_Click(object sender, EventArgs e)
         {
             lstCheckout.Items.Clear();
             lstCurrentlyCheckedOut.Visible = true;
@@ -387,16 +386,16 @@ namespace openLibrary_2._0
             btnCompleteCheckOut.Visible = false;
             btnFindItem.Enabled = false;
             btnCompleteCheckOut.Enabled = false;
-            
 
-            foreach(string scannedItem in toBeCheckedOut)
+            foreach (string scannedItem in toBeCheckedOut) 
+            {
                 d.checkoutBook(userID, lblCurrentEmp.Text, scannedItem);
+            }
 
             loadCheckouts(userID);
             toBeCheckedOut.Clear();
 
             goStuff(userID);
-
         }
 
         private void overdueBooksToolStripMenuItem_Click(object sender, EventArgs e)
