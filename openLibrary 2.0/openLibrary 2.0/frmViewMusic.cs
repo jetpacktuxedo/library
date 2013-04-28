@@ -249,10 +249,18 @@ namespace openLibrary_2._0
         }
 
         private void lstCurrentTracks_SelectedIndexChanged(object sender, EventArgs e) {
-            string value = lstCurrentTracks.SelectedItem.ToString();
-            value = RemoveDigits(value.Replace("\t", ""));
 
-            lookup(value, albumname, artistname);
+            try
+            {
+                string value = lstCurrentTracks.SelectedItem.ToString();
+                value = RemoveDigits(value.Replace("\t", ""));
+
+                lookup(value, albumname, artistname);
+            }
+            catch
+            {
+                MessageBox.Show("Unfortunately, music preview isn't available for this track.");
+            }
         }
 
         private void dgvMusic_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {

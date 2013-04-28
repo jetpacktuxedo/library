@@ -70,7 +70,6 @@
             this.btnEnd = new System.Windows.Forms.Button();
             this.btnFindItem = new System.Windows.Forms.Button();
             this.btnFindUser = new System.Windows.Forms.Button();
-            this.btnEditInfo = new System.Windows.Forms.Button();
             this.btnCheckIn = new System.Windows.Forms.Button();
             this.btnCheckout = new System.Windows.Forms.Button();
             this.lblCurrentEmp = new System.Windows.Forms.Label();
@@ -400,7 +399,6 @@
             this.grpTasks.Controls.Add(this.btnEnd);
             this.grpTasks.Controls.Add(this.btnFindItem);
             this.grpTasks.Controls.Add(this.btnFindUser);
-            this.grpTasks.Controls.Add(this.btnEditInfo);
             this.grpTasks.Controls.Add(this.btnCheckIn);
             this.grpTasks.Controls.Add(this.btnCheckout);
             this.grpTasks.Location = new System.Drawing.Point(537, 64);
@@ -457,16 +455,6 @@
             this.btnFindUser.Text = "Find User";
             this.btnFindUser.UseVisualStyleBackColor = true;
             this.btnFindUser.Click += new System.EventHandler(this.btnFindUser_Click);
-            // 
-            // btnEditInfo
-            // 
-            this.btnEditInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditInfo.Location = new System.Drawing.Point(21, 182);
-            this.btnEditInfo.Name = "btnEditInfo";
-            this.btnEditInfo.Size = new System.Drawing.Size(178, 36);
-            this.btnEditInfo.TabIndex = 9;
-            this.btnEditInfo.Text = "Edit User Information";
-            this.btnEditInfo.UseVisualStyleBackColor = true;
             // 
             // btnCheckIn
             // 
@@ -689,7 +677,6 @@
         private System.Windows.Forms.Button btnEnd;
         private System.Windows.Forms.Button btnFindItem;
         private System.Windows.Forms.Button btnFindUser;
-        private System.Windows.Forms.Button btnEditInfo;
         private System.Windows.Forms.Button btnCheckIn;
         private System.Windows.Forms.Button btnCheckout;
         private System.Windows.Forms.ToolStripMenuItem logInToolStripMenuItem;

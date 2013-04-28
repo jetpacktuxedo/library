@@ -60,7 +60,7 @@ namespace openLibrary_2._0{
                     String message = errorMessageNodes.Item(0).InnerText;
                     string error;
 
-                    MessageBox.Show("Can't find ISBN information. Please verify that the ISBN is correct and that you have an active internet connection.");
+                    MessageBox.Show("Unfortunately, music preview isn't available for this track.");
                     //MessageBox.Show("Error: " + message + " (but signature worked)");
 
                     return null;
