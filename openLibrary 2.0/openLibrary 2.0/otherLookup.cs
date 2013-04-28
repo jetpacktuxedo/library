@@ -13,9 +13,7 @@ namespace openLibrary_2._0
     class otherLookup
     {
 
-        /*Declare constants
-        private const string MY_AWS_ACCESS_KEY_ID = "AKIAIJBCB63BMUXIE4MQ";
-        private const string MY_AWS_SECRET_KEY = "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";*/
+        //Declare constants
         private const string DESTINATION = "ecs.amazonaws.com";
         private const string NAMESPACE = "http://webservices.amazon.com/AWSECommerceService/2011-08-01";
 

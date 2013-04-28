@@ -263,12 +263,14 @@ namespace openLibrary_2._0
 
                 int selectedRow = dgvMusic.CurrentRow.Index;
                 cdid = dgvMusic[0, selectedRow].Value.ToString();
-                albumname = dgvMusic[2, selectedRow].Value.ToString();
-                artistname = dgvMusic[3, selectedRow].Value.ToString();
+                albumname = dgvMusic[1, selectedRow].Value.ToString();
+                artistname = dgvMusic[2, selectedRow].Value.ToString();
                 databaseHandler d = new databaseHandler();
                 lstCurrentTracks.Items.Clear();
 
-                string sql = "select * from track where cd_id = '" + cdid + "' order by disc_number, track_number;";
+                cdid = (d.CDResults(cdid))[6];
+
+                string sql = "select * from track where cd_id = " + cdid + " order by disc_number, track_number;";
                 ArrayList adder = d.populateTracks(sql);
 
                 lstCurrentTracks.Items.Add("DISC \t NO. \t TITLE");
