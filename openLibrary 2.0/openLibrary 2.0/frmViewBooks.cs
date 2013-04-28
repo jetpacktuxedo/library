@@ -25,31 +25,7 @@ namespace openLibrary_2._0
 
         private void frmBookView_Load(object sender, EventArgs e)
         {
-            try
-            {
-                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN, Title, Author, Publisher, Binding, pub_date as Publication_Date, Pages, Available from book order by Author, Title;";
-
-                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
-                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                BindingSource bs = new BindingSource();
-                bs.DataSource = dt;
-
-                dgvBook.DataSource = bs;
-
-                da.Update(dt);
-
-                databaseHandler d = new databaseHandler();
-                d.closeDatabaseConnection();
-            }
-            catch(Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
+            refresh();
             dgvBook.ClearSelection();
         }        
 
@@ -65,31 +41,7 @@ namespace openLibrary_2._0
             txtAuthorSearch.Text = "Enter all or part of an author here...";
             txtTitleSearch.Text = "Enter all or part of a title here...";
 
-            try
-            {
-                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN, Title, Author, Publisher, Binding, pub_date as Publication_Date, Pages, Available from book order by Author, Title;";
-
-                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
-                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                BindingSource bs = new BindingSource();
-                bs.DataSource = dt;
-
-                dgvBook.DataSource = bs;
-
-                da.Update(dt);
-
-                databaseHandler d = new databaseHandler();
-                d.closeDatabaseConnection();
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
+            refresh();
             dgvBook.ClearSelection();
         }
 
@@ -225,7 +177,8 @@ namespace openLibrary_2._0
         }
 
         private void frmEditBook_FormClosed(object sender, FormClosedEventArgs e) {
-            searcher("", "isbn");
+            refresh();
+            dgvBook.ClearSelection();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -264,9 +217,17 @@ namespace openLibrary_2._0
                 d.closeDatabaseConnection();
             }
 
-            try {
+            refresh();
+
+            dgvBook.ClearSelection();
+
+        }
+        private void refresh() 
+        {
+            try 
+            {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select ISBN, Author, Title, Publisher, Binding, pub_date as Publication_Date, Pages, Available from book order by Author, Title;";
+                string query = "select ISBN, Title, Author, Publisher, Binding, pub_date as Publication_Date, Pages, Available from book order by Author, Title;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -280,17 +241,14 @@ namespace openLibrary_2._0
                 dgvBook.DataSource = bs;
 
                 da.Update(dt);
-            }
-            catch (Exception ex) {
-                MessageBox.Show("Unexpected error: " + ex);
-            }
-            finally {
+
                 databaseHandler d = new databaseHandler();
                 d.closeDatabaseConnection();
             }
-
-            dgvBook.ClearSelection();
-
+            catch (Exception ee) 
+            {
+                MessageBox.Show("There was a problem loading the book list.\n" + ee.Message);
+            }
         }
     }
 }

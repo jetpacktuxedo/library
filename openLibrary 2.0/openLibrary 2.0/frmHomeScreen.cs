@@ -288,38 +288,33 @@ namespace openLibrary_2._0
 
         private void btnRenewItem_Click(object sender, EventArgs e)
         {
-        string table = "";
-        string column = "";
+            string table = "";
+            string column = "";
 
-        if (listLine[0] == "Book:")
-        {
-            table = "book";
-            column = "title";
-        }
-        else if (listLine[0] == "Music:")
-        {
-            table = "cd";
-            column = "album";
-        }
-        else if (listLine[0] == "Game:")
-        {
-            table = "game";
-            column = "title";
-        }
-        else
-        {
-            table = "movie";
-            column = "title";
-        }
+            if (listLine[0] == "Book:") {
+                table = "book";
+                column = "title";
+            }
+            else if (listLine[0] == "Music:") {
+                table = "cd";
+                column = "album";
+            }
+            else if (listLine[0] == "Game:") {
+                table = "game";
+                column = "title";
+            }
+            else {
+                table = "movie";
+                column = "title";
+            }
 
+            DateTime due = DateTime.Parse(listLine[1]);
+            string item_ID = d.codeFromTitle(listLine[2]);
 
-        DateTime due = DateTime.Parse(listLine[1]);
-        string item_ID = d.codeFromTitle(listLine[2]);
-
-        string sqlCheckout = "update " + table + "_checkout set due_date = '" + System.DateTime.Now.AddDays(14).ToShortDateString() + "' where  " + table + "_id = '" + item_ID + "';";
-
-        d.renewDue(sqlCheckout);
-
+            if (!d.checkAvail(table, item_ID)) {
+                string sqlCheckout = "update " + table + "_checkout set due_date = '" + System.DateTime.Now.AddDays(14).ToShortDateString() + "' where  " + table + "_id = '" + item_ID + "';";
+                d.renewDue(sqlCheckout);
+            }
         loadCheckouts(userID);
         
         }

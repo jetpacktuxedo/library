@@ -23,33 +23,10 @@ namespace openLibrary_2._0
             InitializeComponent();
         }
 
-        private void frmViewGames_Load(object sender, EventArgs e)
+        private void frmViewGames_Load(object sender, EventArgs e) 
         {
-            try
-            {
-                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, TITLE, PLATFORM, STUDIO, RELEASE_DATE, AVAILABLE from game order by PLATFORM, TITLE;";
-
-                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
-                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                BindingSource bs = new BindingSource();
-                bs.DataSource = dt;
-
-                dgvGames.DataSource = bs;
-
-                da.Update(dt);
-
-                databaseHandler d = new databaseHandler();
-                d.closeDatabaseConnection();
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
+            refresh();
+            dgvGames.ClearSelection();
         }
 
         private string escapeHandling(string line) {
@@ -93,32 +70,8 @@ namespace openLibrary_2._0
             txtAuthorSearch.Text = "Enter all or part of an author here...";
             txtTitleSearch.Text = "Enter all or part of a title here...";
 
-            try
-            {
-                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, TITLE, PLATFORM, STUDIO, RELEASE_DATE, AVAILABLE from game order by PLATFORM, TITLE;";
-
-                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
-                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                BindingSource bs = new BindingSource();
-                bs.DataSource = dt;
-
-                dgvGames.DataSource = bs;
-
-                da.Update(dt);
-
-                databaseHandler d = new databaseHandler();
-                d.closeDatabaseConnection();
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
-
+            refresh();
+            dgvGames.ClearSelection();
         }
 
         private void tabSet1_SelectedIndexChanged(object sender, EventArgs e)
@@ -222,7 +175,8 @@ namespace openLibrary_2._0
         }
 
         private void frmEditGames_FormClosed(object sender, FormClosedEventArgs e) {
-            searcher("", "UPC");
+            refresh();
+            dgvGames.ClearSelection();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -260,6 +214,11 @@ namespace openLibrary_2._0
                 d.closeDatabaseConnection();
             }
 
+            refresh();
+            dgvGames.ClearSelection();
+        }
+
+        private void refresh() {
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
                 string query = "select UPC, TITLE, PLATFORM, STUDIO, RELEASE_DATE, AVAILABLE from game order by PLATFORM, TITLE;";
@@ -276,15 +235,13 @@ namespace openLibrary_2._0
                 dgvGames.DataSource = bs;
 
                 da.Update(dt);
-            }
-            catch (Exception ex) {
-                MessageBox.Show("Unexpected error: " + ex);
-            }
-            finally {
+
                 databaseHandler d = new databaseHandler();
                 d.closeDatabaseConnection();
             }
-            dgvGames.ClearSelection();
-        }     
+            catch (Exception ee) {
+                MessageBox.Show("There was a problem loading the game list.\n" + ee.Message);
+            }
+        }
     }
 }

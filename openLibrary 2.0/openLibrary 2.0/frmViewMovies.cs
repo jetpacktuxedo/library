@@ -25,31 +25,8 @@ namespace openLibrary_2._0
 
         private void frmViewMovies_Load(object sender, EventArgs e)
         {
-            try
-            {
-                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time, Available from movie order by Title, Release_Date;";
-
-                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
-                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                BindingSource bs = new BindingSource();
-                bs.DataSource = dt;
-
-                dgvMovies.DataSource = bs;
-
-                da.Update(dt);
-
-                databaseHandler d = new databaseHandler();
-                d.closeDatabaseConnection();
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
+            refresh();
+            dgvMovies.ClearSelection();
         }
 
         private void clears() {
@@ -58,29 +35,8 @@ namespace openLibrary_2._0
             txtDirectorSearch.Text = "Enter all or part of a director's name here...";
             txtTitleSearch.Text = "Enter all or part of a title here...";
 
-            try {
-                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time, Available from movie order by Title, Release_Date;";
-
-                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
-                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                BindingSource bs = new BindingSource();
-                bs.DataSource = dt;
-
-                dgvMovies.DataSource = bs;
-
-                da.Update(dt);
-
-                databaseHandler d = new databaseHandler();
-                d.closeDatabaseConnection();
-            }
-            catch (Exception ee) {
-                MessageBox.Show(ee.Message);
-            }
+            refresh();
+            dgvMovies.ClearSelection();
         }
 
         private void txtUPCsearch_Enter(object sender, EventArgs e) {
@@ -177,7 +133,8 @@ namespace openLibrary_2._0
         }
 
         private void frmEditMovies_FormClosed(object sender, FormClosedEventArgs e) {
-            searcher("", "UPC");
+            refresh();
+            dgvMovies.ClearSelection();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -218,6 +175,11 @@ namespace openLibrary_2._0
                 d.closeDatabaseConnection();
             }
 
+            refresh();
+            dgvMovies.ClearSelection();
+        }
+
+        private void refresh() {
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
                 string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time, Available from movie order by Title, Release_Date;";
@@ -234,16 +196,13 @@ namespace openLibrary_2._0
                 dgvMovies.DataSource = bs;
 
                 da.Update(dt);
-            }
-            catch (Exception ex) {
-                MessageBox.Show("Unexpected error: " + ex);
-            }
-            finally {
+
                 databaseHandler d = new databaseHandler();
                 d.closeDatabaseConnection();
             }
-
-            dgvMovies.ClearSelection();
+            catch (Exception ee) {
+                MessageBox.Show("There was a problem loading the movie list.\n" + ee.Message);
+            }
         }
     }
 }

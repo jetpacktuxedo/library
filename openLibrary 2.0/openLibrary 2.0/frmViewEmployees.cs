@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
@@ -16,7 +16,8 @@ namespace openLibrary_2._0
     public partial class frmViewEmployees : Form
     {
         public string connectionString;
-        public OleDbConnection mDB;
+        public OleDbConnection mDB; 
+        databaseHandler d = new databaseHandler();
 
         public frmViewEmployees()
         {
@@ -25,37 +26,8 @@ namespace openLibrary_2._0
 
         private void frmViewEmployees_Load(object sender, EventArgs e)
         {
-
-            try
-            {
-                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from employee order by last_name;";
-
-                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
-                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                BindingSource bs = new BindingSource();
-                bs.DataSource = dt;
-
-                dgvEmployees.DataSource = bs;
-
-                da.Update(dt);
-
-                databaseHandler d = new databaseHandler();
-                d.closeDatabaseConnection();
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            refreshList();
+            dgvEmployees.ClearSelection();
         }
 
         private void txtUPCsearch_TextChanged(object sender, EventArgs e)
@@ -80,7 +52,6 @@ namespace openLibrary_2._0
 
                     da.Update(dt);
 
-                    databaseHandler d = new databaseHandler();
                     d.closeDatabaseConnection();
                 }
                 catch (Exception ee)
@@ -113,7 +84,6 @@ namespace openLibrary_2._0
 
                     da.Update(dt);
 
-                    databaseHandler d = new databaseHandler();
                     d.closeDatabaseConnection();
                 }
                 catch (Exception ee)
@@ -129,31 +99,7 @@ namespace openLibrary_2._0
             txtNameSearch.Text = "Enter all or part of a name here...";
             txtECSearch.Text = "Scan an employee card here...";
 
-            try
-            {
-                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from employee order by last_name;";
-
-                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
-                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                BindingSource bs = new BindingSource();
-                bs.DataSource = dt;
-
-                dgvEmployees.DataSource = bs;
-
-                da.Update(dt);
-
-                databaseHandler d = new databaseHandler();
-                d.closeDatabaseConnection();
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
+            refreshList();
         }
 
         private void txtECSearch_Enter(object sender, EventArgs e)
@@ -191,7 +137,6 @@ namespace openLibrary_2._0
 
                 da.Update(dt);
 
-                databaseHandler d = new databaseHandler();
                 d.closeDatabaseConnection();
             }
             catch (Exception ee)
@@ -218,7 +163,8 @@ namespace openLibrary_2._0
         }
 
         private void frmEditEmployees_FormClosed(object sender, FormClosedEventArgs e) {
-            searcher("", "Employee_ID");
+            refreshList();
+            dgvEmployees.ClearSelection();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -253,10 +199,38 @@ namespace openLibrary_2._0
                 MessageBox.Show("Unexpected error: " + ex);
             }
             finally {
-                databaseHandler d = new databaseHandler();
                 d.closeDatabaseConnection();
             }
 
+            refreshList();
+            dgvEmployees.ClearSelection();
+        }
+
+        private void dgvEmployees_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {
+            if (e.RowIndex >= 0) {
+                ArrayList clockedIn = new ArrayList();
+                dgvEmployees.ClearSelection();
+                dgvEmployees.CurrentCell = dgvEmployees.Rows[e.RowIndex].Cells[1];
+                dgvEmployees.Rows[e.RowIndex].Selected = true;
+
+                string row = dgvEmployees[0, dgvEmployees.CurrentRow.Index].Value.ToString();
+                clockedIn = d.whoIsClockedIn();
+                if (clockedIn.Contains(row)) {
+                    editToolStripMenuItem.Enabled = false;
+                    deleteToolStripMenuItem.Enabled = false;
+                }
+                else {
+                    editToolStripMenuItem.Enabled = true;
+                    deleteToolStripMenuItem.Enabled = true;
+                }
+
+                if (e.Button == MouseButtons.Right) {
+                    dgvClick.Show(Cursor.Position);
+                }
+            }
+        }
+
+        private void refreshList() {
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
                 string query = "select * from employee order by last_name;";
@@ -275,25 +249,11 @@ namespace openLibrary_2._0
                 da.Update(dt);
             }
             catch (Exception ex) {
-                MessageBox.Show("Unexpected error: " + ex);
+                MessageBox.Show("There was a problem loading the employee list.\n" + ex);
             }
             finally {
-                databaseHandler d = new databaseHandler();
                 d.closeDatabaseConnection();
             }
-            dgvEmployees.ClearSelection();
         }
-
-        private void dgvEmployees_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {
-            if (e.RowIndex >= 0) {
-                dgvEmployees.ClearSelection();
-                dgvEmployees.CurrentCell = dgvEmployees.Rows[e.RowIndex].Cells[1];
-                dgvEmployees.Rows[e.RowIndex].Selected = true;
-
-                if (e.Button == MouseButtons.Right) {
-                    dgvClick.Show(Cursor.Position);
-                }
-            }
-        }     
     }
 }

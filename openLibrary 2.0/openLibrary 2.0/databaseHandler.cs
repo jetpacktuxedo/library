@@ -37,7 +37,7 @@ namespace openLibrary_2._0
                 if (ofd.ShowDialog() == DialogResult.OK) frmHomeScreen.mUserFile = ofd.FileName;
 
             }
-            catch (Exception ee) { MessageBox.Show("There was an error: " + ee.Message); }
+            catch (Exception ee) { MessageBox.Show("There was a problem opening the database file."); }
 
         }
 
@@ -79,7 +79,7 @@ namespace openLibrary_2._0
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error: Nothing was added." + e.ToString() + e.Message);
+                MessageBox.Show("Error: Nothing was added.\n" + e.ToString() + e.Message);
             }
             finally
             {
@@ -100,7 +100,7 @@ namespace openLibrary_2._0
 
                 rdr.Close();
             }
-            catch (Exception ee) { MessageBox.Show("Something Went Wrong: " + ee.Message + ee.ToString()); }
+            catch (Exception ee) { MessageBox.Show("There was a problem loading the database. \n" + ee.Message + ee.ToString()); }
             finally
             {
                 closeDatabaseConnection();
@@ -130,7 +130,7 @@ namespace openLibrary_2._0
             }
             catch (Exception s)
             {
-                MessageBox.Show("Error." + s.Message + s.ToString());
+                MessageBox.Show("There was a problem loading the track information.\n" + s.Message + s.ToString());
             }
             finally
             {
@@ -179,7 +179,7 @@ namespace openLibrary_2._0
             }
             catch (Exception e)
             {
-                MessageBox.Show("Unfortunantely, there was an error." + e.ToString());
+                MessageBox.Show("There was a problem clocking in this employee.\n\nCheck that the employeeID is valid.\n" + e.ToString());
             }
             finally
             {
@@ -211,7 +211,7 @@ namespace openLibrary_2._0
             }
             catch (Exception e)
             {
-                MessageBox.Show("Unfortunantely, there was an error." + e.ToString());
+                MessageBox.Show("There was a problem clocking out this employee.\n\nCheck that the employeeID is valid.\n" + e.ToString());
             }
             finally
             {
@@ -233,7 +233,7 @@ namespace openLibrary_2._0
             }
             catch (Exception e)
             {
-                MessageBox.Show("Unfortunantely, there was an error." + e.ToString());
+                MessageBox.Show("There was a problem renewing the book.\n" + e.ToString());
             }
             finally
             {
@@ -259,7 +259,7 @@ namespace openLibrary_2._0
             }
             catch(Exception e)
             {
-                MessageBox.Show("Something went wrong." + e.Message + e.ToString());
+                MessageBox.Show("There was a problem looking up the item. \n" + e.Message + e.ToString());
             }
             finally
             {
@@ -325,7 +325,7 @@ namespace openLibrary_2._0
                         cmd.ExecuteNonQuery();
                     }
                     catch {
-                        MessageBox.Show("There was an error adding the checkout.");
+                        MessageBox.Show("There was an problem creating the checkout.");
                     }
                     finally {
                         closeDatabaseConnection();
@@ -345,7 +345,7 @@ namespace openLibrary_2._0
                             newCMD.ExecuteNonQuery();
                         }
                         catch {
-                            MessageBox.Show("There was an error adding the game_checkout.");
+                            MessageBox.Show("There was an problem checking out the game.");
                         }
                         finally {
                             closeDatabaseConnection();
@@ -366,7 +366,7 @@ namespace openLibrary_2._0
                             newCMD.ExecuteNonQuery();
                         }
                         catch {
-                            MessageBox.Show("There was an error adding the cd_checkout.");
+                            MessageBox.Show("There was an problem checking out the CD.");
                         }
                         finally {
                             closeDatabaseConnection();
@@ -387,7 +387,7 @@ namespace openLibrary_2._0
                             newCMD.ExecuteNonQuery();
                         }
                         catch (Exception ee) {
-                            MessageBox.Show("There was an error adding the movie_checkout." + ee.ToString());
+                            MessageBox.Show("There was an problem checking out the movie." + ee.ToString());
                         }
                         finally {
                             closeDatabaseConnection();
@@ -408,7 +408,7 @@ namespace openLibrary_2._0
                             newCMD.ExecuteNonQuery();
                         }
                         catch {
-                            MessageBox.Show("There was an error adding the book_checkout.");
+                            MessageBox.Show("There was an problem checking out the book.");
                         }
                         finally {
                             closeDatabaseConnection();
@@ -450,7 +450,7 @@ namespace openLibrary_2._0
                 }
                 catch
                 {
-                    MessageBox.Show("There was an error checking in the book.");
+                    MessageBox.Show("There was an error checking in the item.");
                 }
                 finally
                 {
@@ -479,7 +479,7 @@ namespace openLibrary_2._0
             }
             catch
             {
-                MessageBox.Show("Sorry, an error occured.");
+                MessageBox.Show("There was a problem getting the list of clocked in employees.");
             }
             finally
             {
@@ -505,7 +505,7 @@ namespace openLibrary_2._0
 
             }
             catch {
-                MessageBox.Show("Sorry, an error occured.");
+                MessageBox.Show("There was a problem getting the employee ID");
             }
             finally {
                 closeDatabaseConnection();
@@ -526,12 +526,11 @@ namespace openLibrary_2._0
                 {
                     return readdr.GetInt16(0);
                 }
-
             }
 
             catch (Exception ee)
             {
-                MessageBox.Show("Something went wrong: " + ee.Message + ee.ToString());
+                MessageBox.Show("There wasa  problem accessing the database.\n" + ee.Message + ee.ToString());
                 return (int)-1;
             }
             finally
@@ -565,7 +564,7 @@ namespace openLibrary_2._0
                 else
                     return cname;
             }
-            catch { return "not found"; }
+            catch { return "Customer is not in the database."; }
             finally
             {
                 closeDatabaseConnection();
@@ -639,9 +638,9 @@ namespace openLibrary_2._0
                     CurrentlyCheckedOut.Add("Music:\t" + Convert.ToDateTime(rdr["due_date"]).ToString("MM/dd/yyyy") + "\t" + (string)rdr["album"]);
                 }
             }
-            catch (Exception x)
+            catch (Exception x) 
             {
-                MessageBox.Show(x.Message + x.ToString());
+                MessageBox.Show("There was a problem loading the user's checked out items.\n" + x.Message + x.ToString());
             }
             finally
             {
@@ -681,7 +680,7 @@ namespace openLibrary_2._0
                 output[6] = (string)rdr["PAGES"];
             }
             catch (Exception EX) {
-
+                MessageBox.Show("There was a problem loading book information.\n");
             }
             return output;
         }
@@ -709,7 +708,7 @@ namespace openLibrary_2._0
                 output[6] = ((int)rdr["CD_ID"]).ToString();
             }
             catch (Exception EX) {
-
+                MessageBox.Show("There was a problem loading CD information.\n");
             }
             return output;
         }
@@ -740,7 +739,7 @@ namespace openLibrary_2._0
                 output[9] = ((DateTime)rdr["Hire_Date"]).ToString();
             }
             catch (Exception EX) {
-
+                MessageBox.Show("There was a problem loading employee information.\n");
             }
             return output;
         }
@@ -771,7 +770,7 @@ namespace openLibrary_2._0
                 output[9] = ((DateTime)rdr["Join_Date"]).ToString();
             }
             catch (Exception EX) {
-
+                MessageBox.Show("There was a problem loading customer information.\n");
             }
             return output;
         }
@@ -799,7 +798,7 @@ namespace openLibrary_2._0
                 output[6] = (string)rdr["RUNNING_TIME"];
             }
             catch (Exception EX) {
-
+                MessageBox.Show("There was a problem loading Movie information.\n");
             }
             return output;
         }
@@ -826,7 +825,7 @@ namespace openLibrary_2._0
                 output[5] = (string)rdr["PLATFORM"];
             }
             catch (Exception EX) {
-
+                MessageBox.Show("There was a problem loading game information.\n");
             }
             return output;
         }
@@ -847,7 +846,7 @@ namespace openLibrary_2._0
                 available = (Boolean)rdr[0];
             }
             catch (Exception EX) {
-
+                MessageBox.Show("There was a problem loading availability information for the requested item.\n");
             }
             return available;
         }

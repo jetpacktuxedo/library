@@ -18,6 +18,7 @@ namespace openLibrary_2._0
         public string connectionString;
         public OleDbConnection mDB;
         private frmHomeScreen frm = new frmHomeScreen();
+        databaseHandler d = new databaseHandler();
 
         public frmViewCustomers()
         {
@@ -26,36 +27,8 @@ namespace openLibrary_2._0
 
         private void frmViewCustomers_Load(object sender, EventArgs e)
         {
-            try
-            {
-                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select * from customer order by last_name;";
-
-                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
-                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                BindingSource bs = new BindingSource();
-                bs.DataSource = dt;
-
-                dgvCustomers.DataSource = bs;
-
-                da.Update(dt);
-
-                databaseHandler d = new databaseHandler();
-                d.closeDatabaseConnection();
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message);
-            }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
+            refresh();
+            dgvCustomers.ClearSelection();
         }
 
         public void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -235,12 +208,72 @@ namespace openLibrary_2._0
         }
 
         private void frmEditEmployees_FormClosed(object sender, FormClosedEventArgs e) {
-            searcher("", "Customer_ID");
+            refresh();
+            dgvCustomers.ClearSelection();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
+            string row = dgvCustomers[0, dgvCustomers.CurrentRow.Index].Value.ToString();
 
+            if (MessageBox.Show("Are you sure?", "Confirm Deletion", MessageBoxButtons.YesNo) == DialogResult.No) {
+                MessageBox.Show("Request ignored");
+                dgvCustomers.ClearSelection();
+                return;
+            }
+
+            try {
+                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+                string query = "delete from Customer where customer_ID = '" + row + "';";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
+                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dt;
+
+                dgvCustomers.DataSource = bs;
+
+                da.Update(dt);
+
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Unexpected error: " + ex);
+            }
+            finally {
+                d.closeDatabaseConnection();
+            }
+
+            refresh();
+            dgvCustomers.ClearSelection();
         }
 
+        private void refresh() {
+            try {
+                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+                string query = "select * from customer order by last_name;";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
+                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dt;
+
+                dgvCustomers.DataSource = bs;
+
+                da.Update(dt);
+
+                databaseHandler d = new databaseHandler();
+                d.closeDatabaseConnection();
+            }
+            catch (Exception ee) {
+                MessageBox.Show("There was a problem loading the customer list.\n" + ee.Message);
+            }
+        }
     }
 }

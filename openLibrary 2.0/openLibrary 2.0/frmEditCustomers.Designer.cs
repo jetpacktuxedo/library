@@ -68,6 +68,7 @@
             // 
             // txtCardCode
             // 
+            this.txtCardCode.Enabled = false;
             this.txtCardCode.Location = new System.Drawing.Point(589, 47);
             this.txtCardCode.Name = "txtCardCode";
             this.txtCardCode.Size = new System.Drawing.Size(100, 20);

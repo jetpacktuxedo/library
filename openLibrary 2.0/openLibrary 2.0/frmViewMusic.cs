@@ -29,29 +29,8 @@ namespace openLibrary_2._0
         }
 
         private void frmViewMusic_Load(object sender, EventArgs e) {
-            try {
-                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, Artist, Album, Type, Publisher, Release_Date, Available from cd order by Artist, Album;";
-
-                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
-                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                BindingSource bs = new BindingSource();
-                bs.DataSource = dt;
-
-                dgvMusic.DataSource = bs;
-
-                da.Update(dt);
-
-                databaseHandler d = new databaseHandler();
-                d.closeDatabaseConnection();
-            }
-            catch (Exception ee) {
-                MessageBox.Show(ee.Message);
-            }
+            refresh();
+            dgvMusic.ClearSelection();
         }
 
         protected virtual bool IsFileLocked(FileInfo file) {
@@ -218,30 +197,8 @@ namespace openLibrary_2._0
             txtArtistSearch.Text = "Enter all or part of an author here...";
             txtAlbumSearch.Text = "Enter all or part of a title here...";
 
-            try {
-                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, Artist, Album, Type, Publisher, Release_Date, Available from cd order by Artist, Album;";
-
-                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
-                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                BindingSource bs = new BindingSource();
-                bs.DataSource = dt;
-
-                dgvMusic.DataSource = bs;
-
-                da.Update(dt);
-
-                databaseHandler d = new databaseHandler();
-                d.closeDatabaseConnection();
-            }
-            catch (Exception ee) {
-                MessageBox.Show(ee.Message);
-            }
-
+            refresh();
+            dgvMusic.ClearSelection();
         }
 
         private void tabSet1_SelectedIndexChanged(object sender, EventArgs e) {
@@ -249,7 +206,6 @@ namespace openLibrary_2._0
         }
 
         private void lstCurrentTracks_SelectedIndexChanged(object sender, EventArgs e) {
-
             try
             {
                 string value = lstCurrentTracks.SelectedItem.ToString();
@@ -301,7 +257,8 @@ namespace openLibrary_2._0
         }
 
         private void frmEditMusic_FormClosed(object sender, FormClosedEventArgs e) {
-            searcher("", "UPC");
+            refresh();
+            dgvMusic.ClearSelection();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -342,8 +299,12 @@ namespace openLibrary_2._0
                 d.closeDatabaseConnection();
             }
 
+            refresh();
+            dgvMusic.ClearSelection();
+        }
+        private void refresh() 
+        {
             try {
-                lstCurrentTracks.Items.Clear();
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
                 string query = "select UPC, Artist, Album, Type, Publisher, Release_Date, Available from cd order by Artist, Album;";
 
@@ -359,16 +320,13 @@ namespace openLibrary_2._0
                 dgvMusic.DataSource = bs;
 
                 da.Update(dt);
-            }
-            catch (Exception ex) {
-                MessageBox.Show("Unexpected error: " + ex);
-            }
-            finally {
+
                 databaseHandler d = new databaseHandler();
                 d.closeDatabaseConnection();
             }
-
-            dgvMusic.ClearSelection();
+            catch (Exception ee) {
+                MessageBox.Show("There was a problem loading the CD list.\n" + ee.Message);
+            }
         }
     }
 }
