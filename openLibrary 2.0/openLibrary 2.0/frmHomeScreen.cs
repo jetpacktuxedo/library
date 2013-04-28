@@ -364,6 +364,8 @@ namespace openLibrary_2._0
             txtCheckout.Visible = true;
             btnCompleteCheckOut.Visible = true;
             btnFindItem.Enabled = true;
+            btnCheckIn.Enabled = false;
+            txtCheckout.Focus();
         }
 
         private void btnSubmitCheckOut_Click(object sender, EventArgs e)
@@ -413,7 +415,7 @@ namespace openLibrary_2._0
 
         }
 
-        private void btnCheckIn_Click(object sender, EventArgs e)
+        private void btnCheckIn_Click(object sender, EventArgs e) 
         {
             lstCurrentlyCheckedOut.Visible = false;
             btnCheckout.Enabled = false;
@@ -423,6 +425,7 @@ namespace openLibrary_2._0
             lstCheckIn.Visible = true;
             txtCheckIn.Visible = true;
             btnFindItem.Enabled = true;
+            txtCheckIn.Focus();
         }
 
         private void btnCompleteCheckIn_Click(object sender, EventArgs e)

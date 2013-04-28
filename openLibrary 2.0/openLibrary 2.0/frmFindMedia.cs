@@ -68,7 +68,7 @@ namespace openLibrary_2._0
 
                 string mediaName = dgvMedia[0, selectedRow].Value.ToString();
 
-                if (mediaName.Length > 15)
+                if (mediaName.Length > 22)
                 {
                     mediaName = mediaName.Substring(0, 22);
                     mediaName += "...";

@@ -433,7 +433,7 @@ namespace openLibrary_2._0
             itemID = whatKindOfItem(scanned).Item2;
 
             string sql = "delete from " + itemType + "_checkout where " + itemType + "_id = " + itemID + ";";
-            string sqlAvailable = "update book set Available = YES where book_id = " + itemID + ";";
+            string sqlAvailable = "update " + itemType + " set Available = YES where " + itemType + "_id = " + itemID + ";";
 
             openDatabaseConnection();
             mDB.Open();
