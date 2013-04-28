@@ -33,15 +33,7 @@ namespace openLibrary_2._0
 
         public void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvCustomers.CurrentRow.Index >= 0)
-            {
-                int selectedRow = dgvCustomers.CurrentRow.Index;
-                string customerID = dgvCustomers[0, selectedRow].Value.ToString();
-
-                Clipboard.SetText(customerID);
-
-                toolStripStatusLabel1.Text = "The customer ID for " + dgvCustomers[1, selectedRow].Value.ToString() + " " + dgvCustomers[2, selectedRow].Value.ToString() + " has been copied to the clipboard.";
-            }
+            
         }
 
         private void txtCCSearch_TextChanged(object sender, EventArgs e)
@@ -194,9 +186,24 @@ namespace openLibrary_2._0
                 dgvCustomers.CurrentCell = dgvCustomers.Rows[e.RowIndex].Cells[1];
                 dgvCustomers.Rows[e.RowIndex].Selected = true;
 
-                if (e.Button == MouseButtons.Right) {
+                if (e.Button == MouseButtons.Right)
+                {
                     dgvClick.Show(Cursor.Position);
                 }
+                else if (e.Button == MouseButtons.Left)
+                {
+                    if (dgvCustomers.CurrentRow.Index >= 0)
+                    {
+                        int selectedRow = dgvCustomers.CurrentRow.Index;
+                        string customerID = dgvCustomers[0, selectedRow].Value.ToString();
+
+                        Clipboard.SetText(customerID);
+
+                        toolStripStatusLabel1.Text = "The customer ID for " + dgvCustomers[1, selectedRow].Value.ToString() + " " + dgvCustomers[2, selectedRow].Value.ToString() + " has been copied to the clipboard.";
+                    }
+                
+                }
+               
             }
         }
 

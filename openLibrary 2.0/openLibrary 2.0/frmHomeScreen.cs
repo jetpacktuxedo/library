@@ -462,6 +462,8 @@ namespace openLibrary_2._0
 
         private void btnFindUser_Click(object sender, EventArgs e)
         {
+
+            MessageBox.Show("On the following screen, select a customer. The ID for that customer will be copied to the clipboard. Upon closing the following screen, paste the ID into the user textbox.");
             frmViewCustomers frm = new frmViewCustomers();
             frm.Show();
         }
@@ -512,6 +514,8 @@ namespace openLibrary_2._0
 
         private void btnFindItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("On the following screen, select an item. The ID for that item will be copied to the clipboard. Upon closing the following screen, paste the ID into the item textbox.");
+
             frmFindMedia frm = new frmFindMedia();
             frm.FormClosed += new FormClosedEventHandler(frmFindMedia_FormClosed);
             frm.Show();

@@ -66,27 +66,27 @@ namespace openLibrary_2._0
                 if (!IsFileLocked(file)) {
                     client.DownloadFile(url, path);
                     if (client.ResponseHeaders.AllKeys[0] == "x-amz-id-1") {
-                        MessageBox.Show("Track unavailable");
+                        MessageBox.Show("Sorry, this track is unavailable for music preview.");
                     }
                     else player(path);
                 }
                 else if (!IsFileLocked(file2)) {
                     client.DownloadFile(url, path2);
                     if (client.ResponseHeaders.AllKeys[0] == "x-amz-id-1") {
-                        MessageBox.Show("Track unavailable");
+                        MessageBox.Show("Sorry, this track is unavailable for music preview.");
                     }
                     else player(path2);
                 }
                 else if (!IsFileLocked(file3)) {
                     client.DownloadFile(url, path2);
                     if (client.ResponseHeaders.AllKeys[0] == "x-amz-id-1") {
-                        MessageBox.Show("Track unavailable");
+                        MessageBox.Show("Sorry, this track is unavailable for music preview.");
                     }
                     else player(path3);
                 }
             }
             catch (Exception x) {
-                MessageBox.Show("Busy. Please try again in a moment.");
+                MessageBox.Show("The music player has become overloaded. Restarting the application may solve this issue.");
             }
         }
 

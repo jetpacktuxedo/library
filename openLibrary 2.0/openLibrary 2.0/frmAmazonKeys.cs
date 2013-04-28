@@ -45,8 +45,12 @@ namespace openLibrary_2._0
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            s.write(txtPublic.Text, txtPrivate.Text, "");
-            Close();
+            DialogResult dd = MessageBox.Show("Are you absolutely sure you want to do this? If the Amazon keys you entered are not valid, many fuctions of this program, including adding media and music preview will not work.", "WARNING: PLEASE CONFIRM", MessageBoxButtons.YesNo);
+            if (dd == DialogResult.Yes)
+            {
+                s.write(txtPublic.Text, txtPrivate.Text, "");
+                Close();
+            }
         }
     }
 }
