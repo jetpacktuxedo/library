@@ -36,5 +36,10 @@ namespace openLibrary_2._0
         {
 
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.amazon.com");
+        }
     }
 }
