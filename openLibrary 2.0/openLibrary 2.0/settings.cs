@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * This code copyright 2013 by openLibrary
+ * Developed by Tai Gunter and Ethan Madden.
+*/
+
+using System;
 using System.Collections;
 using System.Linq;
 using System.Text;

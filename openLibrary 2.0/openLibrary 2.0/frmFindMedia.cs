@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * This code copyright 2013 by openLibrary
+ * Developed by Tai Gunter and Ethan Madden.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -59,7 +64,7 @@ namespace openLibrary_2._0
 
         private void dgvMedia_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvMedia.CurrentRow.Index >= 0)
+            if (dgvMedia.CurrentRow != null && dgvMedia.CurrentRow.Index >= 0)
             {
                 int selectedRow = dgvMedia.CurrentRow.Index;
                 string itemID = dgvMedia[1, selectedRow].Value.ToString();
