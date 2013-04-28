@@ -189,5 +189,58 @@ namespace openLibrary_2._0
             }
         }
 
+        private void searcher(string field, string column) {
+            try {
+                connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
+                string query = "select * from Customer where " + column + " like '%" + escapeHandling(field) + "%' order by last_name;";
+
+                OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
+                OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                BindingSource bs = new BindingSource();
+                bs.DataSource = dt;
+
+                dgvCustomers.DataSource = bs;
+
+                da.Update(dt);
+
+                databaseHandler d = new databaseHandler();
+                d.closeDatabaseConnection();
+            }
+            catch (Exception ee) {
+                MessageBox.Show(ee.Message);
+            }
+        }
+
+        private void dgvCustomers_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e) {
+            if (e.RowIndex >= 0) {
+                dgvCustomers.ClearSelection();
+                dgvCustomers.CurrentCell = dgvCustomers.Rows[e.RowIndex].Cells[1];
+                dgvCustomers.Rows[e.RowIndex].Selected = true;
+
+                if (e.Button == MouseButtons.Right) {
+                    dgvClick.Show(Cursor.Position);
+                }
+            }
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e) {
+            string row = dgvCustomers[0, dgvCustomers.CurrentRow.Index].Value.ToString();
+            frmEditCustomers form = new frmEditCustomers(row);
+            form.FormClosed += new FormClosedEventHandler(frmEditEmployees_FormClosed);
+            form.Show();
+        }
+
+        private void frmEditEmployees_FormClosed(object sender, FormClosedEventArgs e) {
+            searcher("", "Customer_ID");
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        }
+
     }
 }

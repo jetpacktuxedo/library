@@ -236,7 +236,7 @@ namespace openLibrary_2._0
 
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "delete from game where game_ID = '" + row + "';";
+                string query = "delete from game where UPC = '" + row + "';";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);

@@ -60,7 +60,7 @@ namespace openLibrary_2._0
 
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time from movie order by Title, Release_Date;";
+                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time, Available from movie order by Title, Release_Date;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -110,7 +110,7 @@ namespace openLibrary_2._0
         private void searcher(string field, string column) {
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time from movie where " + column + " like '%" + escapeHandling(field) + "%' order by Title, Release_Date;";
+                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time, Available from movie where " + column + " like '%" + escapeHandling(field) + "%' order by Title, Release_Date;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);
@@ -191,8 +191,8 @@ namespace openLibrary_2._0
 
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "delete from Movie where movie_ID = '" + row + "';";
-                string query2 = "delete from Actor where movie_ID = '" + row + "';";
+                string query = "delete from Movie where UPC = '" + row + "';";
+                string query2 = "delete from Actor where UPC = '" + row + "';";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbDataAdapter da2 = new OleDbDataAdapter(query2, connectionString);
@@ -220,7 +220,7 @@ namespace openLibrary_2._0
 
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time from movie order by Title, Release_Date;";
+                string query = "select UPC, Title, Release_Date, Director, Type, Studio, Running_Time, Available from movie order by Title, Release_Date;";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbCommandBuilder cb = new OleDbCommandBuilder(da);

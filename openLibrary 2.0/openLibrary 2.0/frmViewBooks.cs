@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Configuration;
 
-
 namespace openLibrary_2._0
 {
     public partial class frmViewBooks : Form

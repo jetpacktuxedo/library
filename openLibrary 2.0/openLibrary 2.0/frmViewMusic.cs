@@ -315,8 +315,8 @@ namespace openLibrary_2._0
 
             try {
                 connectionString = ConfigurationManager.AppSettings["DBConnectionString"] + frmHomeScreen.mUserFile;
-                string query = "delete from cd where cd_ID = '" + row + "';";
-                string query2 = "delete from track where cd_ID = '" + row + "';";
+                string query = "delete from cd where UPC = '" + row + "';";
+                string query2 = "delete from track where UPC = '" + row + "';";
 
                 OleDbDataAdapter da = new OleDbDataAdapter(query, connectionString);
                 OleDbDataAdapter da2 = new OleDbDataAdapter(query2, connectionString);

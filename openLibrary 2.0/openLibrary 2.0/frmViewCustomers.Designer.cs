@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewCustomers));
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -37,11 +38,15 @@
             this.txtNameSearch = new System.Windows.Forms.TextBox();
             this.tabPageCCode = new System.Windows.Forms.TabPage();
             this.txtCCSearch = new System.Windows.Forms.TextBox();
+            this.dgvClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.tabSet1.SuspendLayout();
             this.tabPageName.SuspendLayout();
             this.tabPageCCode.SuspendLayout();
+            this.dgvClick.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvCustomers
@@ -56,6 +61,7 @@
             this.dgvCustomers.Size = new System.Drawing.Size(866, 274);
             this.dgvCustomers.TabIndex = 2;
             this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvCustomers.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvCustomers_CellMouseDown);
             this.dgvCustomers.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // statusStrip1
@@ -128,6 +134,28 @@
             this.txtCCSearch.TextChanged += new System.EventHandler(this.txtCCSearch_TextChanged);
             this.txtCCSearch.Enter += new System.EventHandler(this.txtCCSearch_Enter);
             // 
+            // dgvClick
+            // 
+            this.dgvClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.dgvClick.Name = "contextMenuStrip1";
+            this.dgvClick.Size = new System.Drawing.Size(153, 70);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // frmViewCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,6 +177,7 @@
             this.tabPageName.PerformLayout();
             this.tabPageCCode.ResumeLayout(false);
             this.tabPageCCode.PerformLayout();
+            this.dgvClick.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,5 +193,8 @@
         private System.Windows.Forms.TextBox txtNameSearch;
         private System.Windows.Forms.TabPage tabPageCCode;
         private System.Windows.Forms.TextBox txtCCSearch;
+        private System.Windows.Forms.ContextMenuStrip dgvClick;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
