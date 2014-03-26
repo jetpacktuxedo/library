@@ -1,8 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="GroupProjectModel" id="3D3EE9DA-056C-2013-1CA2-3771A54BABB2" version="3.5">
-<createdBy>maddene</createdBy>
-<createdTime>2013-03-06 14:23:47 UTC</createdTime>
-<ownerDesignName>GroupProjectModel</ownerDesignName>
-<capitalNames>false</capitalNames>
-<designId>3D3EE9DA-056C-2013-1CA2-3771A54BABB2</designId>
-</OSDM_Design>
